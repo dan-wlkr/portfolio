@@ -32,8 +32,19 @@
     h1, h2, h3, .serif { font-family: 'DM Serif Display', serif; font-weight: 700; }
 
     /* Smooth theme transitions */
-    body, #main-nav, .cs-panel, .site-footer, .tag, .btn-pink, .nav-photo {
-      transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+    body {
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    body, body * {
+      transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+    }
+    /* Preserve fast interaction transitions */
+    a, button, .btn, .nav-links a, .nav-dropdown-trigger, .theme-toggle, .dropdown-menu a {
+      transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, opacity 0.2s, transform 0.2s !important;
+    }
+    /* Never transition transforms on nav or animations */
+    .fade-up {
+      transition: none !important;
     }
 
     /* Nav — floating pill */
@@ -205,13 +216,13 @@
       padding: 4px 12px; border-radius: 100px;
       display: inline-block;
     }
-    .tag-purple { background: rgba(42,138,90,0.12); color: var(--purple); }
-    .tag-red    { background: rgba(255,107,53,0.12); color: var(--pink); }
+    .tag-purple { background: transparent; color: var(--purple); border: 1.5px solid var(--purple); }
+    .tag-red    { background: transparent; color: var(--pink); border: 1.5px solid var(--pink); }
 
     /* Hero */
     .hero-section {
       background: var(--bg);
-      padding-top: 120px; padding-bottom: 96px;
+      padding-top: 180px; padding-bottom: 96px;
     }
 
     /* Case study panels */
@@ -325,7 +336,7 @@
   <section class="hero-section">
     <div class="content-wrap">
       <div style="max-width: 680px;">
-        <p class="fade-up d1 tag" style="margin-bottom: 24px; background: var(--ink); color: var(--bg);">UX Designer · London</p>
+        <p class="fade-up d1 tag" style="margin-bottom: 24px; background: transparent; color: var(--pink); border: 1.5px solid var(--pink);">Product Designer · UK</p>
         <h1 class="fade-up d2" style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 32px;">
           Hi, I'm <span class="wavy-wrap"><em style="color: var(--purple); font-style: italic;">Dan</em><svg viewBox="0 0 100 20" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,12 C8,-2 17,16 25,8 C33,-2 42,16 50,8 C58,-2 67,16 75,8 C83,-2 92,16 100,8" fill="none" stroke="var(--purple)" stroke-width="2.5" stroke-linecap="round"/></svg></span>
         </h1>
