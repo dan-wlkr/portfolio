@@ -195,7 +195,7 @@
         </div>
       </div>
       <div class="nav-right">
-        <a href="/cdn-cgi/l/email-protection#1e7a6972756c5e737b307d7173" class="nav-email"><span class="__cf_email__" data-cfemail="9efae9f2f5ecdef3fbb0fdf1f3">[email&#160;protected]</span></a>
+        <a href="#" id="nav-email-link" class="nav-email">dwlkr [at] me.com</a>
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
           <svg id="icon-sun" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="display:none;">
             <circle cx="12" cy="12" r="4"/>
@@ -297,6 +297,9 @@
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
       applyTheme(isDark);
     });
+
+    var nav_el = document.getElementById('nav-email-link');
+    if (nav_el) { var e2 = 'dwlkr' + '@' + 'me.com'; nav_el.href = 'mailto:' + e2; nav_el.textContent = e2; }
 
     var el = document.getElementById('email-link');
     if (el) { var e = 'dwlkr' + '@' + 'me.com'; el.href = 'mailto:' + e; el.textContent = e; }
