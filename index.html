@@ -61,16 +61,15 @@
     .nav-inner {
       display: flex; align-items: center; gap: 4px;
       padding: 10px 10px 10px 16px;
-      background: rgba(0,0,0,0.08);
-      border: 1px solid rgba(0,0,0,0.1);
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.12);
       border-radius: 100px;
-      box-shadow: 0 4px 32px rgba(0,0,0,0.06);
       backdrop-filter: blur(16px);
       transition: background 0.4s ease, border-color 0.4s ease;
     }
     .dark .nav-inner {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.1);
+      background: transparent;
+      border-color: rgba(255,255,255,0.15);
     }
     .nav-left { display: flex; align-items: center; gap: 12px; }
     .nav-links { display: flex; gap: 2px; }
@@ -198,6 +197,17 @@
       display: block;
     }
 
+    /* Scroll fade-up */
+    .scroll-fade {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .scroll-fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* Fade up */
     .fade-up {
       opacity: 0; transform: translateY(24px);
@@ -226,8 +236,8 @@
     }
 
     /* Case study panels */
-    .cs-panel { border-top: 1px solid rgba(128,128,128,0.12); }
-    .dark .cs-panel { border-top-color: rgba(255,255,255,0.07); }
+    .cs-panel { border-top: none; }
+    .dark .cs-panel { border-top: none; }
     .cs-img { width: 100%; height: 62vh; min-height: 420px; overflow: hidden; border-radius: 12px; }
     .cs-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 
@@ -273,6 +283,13 @@
     @media (max-width: 768px) {
       .cs-img { height: 52vw; min-height: 240px; }
       .nav-email { display: none; }
+      .nav-name { display: none; }
+      .nav-inner { padding: 7px 7px 7px 8px; gap: 2px; }
+      .nav-left { gap: 2px; }
+      .nav-links a { font-size: 0.875rem; padding: 6px 10px; }
+      .nav-dropdown-trigger { font-size: 0.875rem !important; padding: 6px 10px; }
+      .theme-toggle { width: 30px; height: 30px; }
+      .nav-photo { width: 28px; height: 28px; }
     }
   </style>
   <script>
@@ -291,11 +308,9 @@
     <div class="nav-inner">
       <div class="nav-left">
         <div class="nav-photo">
-          <svg fill="currentColor" viewBox="0 0 24 24" style="width:18px;height:18px;color:var(--muted);opacity:0.45;">
-            <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-          </svg>
+<img src="images/dw.jpg" alt="Dan Walker">
         </div>
-        <span style="font-size: 1.2rem; font-weight: 700; color: var(--ink); white-space: nowrap;">Dan Walker</span>
+        <span style="font-size: 1.2rem; font-weight: 700; color: var(--ink); white-space: nowrap;" class="nav-name">Dan Walker</span>
         <div class="nav-divider"></div><div class="nav-links">
           <a href="index.html">Home</a>
           <div class="nav-dropdown">
@@ -356,7 +371,7 @@
 
   <div id="work">
 
-    <div class="cs-panel">
+    <div class="cs-panel scroll-fade">
       <div class="content-wrap"><div class="cs-img">
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjkwMCI+PHJlY3Qgd2lkdGg9IjE2MDAiIGhlaWdodD0iOTAwIiBmaWxsPSIjMWEyYTM1Ii8+PHRleHQgeD0iODAwIiB5PSI0NjAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMzUpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5OZXh0IFBMQyDigJQgV2FyZWhvdXNlIE9wZXJhdGlvbnM8L3RleHQ+PC9zdmc+" alt="Next PLC warehouse operations">
       </div></div>
@@ -369,7 +384,7 @@
       </div>
     </div>
 
-    <div class="cs-panel">
+    <div class="cs-panel scroll-fade">
       <div class="content-wrap"><div class="cs-img">
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjkwMCI+PHJlY3Qgd2lkdGg9IjE2MDAiIGhlaWdodD0iOTAwIiBmaWxsPSIjMWEyYTFhIi8+PHRleHQgeD0iODAwIiB5PSI0NjAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMzUpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5HcmlkZmluaXRlIOKAlCBQYXNzIGFuZCBQbGF5IGlPUzwvdGV4dD48L3N2Zz4=" alt="Gridfinite mobile game">
       </div></div>
@@ -382,7 +397,7 @@
       </div>
     </div>
 
-    <div class="cs-panel">
+    <div class="cs-panel scroll-fade">
       <div class="content-wrap"><div class="cs-img">
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjkwMCI+PHJlY3Qgd2lkdGg9IjE2MDAiIGhlaWdodD0iOTAwIiBmaWxsPSIjMmExYTEwIi8+PHRleHQgeD0iODAwIiB5PSI0NjAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMzUpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5EcnVtIE1hY2hpbmUg4oCUIEZpZ21hIE1ha2VhdGhvbjwvdGV4dD48L3N2Zz4=" alt="Drum machine Figma">
       </div></div>
@@ -424,6 +439,18 @@
 
 var el = document.getElementById('email-link');
     if (el) { var e = 'dwlkr' + '@' + 'me.com'; el.href = 'mailto:' + e; el.textContent = e; }
+
+    // Scroll fade-in for case studies
+    var fadeEls = document.querySelectorAll('.scroll-fade');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(function(el) { observer.observe(el); });
 
     var lastY = 0;
     window.addEventListener('scroll', function() {
