@@ -227,19 +227,26 @@
     .tag-red    { background: transparent; color: var(--pink); border: 1.5px solid var(--pink); }
 
     /* Hero */
+    .hero-inner { display: flex; flex-direction: column; }
+    .hero-text { max-width: 680px; }
     .hero-section {
       background: var(--bg);
       padding-top: 180px; padding-bottom: 96px;
     }
 
     /* Case study panels */
-    .cs-panel { border-top: none; }
+    .cs-panel { border-top: none; margin-bottom: 80px; }
     .dark .cs-panel { border-top: none; }
-    .cs-img { width: 100%; height: 62vh; min-height: 420px; overflow: hidden; border-radius: 12px; }
+    .cs-img-wrap { overflow: hidden; border-radius: 14px; }
+    .cs-img { width: 100%; height: 62vh; min-height: 420px; overflow: hidden;
+      transform: scale(1); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+    .cs-img-wrap:hover .cs-img { transform: scale(1.02); }
     .cs-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 
-    .cs-title { font-size: clamp(1.75rem, 3.5vw, 3rem); line-height: 1.1; margin-bottom: 0.4rem; }
-    .cs-body  { font-size: 1rem; line-height: 1.8; color: var(--muted); max-width: 62ch; margin-bottom: 2rem; }
+    .cs-meta-row { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+    .cs-client { font-size: 0.8rem; font-weight: 500; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+    .cs-title { font-size: clamp(1.5rem, 3vw, 2.5rem); line-height: 1.1; margin-bottom: 1rem; }
+    .cs-body  { font-size: 1rem; line-height: 1.85; color: var(--muted); max-width: 60ch; margin-bottom: 2rem; }
 
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
@@ -250,6 +257,11 @@
     }
     .btn:hover { opacity: 0.85; transform: translateX(2px); }
     .btn-pink { background: var(--pink); color: #fff; }
+    .btn-ghost {
+      color: var(--ink); border: 1.5px solid rgba(128,128,128,0.25);
+      background: transparent; border-radius: 100px;
+    }
+    .btn-ghost:hover { border-color: var(--ink); transform: translateX(3px); }
 
     /* Footer */
     .site-footer {
@@ -343,66 +355,77 @@
 
   <section class="hero-section">
     <div class="content-wrap">
-      <div style="max-width: 680px;">
-        <div class="fade-up d1" style="margin-bottom: 24px;">
-          <img src="images/dw.jpg" alt="Dan Walker" style="width:80px; height:80px; border-radius:50%; object-fit:cover; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="fade-up d1" style="display:flex; align-items:center; gap:14px; margin-bottom:36px;">
+            <img src="images/dw.jpg" alt="Dan Walker" style="width:52px; height:52px; border-radius:50%; object-fit:cover;">
+            <span class="tag" style="background: transparent; color: var(--pink); border: 1.5px solid var(--pink);">Product Designer · UK</span>
+          </div>
+          <h1 class="fade-up d2" style="font-size: clamp(2.75rem, 6vw, 5rem); line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 36px;">
+            Hi, I'm <span class="wavy-wrap"><em style="color: var(--purple); font-style: italic;">Dan</em><svg viewBox="0 0 100 20" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,12 C8,-2 17,16 25,8 C33,-2 42,16 50,8 C58,-2 67,16 75,8 C83,-2 92,16 100,8" fill="none" stroke="var(--purple)" stroke-width="2.5" stroke-linecap="round"/></svg></span>
+          </h1>
+          <p class="fade-up d3" style="font-size: 1.05rem; line-height: 1.85; color: var(--muted); max-width: 52ch; margin-bottom: 16px;">
+            I have always been driven by a deep curiosity for how things work — a curiosity that evolved during my fine art degree into building digital environments and applications.
+          </p>
+          <p class="fade-up d4" style="font-size: 1.05rem; line-height: 1.85; color: var(--muted); max-width: 52ch;">
+            Today I specialise in rapid prototyping and user-centred design in Figma, bringing complex systems to life with a focus on simplicity and intuitive experiences.
+          </p>
         </div>
-        <p class="fade-up d1 tag" style="margin-bottom: 24px; background: transparent; color: var(--pink); border: 1.5px solid var(--pink);">Product Designer · UK</p>
-        <h1 class="fade-up d2" style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 32px;">
-          Hi, I'm <span class="wavy-wrap"><em style="color: var(--purple); font-style: italic;">Dan</em><svg viewBox="0 0 100 20" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,12 C8,-2 17,16 25,8 C33,-2 42,16 50,8 C58,-2 67,16 75,8 C83,-2 92,16 100,8" fill="none" stroke="var(--purple)" stroke-width="2.5" stroke-linecap="round"/></svg></span>
-        </h1>
-        <p class="fade-up d3" style="font-size: 1rem; line-height: 1.8; color: var(--muted); margin-bottom: 16px;">
-          I have always been driven by a deep curiosity for how things work. Early on, I spent hours exploring digital interfaces, using developer tools to deconstruct and understand their foundations — a curiosity that evolved during my fine art degree into building digital environments and applications.
-        </p>
-        <p class="fade-up d4" style="font-size: 1rem; line-height: 1.8; color: var(--muted);">
-          Today I specialise in rapid prototyping and user-centred design in Figma, bringing complex systems to life with a focus on simplicity and intuitive experiences. My process is iterative: building, testing, and refining until every interaction feels right.
-        </p>
       </div>
     </div>
   </section>
 
-  <div class="content-wrap" style="padding-top: 64px; padding-bottom: 16px;">
-    <p class="serif" style="font-size: clamp(1.5rem, 3vw, 2rem);">Some lovely things I've worked on</p>
+  <div class="content-wrap" style="padding-top: 80px; padding-bottom: 40px;">
+    <div style="display:flex; align-items:center; gap:20px;">
+      <p class="serif" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); color: var(--muted); margin:0;">Selected work</p>
+      <div style="flex:1; height:1px; background: rgba(128,128,128,0.15);"></div>
+    </div>
   </div>
 
   <div id="work">
 
     <div class="cs-panel scroll-fade">
-      <div class="content-wrap"><div class="cs-img">
+      <div class="content-wrap"><div class="cs-img-wrap"><div class="cs-img">
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjkwMCI+PHJlY3Qgd2lkdGg9IjE2MDAiIGhlaWdodD0iOTAwIiBmaWxsPSIjMWEyYTM1Ii8+PHRleHQgeD0iODAwIiB5PSI0NjAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMzUpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5OZXh0IFBMQyDigJQgV2FyZWhvdXNlIE9wZXJhdGlvbnM8L3RleHQ+PC9zdmc+" alt="Next PLC warehouse operations">
-      </div></div>
+      </div></div></div>
       <div class="content-wrap" style="padding-top: 1.5rem; padding-bottom: 5rem;">
-        <span class="tag tag-purple" style="margin-bottom: 20px;">Case study</span>
+        <div class="cs-meta-row">
+          <span class="tag tag-purple">Case study</span>
+          <span class="cs-client">Next PLC</span>
+        </div>
         <h3 class="serif cs-title">Modernising Warehouse Operations at Scale</h3>
-        <p style="font-size:0.875rem; font-weight:500; color:var(--muted); margin: 6px 0 16px;">Next PLC</p>
         <p class="cs-body">I was brought in to Next to rethink their outdated warehouse systems as shipping volumes soared. With no previous product design presence, I created a UX strategy from scratch — streamlining workflows and improving visibility for teams handling hundreds of thousands of packages daily.</p>
-        <a href="case-study-1.html" class="btn btn-pink">Read More</a>
+        <a href="case-study-1.html" class="btn btn-ghost">View case study →</a>
       </div>
     </div>
 
     <div class="cs-panel scroll-fade">
-      <div class="content-wrap"><div class="cs-img">
+      <div class="content-wrap"><div class="cs-img-wrap"><div class="cs-img">
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjkwMCI+PHJlY3Qgd2lkdGg9IjE2MDAiIGhlaWdodD0iOTAwIiBmaWxsPSIjMWEyYTFhIi8+PHRleHQgeD0iODAwIiB5PSI0NjAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMzUpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5HcmlkZmluaXRlIOKAlCBQYXNzIGFuZCBQbGF5IGlPUzwvdGV4dD48L3N2Zz4=" alt="Gridfinite mobile game">
-      </div></div>
+      </div></div></div>
       <div class="content-wrap" style="padding-top: 1.5rem; padding-bottom: 5rem;">
-        <span class="tag tag-purple" style="margin-bottom: 20px;">Case study</span>
+        <div class="cs-meta-row">
+          <span class="tag tag-purple">Case study</span>
+          <span class="cs-client">Gridfinite</span>
+        </div>
         <h3 class="serif cs-title">Pass &amp; Play Game Design in iOS</h3>
-        <p style="font-size:0.875rem; font-weight:500; color:var(--muted); margin: 6px 0 16px;">Gridfinite</p>
         <p class="cs-body">This summer, I worked with my son on Gridfinite, a family-friendly pass and play strategy game for iOS. What began as a fun project turned into a hands-on dive into game design and development in Swift, with the aim of creating an engaging experience for everyone to enjoy together.</p>
-        <a href="case-study-2.html" class="btn btn-pink">Read More</a>
+        <a href="case-study-2.html" class="btn btn-ghost">View case study →</a>
       </div>
     </div>
 
     <div class="cs-panel scroll-fade">
-      <div class="content-wrap"><div class="cs-img">
+      <div class="content-wrap"><div class="cs-img-wrap"><div class="cs-img">
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjkwMCI+PHJlY3Qgd2lkdGg9IjE2MDAiIGhlaWdodD0iOTAwIiBmaWxsPSIjMmExYTEwIi8+PHRleHQgeD0iODAwIiB5PSI0NjAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMzUpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5EcnVtIE1hY2hpbmUg4oCUIEZpZ21hIE1ha2VhdGhvbjwvdGV4dD48L3N2Zz4=" alt="Drum machine Figma">
-      </div></div>
+      </div></div></div>
       <div class="content-wrap" style="padding-top: 1.5rem; padding-bottom: 5rem;">
-        <span class="tag tag-red" style="margin-bottom: 20px;">Mini project</span>
+        <div class="cs-meta-row">
+          <span class="tag tag-red">Mini project</span>
+          <span class="cs-client">Figma Makeathon</span>
+        </div>
         <h3 class="serif cs-title">Building a Drum Machine in Figma Make</h3>
-        <p style="font-size:0.875rem; font-weight:500; color:var(--muted); margin: 6px 0 16px;">Figma Makeathon</p>
         <p class="cs-body">I designed and built a fully functional drum machine and step sequencer inside Figma Make for their Hackathon. Drawing inspiration from classic hardware and modern music tools, the project lets you play, upload your own samples, and record directly in the browser.</p>
-        <a href="case-study-3.html" class="btn btn-pink">Read More</a>
+        <a href="case-study-3.html" class="btn btn-ghost">View case study →</a>
       </div>
     </div>
 
