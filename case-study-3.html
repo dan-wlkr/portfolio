@@ -116,13 +116,24 @@
     }
 
     /* ── Scroll fade ─────────────────────────────────────────────────── */
+    @keyframes scrollFadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
     .scroll-fade {
       opacity: 0; transform: translateY(16px);
-      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
+      transition: opacity 0.5s ease, transform 0.5s ease;
       backface-visibility: hidden; -webkit-backface-visibility: hidden;
     }
     .scroll-fade.visible { opacity: 1; transform: translateY(0); }
+    @supports (animation-timeline: view()) {
+      .scroll-fade {
+        animation: scrollFadeIn linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 30%;
+        transition: none;
+      }
+    }
     .fade-up {
       opacity: 0; transform: translateY(14px);
       animation: fadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -398,13 +409,15 @@
     var footerEmail = document.getElementById('footer-email-link');
     if (footerEmail) { var e = 'dwlkr' + '@' + 'me.com'; footerEmail.href = 'mailto:' + e; footerEmail.textContent = e; }
 
-    var fadeEls = document.querySelectorAll('.scroll-fade');
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-      });
-    }, { threshold: 0, rootMargin: '0px 0px -32px 0px' });
-    fadeEls.forEach(function (el) { observer.observe(el); });
+    if (!CSS.supports('animation-timeline', 'view()')) {
+      var fadeEls = document.querySelectorAll('.scroll-fade');
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+        });
+      }, { threshold: 0, rootMargin: '0px 0px -32px 0px' });
+      fadeEls.forEach(function (el) { observer.observe(el); });
+    }
   </script>
 
 </body>
