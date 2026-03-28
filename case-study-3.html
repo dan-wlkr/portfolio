@@ -157,16 +157,16 @@
     .btn-ghost:hover { border-color: var(--ink); }
 
     .store-badge {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 9px 16px; border-radius: 10px; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 11px 20px; border-radius: 12px; text-decoration: none;
+      background: #000; color: #fff;
       transition: opacity 0.2s;
     }
-    .store-badge:hover { opacity: 0.82; }
-    .store-badge-as { background: #000; color: #fff; }
-    .dark .store-badge-as { background: #1a1a1a; border: 1px solid rgba(255,255,255,0.12); }
-    .store-badge-text { display: flex; flex-direction: column; line-height: 1.25; }
-    .store-badge-sub { font-size: 0.62rem; font-weight: 400; letter-spacing: 0.03em; opacity: 0.9; }
-    .store-badge-main { font-size: 0.95rem; font-weight: 600; letter-spacing: -0.01em; }
+    .store-badge:hover { opacity: 0.8; }
+    .dark .store-badge { background: #1c1c1e; border: 1px solid rgba(255,255,255,0.1); }
+    .store-badge-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .store-badge-sub { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.04em; opacity: 0.85; }
+    .store-badge-main { font-size: 1rem; font-weight: 600; letter-spacing: -0.01em; }
 
     /* ── Layout ──────────────────────────────────────────────────────── */
     .content-wrap { max-width: 1152px; margin: 0 auto; padding: 0 24px; }
@@ -290,6 +290,15 @@
     <p class="fade-up d3 body-text" style="max-width: 58ch;">
       A summer project building a family-friendly strategy game with my son — from game mechanic sketches to a shipped iOS app, with Figma and Swift along the way.
     </p>
+    <a href="https://apps.apple.com/gb/app/gridfinite/id6751437117" target="_blank" rel="noopener" class="store-badge fade-up d4" style="margin-top: 32px;">
+      <svg width="22" height="26" viewBox="0 0 24 28" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path d="M23.5 21.6c-.5 1.1-1 2.1-1.8 3-.9 1.1-1.8 1.6-2.8 1.7-1 0-1.9-.6-3.1-.6-1.2 0-2.1.6-3.1.6-1.1 0-2-.5-2.9-1.7C8.5 23 7.4 21 6.5 18.6c-.9-2.5-1.4-5-1.4-7.3 0-2.7.6-4.9 1.7-6.6C7.8 3.1 9.3 2 11.1 2c.9 0 1.9.6 3 .6.9 0 2-.6 3.2-.6 1 0 2 .3 2.8.9.5.4 1 .9 1.3 1.6-1.3.8-2 2-2 3.6 0 1.7.7 3 2.2 3.9-.3.9-.7 1.8-1.1 2.6zM17.5 1c0 1-.4 2-1.1 2.9-.8 1-1.8 1.6-2.9 1.5 0-1 .4-2 1.1-2.9C15.3 1.6 16.3 1 17.5 1z"/>
+      </svg>
+      <span class="store-badge-text">
+        <span class="store-badge-sub">Download on the</span>
+        <span class="store-badge-main">App Store</span>
+      </span>
+    </a>
   </div>
 
   <!-- Meta -->
@@ -299,18 +308,6 @@
       <div class="meta-item"><span class="meta-label">Year</span> <span class="meta-value">2024</span></div>
       <div class="meta-item"><span class="meta-label">Role</span> <span class="meta-value">Designer &amp; Co-developer</span></div>
       <div class="meta-item"><span class="meta-label">Tools</span> <span class="meta-value">Figma, Swift, Xcode</span></div>
-    </div>
-    <div style="margin-top: 20px;">
-      <a href="https://apps.apple.com/gb/app/gridfinite/id6751437117" target="_blank" rel="noopener" class="store-badge store-badge-as">
-        <!-- Apple logo -->
-        <svg width="24" height="28" viewBox="0 0 24 28" fill="white" xmlns="http://www.w3.org/2000/svg">
-          <path d="M23.5 21.6c-.5 1.1-1 2.1-1.8 3-.9 1.1-1.8 1.6-2.8 1.7-1 0-1.9-.6-3.1-.6-1.2 0-2.1.6-3.1.6-1.1 0-2-.5-2.9-1.7C8.5 23 7.4 21 6.5 18.6c-.9-2.5-1.4-5-1.4-7.3 0-2.7.6-4.9 1.7-6.6C7.8 3.1 9.3 2 11.1 2c.9 0 1.9.6 3 .6.9 0 2-.6 3.2-.6 1 0 2 .3 2.8.9.5.4 1 .9 1.3 1.6-1.3.8-2 2-2 3.6 0 1.7.7 3 2.2 3.9-.3.9-.7 1.8-1.1 2.6zM17.5 1c0 1-.4 2-1.1 2.9-.8 1-1.8 1.6-2.9 1.5 0-1 .4-2 1.1-2.9C15.3 1.6 16.3 1 17.5 1z"/>
-        </svg>
-        <span class="store-badge-text">
-          <span class="store-badge-sub">Download on the</span>
-          <span class="store-badge-main">App Store</span>
-        </span>
-      </a>
     </div>
   </div>
 
