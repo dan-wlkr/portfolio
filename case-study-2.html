@@ -62,8 +62,8 @@
       padding: 8px 18px; border-radius: 100px;
     }
     .nav-links a:hover { background: rgba(0,0,0,0.06); color: var(--ink); }
-    .nav-links a.active { background: var(--ink); color: var(--bg); }
-    .dark .nav-links a.active { background: rgba(255,255,255,0.15); color: #fff; }
+    .nav-links a.active, .nav-dropdown-trigger.active { background: var(--ink); color: var(--bg); }
+    .dark .nav-links a.active, .dark .nav-dropdown-trigger.active { background: rgba(255,255,255,0.15); color: #fff; }
     .dark .nav-links a { color: rgba(255,255,255,0.6); }
     .dark .nav-links a:hover { background: rgba(255,255,255,0.1); color: #fff; }
     .nav-right { display: flex; align-items: center; gap: 4px; margin-left: 16px; }
@@ -148,7 +148,7 @@
 
     /* ── Layout ──────────────────────────────────────────────────────── */
     .content-wrap { max-width: 1152px; margin: 0 auto; padding: 0 24px; }
-    .prose-wrap   { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .content-wrap   { max-width: 720px; margin: 0 auto; padding: 0 24px; }
 
     .cs-hero-img {
       width: 100%; height: 62vh; min-height: 420px; overflow: hidden;
@@ -256,7 +256,7 @@
   </div>
 
   <!-- Header -->
-  <div class="prose-wrap" style="padding-top: 56px;">
+  <div class="content-wrap" style="padding-top: 56px;">
     <div class="fade-up d1" style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
       <span class="tag tag-purple">Case study</span>
       <span style="font-size: 0.8rem; font-weight: 500; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase;">Currently</span>
@@ -270,7 +270,7 @@
   </div>
 
   <!-- Meta -->
-  <div class="prose-wrap scroll-fade" style="padding-top: 24px; padding-bottom: 80px;">
+  <div class="content-wrap scroll-fade" style="padding-top: 24px; padding-bottom: 80px;">
     <div class="meta-row">
       <div class="meta-item"><span class="meta-label">Project</span> <span class="meta-value">Currently</span></div>
       <div class="meta-item"><span class="meta-label">Year</span> <span class="meta-value">2024</span></div>
@@ -280,7 +280,7 @@
   </div>
 
   <!-- Body -->
-  <div class="prose-wrap">
+  <div class="content-wrap">
     <div class="divider" style="margin-top: 0;"></div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
