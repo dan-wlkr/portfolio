@@ -151,24 +151,21 @@
     .prose-wrap   { max-width: 720px; margin: 0 auto; padding: 0 24px; }
 
     .cs-hero-img {
-      width: 100%; height: 70vh; min-height: 420px; overflow: hidden;
-      border-radius: 0 0 16px 16px;
+      width: 100%; height: 62vh; min-height: 420px; overflow: hidden;
+      border-radius: 14px;
     }
     .cs-hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 
-    .meta-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 0; border: 1px solid rgba(128,128,128,0.15); border-radius: 12px; overflow: hidden;
+    .meta-row {
+      display: flex; flex-wrap: wrap; gap: 12px 32px;
+      padding-top: 8px;
     }
-    .meta-cell { padding: 20px 24px; border-right: 1px solid rgba(128,128,128,0.15); }
-    .meta-cell:last-child { border-right: none; }
-    .dark .meta-grid { border-color: rgba(255,255,255,0.08); }
-    .dark .meta-cell { border-right-color: rgba(255,255,255,0.08); }
+    .meta-item { display: flex; align-items: baseline; gap: 8px; }
     .meta-label {
       font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--muted); opacity: 0.6; display: block; margin-bottom: 6px;
+      color: var(--muted); opacity: 0.5;
     }
-    .meta-value { font-size: 0.9rem; font-weight: 500; color: var(--ink); }
+    .meta-value { font-size: 0.875rem; font-weight: 500; color: var(--muted); }
 
     .section-title {
       font-family: 'DM Serif Display', serif;
@@ -204,28 +201,20 @@
       margin-top: 40px;
     }
     .outcome-card {
-      padding: 0; border-radius: 16px; overflow: hidden;
-      border: 1px solid rgba(255, 107, 53, 0.15);
-      background: linear-gradient(165deg, rgba(255, 107, 53, 0.05) 0%, transparent 60%);
-      position: relative;
+      padding: 0; border-radius: 12px;
+      border: 1px solid rgba(128,128,128,0.15);
+      background: transparent;
     }
-    .outcome-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 3px; background: var(--pink); border-radius: 16px 16px 0 0;
-    }
-    .dark .outcome-card {
-      border-color: rgba(255, 107, 53, 0.2);
-      background: linear-gradient(165deg, rgba(255, 107, 53, 0.08) 0%, transparent 60%);
-    }
-    .outcome-card-inner { padding: 32px 28px; }
+    .dark .outcome-card { border-color: rgba(255,255,255,0.08); }
+    .outcome-card-inner { padding: 28px 24px; }
     .outcome-card .stat {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.5rem, 4vw, 3.25rem);
-      color: var(--pink); line-height: 1; margin-bottom: 12px;
+      font-size: clamp(2.25rem, 4vw, 3rem);
+      color: var(--ink); line-height: 1; margin-bottom: 10px;
       letter-spacing: -0.03em;
     }
     .outcome-card .stat-label {
-      font-size: 0.9rem; color: var(--muted); line-height: 1.6;
+      font-size: 0.875rem; color: var(--muted); line-height: 1.6;
     }
 
     .site-footer {
@@ -243,9 +232,6 @@
       .nav-links a { font-size: 0.875rem; padding: 6px 10px; }
       .nav-dropdown-trigger { font-size: 0.875rem !important; padding: 6px 10px; }
       .theme-toggle { width: 30px; height: 30px; }
-      .meta-grid { grid-template-columns: 1fr 1fr; }
-      .meta-cell { border-bottom: 1px solid rgba(128,128,128,0.15); }
-      .dark .meta-cell { border-bottom-color: rgba(255,255,255,0.08); }
       .two-col { grid-template-columns: 1fr; }
     }
   </style>
@@ -263,7 +249,7 @@
   <div id="nav-mount"></div>
 
   <!-- Hero image -->
-  <div style="padding-top: 90px;">
+  <div class="content-wrap" style="padding-top: 100px;">
     <div class="cs-hero-img">
       <img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/currently.png" alt="Currently social media app screens">
     </div>
@@ -283,25 +269,13 @@
     </p>
   </div>
 
-  <!-- Meta grid -->
-  <div class="prose-wrap scroll-fade" style="padding-top: 40px; padding-bottom: 80px;">
-    <div class="meta-grid">
-      <div class="meta-cell">
-        <span class="meta-label">Project</span>
-        <span class="meta-value">Currently</span>
-      </div>
-      <div class="meta-cell">
-        <span class="meta-label">Year</span>
-        <span class="meta-value">2024</span>
-      </div>
-      <div class="meta-cell">
-        <span class="meta-label">Role</span>
-        <span class="meta-value">Product Designer</span>
-      </div>
-      <div class="meta-cell">
-        <span class="meta-label">Tools</span>
-        <span class="meta-value">Figma, Principle</span>
-      </div>
+  <!-- Meta -->
+  <div class="prose-wrap scroll-fade" style="padding-top: 24px; padding-bottom: 80px;">
+    <div class="meta-row">
+      <div class="meta-item"><span class="meta-label">Project</span> <span class="meta-value">Currently</span></div>
+      <div class="meta-item"><span class="meta-label">Year</span> <span class="meta-value">2024</span></div>
+      <div class="meta-item"><span class="meta-label">Role</span> <span class="meta-value">Product Designer</span></div>
+      <div class="meta-item"><span class="meta-label">Tools</span> <span class="meta-value">Figma, Principle</span></div>
     </div>
   </div>
 
