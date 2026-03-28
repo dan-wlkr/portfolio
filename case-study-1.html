@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Modernising Warehouse Operations — Dan Walker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink:   #ff6b35;
+      --purple: #2a8a5a;
+      --red:    #b8a0cc;
+      --ink:    #0f0f0e;
+      --muted:  #5a5a52;
+      --bg:     #f5ece0;
+    }
+    .dark {
+      --ink:   #f0ede8;
+      --muted: #9a9890;
+      --bg:    #141210;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg); color: var(--ink);
+      margin: 0;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    body * { transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease; }
+    h1, h2, h3, .serif { font-family: 'DM Serif Display', serif; font-weight: 700; }
+    a, button, .btn, .nav-links a, .nav-dropdown-trigger, .theme-toggle, .dropdown-menu a {
+      transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, opacity 0.2s, transform 0.2s !important;
+    }
+    .fade-up { transition: none !important; }
+
+    /* ── Nav ─────────────────────────────────────────────────────────── */
+    #main-nav {
+      position: fixed; top: 20px; left: 50%; z-index: 50;
+      transform: translateX(-50%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+    }
+    #main-nav.hidden-nav {
+      transform: translateX(-50%) translateY(calc(-100% - 28px));
+      opacity: 0;
+    }
+    .nav-inner {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 10px 10px 14px;
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 100px;
+      backdrop-filter: blur(16px);
+    }
+    .dark .nav-inner { border-color: rgba(255,255,255,0.15); }
+    .nav-left { display: flex; align-items: center; }
+    .nav-links { display: flex; gap: 8px; }
+    .nav-links a {
+      font-size: 1rem; font-weight: 500;
+      color: var(--muted); text-decoration: none;
+      padding: 8px 18px; border-radius: 100px;
+    }
+    .nav-links a:hover { background: rgba(0,0,0,0.06); color: var(--ink); }
+    .nav-links a.active { background: var(--ink); color: var(--bg); }
+    .dark .nav-links a.active { background: rgba(255,255,255,0.15); color: #fff; }
+    .dark .nav-links a { color: rgba(255,255,255,0.6); }
+    .dark .nav-links a:hover { background: rgba(255,255,255,0.1); color: #fff; }
+    .nav-right { display: flex; align-items: center; gap: 4px; margin-left: 16px; }
+    .theme-toggle {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(0,0,0,0.06); border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0; color: var(--muted);
+    }
+    .theme-toggle:hover { background: rgba(0,0,0,0.1); transform: rotate(15deg); }
+    .dark .theme-toggle { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); }
+    .dark .theme-toggle:hover { background: rgba(255,255,255,0.2); }
+    .theme-toggle svg { width: 14px; height: 14px; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-trigger {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 1rem; font-weight: 500; color: var(--muted);
+      padding: 8px 18px; border-radius: 100px; cursor: default;
+    }
+    .nav-dropdown:hover .nav-dropdown-trigger { background: rgba(0,0,0,0.06); color: var(--ink); }
+    .dark .nav-dropdown:hover .nav-dropdown-trigger { background: rgba(255,255,255,0.1); color: #fff; }
+    .nav-dropdown-trigger::after {
+      content: ''; width: 5px; height: 5px;
+      border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg) translateY(-2px); display: inline-block; transition: transform 0.2s;
+    }
+    .nav-dropdown:hover .nav-dropdown-trigger::after { transform: rotate(-135deg) translateY(-2px); }
+    .dropdown-menu {
+      position: absolute; top: calc(100% + 4px); left: 50%;
+      background: var(--bg); border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 14px; padding: 6px; min-width: 240px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      opacity: 0; pointer-events: none;
+      transform: translateX(-50%) translateY(-6px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .dropdown-menu::before { content: ''; position: absolute; top: -10px; left: 0; right: 0; height: 10px; }
+    .dark .dropdown-menu { background: #1e1c18; border-color: rgba(255,255,255,0.08); }
+    .nav-dropdown:hover .dropdown-menu { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+    .dropdown-menu a {
+      display: block; font-size: 0.875rem; font-weight: 500;
+      color: var(--muted) !important; padding: 8px 12px !important;
+      border-radius: 8px !important; text-decoration: none; background: none !important; white-space: nowrap;
+    }
+    .dropdown-menu a:hover { background: rgba(0,0,0,0.05) !important; color: var(--ink) !important; }
+    .dark .dropdown-menu a:hover { background: rgba(255,255,255,0.07) !important; color: #fff !important; }
+    .dropdown-label {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); opacity: 0.5; padding: 6px 12px 2px; display: block;
+    }
+
+    /* ── Scroll fade ─────────────────────────────────────────────────── */
+    .scroll-fade {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .scroll-fade.visible { opacity: 1; transform: translateY(0); }
+
+    .fade-up {
+      opacity: 0; transform: translateY(24px);
+      animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    .d1 { animation-delay: 0.05s; } .d2 { animation-delay: 0.18s; }
+    .d3 { animation-delay: 0.3s; }  .d4 { animation-delay: 0.42s; }
+
+    /* ── Tags / Buttons ──────────────────────────────────────────────── */
+    .tag {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 100px; display: inline-block;
+    }
+    .tag-purple { background: transparent; color: var(--purple); border: 1.5px solid var(--purple); }
+    .tag-red    { background: transparent; color: var(--red);    border: 1.5px solid var(--red); }
+    .tag-pink   { background: transparent; color: var(--pink);   border: 1.5px solid var(--pink); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.875rem; font-weight: 500;
+      padding: 11px 22px; border-radius: 100px; text-decoration: none;
+    }
+    .btn:hover { opacity: 0.85; transform: translateX(2px); }
+    .btn-ghost { color: var(--ink); border: 1.5px solid rgba(128,128,128,0.25); background: transparent; }
+    .btn-ghost:hover { border-color: var(--ink); }
+
+    /* ── Layout ──────────────────────────────────────────────────────── */
+    .content-wrap { max-width: 1152px; margin: 0 auto; padding: 0 24px; }
+    .prose-wrap   { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Case study specific ─────────────────────────────────────────── */
+    .cs-hero-img {
+      width: 100%; height: 70vh; min-height: 420px; overflow: hidden;
+      border-radius: 0 0 16px 16px;
+    }
+    .cs-hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+
+    .meta-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0; border: 1px solid rgba(128,128,128,0.15); border-radius: 12px; overflow: hidden;
+    }
+    .meta-cell {
+      padding: 20px 24px; border-right: 1px solid rgba(128,128,128,0.15);
+    }
+    .meta-cell:last-child { border-right: none; }
+    .dark .meta-grid { border-color: rgba(255,255,255,0.08); }
+    .dark .meta-cell { border-right-color: rgba(255,255,255,0.08); }
+    .meta-label {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); opacity: 0.6; display: block; margin-bottom: 6px;
+    }
+    .meta-value { font-size: 0.9rem; font-weight: 500; color: var(--ink); }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      letter-spacing: -0.015em; margin-bottom: 1.25rem; color: var(--ink);
+    }
+    .body-text {
+      font-size: 1.05rem; line-height: 1.9; color: var(--muted); margin-bottom: 1.5rem;
+    }
+    .body-text:last-child { margin-bottom: 0; }
+
+    .divider { height: 1px; background: rgba(128,128,128,0.12); margin: 64px 0; }
+    .dark .divider { background: rgba(255,255,255,0.07); }
+
+    .highlight-block {
+      padding: 28px 32px; border-radius: 12px;
+      background: rgba(42, 138, 90, 0.06); border-left: 3px solid var(--purple);
+      margin: 32px 0;
+    }
+    .dark .highlight-block { background: rgba(42, 138, 90, 0.1); }
+    .highlight-block p { font-size: 1.1rem; line-height: 1.75; color: var(--ink); margin: 0; font-style: italic; }
+
+    .outcome-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px;
+      margin-top: 32px;
+    }
+    .outcome-card {
+      padding: 24px; border-radius: 12px;
+      border: 1px solid rgba(128,128,128,0.15); background: transparent;
+    }
+    .dark .outcome-card { border-color: rgba(255,255,255,0.08); }
+    .outcome-card .stat { font-family: 'DM Serif Display', serif; font-size: 2.25rem; color: var(--purple); line-height: 1; margin-bottom: 8px; }
+    .outcome-card .stat-label { font-size: 0.875rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── Footer ──────────────────────────────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid rgba(128,128,128,0.12); padding: 40px 24px;
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 24px;
+      font-size: 0.875rem; color: var(--muted);
+    }
+    .dark .site-footer { border-top-color: rgba(255,255,255,0.07); }
+    .site-footer a { color: var(--muted); text-decoration: none; }
+    .site-footer a:hover { color: var(--ink); }
+
+    @media (max-width: 768px) {
+      .cs-hero-img { height: 52vw; min-height: 240px; }
+      .nav-inner { padding: 7px 7px 7px 8px; gap: 2px; }
+      .nav-links a { font-size: 0.875rem; padding: 6px 10px; }
+      .nav-dropdown-trigger { font-size: 0.875rem !important; padding: 6px 10px; }
+      .theme-toggle { width: 30px; height: 30px; }
+      .meta-grid { grid-template-columns: 1fr 1fr; }
+      .meta-cell { border-bottom: 1px solid rgba(128,128,128,0.15); }
+      .dark .meta-cell { border-bottom-color: rgba(255,255,255,0.08); }
+    }
+  </style>
+  <script>
+    (function () {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+</head>
+
+<body>
+
+  <div id="nav-mount"></div>
+
+  <!-- Hero image -->
+  <div style="padding-top: 90px;">
+    <div class="cs-hero-img">
+      <img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/WH.png" alt="Next PLC warehouse operations dashboard">
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div class="prose-wrap" style="padding-top: 56px; padding-bottom: 0;">
+    <div class="fade-up d1" style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
+      <span class="tag tag-purple">Case study</span>
+      <span style="font-size: 0.8rem; font-weight: 500; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase;">Next PLC</span>
+    </div>
+    <h1 class="fade-up d2 serif" style="font-size: clamp(2rem, 4.5vw, 3.25rem); line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 28px;">
+      Modernising Warehouse Operations at Scale
+    </h1>
+    <p class="fade-up d3 body-text" style="max-width: 58ch;">
+      Redesigning internal tooling for Next PLC's warehouse teams to reduce manual effort, surface critical information faster, and scale gracefully as order volumes grew.
+    </p>
+  </div>
+
+  <!-- Meta grid -->
+  <div class="prose-wrap scroll-fade" style="padding-top: 40px; padding-bottom: 80px;">
+    <div class="meta-grid">
+      <div class="meta-cell">
+        <span class="meta-label">Client</span>
+        <span class="meta-value">Next PLC</span>
+      </div>
+      <div class="meta-cell">
+        <span class="meta-label">Year</span>
+        <span class="meta-value">2023–2024</span>
+      </div>
+      <div class="meta-cell">
+        <span class="meta-label">Role</span>
+        <span class="meta-value">Lead Product Designer</span>
+      </div>
+      <div class="meta-cell">
+        <span class="meta-label">Tools</span>
+        <span class="meta-value">Figma, FigJam</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overview -->
+  <div class="prose-wrap">
+    <div class="divider" style="margin-top: 0;"></div>
+
+    <section class="scroll-fade" style="margin-bottom: 64px;">
+      <h2 class="section-title">Overview</h2>
+      <p class="body-text">
+        Next PLC operates one of the UK's most complex warehouse networks, processing hundreds of thousands of shipments a day across multiple sites. When I joined, their internal tooling was a patchwork of legacy systems — green-screen terminals, disconnected spreadsheets, and printed manifests passed between shifts.
+      </p>
+      <p class="body-text">
+        There was no product design function. Decisions were driven by the engineering team working from brief verbal requirements, which led to interfaces that technically worked but were poorly suited to the pace and pressure of the warehouse floor.
+      </p>
+    </section>
+
+    <section class="scroll-fade" style="margin-bottom: 64px;">
+      <h2 class="section-title">The challenge</h2>
+      <p class="body-text">
+        Warehouse workers operate under constant time pressure in a physically demanding environment — they need information at a glance, not buried in menus. Error rates were climbing as volumes grew, supervisors had limited visibility into real-time throughput, and onboarding new staff took far longer than it should.
+      </p>
+      <div class="highlight-block">
+        <p>"Staff were spending 20–30% of their shift navigating the system rather than doing the job. We needed to flip that ratio."</p>
+      </div>
+      <p class="body-text">
+        I was asked to define and build a UX practice from scratch: establish research and design processes, audit the existing systems, and deliver a redesigned tooling suite that could be rolled out across the network.
+      </p>
+    </section>
+
+    <section class="scroll-fade" style="margin-bottom: 64px;">
+      <h2 class="section-title">Discovery &amp; research</h2>
+      <p class="body-text">
+        I spent the first two weeks on the warehouse floor — shadowing pickers, pack-station operators, and shift supervisors across two sites. This was essential: the context of physical work, noise levels, gloved hands on touch screens, and the pressure of throughput targets simply can't be understood from a desk.
+      </p>
+      <p class="body-text">
+        From that fieldwork I synthesised six core jobs-to-be-done, mapped the key failure points in existing workflows, and ran a workshop with operational managers to prioritise by impact and feasibility. Two areas emerged as the highest-leverage opportunities: the pick-list interface used by floor staff, and the supervisor dashboard used to monitor site throughput.
+      </p>
+    </section>
+
+    <section class="scroll-fade" style="margin-bottom: 64px;">
+      <h2 class="section-title">Design process</h2>
+      <p class="body-text">
+        I worked in two-week sprints, testing lo-fi prototypes on the warehouse floor between rounds. I kept fidelity low for as long as possible — paper prototypes are easy to dismiss, which forces honest feedback.
+      </p>
+      <p class="body-text">
+        Key decisions included moving to a single-action-per-screen pattern for the pick-list interface, using large tap targets optimised for gloved hands, and building a persistent status bar that gives supervisors live throughput at a glance without requiring them to navigate away from their current task.
+      </p>
+      <p class="body-text">
+        I also introduced a component library in Figma for the first time at Next, which allowed engineering to move faster and reduced inconsistency across screens. Working closely with the front-end team, we established a shared language for components that bridged design intent and implementation.
+      </p>
+    </section>
+
+    <section class="scroll-fade" style="margin-bottom: 64px;">
+      <h2 class="section-title">Outcomes</h2>
+      <p class="body-text">
+        The redesigned pick-list interface launched across two sites before the peak trading period. Supervisor adoption of the new dashboard was near-immediate — the old system was retired within three weeks of go-live.
+      </p>
+      <div class="outcome-grid">
+        <div class="outcome-card">
+          <div class="stat">−34%</div>
+          <div class="stat-label">Reduction in average task completion time on the pick-list</div>
+        </div>
+        <div class="outcome-card">
+          <div class="stat">−60%</div>
+          <div class="stat-label">Drop in error-rate flagged at pack stations during pilot</div>
+        </div>
+        <div class="outcome-card">
+          <div class="stat">4 days</div>
+          <div class="stat-label">Average onboarding time, down from 9 days previously</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Next case study -->
+    <div class="scroll-fade" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; padding-bottom:80px;">
+      <div>
+        <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); opacity:0.6; margin-bottom:4px;">Next case study</p>
+        <p class="serif" style="font-size:1.25rem; margin:0;">Building a Social Media App</p>
+      </div>
+      <a href="case-study-2.html" class="btn btn-ghost">View →</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <a href="https://linkedin.com/in/danwlkr">LinkedIn</a>
+    <a href="https://read.cv/danwlkr">Read.cv</a>
+    <a href="#" id="footer-email-link">dwlkr [at] me.com</a>
+  </footer>
+
+  <script src="nav.js"></script>
+  <script>
+    var footerEmail = document.getElementById('footer-email-link');
+    if (footerEmail) { var e = 'dwlkr' + '@' + 'me.com'; footerEmail.href = 'mailto:' + e; footerEmail.textContent = e; }
+
+    var fadeEls = document.querySelectorAll('.scroll-fade');
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(function (el) { observer.observe(el); });
+  </script>
+
+</body>
+</html>
