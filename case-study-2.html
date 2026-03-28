@@ -151,14 +151,22 @@
     .tag-purple { background: transparent; color: var(--purple); border: 1.5px solid var(--purple); }
     .tag-red    { background: transparent; color: var(--red);    border: 1.5px solid var(--red); }
     .tag-pink   { background: transparent; color: var(--pink);   border: 1.5px solid var(--pink); }
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 0.875rem; font-weight: 500;
-      padding: 11px 22px; border-radius: 100px; text-decoration: none;
-    }
+    .btn { display: inline-flex; align-items: center; gap: 8px; font-size: 0.875rem; font-weight: 500; padding: 11px 22px; border-radius: 100px; text-decoration: none; }
     .btn:hover { opacity: 0.85; transform: translateX(2px); }
     .btn-ghost { color: var(--ink); border: 1.5px solid rgba(128,128,128,0.25); background: transparent; }
     .btn-ghost:hover { border-color: var(--ink); }
+
+    .store-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 9px 16px; border-radius: 10px; text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .store-badge:hover { opacity: 0.82; }
+    .store-badge-tf { background: #0d84ff; color: #fff; }
+    .dark .store-badge-tf { background: #0a6fd4; }
+    .store-badge-text { display: flex; flex-direction: column; line-height: 1.25; }
+    .store-badge-sub { font-size: 0.62rem; font-weight: 400; letter-spacing: 0.03em; opacity: 0.9; }
+    .store-badge-main { font-size: 0.95rem; font-weight: 600; letter-spacing: -0.01em; }
 
     /* ── Layout ──────────────────────────────────────────────────────── */
     .content-wrap { max-width: 1152px; margin: 0 auto; padding: 0 24px; }
@@ -291,9 +299,17 @@
       <div class="meta-item"><span class="meta-label">Tools</span> <span class="meta-value">Figma, Principle</span></div>
     </div>
     <div style="margin-top: 20px;">
-      <a href="https://testflight.apple.com/join/WQyArxNE" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:0.8rem;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-        Try on TestFlight
+      <a href="https://testflight.apple.com/join/WQyArxNE" target="_blank" rel="noopener" class="store-badge store-badge-tf">
+        <!-- TestFlight icon: plane in a circle -->
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="28" height="28" rx="6" fill="rgba(255,255,255,0.2)"/>
+          <path d="M20 8L12.5 15.5M20 8h-5M20 8v5" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M9 12l2.5 1.5L14 11l1.5 2.5L17 16l-2.5.5-1-2-2 1.5L10 19l-2-1 1-6z" fill="white" opacity="0.9"/>
+        </svg>
+        <span class="store-badge-text">
+          <span class="store-badge-sub">Available on</span>
+          <span class="store-badge-main">TestFlight</span>
+        </span>
       </a>
     </div>
   </div>
