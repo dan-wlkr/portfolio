@@ -96,6 +96,36 @@
     }
   }
 
+  // ── Dropdown touch/click support ──────────────────────────────────────────
+  var dropdowns = document.querySelectorAll('#main-nav .nav-dropdown');
+
+  dropdowns.forEach(function (dd) {
+    var trigger = dd.querySelector('.nav-dropdown-trigger');
+    if (!trigger) return;
+
+    trigger.addEventListener('click', function (e) {
+      var isOpen = dd.classList.contains('open');
+      // Close all other dropdowns
+      dropdowns.forEach(function (other) { other.classList.remove('open'); });
+      // Toggle this one
+      if (!isOpen) dd.classList.add('open');
+    });
+  });
+
+  // Close dropdowns when tapping outside
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('#main-nav .nav-dropdown')) {
+      dropdowns.forEach(function (dd) { dd.classList.remove('open'); });
+    }
+  });
+
+  // Close dropdowns on link click (so menu collapses after navigating)
+  document.querySelectorAll('#main-nav .dropdown-menu a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      dropdowns.forEach(function (dd) { dd.classList.remove('open'); });
+    });
+  });
+
   // ── Scroll hide / show ─────────────────────────────────────────────────────
   var lastY = 0;
   window.addEventListener('scroll', function () {
