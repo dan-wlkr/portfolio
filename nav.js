@@ -79,22 +79,22 @@
 
   // ── Active nav state ───────────────────────────────────────────────────────
   var page = window.location.pathname.split('/').pop() || 'index.html';
+  if (page === '') page = 'index.html';
+
   // Mark Home active on index
   var homeLink = document.querySelector('#main-nav .nav-links > a[href="index.html"]');
-  if (homeLink && (page === 'index.html' || page === '')) {
+  if (homeLink && page === 'index.html') {
     homeLink.classList.add('active');
   }
-  // Mark dropdown links active + highlight "Projects" trigger on case study pages
-  var dropLinks = document.querySelectorAll('#main-nav .dropdown-menu a');
-  dropLinks.forEach(function (link) {
-    if (link.getAttribute('href') === page) {
-      link.style.color = 'var(--ink)';
-      link.style.fontWeight = '600';
-      // Also visually highlight the Projects trigger
-      var trigger = link.closest('.nav-dropdown').querySelector('.nav-dropdown-trigger');
-      if (trigger) { trigger.style.color = 'var(--ink)'; }
+
+  // On case study pages, give the Projects trigger the active pill style
+  if (page.indexOf('case-study') === 0) {
+    var projectsDropdown = document.querySelectorAll('#main-nav .nav-dropdown');
+    if (projectsDropdown.length > 0) {
+      var trigger = projectsDropdown[0].querySelector('.nav-dropdown-trigger');
+      if (trigger) trigger.classList.add('active');
     }
-  });
+  }
 
   // ── Scroll hide / show ─────────────────────────────────────────────────────
   var lastY = 0;
