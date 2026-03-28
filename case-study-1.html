@@ -195,6 +195,7 @@
     }
     .body-text:last-child { margin-bottom: 0; }
 
+    .meta-section { padding-top: 24px; padding-bottom: 80px; }
     .divider { height: 1px; background: rgba(128,128,128,0.12); margin: 64px 0; }
     .dark .divider { background: rgba(255,255,255,0.07); }
 
@@ -243,6 +244,9 @@
       .nav-links a { font-size: 0.875rem; padding: 6px 10px; }
       .nav-dropdown-trigger { font-size: 0.875rem !important; padding: 6px 10px; }
       .theme-toggle { width: 30px; height: 30px; }
+      .meta-row { flex-direction: column; gap: 10px; }
+      .meta-item { gap: 6px; }
+      .meta-section { padding-top: 20px; padding-bottom: 40px; }
     }
   </style>
   <script>
@@ -280,7 +284,7 @@
   </div>
 
   <!-- Meta -->
-  <div class="content-wrap scroll-fade" style="padding-top: 24px; padding-bottom: 80px;">
+  <div class="content-wrap scroll-fade meta-section">
     <div class="meta-row">
       <div class="meta-item"><span class="meta-label">Company</span> <span class="meta-value">Next PLC</span></div>
       <div class="meta-item"><span class="meta-label">Duration</span> <span class="meta-value">3 Years</span></div>
