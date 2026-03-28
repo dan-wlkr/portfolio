@@ -117,10 +117,10 @@
 
     /* ── Scroll fade ─────────────────────────────────────────────────── */
     .scroll-fade {
-      opacity: 0; transform: translateY(32px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); will-change: opacity, transform;
     }
-    .scroll-fade.visible { opacity: 1; transform: translateY(0); }
+    .scroll-fade.visible { opacity: 1; transform: translateY(0); will-change: auto; }
     .fade-up {
       opacity: 0; transform: translateY(24px);
       animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -401,7 +401,7 @@
       entries.forEach(function (entry) {
         if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0, rootMargin: '0px 0px -48px 0px' });
     fadeEls.forEach(function (el) { observer.observe(el); });
   </script>
 
