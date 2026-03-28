@@ -248,7 +248,9 @@
     }
 
     @media (max-width: 768px) {
+      .hero-section { padding-top: 110px; padding-bottom: 56px; }
       .cs-img { height: 52vw; min-height: 240px; }
+      .cs-panel { margin-bottom: 48px; }
       .nav-inner { padding: 7px 7px 7px 8px; gap: 2px; }
       .nav-links a { font-size: 0.875rem; padding: 6px 10px; }
       .nav-dropdown-trigger { font-size: 0.875rem !important; padding: 6px 10px; }
@@ -290,7 +292,7 @@
     </div>
   </section>
 
-  <div class="content-wrap" style="padding-top: 80px; padding-bottom: 40px;">
+  <div class="content-wrap" style="padding-top: clamp(40px, 8vw, 80px); padding-bottom: clamp(24px, 4vw, 40px);">
     <div style="display:flex; align-items:center; gap:20px;">
       <p class="serif" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); color: var(--muted); margin:0;">Selected work</p>
       <div style="flex:1; height:1px; background: rgba(128,128,128,0.15);"></div>
@@ -304,7 +306,7 @@
       <div class="content-wrap"><div class="cs-img-wrap"><div class="cs-img">
         <img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/WH.png" alt="Next PLC warehouse operations">
       </div></div></div>
-      <div class="content-wrap" style="padding-top: 1.5rem; padding-bottom: 5rem;">
+      <div class="content-wrap" style="padding-top: 1.5rem; padding-bottom: clamp(2rem, 6vw, 5rem);">
         <div class="cs-meta-row">
           <span class="tag tag-purple">Case study</span>
           <span class="cs-client">Next PLC</span>
@@ -320,7 +322,7 @@
       <div class="content-wrap"><div class="cs-img-wrap"><div class="cs-img">
         <img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/currently.png" alt="Currently social media app">
       </div></div></div>
-      <div class="content-wrap" style="padding-top: 1.5rem; padding-bottom: 5rem;">
+      <div class="content-wrap" style="padding-top: 1.5rem; padding-bottom: clamp(2rem, 6vw, 5rem);">
         <div class="cs-meta-row">
           <span class="tag tag-purple">Case study</span>
           <span class="cs-client">Currently</span>
@@ -336,7 +338,7 @@
       <div class="content-wrap"><div class="cs-img-wrap"><div class="cs-img">
         <img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/gridfinite.jpg" alt="Gridfinite pass and play iOS game">
       </div></div></div>
-      <div class="content-wrap" style="padding-top: 1.5rem; padding-bottom: 5rem;">
+      <div class="content-wrap" style="padding-top: 1.5rem; padding-bottom: clamp(2rem, 6vw, 5rem);">
         <div class="cs-meta-row">
           <span class="tag tag-red">Mini project</span>
           <span class="cs-client">Gridfinite</span>
