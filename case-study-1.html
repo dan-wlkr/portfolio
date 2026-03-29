@@ -199,6 +199,12 @@
     .divider { height: 1px; background: rgba(128,128,128,0.12); margin: 64px 0; }
     .dark .divider { background: rgba(255,255,255,0.07); }
 
+    .cs-meta-block {
+      margin-top: 40px; padding-top: 24px; padding-bottom: 0;
+      border-top: 1px solid rgba(128,128,128,0.12);
+    }
+    .dark .cs-meta-block { border-top-color: rgba(255,255,255,0.07); }
+
     .highlight-block {
       padding: 28px 32px; border-radius: 0;
       background: rgba(42, 138, 90, 0.06); border-left: 3px solid var(--purple);
@@ -270,27 +276,25 @@
     </div>
   </div>
 
-  <!-- Header -->
-  <div class="content-wrap" style="padding-top: 56px; padding-bottom: 0;">
-    <div class="fade-up d1" style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
+  <!-- Header + Meta -->
+  <div class="content-wrap" style="padding-top: 48px; padding-bottom: 56px;">
+    <div class="fade-up d1" style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
       <span class="tag tag-purple">Case study</span>
       <span style="font-size: 0.8rem; font-weight: 500; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase;">Next PLC</span>
     </div>
-    <h1 class="fade-up d2 serif" style="font-size: clamp(2rem, 4.5vw, 3.25rem); line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 28px;">
+    <h1 class="fade-up d2 serif" style="font-size: clamp(2rem, 4.5vw, 3.25rem); line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 20px;">
       Modernising Internal Operations at Scale
     </h1>
-    <p class="fade-up d3 body-text" style="max-width: 58ch;">
+    <p class="fade-up d3 body-text" style="max-width: 58ch; margin-bottom: 0;">
       Establishing a design function from scratch at Next, working across six product sets supporting the delivery of up to one million packages a day.
     </p>
-  </div>
-
-  <!-- Meta -->
-  <div class="content-wrap scroll-fade meta-section">
-    <div class="meta-row">
-      <div class="meta-item"><span class="meta-label">Company</span> <span class="meta-value">Next PLC</span></div>
-      <div class="meta-item"><span class="meta-label">Duration</span> <span class="meta-value">3 Years</span></div>
-      <div class="meta-item"><span class="meta-label">Role</span> <span class="meta-value">UX Designer — Internal Applications</span></div>
-      <div class="meta-item"><span class="meta-label">Scope</span> <span class="meta-value">Enterprise UX, Design Systems, Automation Interfaces</span></div>
+    <div class="cs-meta-block scroll-fade">
+      <div class="meta-row">
+        <div class="meta-item"><span class="meta-label">Company</span> <span class="meta-value">Next PLC</span></div>
+        <div class="meta-item"><span class="meta-label">Duration</span> <span class="meta-value">3 Years</span></div>
+        <div class="meta-item"><span class="meta-label">Role</span> <span class="meta-value">UX Designer — Internal Applications</span></div>
+        <div class="meta-item"><span class="meta-label">Scope</span> <span class="meta-value">Enterprise UX, Design Systems, Automation Interfaces</span></div>
+      </div>
     </div>
   </div>
 
