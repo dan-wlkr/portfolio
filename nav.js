@@ -128,17 +128,22 @@
 
   // ── Scroll hide / show ─────────────────────────────────────────────────────
   var lastY = 0;
-  window.addEventListener('scroll', function () {
+  var navTicking = false;
+  function updateNav() {
     var nav = document.getElementById('main-nav');
-    if (!nav) return;
+    if (!nav) { navTicking = false; return; }
     var y = window.scrollY;
     if (y > lastY && y > 80) {
       nav.classList.add('hidden-nav');
-    } else {
+    } else if (y < lastY) {
       nav.classList.remove('hidden-nav');
     }
     nav.classList.toggle('scrolled', y > 10);
     lastY = y;
+    navTicking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!navTicking) { navTicking = true; requestAnimationFrame(updateNav); }
   }, { passive: true });
 
 })();
