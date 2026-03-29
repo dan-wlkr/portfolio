@@ -181,12 +181,12 @@
       display: flex; flex-wrap: wrap; gap: 12px 32px;
       padding-top: 8px;
     }
-    .meta-item { display: flex; align-items: baseline; gap: 8px; }
+    .meta-item { display: flex; flex-direction: column; gap: 5px; }
     .meta-label {
       font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--muted); opacity: 0.5;
     }
-    .meta-value { font-size: 0.875rem; font-weight: 500; color: var(--muted); }
+    .meta-value { font-size: 0.9rem; font-weight: 500; color: var(--ink); }
 
     .section-title {
       font-family: 'DM Serif Display', serif;
@@ -261,7 +261,6 @@
       .theme-toggle { width: 30px; height: 30px; }
       .two-col { grid-template-columns: 1fr; }
       .meta-row { flex-direction: column; gap: 10px; }
-      .meta-item { gap: 6px; }
     }
   </style>
   <script>
