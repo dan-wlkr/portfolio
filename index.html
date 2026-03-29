@@ -49,26 +49,24 @@
 
     /* ── Nav — floating pill ─────────────────────────────────────────── */
     #main-nav {
-      position: fixed; top: 0; left: 50%; z-index: 50;
-      transform: translateX(-50%) translateY(20px);
-      will-change: transform, opacity;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease !important;
+      position: fixed; top: 20px; left: 50%; z-index: 50;
+      transform: translateX(-50%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
     }
     #main-nav.hidden-nav {
-      transform: translateX(-50%) translateY(-100%);
+      transform: translateX(-50%) translateY(calc(-100% - 28px));
       opacity: 0;
-      pointer-events: none;
     }
     .nav-inner {
       display: flex; align-items: center; gap: 8px;
       padding: 10px 10px 10px 14px;
-      background: rgba(255,255,255,0.75);
-      border: 1px solid rgba(0,0,0,0.10);
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.12);
       border-radius: 100px;
       backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      transition: background 0.4s ease, border-color 0.4s ease;
     }
-    .dark .nav-inner { background: rgba(24,24,24,0.8); border-color: rgba(255,255,255,0.12); }
+    .dark .nav-inner { border-color: rgba(255,255,255,0.15); }
     .nav-left { display: flex; align-items: center; }
     .nav-links { display: flex; gap: 8px; }
     .nav-links a {
