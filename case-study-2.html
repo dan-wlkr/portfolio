@@ -262,6 +262,8 @@
       .theme-toggle { width: 30px; height: 30px; }
       .two-col { grid-template-columns: 1fr; }
       .meta-row { flex-direction: column; gap: 10px; }
+      #main-nav { transition: opacity 0.3s ease; }
+      #main-nav.hidden-nav { transform: translateX(-50%); opacity: 0; }
     }
   </style>
   <script>
