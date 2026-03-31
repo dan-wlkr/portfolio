@@ -255,7 +255,14 @@
     .site-footer a:hover { color: var(--ink); }
 
     /* ── Theme-switchable image placeholders ─────────────────────── */
-    .img-frame { margin: 40px 0; }
+    .img-frame { margin: 40px 0; border-radius: 14px; overflow: hidden; }
+    .img-grid { display: grid; gap: 12px; margin: 40px 0; }
+    .img-grid .img-frame { margin: 0; }
+    .img-cols-2 { grid-template-columns: 1fr 1fr; }
+    .img-cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .img-feature { grid-template-columns: 3fr 2fr; grid-template-rows: 210px 210px; }
+    .img-feature .feature-main { grid-row: span 2; }
+    .img-feature .img-light, .img-feature .img-dark { height: 100%; }
     .img-light, .img-dark {
       width: 100%; border-radius: 14px;
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
@@ -266,11 +273,10 @@
     .dark .img-dark  { display: flex; }
     .dark .img-light { display: none; }
     .img-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.35; }
-    .r-wide  { aspect-ratio: 16/9; }
-    .r-tall  { aspect-ratio: 4/3; }
-    .r-phone { aspect-ratio: 9/19.5; max-width: 200px; margin-left: auto; margin-right: auto; }
-    .r-phones { display: flex; gap: 24px; justify-content: center; margin: 40px 0; }
-    .r-phones .img-frame { margin: 0; flex: 0 0 auto; }
+    .ar-wide      { aspect-ratio: 16/9; }
+    .ar-landscape { aspect-ratio: 4/3; }
+    .ar-square    { aspect-ratio: 1/1; }
+    .ar-portrait  { aspect-ratio: 2/3; }
 
     @media (max-width: 768px) {
       .cs-hero-img { height: 52vw; min-height: 240px; }
@@ -282,6 +288,10 @@
       .meta-row { flex-direction: column; gap: 10px; }
       #main-nav { transition: opacity 0.3s ease; }
       #main-nav.hidden-nav { transform: translateX(-50%); opacity: 0; }
+      .img-cols-3 { grid-template-columns: 1fr 1fr; }
+      .img-feature { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .img-feature .feature-main { grid-row: span 1; }
+      .img-feature .img-light, .img-feature .img-dark { height: auto; }
     }
   </style>
   <script>
