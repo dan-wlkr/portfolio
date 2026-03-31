@@ -273,7 +273,11 @@
     .dark .img-dark  { display: flex; }
     .dark .img-light { display: none; }
     .img-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.35; }
-    .img-frame img, .img-grid .img-frame img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 14px; }
+    .img-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 14px; }
+    img.img-light { display: block; }
+    img.img-dark { display: none; }
+    .dark img.img-dark { display: block; }
+    .dark img.img-light { display: none; }
     .ar-wide      { aspect-ratio: 16/9; }
     .ar-landscape { aspect-ratio: 4/3; }
     .ar-square    { aspect-ratio: 1/1; }
@@ -426,16 +430,16 @@
 
     <div class="img-grid img-cols-3 scroll-fade">
       <div class="img-frame">
-        <div class="img-light ar-portrait"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">Wireframe</span></div>
-        <div class="img-dark ar-portrait"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">Wireframe</span></div>
+        <img class="img-light ar-portrait" src="images/cs2-wireframe-1-light.png" alt="Wireframe">
+        <img class="img-dark ar-portrait" src="images/cs2-wireframe-1-dark.png" alt="Wireframe">
       </div>
       <div class="img-frame">
-        <div class="img-light ar-portrait"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">Wireframe</span></div>
-        <div class="img-dark ar-portrait"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">Wireframe</span></div>
+        <img class="img-light ar-portrait" src="images/cs2-wireframe-2-light.png" alt="Wireframe">
+        <img class="img-dark ar-portrait" src="images/cs2-wireframe-2-dark.png" alt="Wireframe">
       </div>
       <div class="img-frame">
-        <div class="img-light ar-portrait"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">Wireframe</span></div>
-        <div class="img-dark ar-portrait"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">Wireframe</span></div>
+        <img class="img-light ar-portrait" src="images/cs2-wireframe-3-light.png" alt="Wireframe">
+        <img class="img-dark ar-portrait" src="images/cs2-wireframe-3-dark.png" alt="Wireframe">
       </div>
     </div>
 
@@ -449,16 +453,16 @@
       </p>
       <div class="img-grid img-cols-3" style="margin-bottom: 32px;">
         <div class="img-frame">
-          <div class="img-light ar-portrait"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">App screen</span></div>
-          <div class="img-dark ar-portrait"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">App screen</span></div>
+          <img class="img-light ar-portrait" src="images/cs2-screen-1-light.png" alt="App screen">
+          <img class="img-dark ar-portrait" src="images/cs2-screen-1-dark.png" alt="App screen">
         </div>
         <div class="img-frame">
-          <div class="img-light ar-portrait"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">App screen</span></div>
-          <div class="img-dark ar-portrait"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">App screen</span></div>
+          <img class="img-light ar-portrait" src="images/cs2-screen-2-light.png" alt="App screen">
+          <img class="img-dark ar-portrait" src="images/cs2-screen-2-dark.png" alt="App screen">
         </div>
         <div class="img-frame">
-          <div class="img-light ar-portrait"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">App screen</span></div>
-          <div class="img-dark ar-portrait"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">App screen</span></div>
+          <img class="img-light ar-portrait" src="images/cs2-screen-3-light.png" alt="App screen">
+          <img class="img-dark ar-portrait" src="images/cs2-screen-3-dark.png" alt="App screen">
         </div>
       </div>
       <div class="outcome-grid">
