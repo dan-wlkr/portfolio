@@ -264,7 +264,11 @@
     .dark .img-dark  { display: flex; }
     .dark .img-light { display: none; }
     .img-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.35; }
-    .img-frame img, .img-grid .img-frame img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 14px; }
+    .img-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 14px; }
+    img.img-light { display: block; }
+    img.img-dark { display: none; }
+    .dark img.img-dark { display: block; }
+    .dark img.img-light { display: none; }
     .ar-wide      { aspect-ratio: 16/9; }
     .ar-landscape { aspect-ratio: 4/3; }
     .ar-square    { aspect-ratio: 1/1; }
@@ -389,17 +393,12 @@
 
     <div class="img-grid img-cols-2 scroll-fade">
       <div class="img-frame">
-        <div class="img-light ar-landscape"><img src="images/cs1-research-light.png" alt="Research" style="width:100%;height:100%;object-fit:cover;border-radius:14px;"></div>
-        <div class="img-dark ar-landscape"><img src="images/cs1-research-dark.png" alt="Research" style="width:100%;height:100%;object-fit:cover;border-radius:14px;"></div>
+        <img class="img-light ar-landscape" src="images/cs1-research-light.png" alt="Research">
+        <img class="img-dark ar-landscape" src="images/cs1-research-dark.png" alt="Research">
       </div>
-  <div class="img-dark ar-landscape">
-    <img src="images/cs1-research-dark.png" alt="Research" style="width:100%;height:100%;object-fit:cover;border-radius:14px;">
-  </div>
-</div>
-
       <div class="img-frame">
-        <div class="img-light ar-landscape"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">Mapping</span></div>
-        <div class="img-dark ar-landscape"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">Mapping</span></div>
+        <img class="img-light ar-landscape" src="images/cs1-mapping-light.png" alt="Mapping">
+        <img class="img-dark ar-landscape" src="images/cs1-mapping-dark.png" alt="Mapping">
       </div>
     </div>
 
@@ -424,16 +423,16 @@
 
     <div class="img-grid img-feature scroll-fade">
       <div class="img-frame feature-main">
-        <div class="img-light"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">Dashboard</span></div>
-        <div class="img-dark"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">Dashboard</span></div>
+        <img class="img-light" src="images/cs1-dashboard-light.png" alt="Dashboard">
+        <img class="img-dark" src="images/cs1-dashboard-dark.png" alt="Dashboard">
       </div>
       <div class="img-frame">
-        <div class="img-light"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">Detail view</span></div>
-        <div class="img-dark"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">Detail view</span></div>
+        <img class="img-light" src="images/cs1-detail-light.png" alt="Detail view">
+        <img class="img-dark" src="images/cs1-detail-dark.png" alt="Detail view">
       </div>
       <div class="img-frame">
-        <div class="img-light"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">Component</span></div>
-        <div class="img-dark"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">Component</span></div>
+        <img class="img-light" src="images/cs1-component-light.png" alt="Component">
+        <img class="img-dark" src="images/cs1-component-dark.png" alt="Component">
       </div>
     </div>
 
@@ -454,8 +453,8 @@
     </section>
 
     <div class="img-frame scroll-fade">
-      <div class="img-light ar-wide"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">Design system</span></div>
-      <div class="img-dark ar-wide"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="img-label">Design system</span></div>
+      <img class="img-light ar-wide" src="images/cs1-design-system-light.png" alt="Design system">
+      <img class="img-dark ar-wide" src="images/cs1-design-system-dark.png" alt="Design system">
     </div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
