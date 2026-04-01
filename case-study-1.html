@@ -246,9 +246,10 @@
     .site-footer a:hover { color: var(--ink); }
 
     /* ── Theme-switchable image placeholders ─────────────────────── */
-    .img-frame { margin: 40px 0; border-radius: 14px; overflow: hidden; }
+    .img-frame { margin: 40px 0; border-radius: 14px; }
     .img-grid { display: grid; gap: 12px; margin: 40px 0; }
     .img-grid .img-frame { margin: 0; }
+    .img-caption { font-size: 0.72rem; color: var(--muted); opacity: 0.55; margin: 9px 0 0; text-align: center; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
     .img-cols-2 { grid-template-columns: 1fr 1fr; }
     .img-cols-3 { grid-template-columns: 1fr 1fr 1fr; }
     .img-feature { grid-template-columns: 3fr 2fr; grid-template-rows: 210px 210px; }
@@ -404,10 +405,12 @@
       <div class="img-frame">
         <img class="img-light ar-landscape" src="images/cs1-research-light.png" alt="Research">
         <img class="img-dark ar-landscape" src="images/cs1-research-dark.png" alt="Research">
+        <p class="img-caption">User research synthesis</p>
       </div>
       <div class="img-frame">
         <img class="img-light ar-landscape" src="images/cs1-mapping-light.png" alt="Mapping">
         <img class="img-dark ar-landscape" src="images/cs1-mapping-dark.png" alt="Mapping">
+        <p class="img-caption">Workflow mapping</p>
       </div>
     </div>
 
@@ -434,14 +437,17 @@
       <div class="img-frame feature-main">
         <img class="img-light" src="images/cs1-dashboard-light.png" alt="Dashboard">
         <img class="img-dark" src="images/cs1-dashboard-dark.png" alt="Dashboard">
+        <p class="img-caption">Warehouse management dashboard</p>
       </div>
       <div class="img-frame">
         <img class="img-light" src="images/cs1-detail-light.png" alt="Detail view">
         <img class="img-dark" src="images/cs1-detail-dark.png" alt="Detail view">
+        <p class="img-caption">Order detail view</p>
       </div>
       <div class="img-frame">
         <img class="img-light" src="images/cs1-component-light.png" alt="Component">
         <img class="img-dark" src="images/cs1-component-dark.png" alt="Component">
+        <p class="img-caption">Component library</p>
       </div>
     </div>
 
@@ -464,6 +470,7 @@
     <div class="img-frame scroll-fade">
       <img class="img-light ar-wide" src="images/cs1-design-system-light.png" alt="Design system">
       <img class="img-dark ar-wide" src="images/cs1-design-system-dark.png" alt="Design system">
+      <p class="img-caption">Blazor component library</p>
     </div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
