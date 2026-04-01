@@ -252,8 +252,10 @@
     .img-caption { font-size: 0.72rem; color: var(--muted); opacity: 0.55; margin: 9px 0 0; text-align: center; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
     .img-cols-2 { grid-template-columns: 1fr 1fr; }
     .img-cols-3 { grid-template-columns: 1fr 1fr 1fr; }
-    .img-feature { grid-template-columns: 3fr 2fr; grid-template-rows: 210px 210px; }
+    .img-feature { grid-template-columns: 3fr 2fr; }
     .img-feature .feature-main { grid-row: span 2; }
+    .img-feature .feature-main .img-frame { height: 432px; }
+    .img-feature > div:not(.feature-main) .img-frame { height: 210px; }
     .img-feature .img-light, .img-feature .img-dark { height: 100%; }
     .img-light, .img-dark {
       width: 100%; border-radius: 14px;
@@ -286,8 +288,9 @@
       #main-nav { transition: opacity 0.3s ease; }
       #main-nav.hidden-nav { transform: translateX(-50%); opacity: 0; }
       .img-cols-2, .img-cols-3 { grid-template-columns: 1fr; }
-      .img-feature { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .img-feature { grid-template-columns: 1fr; }
       .img-feature .feature-main { grid-row: span 1; }
+      .img-feature .feature-main .img-frame, .img-feature > div:not(.feature-main) .img-frame { height: auto; }
       .img-feature .img-light, .img-feature .img-dark { height: auto; aspect-ratio: 4/3; }
     }
     /* ── Lightbox ─────────────────────────────────────────────────────── */
@@ -402,14 +405,18 @@
     </section>
 
     <div class="img-grid img-cols-2 scroll-fade">
-      <div class="img-frame">
-        <img class="img-light ar-landscape" src="images/cs1-research-light.png" alt="Research">
-        <img class="img-dark ar-landscape" src="images/cs1-research-dark.png" alt="Research">
+      <div>
+        <div class="img-frame">
+          <img class="img-light ar-landscape" src="images/cs1-research-light.png" alt="Research">
+          <img class="img-dark ar-landscape" src="images/cs1-research-dark.png" alt="Research">
+        </div>
         <p class="img-caption">User research synthesis</p>
       </div>
-      <div class="img-frame">
-        <img class="img-light ar-landscape" src="images/cs1-mapping-light.png" alt="Mapping">
-        <img class="img-dark ar-landscape" src="images/cs1-mapping-dark.png" alt="Mapping">
+      <div>
+        <div class="img-frame">
+          <img class="img-light ar-landscape" src="images/cs1-mapping-light.png" alt="Mapping">
+          <img class="img-dark ar-landscape" src="images/cs1-mapping-dark.png" alt="Mapping">
+        </div>
         <p class="img-caption">Workflow mapping</p>
       </div>
     </div>
@@ -434,19 +441,25 @@
     </section>
 
     <div class="img-grid img-feature scroll-fade">
-      <div class="img-frame feature-main">
-        <img class="img-light" src="images/cs1-dashboard-light.png" alt="Dashboard">
-        <img class="img-dark" src="images/cs1-dashboard-dark.png" alt="Dashboard">
+      <div class="feature-main">
+        <div class="img-frame">
+          <img class="img-light" src="images/cs1-dashboard-light.png" alt="Dashboard">
+          <img class="img-dark" src="images/cs1-dashboard-dark.png" alt="Dashboard">
+        </div>
         <p class="img-caption">Warehouse management dashboard</p>
       </div>
-      <div class="img-frame">
-        <img class="img-light" src="images/cs1-detail-light.png" alt="Detail view">
-        <img class="img-dark" src="images/cs1-detail-dark.png" alt="Detail view">
+      <div>
+        <div class="img-frame">
+          <img class="img-light" src="images/cs1-detail-light.png" alt="Detail view">
+          <img class="img-dark" src="images/cs1-detail-dark.png" alt="Detail view">
+        </div>
         <p class="img-caption">Order detail view</p>
       </div>
-      <div class="img-frame">
-        <img class="img-light" src="images/cs1-component-light.png" alt="Component">
-        <img class="img-dark" src="images/cs1-component-dark.png" alt="Component">
+      <div>
+        <div class="img-frame">
+          <img class="img-light" src="images/cs1-component-light.png" alt="Component">
+          <img class="img-dark" src="images/cs1-component-dark.png" alt="Component">
+        </div>
         <p class="img-caption">Component library</p>
       </div>
     </div>
@@ -467,9 +480,11 @@
       </p>
     </section>
 
-    <div class="img-frame scroll-fade">
-      <img class="img-light ar-wide" src="images/cs1-design-system-light.png" alt="Design system">
-      <img class="img-dark ar-wide" src="images/cs1-design-system-dark.png" alt="Design system">
+    <div class="scroll-fade">
+      <div class="img-frame">
+        <img class="img-light ar-wide" src="images/cs1-design-system-light.png" alt="Design system">
+        <img class="img-dark ar-wide" src="images/cs1-design-system-dark.png" alt="Design system">
+      </div>
       <p class="img-caption">Blazor component library</p>
     </div>
 
