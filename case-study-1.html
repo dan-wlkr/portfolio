@@ -39,10 +39,10 @@
     #main-nav {
       position: fixed; top: 20px; left: 50%; z-index: 50;
       transform: translateX(-50%);
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+      transition: opacity 0.35s ease;
     }
     #main-nav.hidden-nav {
-      transform: translateX(-50%) translateY(calc(-100% - 28px));
+      transform: translateX(-50%);
       opacity: 0;
     }
     .nav-inner {
