@@ -359,125 +359,136 @@
     <div class="divider" style="margin-top: 0;"></div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
-      <h2 class="section-title">The project</h2>
+      <h2 class="section-title">Why this project</h2>
       <p class="body-text">
-        Gridfinite started as a conversation with my son about what makes a board game fun to play together on a device — specifically the kind of game you pass between two people on a single phone, taking turns on the same screen.
+        I've always believed games are one of the best ways for families to spend time together — not passively, but actually engaging, arguing, laughing, making decisions. My son Arthur and I play a lot of both board games and video games together, and I'd been looking for a project we could build rather than just play.
       </p>
       <p class="body-text">
-        Most pass-and-play games we found were either too simple (noughts and crosses) or too complex for a casual session. We wanted something with just enough strategy to be interesting, but simple enough to pick up in under two minutes without reading a manual.
+        I'd been pushing into new territory with code — moving beyond HTML and CSS into frameworks like React and Vue, partly out of curiosity, partly because AI tools had made it genuinely realistic for a designer to build something real. This felt like the right moment to combine that with something meaningful: a summer project with Arthur that wasn't just a fun distraction, but a proper creative collaboration.
+      </p>
+      <p class="body-text">
+        We both love Connect 4. So we started asking: what if the board had no size limit? What if there were more than two players? What if the grid was infinite? That question became Gridfinite.
       </p>
     </section>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
-      <h2 class="section-title">Game design first</h2>
+      <h2 class="section-title">Starting in Figma Make</h2>
       <p class="body-text">
-        Before touching Figma, we spent several evenings at the kitchen table sketching mechanics on paper and playing them with coins and a grid drawn in biro. This was the most valuable part of the process — it forced us to stress-test rules quickly without worrying about how anything looked.
+        Figma Make had just launched and I'd already been using it at work for high-fidelity prototyping. It turned out to be the perfect sandbox for testing game concepts quickly — exploring what an infinite grid could feel like, how players would navigate it, how turns and tile placement would work. Within five prompts we had something playable enough to reveal the real design challenges.
       </p>
       <div class="highlight-block">
-        <p>"The best rule change came from my son noticing a loophole we'd missed after about 90 seconds of play. Paper prototyping is brutally efficient."</p>
+        <p>"Five prompts didn't give us a polished game. But they gave us a clear view of where to go next — which is exactly what prototyping is for."</p>
       </div>
       <p class="body-text">
-        The core mechanic that survived: players take turns placing tiles on a grid, scoring points for completing rows and columns. Tiles have different point values and some have special effects. The grid is fixed at 6×6, which gives enough space for interesting play without games running long.
+        While the output was rough, it let us iterate and visualise ideas at a pace that wouldn't have been possible any other way. Arthur would play something, tell me what felt wrong, and we'd adjust. That loop — design, play, react, repeat — became the rhythm of the whole project.
       </p>
     </section>
 
     <div class="img-grid img-cols-2 scroll-fade">
       <div>
         <div class="img-frame">
-          <img class="img-light ar-landscape" src="images/cs3-prototype-light.png" alt="Paper prototype">
-          <img class="img-dark ar-landscape" src="images/cs3-prototype-dark.png" alt="Paper prototype">
+          <img class="img-light ar-landscape" src="images/cs3-prototype-light.png" alt="Figma Make prototype">
+          <img class="img-dark ar-landscape" src="images/cs3-prototype-dark.png" alt="Figma Make prototype">
         </div>
-        <p class="img-caption">Paper prototype — first mechanic test</p>
+        <p class="img-caption">Early Figma Make prototype — five prompts in</p>
       </div>
       <div>
         <div class="img-frame">
-          <img class="img-light ar-landscape" src="images/cs3-sketch-light.png" alt="Early sketch">
-          <img class="img-dark ar-landscape" src="images/cs3-sketch-dark.png" alt="Early sketch">
+          <img class="img-light ar-landscape" src="images/cs3-sketch-light.png" alt="Initial UI concepts">
+          <img class="img-dark ar-landscape" src="images/cs3-sketch-dark.png" alt="Initial UI concepts">
         </div>
-        <p class="img-caption">Initial game board sketches</p>
+        <p class="img-caption">Initial menu and button concepts finding the app's feel</p>
       </div>
     </div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
-      <h2 class="section-title">Designing for pass-and-play</h2>
+      <h2 class="section-title">Moving to iOS</h2>
       <p class="body-text">
-        Pass-and-play introduces a specific UX challenge that most app design ignores: the screen physically rotates between players. This meant designing every view to work at 180° rotation, and making the transition between turns feel intentional rather than disorienting.
+        We started in Figma, refined the core mechanics, then set up the project in Cursor to manage the code together. The game originally began as a web app, but we quickly moved to Xcode — native iOS gave us far more control over the experience and access to the things that make mobile games feel good: haptics, sound, smooth animation.
       </p>
       <p class="body-text">
-        I designed a "hand-off" screen — a full-bleed overlay that confirms the previous player's score and prompts the next player to tap to reveal the board. This creates a natural moment to physically pass the device, prevents peeking, and adds a small ritual that makes the turn structure feel satisfying.
+        The build process was genuinely collaborative. I'd push for a UX change, Arthur would tell me if it was technically painful to implement, and we'd find a middle ground. There were moments where he was clearly right and I deferred to him — and moments where I had to explain why something that felt fine in code would feel wrong to a first-time player.
+      </p>
+    </section>
+
+    <section class="scroll-fade" style="margin-bottom: 64px;">
+      <h2 class="section-title">Trusting an eight-year-old's instincts</h2>
+      <p class="body-text">
+        The hardest design decision was the visual style. Cursor helped us build the mechanics, but the early designs felt generic. One day we found a glowing app that immediately caught our attention and we started exploring a Tron-like direction. I wanted to keep it modern and restrained — a clean grid aesthetic. Arthur wanted more glow, more vibrance, more drama.
       </p>
       <p class="body-text">
-        Colour was important: each player has a distinct accent colour used for their tiles, score, and the hand-off screen. Both colours needed to work at the same brightness level to feel fair — neither player's colour should feel "better" than the other's.
+        In the end, I trusted him. He's eight and he plays mobile games constantly. His instincts about what makes them feel exciting turned out to be exactly right. The final visual style — neon edges, glowing tiles, screen-edge colour feedback for whose turn it is — is largely his. I just made sure it stayed coherent.
       </p>
+    </section>
+
+    <section class="scroll-fade" style="margin-bottom: 64px;">
+      <h2 class="section-title">Play-testing everywhere</h2>
+      <p class="body-text">
+        The summer holidays gave us time to put Gridfinite through its paces with real people. We play-tested with everyone from four-year-olds to forty-year-olds, in groups of two up to seven, in cafés, on trains, and anywhere we could gather a willing crowd.
+      </p>
+      <p class="body-text">
+        Each session taught us something specific. Players would accidentally take another person's turn, so we added a preview step before tile placement. Power-ups were being missed entirely, so we increased their frequency — then overcorrected and had to dial it back. Some players didn't understand how power-ups worked, so we added explainer modals. Games were dragging when someone took too long, so we built an optional timer.
+      </p>
+      <div class="highlight-block">
+        <p>"The best feedback didn't come from a survey. It came from watching someone frown at the screen and trying to work out what they were confused about before they said anything."</p>
+      </div>
     </section>
 
     <div class="img-grid img-cols-2 scroll-fade">
       <div>
         <div class="img-frame">
-          <img class="img-light ar-portrait" src="images/cs3-screen-1-light.png" alt="App screen">
-          <img class="img-dark ar-portrait" src="images/cs3-screen-1-dark.png" alt="App screen">
+          <img class="img-light ar-portrait" src="images/cs3-screen-1-light.png" alt="Game in progress">
+          <img class="img-dark ar-portrait" src="images/cs3-screen-1-dark.png" alt="Game in progress">
         </div>
-        <p class="img-caption">Game board in play</p>
+        <p class="img-caption">Game in progress — menu and board view</p>
       </div>
       <div>
         <div class="img-frame">
-          <img class="img-light ar-portrait" src="images/cs3-screen-2-light.png" alt="App screen">
-          <img class="img-dark ar-portrait" src="images/cs3-screen-2-dark.png" alt="App screen">
+          <img class="img-light ar-portrait" src="images/cs3-screen-2-light.png" alt="iOS icon and tutorial">
+          <img class="img-dark ar-portrait" src="images/cs3-screen-2-dark.png" alt="iOS icon and tutorial">
         </div>
-        <p class="img-caption">Turn hand-off screen</p>
+        <p class="img-caption">How to play tutorial and iOS icon design</p>
       </div>
     </div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
-      <h2 class="section-title">Building in Swift</h2>
+      <h2 class="section-title">Finishing touches</h2>
       <p class="body-text">
-        My son handled the majority of the Swift/SwiftUI implementation, with me advising on structure and working through bugs together. It was a genuine collaboration — he'd build something, I'd suggest a UX change, he'd push back if it was technically painful, and we'd find a middle ground.
+        The last stretch was about polish. We introduced a unified menu with smooth navigation and shifting background colours that guide players through the app without them needing to think about it. We added sound effects and haptic feedback — small things, but they make every move feel more satisfying. We expanded the winning effects and built a quick tutorial for first-time players.
       </p>
       <p class="body-text">
-        We kept the codebase small and readable, which made it easier to work on together. The game state is managed with a simple model that both of us could reason about easily, which matters when you're debugging together at 9pm.
+        We also built a single-player mode with an AI opponent, trained using Google Colab. This came directly from play-testing: solo players wanted to practice before taking on family members. It was a reminder that solving one design problem often surfaces the next one.
       </p>
       <div class="outcome-grid">
         <div class="outcome-card">
           <div class="outcome-card-inner">
-            <div class="stat">6×6</div>
-            <div class="stat-label">Grid size — the sweet spot between depth and speed</div>
+            <div class="stat">5</div>
+            <div class="stat-label">Figma Make prompts to get a playable prototype</div>
           </div>
         </div>
         <div class="outcome-card">
           <div class="outcome-card-inner">
-            <div class="stat">2 min</div>
-            <div class="stat-label">Average game length from first tile to final score</div>
+            <div class="stat">4–40</div>
+            <div class="stat-label">Age range of play-testers across cafés, trains, and living rooms</div>
           </div>
         </div>
         <div class="outcome-card">
           <div class="outcome-card-inner">
-            <div class="stat">12</div>
-            <div class="stat-label">Paper prototype sessions before moving to Figma</div>
+            <div class="stat">7</div>
+            <div class="stat-label">Largest group to play a single game in one session</div>
           </div>
         </div>
       </div>
     </section>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
-      <h2 class="section-title">What I took from it</h2>
-      <ul class="lessons-list">
-        <li>
-          <span class="num">01</span>
-          <span>Designing for a physical handoff is a genuinely different problem space from standard mobile UX — the screen orientation, the "sealed" hand-off moment, and the shared device context all need deliberate design decisions.</span>
-        </li>
-        <li>
-          <span class="num">02</span>
-          <span>Paper prototyping game mechanics is orders of magnitude faster than digital prototyping. The friction of implementation hides bad ideas; paper forces them to surface immediately.</span>
-        </li>
-        <li>
-          <span class="num">03</span>
-          <span>Collaborating with a non-designer on an implementation teaches you where your design decisions create real engineering pain — a perspective I find genuinely useful when working with development teams professionally.</span>
-        </li>
-        <li>
-          <span class="num">04</span>
-          <span>Fun is a design requirement. The moments of delight — the tile-drop animation, the score fanfare, the colour of your opponent's defeat screen — matter as much as the rules that make the game fair.</span>
-        </li>
-      </ul>
+      <h2 class="section-title">Where it's going</h2>
+      <p class="body-text">
+        We've been testing in TestFlight and the response has been positive. There are still a few things to finish before it hits the App Store properly, and we're both excited about adding multiplayer through Game Centre — the next logical step for a game built around the idea of people playing together.
+      </p>
+      <p class="body-text">
+        If I had to sum up what this project taught me: ship something real with someone you care about. It will teach you more about design, collaboration, and what actually matters in a product than almost anything else. Arthur and I are already talking about what we build next.
+      </p>
     </section>
 
     <div class="divider"></div>
