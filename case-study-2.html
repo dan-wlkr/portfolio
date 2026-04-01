@@ -255,9 +255,10 @@
     .site-footer a:hover { color: var(--ink); }
 
     /* ── Theme-switchable image placeholders ─────────────────────── */
-    .img-frame { margin: 40px 0; border-radius: 14px; overflow: hidden; }
+    .img-frame { margin: 40px 0; border-radius: 14px; }
     .img-grid { display: grid; gap: 12px; margin: 40px 0; }
     .img-grid .img-frame { margin: 0; }
+    .img-caption { font-size: 0.72rem; color: var(--muted); opacity: 0.55; margin: 9px 0 0; text-align: center; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
     .img-cols-2 { grid-template-columns: 1fr 1fr; }
     .img-cols-3 { grid-template-columns: 1fr 1fr 1fr; }
     .img-feature { grid-template-columns: 3fr 2fr; grid-template-rows: 210px 210px; }
@@ -433,14 +434,17 @@
       <div class="img-frame">
         <img class="img-light ar-portrait" src="images/cs2-wireframe-1-light.png" alt="Wireframe">
         <img class="img-dark ar-portrait" src="images/cs2-wireframe-1-dark.png" alt="Wireframe">
+        <p class="img-caption">Feed layout</p>
       </div>
       <div class="img-frame">
         <img class="img-light ar-portrait" src="images/cs2-wireframe-2-light.png" alt="Wireframe">
         <img class="img-dark ar-portrait" src="images/cs2-wireframe-2-dark.png" alt="Wireframe">
+        <p class="img-caption">Post composer</p>
       </div>
       <div class="img-frame">
         <img class="img-light ar-portrait" src="images/cs2-wireframe-3-light.png" alt="Wireframe">
         <img class="img-dark ar-portrait" src="images/cs2-wireframe-3-dark.png" alt="Wireframe">
+        <p class="img-caption">Profile screen</p>
       </div>
     </div>
 
@@ -456,14 +460,17 @@
         <div class="img-frame">
           <img class="img-light ar-portrait" src="images/cs2-screen-1-light.png" alt="App screen">
           <img class="img-dark ar-portrait" src="images/cs2-screen-1-dark.png" alt="App screen">
+          <p class="img-caption">Home feed</p>
         </div>
         <div class="img-frame">
           <img class="img-light ar-portrait" src="images/cs2-screen-2-light.png" alt="App screen">
           <img class="img-dark ar-portrait" src="images/cs2-screen-2-dark.png" alt="App screen">
+          <p class="img-caption">Post composer</p>
         </div>
         <div class="img-frame">
           <img class="img-light ar-portrait" src="images/cs2-screen-3-light.png" alt="App screen">
           <img class="img-dark ar-portrait" src="images/cs2-screen-3-dark.png" alt="App screen">
+          <p class="img-caption">User profile</p>
         </div>
       </div>
       <div class="outcome-grid">
