@@ -333,10 +333,10 @@
       <span style="font-size: 0.8rem; font-weight: 500; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase;">Currently</span>
     </div>
     <h1 class="fade-up d2 serif" style="font-size: clamp(2rem, 4.5vw, 3.25rem); line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 20px;">
-      Building a Social Media App
+      Can social media be good for you?
     </h1>
     <p class="fade-up d3 body-text" style="max-width: 58ch; margin-bottom: 0;">
-      Designing a social platform built around the present moment — minimal by intent, low-friction by design, and entirely free of the algorithmic noise that makes most social apps exhausting to use.
+      Designing a social platform that measures success in books read and albums discovered — not time spent scrolling.
     </p>
     <a href="https://testflight.apple.com/join/WQyArxNE" target="_blank" rel="noopener" class="btn btn-ghost fade-up d4" style="margin-top: 24px;">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/></svg>
@@ -357,140 +357,148 @@
     <div class="divider" style="margin-top: 0;"></div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
-      <h2 class="section-title">The idea</h2>
+      <h2 class="section-title">The problem with social media</h2>
       <p class="body-text">
-        Currently started with a simple frustration: every social app I opened showed me things people had done — polished photos from holidays that ended weeks ago, achievements curated for maximum engagement, content optimised for the algorithm rather than the audience. None of it felt honest or present.
+        Most social media isn't designed to be good for you — it's designed to keep you on it. Infinite scroll, algorithmic feeds, notification loops, like counts: every one of these is an intentional mechanism to maximise time-on-app. The KPI isn't whether you enjoyed the experience. It's whether you came back.
       </p>
       <p class="body-text">
-        The concept for Currently was the inverse: share only what you're doing right now. No editing, no retrospective posting, no performance. Just a lightweight, honest answer to "what are you up to?"
+        I find that genuinely frustrating, and I've thought a lot about what the alternative looks like. Not a social app with a wellness disclaimer — but one where the design is built from different first principles entirely. Where success looks like someone closing the app because they've discovered a new album and want to go listen to it.
       </p>
     </section>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
-      <h2 class="section-title">Design constraints</h2>
+      <h2 class="section-title">A different kind of discovery</h2>
       <p class="body-text">
-        I set strict constraints from the start to keep the product focused:
+        I grew up on MySpace. One of the things I remember most was landing on a friend's profile and finding a song playing that I'd never heard — and then spending an hour going down a rabbit hole of music I never would have found otherwise. It felt like genuine discovery, mediated by someone whose taste I trusted.
+      </p>
+      <p class="body-text">
+        That kind of serendipity has been almost completely engineered out of social media. Algorithms serve you things you'll probably like — which sounds good, but it collapses the edges. You stop encountering things that surprise you, and the feed becomes a mirror rather than a window.
+      </p>
+      <div class="highlight-block">
+        <p>"What if the app's success metric was books finished and albums discovered — not sessions per day?"</p>
+      </div>
+      <p class="body-text">
+        Currently is my attempt to build something in that spirit. A social app where you share what you're enjoying right now — the book you're reading, the album you can't stop playing, the film you watched last night, the restaurant you keep recommending. And where the point is to push each other toward new things, not to accumulate attention.
+      </p>
+    </section>
+
+    <section class="scroll-fade" style="margin-bottom: 64px;">
+      <h2 class="section-title">What Currently is</h2>
+      <p class="body-text">
+        Currently lets you share what you're into across six content types: books, music, films, TV shows, restaurants, and bars. You search external APIs — Google Books, Spotify, TMDB, Yelp — to find the exact thing you're enjoying, then add your own take. It's closer to Letterboxd or Goodreads than Instagram: structured around content rather than moments, with real metadata and cover art pulled from source.
+      </p>
+      <p class="body-text">
+        The social layer is built around taste rather than follower counts. You follow people with interesting shelves, discover users through shared obsessions, and browse a feed of what people in your network are genuinely into right now — not what they posted three weeks ago.
       </p>
       <div class="two-col">
         <div class="two-col-card">
-          <h4>No editing after posting</h4>
-          <p>Posts are ephemeral and honest. Once you've shared what you're doing, that's it. No going back to refine the caption.</p>
-        </div>
-        <div class="two-col-card">
-          <h4>One post at a time</h4>
-          <p>You can only have one active post. Posting again automatically replaces your current status, which keeps the feed genuinely current.</p>
-        </div>
-        <div class="two-col-card">
-          <h4>No likes, no counts</h4>
-          <p>Reactions exist but aren't counted publicly. This removes the incentive to optimise for engagement and reduces social comparison.</p>
+          <h4>Finite feed</h4>
+          <p>When you've seen everything new in your feed, that's it. No infinite scroll. The app has a natural stopping point built in.</p>
         </div>
         <div class="two-col-card">
           <h4>Chronological only</h4>
-          <p>The feed is strictly chronological. No algorithm, no promoted content. What's at the top is simply what's most recent.</p>
+          <p>No algorithm. No promoted content. The feed shows what's most recent from people you follow, full stop.</p>
+        </div>
+        <div class="two-col-card">
+          <h4>One active post per category</h4>
+          <p>You can only be reading one book at a time. Updating your current read replaces the old one — the profile stays honest.</p>
+        </div>
+        <div class="two-col-card">
+          <h4>Discovery over performance</h4>
+          <p>Reactions exist but counts aren't public. The point is sharing taste, not optimising for engagement.</p>
         </div>
       </div>
-    </section>
-
-    <section class="scroll-fade" style="margin-bottom: 64px;">
-      <h2 class="section-title">Process</h2>
-      <p class="body-text">
-        I started with a positioning exercise — mapping the space between "professional" (LinkedIn), "aspirational" (Instagram), and "real-time" (Twitter/X) to find where Currently could live. The gap was clear: a calm, present-tense space for close connections, not broadcasts.
-      </p>
-      <div class="highlight-block">
-        <p>"The posting experience had to feel effortless. If it took more than three taps to share something, it was too much friction for a moment that's already passed."</p>
-      </div>
-      <p class="body-text">
-        I prototyped heavily in Figma and ran informal tests with a group of friends over two weeks — having them use the prototype as if it were a real app, then debrief on what felt natural and what broke the flow. The posting sheet went through nine iterations before the gesture-based dismiss felt right.
-      </p>
-      <p class="body-text">
-        Visually I leaned into a minimal, text-forward aesthetic. The feed is type-led with optional images — because most "currently" moments don't require a photo, and forcing a camera-centric model would change the kind of content people feel comfortable sharing.
-      </p>
     </section>
 
     <div class="img-grid img-cols-3 scroll-fade">
       <div>
         <div class="img-frame">
-          <img class="img-light ar-portrait" src="images/cs2-wireframe-1-light.png" alt="Wireframe">
-          <img class="img-dark ar-portrait" src="images/cs2-wireframe-1-dark.png" alt="Wireframe">
+          <img class="img-light ar-portrait" src="images/cs2-wireframe-1-light.png" alt="Feed wireframe">
+          <img class="img-dark ar-portrait" src="images/cs2-wireframe-1-dark.png" alt="Feed wireframe">
         </div>
-        <p class="img-caption">Feed layout</p>
+        <p class="img-caption">Social feed — chronological, no algorithm</p>
       </div>
       <div>
         <div class="img-frame">
-          <img class="img-light ar-portrait" src="images/cs2-wireframe-2-light.png" alt="Wireframe">
-          <img class="img-dark ar-portrait" src="images/cs2-wireframe-2-dark.png" alt="Wireframe">
+          <img class="img-light ar-portrait" src="images/cs2-wireframe-2-light.png" alt="Post composer wireframe">
+          <img class="img-dark ar-portrait" src="images/cs2-wireframe-2-dark.png" alt="Post composer wireframe">
         </div>
-        <p class="img-caption">Post composer</p>
+        <p class="img-caption">Content search and post composer</p>
       </div>
       <div>
         <div class="img-frame">
-          <img class="img-light ar-portrait" src="images/cs2-wireframe-3-light.png" alt="Wireframe">
-          <img class="img-dark ar-portrait" src="images/cs2-wireframe-3-dark.png" alt="Wireframe">
+          <img class="img-light ar-portrait" src="images/cs2-wireframe-3-light.png" alt="Profile wireframe">
+          <img class="img-dark ar-portrait" src="images/cs2-wireframe-3-dark.png" alt="Profile wireframe">
         </div>
-        <p class="img-caption">Profile screen</p>
+        <p class="img-caption">Profile — a shelf of what you're into</p>
       </div>
     </div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
-      <h2 class="section-title">Key screens</h2>
+      <h2 class="section-title">Designing the posting experience</h2>
       <p class="body-text">
-        The core flow covers three moments: posting, browsing the feed, and viewing a friend's full status. I kept the navigation to a single bottom bar with three items — home feed, search, and your profile. Anything that didn't serve those three moments was cut.
+        The posting flow is the heart of the product. You pick a category, search the relevant API, select the item, and add your personal take — a sentence or two about why you're enjoying it, what made you start it, who you'd recommend it to. The API pulls in cover art, metadata, and ratings so the post feels rich without requiring effort from the user.
       </p>
       <p class="body-text">
-        Onboarding was designed to get users to their first post within 60 seconds. Rather than a feature tour, it drops you straight into a "what are you doing right now?" prompt — one text field, one optional image, one button. The product explains itself through use.
+        I prototyped this heavily in Figma, testing with friends over several weeks. The key tension was between richness (surfacing enough context about what someone is sharing) and friction (not making posting feel like filling out a form). The composer went through multiple iterations to find the right balance — the API search needed to feel instant, and the take field needed to feel optional enough that people would actually use it.
       </p>
-      <div class="img-grid img-cols-3" style="margin-bottom: 32px;">
-        <div>
-          <div class="img-frame">
-            <img class="img-light ar-portrait" src="images/cs2-screen-1-light.png" alt="App screen">
-            <img class="img-dark ar-portrait" src="images/cs2-screen-1-dark.png" alt="App screen">
-          </div>
-          <p class="img-caption">Home feed</p>
-        </div>
-        <div>
-          <div class="img-frame">
-            <img class="img-light ar-portrait" src="images/cs2-screen-2-light.png" alt="App screen">
-            <img class="img-dark ar-portrait" src="images/cs2-screen-2-dark.png" alt="App screen">
-          </div>
-          <p class="img-caption">Post composer</p>
-        </div>
-        <div>
-          <div class="img-frame">
-            <img class="img-light ar-portrait" src="images/cs2-screen-3-light.png" alt="App screen">
-            <img class="img-dark ar-portrait" src="images/cs2-screen-3-dark.png" alt="App screen">
-          </div>
-          <p class="img-caption">User profile</p>
-        </div>
-      </div>
-      <div class="outcome-grid">
-        <div class="outcome-card">
-          <div class="outcome-card-inner">
-            <div class="stat">&lt;60s</div>
-            <div class="stat-label">Time to first post during prototype testing</div>
-          </div>
-        </div>
-        <div class="outcome-card">
-          <div class="outcome-card-inner">
-            <div class="stat">3 taps</div>
-            <div class="stat-label">Maximum actions to share a status update</div>
-          </div>
-        </div>
-        <div class="outcome-card">
-          <div class="outcome-card-inner">
-            <div class="stat">9</div>
-            <div class="stat-label">Iterations on the posting sheet before it felt right</div>
-          </div>
-        </div>
-      </div>
+      <p class="body-text">
+        Profiles are designed to feel like shelves: a visual grid of what someone is currently into, organised by category. You can see at a glance whether someone's taste aligns with yours, and follow based on that rather than on social obligation.
+      </p>
     </section>
 
-    <section class="scroll-fade" style="margin-bottom: 64px;">
-      <h2 class="section-title">Reflections</h2>
+    <div class="img-grid img-cols-3 scroll-fade" style="margin-bottom: 32px;">
+      <div>
+        <div class="img-frame">
+          <img class="img-light ar-portrait" src="images/cs2-screen-1-light.png" alt="App screen">
+          <img class="img-dark ar-portrait" src="images/cs2-screen-1-dark.png" alt="App screen">
+        </div>
+        <p class="img-caption">Home feed with rich API content</p>
+      </div>
+      <div>
+        <div class="img-frame">
+          <img class="img-light ar-portrait" src="images/cs2-screen-2-light.png" alt="App screen">
+          <img class="img-dark ar-portrait" src="images/cs2-screen-2-dark.png" alt="App screen">
+        </div>
+        <p class="img-caption">Content search and post composer</p>
+      </div>
+      <div>
+        <div class="img-frame">
+          <img class="img-light ar-portrait" src="images/cs2-screen-3-light.png" alt="App screen">
+          <img class="img-dark ar-portrait" src="images/cs2-screen-3-dark.png" alt="App screen">
+        </div>
+        <p class="img-caption">Profile shelf — taste at a glance</p>
+      </div>
+    </div>
+
+    <div class="outcome-grid scroll-fade">
+      <div class="outcome-card">
+        <div class="outcome-card-inner">
+          <div class="stat">6</div>
+          <div class="stat-label">Content categories — books, music, film, TV, restaurants, bars</div>
+        </div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-card-inner">
+          <div class="stat">4</div>
+          <div class="stat-label">External APIs — Google Books, Spotify, TMDB, Yelp</div>
+        </div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-card-inner">
+          <div class="stat">0</div>
+          <div class="stat-label">Dark patterns — no infinite scroll, no algorithm, no public like counts</div>
+        </div>
+      </div>
+    </div>
+
+    <section class="scroll-fade" style="margin-bottom: 64px; margin-top: 64px;">
+      <h2 class="section-title">What I'm still figuring out</h2>
       <p class="body-text">
-        Currently remains a personal project — it hasn't been built for production. But it taught me a lot about designing systems with intent: every constraint I set had a downstream effect on the experience, and holding those constraints under pressure (when it would have been easy to add "just one more feature") was the real design challenge.
+        The hardest product question with Currently isn't the design — it's the cold start problem. A social app lives or dies on network effects, and a feed full of people you don't follow is just noise. I've been thinking about this a lot: whether discovery by shared taste (surfacing users who share your interests) can substitute for the social graph early on, and whether the richness of the content itself can make browsing strangers' shelves feel worthwhile.
       </p>
       <p class="body-text">
-        The project also reinforced for me that good mobile UX isn't just about the interface — it's about the model underneath. The decisions about what users can and can't do shaped the product's personality more than any visual choice I made.
+        The bigger question is whether the constraints hold under pressure. Finite scroll feels right in principle, but it's genuinely hard to design for the moment when someone has seen everything new and the app has nothing left to show them. The honest answer might be: that's the right outcome. Close the app. Go read the book someone just posted about.
       </p>
     </section>
 
