@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CV — Dan Walker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink:   #ff6b35;
+      --purple: #2a8a5a;
+      --red:    #b8a0cc;
+      --ink:    #0f0f0e;
+      --muted:  #5a5a52;
+      --bg:     #f5ece0;
+    }
+    .dark {
+      --ink:   #f0ede8;
+      --muted: #9a9890;
+      --bg:    #141210;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg); color: var(--ink);
+      margin: 0;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+    body * { transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease; }
+    h1, h2, h3, .serif { font-family: 'DM Serif Display', serif; font-weight: 700; }
+    a, button, .btn { transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, opacity 0.2s, transform 0.2s !important; }
+
+    /* ── Nav ──────────────────────────────────────────────────────────── */
+    #main-nav {
+      position: fixed; top: 20px; left: 50%; z-index: 50;
+      transform: translateX(-50%);
+      transition: opacity 0.35s ease;
+    }
+    #main-nav.hidden-nav { transform: translateX(-50%); opacity: 0; pointer-events: none; }
+    .nav-inner {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 10px 10px 14px;
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 100px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+      transition: background 0.4s ease, border-color 0.4s ease;
+    }
+    .dark .nav-inner { border-color: rgba(255,255,255,0.15); }
+    .nav-left { display: flex; align-items: center; }
+    .nav-links { display: flex; gap: 8px; }
+    .nav-links a { font-size: 1rem; font-weight: 500; color: var(--muted); text-decoration: none; padding: 8px 18px; border-radius: 100px; }
+    .nav-links a:hover { background: rgba(0,0,0,0.06); color: var(--ink); }
+    .nav-links a.active, .nav-dropdown-trigger.active { background: var(--ink); color: var(--bg); }
+    .dark .nav-links a.active, .dark .nav-dropdown-trigger.active { background: rgba(255,255,255,0.15); color: #fff; }
+    .dark .nav-links a:hover { background: rgba(255,255,255,0.08); }
+    .nav-right { display: flex; align-items: center; gap: 6px; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-trigger { font-size: 1rem; font-weight: 500; color: var(--muted); padding: 8px 18px; border-radius: 100px; cursor: pointer; user-select: none; }
+    .nav-dropdown-trigger:hover { background: rgba(0,0,0,0.06); color: var(--ink); }
+    .dark .nav-dropdown-trigger:hover { background: rgba(255,255,255,0.08); color: var(--ink); }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%); min-width: 220px; background: var(--bg); border: 1px solid rgba(128,128,128,0.15); border-radius: 14px; padding: 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); z-index: 100; }
+    .nav-dropdown.open .dropdown-menu { display: block; }
+    .dropdown-menu a { display: block; padding: 8px 12px; border-radius: 8px; font-size: 0.875rem; color: var(--ink); text-decoration: none; }
+    .dropdown-menu a:hover { background: rgba(128,128,128,0.08); }
+    .dropdown-label { display: block; padding: 6px 12px 2px; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); opacity: 0.6; }
+    .theme-toggle { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.12); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--muted); }
+    .theme-toggle svg { width: 16px; height: 16px; }
+    .dark .theme-toggle { border-color: rgba(255,255,255,0.15); }
+
+    /* ── Page layout ──────────────────────────────────────────────────── */
+    .content-wrap { max-width: 1152px; margin: 0 auto; padding: 0 24px; }
+    .cv-wrap { max-width: 860px; margin: 0 auto; padding: 140px 24px 80px; }
+
+    /* ── Header ───────────────────────────────────────────────────────── */
+    .cv-header { margin-bottom: 56px; }
+    .cv-header h1 { font-size: clamp(2.5rem, 5vw, 3.75rem); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 12px; }
+    .cv-header .cv-title { font-size: 1.05rem; color: var(--muted); margin: 0 0 24px; }
+    .cv-contact { display: flex; flex-wrap: wrap; gap: 20px; font-size: 0.875rem; color: var(--muted); }
+    .cv-contact a { color: var(--muted); text-decoration: none; }
+    .cv-contact a:hover { color: var(--ink); }
+
+    /* ── Section ──────────────────────────────────────────────────────── */
+    .cv-section { margin-bottom: 48px; }
+    .cv-section-title {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); opacity: 0.55;
+      margin: 0 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(128,128,128,0.15);
+    }
+
+    /* ── Experience ───────────────────────────────────────────────────── */
+    .cv-entry { margin-bottom: 36px; }
+    .cv-entry:last-child { margin-bottom: 0; }
+    .cv-entry-header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 4px; flex-wrap: wrap; }
+    .cv-entry-role { font-size: 1rem; font-weight: 500; color: var(--ink); margin: 0; }
+    .cv-entry-company { font-size: 0.875rem; color: var(--muted); margin: 0 0 10px; }
+    .cv-entry-date { font-size: 0.8rem; color: var(--muted); opacity: 0.7; white-space: nowrap; }
+    .cv-entry p { font-size: 0.9rem; line-height: 1.7; color: var(--muted); margin: 0 0 8px; }
+    .cv-entry p:last-child { margin-bottom: 0; }
+
+    /* ── Skills grid ──────────────────────────────────────────────────── */
+    .cv-skills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .cv-skill {
+      font-size: 0.8rem; font-weight: 500;
+      padding: 5px 12px; border-radius: 100px;
+      background: rgba(128,128,128,0.08);
+      border: 1px solid rgba(128,128,128,0.12);
+      color: var(--muted);
+    }
+
+    /* ── Projects ─────────────────────────────────────────────────────── */
+    .cv-projects { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .cv-project {
+      padding: 16px 20px;
+      border: 1px solid rgba(128,128,128,0.15);
+      border-radius: 12px;
+    }
+    .cv-project h4 { font-size: 0.9rem; font-weight: 500; margin: 0 0 4px; }
+    .cv-project p { font-size: 0.8rem; line-height: 1.6; color: var(--muted); margin: 0; }
+    .cv-project a { font-size: 0.75rem; color: var(--muted); text-decoration: none; opacity: 0.7; }
+    .cv-project a:hover { opacity: 1; color: var(--ink); }
+
+    /* ── Footer ───────────────────────────────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid rgba(128,128,128,0.12);
+      padding: 40px 24px;
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 24px;
+      font-size: 0.875rem; color: var(--muted);
+    }
+    .dark .site-footer { border-top-color: rgba(255,255,255,0.07); }
+    .site-footer a { color: var(--muted); text-decoration: none; }
+    .site-footer a:hover { color: var(--ink); }
+
+    /* ── Print ────────────────────────────────────────────────────────── */
+    @media print {
+      #main-nav, .site-footer, .no-print { display: none !important; }
+      body { background: #fff; color: #000; }
+      .cv-wrap { padding-top: 40px; }
+      .cv-skill { border: 1px solid #ccc; }
+      .cv-project { border: 1px solid #ccc; }
+    }
+
+    @media (max-width: 600px) {
+      .cv-projects { grid-template-columns: 1fr; }
+      .cv-entry-header { flex-direction: column; gap: 2px; }
+    }
+  </style>
+  <script>
+    (function () {
+      var dark = localStorage.getItem('theme') === 'dark';
+      if (dark) document.documentElement.classList.add('dark');
+    })();
+  </script>
+</head>
+
+<body>
+
+  <div id="nav-mount"></div>
+
+  <div class="cv-wrap">
+
+    <!-- Header -->
+    <header class="cv-header">
+      <h1 class="serif">Dan Walker</h1>
+      <p class="cv-title">Senior Product Designer · UK</p>
+      <div class="cv-contact">
+        <a href="mailto:dwlkr@me.com">dwlkr@me.com</a>
+        <a href="https://linkedin.com/in/danwlkr" target="_blank" rel="noopener">linkedin.com/in/danwlkr</a>
+        <a href="index.html">dan-wlkr.github.io/portfolio</a>
+      </div>
+    </header>
+
+    <!-- Profile -->
+    <section class="cv-section">
+      <p class="cv-section-title">Profile</p>
+      <p style="font-size: 0.95rem; line-height: 1.8; color: var(--muted); max-width: 68ch;">
+        Senior product designer with a background rooted in fine art and a career built on curiosity. I specialise in rapid prototyping, complex system design, and bringing teams along with design decisions. I'm comfortable working at every stage — from early research and strategy through to high-fidelity delivery — and at my best when working closely with engineering and product.
+      </p>
+    </section>
+
+    <!-- Experience -->
+    <section class="cv-section">
+      <p class="cv-section-title">Experience</p>
+
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <p class="cv-entry-role">Senior Product Designer</p>
+          <span class="cv-entry-date">2022 — Present</span>
+        </div>
+        <p class="cv-entry-company">Next PLC</p>
+        <p>Led product design for warehouse management systems across six product sets serving Next's fulfilment operations. Established the first UX function within the organisation, building design process from scratch with no prior precedent.</p>
+        <p>Built a Blazor component design system solo using AI-assisted development, then scaled adoption by forming a cross-team group of 10 developers drawn from each product area — creating internal champions and distributing ownership rather than centralising control.</p>
+        <p>Delivered the E3 warehouse management platform, a system handling complex decision-making around automated and manual picking operations at scale.</p>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <p class="cv-entry-role">Product Designer</p>
+          <span class="cv-entry-date">— 2022</span>
+        </div>
+        <p class="cv-entry-company">Previous roles</p>
+        <p style="opacity: 0.5; font-style: italic;">Add earlier experience here.</p>
+      </div>
+
+    </section>
+
+    <!-- Skills -->
+    <section class="cv-section">
+      <p class="cv-section-title">Skills &amp; tools</p>
+      <div class="cv-skills">
+        <span class="cv-skill">Figma</span>
+        <span class="cv-skill">Figma Make</span>
+        <span class="cv-skill">Rapid prototyping</span>
+        <span class="cv-skill">Design systems</span>
+        <span class="cv-skill">User research</span>
+        <span class="cv-skill">iOS design</span>
+        <span class="cv-skill">Complex systems</span>
+        <span class="cv-skill">Stakeholder management</span>
+        <span class="cv-skill">HTML &amp; CSS</span>
+        <span class="cv-skill">Swift / SwiftUI</span>
+        <span class="cv-skill">Xcode</span>
+        <span class="cv-skill">Cursor</span>
+        <span class="cv-skill">GitHub Copilot</span>
+        <span class="cv-skill">Principle</span>
+        <span class="cv-skill">AI-assisted design</span>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="cv-section">
+      <p class="cv-section-title">Personal projects</p>
+      <div class="cv-projects">
+        <div class="cv-project">
+          <h4>Currently</h4>
+          <p>Social iOS app for sharing what you're enjoying right now — books, music, film, TV, restaurants — built around positive design principles and real API integrations.</p>
+          <a href="case-study-2.html">View case study →</a>
+        </div>
+        <div class="cv-project">
+          <h4>Gridfinite</h4>
+          <p>Pass-and-play iOS strategy game designed and built with my son. Shipped to the App Store. Game design, Swift/SwiftUI, Figma Make prototyping, real-world play-testing.</p>
+          <a href="https://apps.apple.com/gb/app/gridfinite/id6751437117" target="_blank" rel="noopener">App Store →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="cv-section">
+      <p class="cv-section-title">Education</p>
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <p class="cv-entry-role">Fine Art</p>
+          <span class="cv-entry-date">Add years</span>
+        </div>
+        <p class="cv-entry-company">Add institution</p>
+        <p>Foundation in fine art — the starting point for a career-long curiosity about how things are made and how people interact with them.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="site-footer">
+    <a href="https://linkedin.com/in/danwlkr">LinkedIn</a>
+    <a href="cv.html">CV</a>
+    <a href="#" id="footer-email-link">dwlkr [at] me.com</a>
+  </footer>
+
+  <script src="nav.js"></script>
+  <script>
+    var footerEmail = document.getElementById('footer-email-link');
+    if (footerEmail) { var e = 'dwlkr' + '@' + 'me.com'; footerEmail.href = 'mailto:' + e; footerEmail.textContent = e; }
+
+    var lastY = 0;
+    window.addEventListener('scroll', function () {
+      var nav = document.getElementById('main-nav');
+      if (!nav) return;
+      var y = window.scrollY;
+      if (y > lastY && y > 80) { nav.classList.add('hidden-nav'); }
+      else { nav.classList.remove('hidden-nav'); }
+      lastY = y;
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
