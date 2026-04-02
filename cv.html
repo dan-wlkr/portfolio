@@ -169,6 +169,7 @@
       .cv-projects { grid-template-columns: 1fr; }
       .cv-entry-header { flex-direction: column; gap: 2px; }
       .cv-header-top { flex-direction: column; align-items: flex-start !important; gap: 12px !important; }
+      .cv-print-btn { display: none !important; }
     }
   </style>
   <script>
@@ -181,46 +182,7 @@
 
 <body>
 
-  <nav id="main-nav">
-    <div class="nav-inner">
-      <div class="nav-left">
-        <div class="nav-links">
-          <a href="index.html">Home</a>
-          <div class="nav-dropdown">
-            <span class="nav-dropdown-trigger">Projects</span>
-            <div class="dropdown-menu">
-              <span class="dropdown-label">Case Studies</span>
-              <a href="case-study-1.html">Modernising Warehouse Operations</a>
-              <a href="case-study-2.html">Building a Social Media App</a>
-              <span class="dropdown-label" style="margin-top:4px;">Mini Projects</span>
-              <a href="case-study-3.html">Pass &amp; Play Game Design in iOS</a>
-            </div>
-          </div>
-          <div class="nav-dropdown">
-            <span class="nav-dropdown-trigger active">Contact</span>
-            <div class="dropdown-menu">
-              <span class="dropdown-label">Get in touch</span>
-              <a href="#" id="nav-email-link">dwlkr [at] me.com</a>
-              <a href="tel:+447885725355">+44 7885 725355</a>
-              <span class="dropdown-label" style="margin-top:4px;">More</span>
-              <a href="cv.html">CV</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="nav-right">
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-          <svg id="icon-sun" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="display:none;">
-            <circle cx="12" cy="12" r="4"/>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
-          </svg>
-          <svg id="icon-moon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </nav>
+  <div id="nav-mount"></div>
 
   <div class="cv-wrap">
 
@@ -228,7 +190,7 @@
     <header class="cv-header">
       <div class="cv-header-top" style="display:flex; align-items:baseline; justify-content:space-between; gap:16px;">
         <h1 class="serif">Dan Walker</h1>
-        <button onclick="window.print()" class="no-print" style="font-size:0.8rem; font-weight:500; color:var(--muted); background:none; border:1px solid rgba(128,128,128,0.25); border-radius:100px; padding:6px 16px; cursor:pointer; letter-spacing:0.03em; white-space:nowrap; flex-shrink:0;">Save PDF</button>
+        <button onclick="window.print()" class="no-print cv-print-btn" style="font-size:0.8rem; font-weight:500; color:var(--muted); background:none; border:1px solid rgba(128,128,128,0.25); border-radius:100px; padding:6px 16px; cursor:pointer; letter-spacing:0.03em; white-space:nowrap; flex-shrink:0;">Print</button>
       </div>
       <p class="cv-title">UX Designer</p>
       <div class="cv-contact">
