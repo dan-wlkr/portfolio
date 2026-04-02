@@ -22,6 +22,8 @@
     '          <div class="dropdown-menu">',
     '            <span class="dropdown-label">Get in touch</span>',
     '            <a href="#" id="nav-email-link">dwlkr [at] me.com</a>',
+    '            <span class="dropdown-label" style="margin-top:4px;">More</span>',
+    '            <a href="cv.html">CV</a>',
     '          </div>',
     '        </div>',
     '      </div>',
@@ -93,6 +95,15 @@
     if (projectsDropdown.length > 0) {
       var trigger = projectsDropdown[0].querySelector('.nav-dropdown-trigger');
       if (trigger) trigger.classList.add('active');
+    }
+  }
+
+  // On cv.html, give the Contact trigger the active pill style
+  if (page === 'cv.html') {
+    var allDropdowns = document.querySelectorAll('#main-nav .nav-dropdown');
+    if (allDropdowns.length > 1) {
+      var contactTrigger = allDropdowns[1].querySelector('.nav-dropdown-trigger');
+      if (contactTrigger) contactTrigger.classList.add('active');
     }
   }
 
