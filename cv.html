@@ -172,7 +172,7 @@
     <header class="cv-header">
       <div class="cv-header-top" style="display:flex; align-items:baseline; justify-content:space-between; gap:16px;">
         <h1 class="serif">Dan Walker</h1>
-        <button onclick="if(navigator.share){navigator.share({title:'Dan Walker — CV',url:window.location.href})}else{window.print()}" class="no-print" style="font-size:0.8rem; font-weight:500; color:var(--muted); background:none; border:1px solid rgba(128,128,128,0.25); border-radius:100px; padding:6px 16px; cursor:pointer; letter-spacing:0.03em; white-space:nowrap; flex-shrink:0;">Save / Share</button>
+        <button onclick="window.print()" class="no-print" style="font-size:0.8rem; font-weight:500; color:var(--muted); background:none; border:1px solid rgba(128,128,128,0.25); border-radius:100px; padding:6px 16px; cursor:pointer; letter-spacing:0.03em; white-space:nowrap; flex-shrink:0;">Save PDF</button>
       </div>
       <p class="cv-title">UX Designer</p>
       <div class="cv-contact">
@@ -294,16 +294,6 @@
   <script>
     var footerEmail = document.getElementById('footer-email-link');
     if (footerEmail) { var e = 'dwlkr' + '@' + 'me.com'; footerEmail.href = 'mailto:' + e; footerEmail.textContent = e; }
-
-    var lastY = 0;
-    window.addEventListener('scroll', function () {
-      var nav = document.getElementById('main-nav');
-      if (!nav) return;
-      var y = window.scrollY;
-      if (y > lastY && y > 80) { nav.classList.add('hidden-nav'); }
-      else { nav.classList.remove('hidden-nav'); }
-      lastY = y;
-    }, { passive: true });
   </script>
 
 </body>
