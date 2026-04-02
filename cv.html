@@ -98,7 +98,7 @@
     .cv-entry:last-child { margin-bottom: 0; }
     .cv-entry-header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 4px; flex-wrap: wrap; }
     .cv-entry-role { font-size: 1rem; font-weight: 500; color: var(--ink); margin: 0; }
-    .cv-entry-company { font-size: 0.875rem; color: var(--muted); margin: 0 0 10px; }
+    .cv-entry-company { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); opacity: 0.6; margin: 0 0 10px; }
     .cv-entry-date { font-size: 0.8rem; color: var(--muted); opacity: 0.7; white-space: nowrap; }
     .cv-entry p { font-size: 0.9rem; line-height: 1.7; color: var(--muted); margin: 0 0 8px; }
     .cv-entry p:last-child { margin-bottom: 0; }
@@ -151,6 +151,7 @@
     @media (max-width: 600px) {
       .cv-projects { grid-template-columns: 1fr; }
       .cv-entry-header { flex-direction: column; gap: 2px; }
+      .cv-header-top { flex-direction: column; align-items: flex-start !important; gap: 12px !important; }
     }
   </style>
   <script>
@@ -169,11 +170,11 @@
 
     <!-- Header -->
     <header class="cv-header">
-      <div style="display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+      <div class="cv-header-top" style="display:flex; align-items:baseline; justify-content:space-between; gap:16px;">
         <h1 class="serif">Dan Walker</h1>
-        <button onclick="window.print()" class="no-print" style="font-size:0.8rem; font-weight:500; color:var(--muted); background:none; border:1px solid rgba(128,128,128,0.25); border-radius:100px; padding:6px 16px; cursor:pointer; letter-spacing:0.03em;">Print / Save PDF</button>
+        <button onclick="if(navigator.share){navigator.share({title:'Dan Walker — CV',url:window.location.href})}else{window.print()}" class="no-print" style="font-size:0.8rem; font-weight:500; color:var(--muted); background:none; border:1px solid rgba(128,128,128,0.25); border-radius:100px; padding:6px 16px; cursor:pointer; letter-spacing:0.03em; white-space:nowrap; flex-shrink:0;">Save / Share</button>
       </div>
-      <p class="cv-title">Senior Product Designer</p>
+      <p class="cv-title">UX Designer</p>
       <div class="cv-contact">
         <a href="mailto:info@danwalker.digital">info@danwalker.digital</a>
         <a href="https://linkedin.com/in/danwlkr" target="_blank" rel="noopener">linkedin.com/in/danwlkr</a>
