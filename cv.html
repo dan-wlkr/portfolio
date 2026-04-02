@@ -113,10 +113,10 @@
     /* ── Experience ───────────────────────────────────────────────────── */
     .cv-entry { margin-bottom: 40px; }
     .cv-entry:last-child { margin-bottom: 0; }
-    .cv-entry-header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 2px; flex-wrap: wrap; }
-    .cv-entry-role { font-size: 1.05rem; font-weight: 500; color: var(--ink); margin: 0; }
-    .cv-entry-company { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); opacity: 0.5; margin: 0 0 10px; }
-    .cv-entry-date { font-size: 0.8rem; color: var(--muted); opacity: 0.55; white-space: nowrap; }
+    .cv-entry-header { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 2px 16px; margin-bottom: 10px; }
+    .cv-entry-role { grid-column: 1; grid-row: 1; font-size: 1.05rem; font-weight: 500; color: var(--ink); margin: 0; }
+    .cv-entry-date { grid-column: 2; grid-row: 1; font-size: 0.8rem; color: var(--muted); opacity: 0.55; white-space: nowrap; }
+    .cv-entry-company { grid-column: 1; grid-row: 2; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); opacity: 0.5; margin: 0; }
     .cv-entry p { font-size: 0.9rem; line-height: 1.7; color: var(--muted); margin: 0 0 8px; }
     .cv-entry p:last-child { margin-bottom: 0; }
     ul.cv-list { margin: 8px 0 0 16px; padding: 0; }
@@ -176,7 +176,8 @@
 
     @media (max-width: 600px) {
       .cv-projects { grid-template-columns: 1fr; }
-      .cv-entry-header { flex-direction: column; gap: 2px; }
+      .cv-entry-header { display: flex; flex-direction: column; gap: 2px; }
+      .cv-entry-date { order: 3; }
       .cv-header-top { flex-direction: column; align-items: flex-start !important; gap: 12px !important; }
       .cv-print-btn { display: none !important; }
     }
@@ -225,8 +226,8 @@
         <div class="cv-entry-header">
           <p class="cv-entry-role">UX Designer</p>
           <span class="cv-entry-date">September 2022 — Present</span>
+          <p class="cv-entry-company">Next</p>
         </div>
-        <p class="cv-entry-company">Next</p>
         <ul class="cv-list">
           <li>Designed digital systems and products for one of the UK's largest retail operations, working across six product areas within the warehouse management platform.</li>
           <li>Ran 200+ user research sessions, lifting satisfaction scores from 38% to 81% and building a 100+ participant research database from scratch.</li>
@@ -239,8 +240,8 @@
         <div class="cv-entry-header">
           <p class="cv-entry-role">Digital Designer</p>
           <span class="cv-entry-date">June 2015 — September 2022</span>
+          <p class="cv-entry-company">Freelance</p>
         </div>
-        <p class="cv-entry-company">Freelance</p>
         <ul class="cv-list">
           <li>Designed and developed websites end-to-end for clients across a range of sectors using Webflow, Framer, and WordPress — from initial brief through to launch.</li>
           <li>Managed client relationships, scoping, and delivery independently across a seven-year portfolio of work.</li>
@@ -251,8 +252,8 @@
         <div class="cv-entry-header">
           <p class="cv-entry-role">Design &amp; Marketing Assistant</p>
           <span class="cv-entry-date">August 2021 — September 2022</span>
+          <p class="cv-entry-company">The Shakespeare Hospice</p>
         </div>
-        <p class="cv-entry-company">The Shakespeare Hospice</p>
         <ul class="cv-list">
           <li>Created brand guidelines and managed visual identity across digital channels.</li>
         </ul>
@@ -287,8 +288,8 @@
         <div class="cv-entry-header">
           <p class="cv-entry-role">BA (Hons) Fine Art — 2:1</p>
           <span class="cv-entry-date">2009 — 2012</span>
+          <p class="cv-entry-company">Central St Martins, UAL</p>
         </div>
-        <p class="cv-entry-company">Central St Martins, UAL</p>
       </div>
 
     </section>
@@ -301,16 +302,16 @@
         <div class="cv-entry-header">
           <p class="cv-entry-role">Scaling Good Services</p>
           <span class="cv-entry-date">2022</span>
+          <p class="cv-entry-company">The School of Good Services</p>
         </div>
-        <p class="cv-entry-company">The School of Good Services</p>
       </div>
 
       <div class="cv-entry">
         <div class="cv-entry-header">
           <p class="cv-entry-role">Foundation HTML, CSS &amp; Javascript</p>
           <span class="cv-entry-date">2020</span>
+          <p class="cv-entry-company">SuperHi</p>
         </div>
-        <p class="cv-entry-company">SuperHi</p>
       </div>
 
     </section>
