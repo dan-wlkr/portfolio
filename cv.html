@@ -165,6 +165,15 @@
       .cv-project { border: 1px solid #ccc; }
     }
 
+    @media (max-width: 768px) {
+      .nav-inner { padding: 7px 7px 7px 8px; gap: 2px; }
+      .nav-links a { font-size: 0.875rem; padding: 6px 10px; }
+      .nav-dropdown-trigger { font-size: 0.875rem !important; padding: 6px 10px; }
+      .theme-toggle { width: 30px; height: 30px; }
+      #main-nav { transition: opacity 0.3s ease; }
+      #main-nav.hidden-nav { transform: translateX(-50%); opacity: 0; }
+    }
+
     @media (max-width: 600px) {
       .cv-projects { grid-template-columns: 1fr; }
       .cv-entry-header { flex-direction: column; gap: 2px; }
