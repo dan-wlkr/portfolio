@@ -164,7 +164,45 @@
 
 <body>
 
-  <div id="nav-mount"></div>
+  <nav id="main-nav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <div class="nav-dropdown">
+            <span class="nav-dropdown-trigger">Projects</span>
+            <div class="dropdown-menu">
+              <span class="dropdown-label">Case Studies</span>
+              <a href="case-study-1.html">Modernising Warehouse Operations</a>
+              <a href="case-study-2.html">Building a Social Media App</a>
+              <span class="dropdown-label" style="margin-top:4px;">Mini Projects</span>
+              <a href="case-study-3.html">Pass &amp; Play Game Design in iOS</a>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <span class="nav-dropdown-trigger active">Contact</span>
+            <div class="dropdown-menu">
+              <span class="dropdown-label">Get in touch</span>
+              <a href="#" id="nav-email-link">dwlkr [at] me.com</a>
+              <span class="dropdown-label" style="margin-top:4px;">More</span>
+              <a href="cv.html">CV</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <svg id="icon-sun" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="display:none;">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+          </svg>
+          <svg id="icon-moon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
 
   <div class="cv-wrap">
 
