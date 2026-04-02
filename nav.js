@@ -44,14 +44,12 @@
     '</nav>'
   ].join('\n');
 
-  // Inject nav — skip if nav already exists in DOM (e.g. hardcoded in page)
-  if (!document.getElementById('main-nav')) {
-    var mount = document.getElementById('nav-mount');
-    if (mount) {
-      mount.outerHTML = NAV_HTML;
-    } else {
-      document.body.insertAdjacentHTML('afterbegin', NAV_HTML);
-    }
+  // Inject nav — replace #nav-mount if present, otherwise prepend to body
+  var mount = document.getElementById('nav-mount');
+  if (mount) {
+    mount.outerHTML = NAV_HTML;
+  } else {
+    document.body.insertAdjacentHTML('afterbegin', NAV_HTML);
   }
 
   // ── Theme ──────────────────────────────────────────────────────────────────
@@ -98,6 +96,15 @@
     if (projectsDropdown.length > 0) {
       var trigger = projectsDropdown[0].querySelector('.nav-dropdown-trigger');
       if (trigger) trigger.classList.add('active');
+    }
+  }
+
+  // On cv.html, give the Contact trigger the active pill style
+  if (page === 'cv.html') {
+    var navDropdowns = document.querySelectorAll('#main-nav .nav-dropdown');
+    if (navDropdowns.length > 1) {
+      var contactTrigger = navDropdowns[1].querySelector('.nav-dropdown-trigger');
+      if (contactTrigger) contactTrigger.classList.add('active');
     }
   }
 
