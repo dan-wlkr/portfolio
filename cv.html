@@ -102,6 +102,9 @@
     .cv-entry-date { font-size: 0.8rem; color: var(--muted); opacity: 0.7; white-space: nowrap; }
     .cv-entry p { font-size: 0.9rem; line-height: 1.7; color: var(--muted); margin: 0 0 8px; }
     .cv-entry p:last-child { margin-bottom: 0; }
+    ul.cv-list { margin: 8px 0 0 16px; padding: 0; }
+    ul.cv-list li { font-size: 0.9rem; line-height: 1.7; color: var(--muted); margin-bottom: 6px; }
+    ul.cv-list li:last-child { margin-bottom: 0; }
 
     /* ── Skills grid ──────────────────────────────────────────────────── */
     .cv-skills { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -166,8 +169,11 @@
 
     <!-- Header -->
     <header class="cv-header">
-      <h1 class="serif">Dan Walker</h1>
-      <p class="cv-title">UX Designer · UK</p>
+      <div style="display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+        <h1 class="serif">Dan Walker</h1>
+        <button onclick="window.print()" class="no-print" style="font-size:0.8rem; font-weight:500; color:var(--muted); background:none; border:1px solid rgba(128,128,128,0.25); border-radius:100px; padding:6px 16px; cursor:pointer; letter-spacing:0.03em;">Print / Save PDF</button>
+      </div>
+      <p class="cv-title">Senior Product Designer</p>
       <div class="cv-contact">
         <a href="mailto:info@danwalker.digital">info@danwalker.digital</a>
         <a href="https://linkedin.com/in/danwlkr" target="_blank" rel="noopener">linkedin.com/in/danwlkr</a>
@@ -179,7 +185,7 @@
     <section class="cv-section">
       <p class="cv-section-title">Profile</p>
       <p style="font-size: 0.95rem; line-height: 1.8; color: var(--muted); max-width: 68ch;">
-        UX designer with a background in fine art and a career built on curiosity. I specialise in rapid prototyping, complex system design, and bringing teams along with design decisions — from establishing the first design function at a major UK retailer to shipping personal projects to the App Store. Comfortable at every stage, from research and strategy through to high-fidelity delivery.
+        Senior product designer with a fine art foundation and a decade of experience across enterprise software, freelance product work, and self-initiated projects. I specialise in complex system design, high-fidelity prototyping, and establishing design practice in organisations where none previously existed. I work closely with engineering and product, and I'm as comfortable in a research session or a sprint planning meeting as I am in Figma.
       </p>
     </section>
 
@@ -193,20 +199,24 @@
           <span class="cv-entry-date">September 2022 — Present</span>
         </div>
         <p class="cv-entry-company">Next</p>
-        <p>Designed digital systems and products for one of the UK's largest retail operations.</p>
-        <p>Conducted 200+ user research sessions, improving satisfaction from 38% to 81% while building a 100+ participant database.</p>
-        <p>Established design systems across two frameworks, enabling 6 development teams to deliver consistent experiences.</p>
-        <p>Introduced design thinking to teams with no previous design input, transforming product development processes.</p>
+        <ul class="cv-list">
+          <li>Designed digital systems and products for one of the UK's largest retail operations, working across six product areas within the warehouse management platform.</li>
+          <li>Ran 200+ user research sessions, lifting satisfaction scores from 38% to 81% and building a 100+ participant research database from scratch.</li>
+          <li>Established design systems across two frameworks, enabling six development teams to ship consistent, maintainable experiences.</li>
+          <li>Introduced design thinking into teams with no prior design input, reshaping how product decisions were made and evidenced.</li>
+        </ul>
       </div>
 
       <div class="cv-entry">
         <div class="cv-entry-header">
-          <p class="cv-entry-role">Digital Designer &amp; Photographer</p>
+          <p class="cv-entry-role">Digital Designer</p>
           <span class="cv-entry-date">June 2015 — September 2022</span>
         </div>
         <p class="cv-entry-company">Freelance</p>
-        <p>Designed and developed websites for diverse clients using Webflow, Framer, and WordPress, handling everything from initial concept through to launch.</p>
-        <p>Worked on photography projects spanning event, lifestyle, architecture, and food sectors.</p>
+        <ul class="cv-list">
+          <li>Designed and developed websites end-to-end for clients across a range of sectors using Webflow, Framer, and WordPress — from initial brief through to launch.</li>
+          <li>Managed client relationships, scoping, and delivery independently across a seven-year portfolio of work.</li>
+        </ul>
       </div>
 
       <div class="cv-entry">
@@ -215,26 +225,9 @@
           <span class="cv-entry-date">August 2021 — September 2022</span>
         </div>
         <p class="cv-entry-company">The Shakespeare Hospice</p>
-        <p>Developed brand guidelines to support future design work.</p>
-        <p>Managed content across all social media platforms.</p>
-      </div>
-
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <p class="cv-entry-role">Practitioner Plus</p>
-          <span class="cv-entry-date">Summer 2015 &amp; 2016</span>
-        </div>
-        <p class="cv-entry-company">NCS The Challenge</p>
-        <p>Created lesson plans covering art, photography and media. Taught creative skills and supervised charity visits.</p>
-      </div>
-
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <p class="cv-entry-role">Print Room Supervisor</p>
-          <span class="cv-entry-date">March 2014 — June 2015</span>
-        </div>
-        <p class="cv-entry-company">Elegant Clutter</p>
-        <p>Managed large format print production for projects spanning international hotel and restaurant chains. Developed the brand's photography portfolio.</p>
+        <ul class="cv-list">
+          <li>Created brand guidelines and managed visual identity across digital channels.</li>
+        </ul>
       </div>
 
     </section>
@@ -248,40 +241,19 @@
         <span class="cv-skill">Rapid prototyping</span>
         <span class="cv-skill">Design systems</span>
         <span class="cv-skill">User research</span>
-        <span class="cv-skill">iOS design</span>
         <span class="cv-skill">Complex systems</span>
         <span class="cv-skill">Stakeholder management</span>
-        <span class="cv-skill">Webflow</span>
-        <span class="cv-skill">Framer</span>
-        <span class="cv-skill">HTML &amp; CSS &amp; JS</span>
-        <span class="cv-skill">Swift / SwiftUI</span>
-        <span class="cv-skill">Xcode</span>
-        <span class="cv-skill">Cursor</span>
-        <span class="cv-skill">GitHub Copilot</span>
+        <span class="cv-skill">iOS / mobile design</span>
+        <span class="cv-skill">Webflow · Framer</span>
+        <span class="cv-skill">HTML · CSS · JS</span>
         <span class="cv-skill">AI-assisted design</span>
+        <span class="cv-skill">Principle</span>
       </div>
     </section>
 
-    <!-- Projects -->
+    <!-- Education & Courses -->
     <section class="cv-section">
-      <p class="cv-section-title">Personal projects</p>
-      <div class="cv-projects">
-        <div class="cv-project">
-          <h4>Currently</h4>
-          <p>Social iOS app for sharing what you're enjoying right now — books, music, film, TV, restaurants — built around positive design principles and real API integrations.</p>
-          <a href="case-study-2.html">View case study →</a>
-        </div>
-        <div class="cv-project">
-          <h4>Gridfinite</h4>
-          <p>Pass-and-play iOS strategy game designed and built with my son. Shipped to the App Store. Game design, Swift/SwiftUI, Figma Make prototyping, real-world play-testing.</p>
-          <a href="https://apps.apple.com/gb/app/gridfinite/id6751437117" target="_blank" rel="noopener">App Store →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Education -->
-    <section class="cv-section">
-      <p class="cv-section-title">Education</p>
+      <p class="cv-section-title">Education &amp; development</p>
 
       <div class="cv-entry">
         <div class="cv-entry-header">
@@ -289,36 +261,6 @@
           <span class="cv-entry-date">2009 — 2012</span>
         </div>
         <p class="cv-entry-company">Central St Martins, UAL</p>
-      </div>
-
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <p class="cv-entry-role">BTEC Photography — Triple Distinction</p>
-          <span class="cv-entry-date">2007 — 2009</span>
-        </div>
-        <p class="cv-entry-company">Stratford Upon Avon College</p>
-      </div>
-
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <p class="cv-entry-role">Eleven GCSEs</p>
-          <span class="cv-entry-date">1999 — 2006</span>
-        </div>
-        <p class="cv-entry-company">Stratford Upon Avon High School</p>
-      </div>
-
-    </section>
-
-    <!-- Additional courses -->
-    <section class="cv-section">
-      <p class="cv-section-title">Additional courses</p>
-
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <p class="cv-entry-role">Presenting With Impact</p>
-          <span class="cv-entry-date">2023</span>
-        </div>
-        <p class="cv-entry-company">Next</p>
       </div>
 
       <div class="cv-entry">
