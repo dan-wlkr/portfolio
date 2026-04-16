@@ -287,10 +287,22 @@
     .ar-square    { aspect-ratio: 1/1; }
     .ar-portrait  { aspect-ratio: 2/3; }
 
+    /* ── Word reveal ─────────────────────────────────────────────────── */
+    @keyframes wordReveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .word-reveal .wr-word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: wordReveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
       .scroll-fade { opacity: 1 !important; transform: none !important; }
       .fade-up { opacity: 1 !important; transform: none !important; animation: none !important; }
+      .wr-word { opacity: 1 !important; transform: none !important; animation: none !important; }
     }
 
     @media (max-width: 768px) {
@@ -339,7 +351,7 @@
       <span class="tag tag-purple">Case study</span>
       <span style="font-size: 0.8rem; font-weight: 500; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase;">Currently</span>
     </div>
-    <h1 class="fade-up d2 serif" style="font-size: clamp(2rem, 4.5vw, 3.25rem); line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 20px;">
+    <h1 class="word-reveal serif" data-delay="0.14" style="font-size: clamp(2rem, 4.5vw, 3.25rem); line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 20px;">
       Can social media be good for you?
     </h1>
     <p class="fade-up d3 body-text" style="max-width: 58ch; margin-bottom: 0;">
@@ -546,6 +558,16 @@
 
   <script src="nav.js"></script>
   <script>
+    // Word reveal
+    document.querySelectorAll('.word-reveal').forEach(function(el) {
+      var delay = parseFloat(el.dataset.delay || 0);
+      var words = el.textContent.trim().split(/\s+/);
+      el.innerHTML = words.map(function(w, i) {
+        var safe = w.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return '<span class="wr-word" style="animation-delay:' + (delay + i * 0.055).toFixed(3) + 's">' + safe + '</span>';
+      }).join(' ');
+    });
+
     var footerEmail = document.getElementById('footer-email-link');
     if (footerEmail) { var e = 'dwlkr' + '@' + 'me.com'; footerEmail.href = 'mailto:' + e; footerEmail.textContent = e; }
 
