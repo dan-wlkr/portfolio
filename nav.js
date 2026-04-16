@@ -154,3 +154,56 @@
   }, { passive: true });
 
 })();
+
+// ── Scroll-driven gradient background ─────────────────────────────────────
+// Note: z-index:-1 is used (not 0) because position:fixed; z-index:0 paints
+// above non-positioned content in CSS stacking order. z-index:-1 correctly
+// sits behind everything when body background is cleared.
+(function () {
+  var bgs = document.createElement('style');
+  bgs.textContent = 'body{background:transparent!important}';
+  (document.head || document.documentElement).appendChild(bgs);
+
+  var bg = document.createElement('div');
+  bg.id = 'scroll-bg';
+  bg.style.cssText = 'position:fixed;inset:0;z-index:-1;pointer-events:none;transition:background 700ms ease;';
+  document.body.insertBefore(bg, document.body.firstChild);
+
+  var LIGHT = [
+    { at:    0, c: 'rgba(0,106,106,0.28)' },
+    { at:  600, c: 'rgba(0,106,106,0.20)' },
+    { at: 1600, c: 'rgba(2,100,180,0.16)' },
+    { at: 2600, c: 'rgba(124,58,237,0.18)' },
+    { at: 3600, c: 'rgba(237,108,2,0.14)' },
+  ];
+  var DARK = [
+    { at:    0, c: 'rgba(0,106,106,0.35)' },
+    { at:  600, c: 'rgba(0,106,106,0.28)' },
+    { at: 1600, c: 'rgba(2,100,180,0.22)' },
+    { at: 2600, c: 'rgba(124,58,237,0.25)' },
+    { at: 3600, c: 'rgba(237,108,2,0.20)' },
+  ];
+  var BASE_L = 'linear-gradient(180deg,#f5f7f7 0%,#f8f9fa 40%,#f7f8fc 70%,#f8f7f5 100%)';
+  var BASE_D = 'linear-gradient(180deg,#0d1117 0%,#111318 40%,#12131a 70%,#131211 100%)';
+
+  function getTint(y, stops) {
+    for (var i = stops.length - 1; i >= 0; i--) {
+      if (y >= stops[i].at) return stops[i].c;
+    }
+    return stops[0].c;
+  }
+
+  function paint() {
+    var dark = document.documentElement.classList.contains('dark');
+    var c    = getTint(window.scrollY, dark ? DARK : LIGHT);
+    var base = dark ? BASE_D : BASE_L;
+    bg.style.background =
+      'radial-gradient(ellipse 120% 80% at 50% 0%,' + c + ' 0%,transparent 65%),' + base;
+  }
+
+  paint();
+  window.addEventListener('scroll', paint, { passive: true });
+  new MutationObserver(paint).observe(document.documentElement, {
+    attributes: true, attributeFilter: ['class']
+  });
+}());
