@@ -288,6 +288,24 @@
     .ar-portrait  { aspect-ratio: 2/3; }
     .ar-phone     { aspect-ratio: 59/128; }
 
+    /* ── Flow diagram ────────────────────────────────────────────────── */
+    .flow-diagram { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(128,128,128,0.13); border-radius: 16px; overflow: hidden; margin: 48px 0; }
+    .flow-col { padding: 28px 24px 32px; display: flex; flex-direction: column; align-items: center; }
+    .flow-col + .flow-col { border-left: 1px solid rgba(128,128,128,0.13); }
+    .flow-col-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); opacity: 0.5; margin-bottom: 20px; align-self: flex-start; }
+    .flow-node { border: 1.5px solid rgba(128,128,128,0.2); border-radius: 8px; padding: 9px 14px; font-size: 0.8rem; font-weight: 500; color: var(--ink); text-align: center; width: 100%; line-height: 1.35; }
+    .flow-node--accent { border-color: var(--purple); color: var(--purple); }
+    .flow-tick { width: 1.5px; height: 18px; background: rgba(128,128,128,0.2); margin: 0 auto; position: relative; }
+    .flow-tick::after { content: ''; position: absolute; bottom: -4px; left: -4px; width: 8px; height: 8px; border-right: 1.5px solid rgba(128,128,128,0.3); border-bottom: 1.5px solid rgba(128,128,128,0.3); transform: rotate(45deg); }
+    .flow-split { position: relative; width: 50%; height: 18px; margin: 0 auto; }
+    .flow-split::before { content: ''; position: absolute; top: 0; left: 50%; width: 1.5px; height: 100%; background: rgba(128,128,128,0.2); transform: translateX(-50%); }
+    .flow-split::after { content: ''; position: absolute; bottom: 0; left: 12.5%; right: 12.5%; height: 1.5px; background: rgba(128,128,128,0.2); }
+    .flow-legs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; }
+    .flow-legs .flow-tick { width: 1.5px; height: 12px; }
+    .flow-join { position: relative; width: 50%; height: 18px; margin: 0 auto; }
+    .flow-join::before { content: ''; position: absolute; bottom: 0; left: 50%; width: 1.5px; height: 100%; background: rgba(128,128,128,0.2); transform: translateX(-50%); }
+    .flow-join::after { content: ''; position: absolute; top: 0; left: 12.5%; right: 12.5%; height: 1.5px; background: rgba(128,128,128,0.2); }
+
     /* ── Word reveal ─────────────────────────────────────────────────── */
     @keyframes wordReveal {
       to { opacity: 1; transform: translateY(0); }
@@ -451,6 +469,35 @@
           <img class="img-dark ar-phone" src="images/cs2-wireframe-3-dark.jpg" alt="Profile wireframe">
         </div>
         <p class="img-caption">Profile — a shelf of what you're into</p>
+      </div>
+    </div>
+
+    <div class="flow-diagram scroll-fade">
+      <div class="flow-col">
+        <div class="flow-col-label">Where we are</div>
+        <div class="flow-node">Search for content</div>
+        <div class="flow-tick"></div>
+        <div class="flow-node">Post to your feed</div>
+        <div class="flow-tick"></div>
+        <div class="flow-node">Followers see it</div>
+      </div>
+      <div class="flow-col">
+        <div class="flow-col-label">The vision</div>
+        <div class="flow-node flow-node--accent">Search or post content</div>
+        <div class="flow-split"></div>
+        <div class="flow-legs">
+          <div>
+            <div class="flow-tick"></div>
+            <div class="flow-node">Communities around that content</div>
+          </div>
+          <div>
+            <div class="flow-tick"></div>
+            <div class="flow-node">What others who posted are also into</div>
+          </div>
+        </div>
+        <div class="flow-join"></div>
+        <div class="flow-tick"></div>
+        <div class="flow-node flow-node--accent">Community discovery</div>
       </div>
     </div>
 
