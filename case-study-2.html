@@ -293,28 +293,27 @@
       from { opacity: 0; transform: translateY(8px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    .flow-diagram { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(128,128,128,0.13); border-radius: 16px; overflow: hidden; margin: 48px 0; }
-    .flow-col { padding: 28px 24px 32px; display: flex; flex-direction: column; align-items: center; }
+    @keyframes flowPulse {
+      0%   { offset-distance: 5%;  opacity: 0; }
+      12%  { opacity: 1; }
+      88%  { opacity: 1; }
+      100% { offset-distance: 95%; opacity: 0; }
+    }
+    .flow-diagram { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(128,128,128,0.13); border-radius: 16px; overflow: hidden; margin: 48px 0; position: relative; }
+    .flow-col { padding: 28px 24px 32px; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; }
     .flow-col + .flow-col { border-left: 1px solid rgba(128,128,128,0.13); background: rgba(42,138,90,0.03); }
     .flow-col-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); opacity: 0; margin-bottom: 20px; align-self: flex-start; }
     .flow-node { border: 1.5px solid rgba(128,128,128,0.2); border-radius: 8px; padding: 9px 14px; font-size: 0.8rem; font-weight: 500; color: var(--ink); text-align: center; width: 100%; line-height: 1.35; opacity: 0; }
     .flow-node--key { background: var(--purple); border-color: var(--purple); color: #fff; box-shadow: 0 2px 16px rgba(42,138,90,0.22); }
     .flow-node--branch { border-color: rgba(42,138,90,0.35); color: var(--purple); background: rgba(42,138,90,0.05); }
-    .flow-tick { width: 1.5px; height: 18px; background: rgba(128,128,128,0.22); margin: 0 auto; position: relative; transform-origin: top center; opacity: 0; }
-    .flow-tick::after { content: ''; position: absolute; bottom: -4px; left: -4px; width: 8px; height: 8px; border-right: 1.5px solid rgba(128,128,128,0.3); border-bottom: 1.5px solid rgba(128,128,128,0.3); transform: rotate(45deg); }
-    .flow-split { position: relative; width: 50%; height: 18px; margin: 0 auto; opacity: 0; }
-    .flow-split::before { content: ''; position: absolute; top: 0; left: 50%; width: 1.5px; height: 100%; background: rgba(128,128,128,0.2); transform: translateX(-50%); }
-    .flow-split::after { content: ''; position: absolute; bottom: 0; left: 12.5%; right: 12.5%; height: 1.5px; background: rgba(128,128,128,0.2); }
+    .flow-spacer { height: 36px; width: 100%; flex-shrink: 0; }
     .flow-legs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; }
-    .flow-legs .flow-tick { width: 1.5px; height: 12px; }
-    .flow-join { position: relative; width: 50%; height: 18px; margin: 0 auto; opacity: 0; }
-    .flow-join::before { content: ''; position: absolute; bottom: 0; left: 50%; width: 1.5px; height: 100%; background: rgba(128,128,128,0.2); transform: translateX(-50%); }
-    .flow-join::after { content: ''; position: absolute; top: 0; left: 12.5%; right: 12.5%; height: 1.5px; background: rgba(128,128,128,0.2); }
+    .flow-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 0; }
+    .flow-svg path.fc { transition: stroke-dashoffset 0.45s ease; transition-delay: var(--fd, 0s); }
+    .flow-pulse { animation: flowPulse 2.4s ease-in-out infinite; animation-play-state: paused; offset-rotate: 0deg; }
     .flow-diagram.flow-in .flow-col-label,
-    .flow-diagram.flow-in .flow-node,
-    .flow-diagram.flow-in .flow-tick,
-    .flow-diagram.flow-in .flow-split,
-    .flow-diagram.flow-in .flow-join { animation: flowFadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards; animation-delay: var(--fd, 0s); }
+    .flow-diagram.flow-in .flow-node { animation: flowFadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards; animation-delay: var(--fd, 0s); }
+    .flow-diagram.flow-in .flow-pulse { animation-play-state: running; }
 
     /* ── Word reveal ─────────────────────────────────────────────────── */
     @keyframes wordReveal {
@@ -332,7 +331,9 @@
       .scroll-fade { opacity: 1 !important; transform: none !important; }
       .fade-up { opacity: 1 !important; transform: none !important; animation: none !important; }
       .wr-word { opacity: 1 !important; transform: none !important; animation: none !important; }
-      .flow-col-label, .flow-node, .flow-tick, .flow-split, .flow-join { opacity: 1 !important; transform: none !important; animation: none !important; }
+      .flow-col-label, .flow-node { opacity: 1 !important; transform: none !important; animation: none !important; }
+      .flow-svg path.fc { transition: none !important; stroke-dashoffset: 0 !important; }
+      .flow-pulse { display: none !important; }
     }
 
     @media (max-width: 768px) {
@@ -483,33 +484,27 @@
       </div>
     </div>
 
-    <div class="flow-diagram">
+    <div class="flow-diagram" id="flow-diagram">
       <div class="flow-col">
         <div class="flow-col-label" style="--fd:0s">Where we are</div>
-        <div class="flow-node" style="--fd:0.05s">Search for content</div>
-        <div class="flow-tick" style="--fd:0.2s"></div>
-        <div class="flow-node" style="--fd:0.35s">Post to your feed</div>
-        <div class="flow-tick" style="--fd:0.5s"></div>
-        <div class="flow-node" style="--fd:0.65s">Followers see it</div>
+        <div class="flow-node" id="fn-search" style="--fd:0.05s">Search for content</div>
+        <div class="flow-spacer"></div>
+        <div class="flow-node" id="fn-post" style="--fd:0.3s">Post to your feed</div>
+        <div class="flow-spacer"></div>
+        <div class="flow-node" id="fn-followers" style="--fd:0.55s">Followers see it</div>
       </div>
       <div class="flow-col">
         <div class="flow-col-label" style="--fd:0s">The vision</div>
-        <div class="flow-node flow-node--key" style="--fd:0.05s">Search or post content</div>
-        <div class="flow-split" style="--fd:0.2s"></div>
+        <div class="flow-node flow-node--key" id="fn-action" style="--fd:0.05s">Search or post content</div>
+        <div class="flow-spacer"></div>
         <div class="flow-legs">
-          <div>
-            <div class="flow-tick" style="--fd:0.35s"></div>
-            <div class="flow-node flow-node--branch" style="--fd:0.42s">Communities around that content</div>
-          </div>
-          <div>
-            <div class="flow-tick" style="--fd:0.35s"></div>
-            <div class="flow-node flow-node--branch" style="--fd:0.42s">What others who posted are also into</div>
-          </div>
+          <div class="flow-node flow-node--branch" id="fn-communities" style="--fd:0.35s">Communities around that content</div>
+          <div class="flow-node flow-node--branch" id="fn-others" style="--fd:0.35s">What others who posted are also into</div>
         </div>
-        <div class="flow-join" style="--fd:0.55s"></div>
-        <div class="flow-tick" style="--fd:0.65s"></div>
-        <div class="flow-node flow-node--key" style="--fd:0.75s">Community discovery</div>
+        <div class="flow-spacer"></div>
+        <div class="flow-node flow-node--key" id="fn-discovery" style="--fd:0.65s">Community discovery</div>
       </div>
+      <svg class="flow-svg" id="flow-svg" aria-hidden="true"></svg>
     </div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
@@ -634,14 +629,106 @@
       fadeEls.forEach(function (el) { observer.observe(el); });
     }
 
-    var flowDiagram = document.querySelector('.flow-diagram');
+    function buildFlowSVG() {
+      var diagram = document.getElementById('flow-diagram');
+      var svg = document.getElementById('flow-svg');
+      if (!diagram || !svg) return;
+      svg.innerHTML = '';
+      var dr = diagram.getBoundingClientRect();
+      if (dr.width === 0) return;
+      function rn(id) {
+        var el = document.getElementById(id); if (!el) return null;
+        var r = el.getBoundingClientRect();
+        return { top: r.top - dr.top, bottom: r.bottom - dr.top, left: r.left - dr.left, right: r.right - dr.left, cx: (r.left + r.right) / 2 - dr.left };
+      }
+      var n = { s: rn('fn-search'), p: rn('fn-post'), f: rn('fn-followers'), a: rn('fn-action'), c: rn('fn-communities'), o: rn('fn-others'), d: rn('fn-discovery') };
+      if (!n.s || !n.p || !n.f || !n.a || !n.c || !n.o || !n.d) return;
+      var NS = 'http://www.w3.org/2000/svg';
+      var defs = document.createElementNS(NS, 'defs');
+      defs.innerHTML = '<marker id="ah-m" markerWidth="10" markerHeight="10" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="rgba(128,128,128,0.4)"/></marker><marker id="ah-g" markerWidth="10" markerHeight="10" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="rgba(42,138,90,0.65)"/></marker><filter id="glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>';
+      svg.appendChild(defs);
+      var paths = [];
+      function addPath(d, stroke, marker, delay) {
+        var p = document.createElementNS(NS, 'path');
+        p.setAttribute('d', d); p.setAttribute('fill', 'none');
+        p.setAttribute('stroke', stroke); p.setAttribute('stroke-width', '1.5');
+        p.setAttribute('class', 'fc');
+        if (marker) p.setAttribute('marker-end', 'url(#' + marker + ')');
+        p.style.setProperty('--fd', delay + 's');
+        svg.appendChild(p);
+        var len = p.getTotalLength();
+        p.setAttribute('stroke-dasharray', len);
+        p.style.strokeDashoffset = len;
+        paths.push(p);
+      }
+      function addPulse(d, fill, delay) {
+        if (!CSS.supports('offset-path', 'path("M0,0")')) return;
+        var c = document.createElementNS(NS, 'circle');
+        c.setAttribute('r', '3'); c.setAttribute('fill', fill);
+        c.setAttribute('filter', 'url(#glow)'); c.setAttribute('class', 'flow-pulse');
+        c.style.offsetPath = 'path("' + d + '")';
+        c.style.animationDelay = delay + 's';
+        svg.appendChild(c);
+      }
+      var d1 = 'M' + n.s.cx + ',' + (n.s.bottom + 2) + ' L' + n.p.cx + ',' + (n.p.top - 10);
+      var d2 = 'M' + n.p.cx + ',' + (n.p.bottom + 2) + ' L' + n.f.cx + ',' + (n.f.top - 10);
+      addPath(d1, 'rgba(128,128,128,0.3)', 'ah-m', 0.2);
+      addPath(d2, 'rgba(128,128,128,0.3)', 'ah-m', 0.45);
+      addPulse(d1, 'rgba(140,140,140,0.75)', 1.2);
+      addPulse(d2, 'rgba(140,140,140,0.75)', 1.8);
+      var sY = (n.a.bottom + Math.min(n.c.top, n.o.top)) / 2;
+      var jY = (Math.max(n.c.bottom, n.o.bottom) + n.d.top) / 2;
+      var mx = n.a.cx;
+      var dStem  = 'M' + mx  + ',' + (n.a.bottom + 2) + ' L' + mx  + ',' + sY;
+      var dBar   = 'M' + n.c.cx + ',' + sY + ' L' + n.o.cx + ',' + sY;
+      var dLC    = 'M' + n.c.cx + ',' + sY + ' L' + n.c.cx + ',' + (n.c.top - 10);
+      var dRC    = 'M' + n.o.cx + ',' + sY + ' L' + n.o.cx + ',' + (n.o.top - 10);
+      var dLJ    = 'M' + n.c.cx + ',' + (n.c.bottom + 2) + ' L' + n.c.cx + ',' + jY;
+      var dRJ    = 'M' + n.o.cx + ',' + (n.o.bottom + 2) + ' L' + n.o.cx + ',' + jY;
+      var dJBar  = 'M' + n.c.cx + ',' + jY + ' L' + n.o.cx + ',' + jY;
+      var dJStem = 'M' + mx  + ',' + jY + ' L' + mx  + ',' + (n.d.top - 10);
+      addPath(dStem,  'rgba(42,138,90,0.45)', null,   0.2);
+      addPath(dBar,   'rgba(42,138,90,0.3)',  null,   0.28);
+      addPath(dLC,    'rgba(42,138,90,0.45)', 'ah-g', 0.36);
+      addPath(dRC,    'rgba(42,138,90,0.45)', 'ah-g', 0.36);
+      addPath(dLJ,    'rgba(42,138,90,0.45)', null,   0.5);
+      addPath(dRJ,    'rgba(42,138,90,0.45)', null,   0.5);
+      addPath(dJBar,  'rgba(42,138,90,0.3)',  null,   0.58);
+      addPath(dJStem, 'rgba(42,138,90,0.45)', 'ah-g', 0.65);
+      var pL = 'M' + mx + ',' + (n.a.bottom + 2) + ' L' + mx + ',' + sY + ' L' + n.c.cx + ',' + sY + ' L' + n.c.cx + ',' + (n.c.top - 10);
+      var pR = 'M' + mx + ',' + (n.a.bottom + 2) + ' L' + mx + ',' + sY + ' L' + n.o.cx + ',' + sY + ' L' + n.o.cx + ',' + (n.o.top - 10);
+      var pJ = 'M' + n.c.cx + ',' + (n.c.bottom + 2) + ' L' + n.c.cx + ',' + jY + ' L' + mx + ',' + jY + ' L' + mx + ',' + (n.d.top - 10);
+      addPulse(pL, 'rgba(42,138,90,0.8)', 1.2);
+      addPulse(pR, 'rgba(42,138,90,0.8)', 1.9);
+      addPulse(pJ, 'rgba(42,138,90,0.8)', 2.6);
+      diagram._animatePaths = function() { paths.forEach(function(p) { p.style.strokeDashoffset = '0'; }); };
+    }
+
+    var flowDiagram = document.getElementById('flow-diagram');
     if (flowDiagram) {
-      var flowObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) { entry.target.classList.add('flow-in'); flowObserver.unobserve(entry.target); }
+      buildFlowSVG();
+      var flowObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('flow-in');
+            requestAnimationFrame(function() {
+              requestAnimationFrame(function() {
+                if (entry.target._animatePaths) entry.target._animatePaths();
+              });
+            });
+            flowObserver.unobserve(entry.target);
+          }
         });
-      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
       flowObserver.observe(flowDiagram);
+      var resizeTimer;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+          buildFlowSVG();
+          if (flowDiagram.classList.contains('flow-in') && flowDiagram._animatePaths) flowDiagram._animatePaths();
+        }, 100);
+      });
     }
 
   </script>
