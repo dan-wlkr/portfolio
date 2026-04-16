@@ -532,13 +532,23 @@
 
   <script src="nav.js"></script>
   <script>
-    // Word reveal
+    // Word reveal — handles plain text and mixed HTML children
     document.querySelectorAll('.word-reveal').forEach(function(el) {
       var delay = parseFloat(el.dataset.delay || 0);
-      var words = el.textContent.trim().split(/\s+/);
-      el.innerHTML = words.map(function(w, i) {
-        var safe = w.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        return '<span class="wr-word" style="animation-delay:' + (delay + i * 0.055).toFixed(3) + 's">' + safe + '</span>';
+      var units = [];
+      el.childNodes.forEach(function(node) {
+        if (node.nodeType === 3) {
+          node.textContent.trim().split(/\s+/).filter(Boolean).forEach(function(w) {
+            units.push({ text: w });
+          });
+        } else if (node.nodeType === 1) {
+          units.push({ html: node.outerHTML });
+        }
+      });
+      el.innerHTML = units.map(function(u, i) {
+        var d = (delay + i * 0.055).toFixed(3);
+        var inner = u.html || u.text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return '<span class="wr-word" style="animation-delay:' + d + 's">' + inner + '</span>';
       }).join(' ');
     });
 
