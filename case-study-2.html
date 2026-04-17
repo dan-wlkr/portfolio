@@ -283,10 +283,6 @@
     .ar-phone     { aspect-ratio: 59/128; }
 
     /* ── Flow diagram ────────────────────────────────────────────────── */
-    @keyframes flowFadeUp {
-      from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
     @keyframes flowPulse {
       0%   { offset-distance: 5%;  opacity: 0; }
       12%  { opacity: 1; }
@@ -295,13 +291,13 @@
     }
     .flow-diagram { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(128,128,128,0.13); border-radius: 16px; overflow: hidden; margin: 48px 0; position: relative; }
     .flow-col { padding: 28px 24px 32px; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; }
-    .flow-col + .flow-col { border-left: 1px solid rgba(128,128,128,0.13); background: rgba(42,138,90,0.02); }
+    .flow-col + .flow-col { border-left: 1px solid rgba(128,128,128,0.1); background: rgba(42,138,90,0.02); }
     .flow-col--vision { padding-right: 44px; }
-    .flow-col-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); opacity: 0; margin-bottom: 20px; align-self: flex-start; }
-    .flow-node { border: 1.5px solid rgba(128,128,128,0.2); border-radius: 8px; padding: 9px 14px; font-size: 0.8rem; font-weight: 500; color: var(--ink); text-align: center; width: 100%; line-height: 1.35; opacity: 0; }
-    .flow-node--key { background: var(--purple); border-color: var(--purple); color: #fff; box-shadow: 0 2px 12px rgba(42,138,90,0.25); }
-    .flow-node--discovery { background: linear-gradient(160deg, #3daf78 0%, #1a6642 100%) !important; border-color: transparent !important; box-shadow: 0 0 0 1px rgba(255,255,255,0.1) inset, 0 4px 28px rgba(42,138,90,0.5), 0 0 56px rgba(42,138,90,0.15) !important; }
-    .flow-node--branch { border-color: rgba(42,138,90,0.3); color: var(--purple); background: rgba(42,138,90,0.05); }
+    .flow-col-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); opacity: 0.5; margin-bottom: 20px; align-self: flex-start; }
+    .flow-node { border: 1px solid rgba(128,128,128,0.15); border-radius: 8px; padding: 10px 16px; font-size: 0.8rem; font-weight: 500; color: var(--ink); text-align: center; width: 100%; line-height: 1.4; }
+    .flow-node--key { background: rgba(42,138,90,0.07); border-color: rgba(42,138,90,0.35); color: var(--purple); }
+    .flow-node--discovery { background: rgba(42,138,90,0.12); border-color: var(--purple); color: var(--purple); font-weight: 600; }
+    .flow-node--branch { border-color: rgba(42,138,90,0.2); color: var(--purple); background: rgba(42,138,90,0.04); }
     .flow-spacer { height: 36px; width: 100%; flex-shrink: 0; }
     .flow-legs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; }
     .flow-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 0; }
@@ -309,8 +305,6 @@
     .flow-pulse { animation: flowPulse 2.4s ease-in-out infinite; animation-play-state: paused; offset-rotate: 0deg; }
     .flow-loop { opacity: 0; transition: opacity 0.5s ease 0.9s; }
     .flow-diagram.flow-in .flow-loop { opacity: 1; }
-    .flow-diagram.flow-in .flow-col-label,
-    .flow-diagram.flow-in .flow-node { animation: flowFadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards; animation-delay: var(--fd, 0s); }
     .flow-diagram.flow-in .flow-pulse { animation-play-state: running; }
 
     /* ── Word reveal ─────────────────────────────────────────────────── */
@@ -329,7 +323,6 @@
       .scroll-fade { opacity: 1 !important; transform: none !important; }
       .fade-up { opacity: 1 !important; transform: none !important; animation: none !important; }
       .wr-word { opacity: 1 !important; transform: none !important; animation: none !important; }
-      .flow-col-label, .flow-node { opacity: 1 !important; transform: none !important; animation: none !important; }
       .flow-svg path.fc { transition: none !important; stroke-dashoffset: 0 !important; }
       .flow-loop { opacity: 1 !important; transition: none !important; }
       .flow-pulse { display: none !important; }
@@ -347,9 +340,7 @@
       .flow-col--vision { padding-right: 24px; }
       .flow-legs { grid-template-columns: 1fr; }
       .flow-svg { display: none; }
-      .flow-spacer { position: relative; height: 28px; }
-      .flow-spacer::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1.5px; background: rgba(128,128,128,0.2); transform: translateX(-50%); }
-      .flow-col--vision .flow-spacer::after { background: rgba(42,138,90,0.35); }
+      .flow-spacer { height: 20px; }
       #main-nav { transition: opacity 0.3s ease; }
       #main-nav.hidden-nav { transform: translateX(-50%); opacity: 0; pointer-events: none; }
       .img-cols-2, .img-cols-3 { grid-template-columns: 1fr; }
@@ -492,23 +483,23 @@
 
     <div class="flow-diagram" id="flow-diagram">
       <div class="flow-col">
-        <div class="flow-col-label" style="--fd:0s">Where we are</div>
-        <div class="flow-node" id="fn-search" style="--fd:0.05s">Search for content</div>
+        <div class="flow-col-label">Where we are</div>
+        <div class="flow-node scroll-fade" id="fn-search">Search for content</div>
         <div class="flow-spacer"></div>
-        <div class="flow-node" id="fn-post" style="--fd:0.3s">Post to your feed</div>
+        <div class="flow-node scroll-fade" id="fn-post">Post to your feed</div>
         <div class="flow-spacer"></div>
-        <div class="flow-node" id="fn-followers" style="--fd:0.55s">Followers see it</div>
+        <div class="flow-node scroll-fade" id="fn-followers">Followers see it</div>
       </div>
       <div class="flow-col flow-col--vision">
-        <div class="flow-col-label" style="--fd:0s">The vision</div>
-        <div class="flow-node flow-node--key" id="fn-action" style="--fd:0.05s">Search or post content</div>
+        <div class="flow-col-label">The vision</div>
+        <div class="flow-node flow-node--key scroll-fade" id="fn-action">Search or post content</div>
         <div class="flow-spacer"></div>
         <div class="flow-legs">
-          <div class="flow-node flow-node--branch" id="fn-communities" style="--fd:0.35s">Communities around that content</div>
-          <div class="flow-node flow-node--branch" id="fn-others" style="--fd:0.35s">Taste overlap with similar posters</div>
+          <div class="flow-node flow-node--branch scroll-fade" id="fn-communities">Communities around that content</div>
+          <div class="flow-node flow-node--branch scroll-fade" id="fn-others">Taste overlap with similar posters</div>
         </div>
         <div class="flow-spacer"></div>
-        <div class="flow-node flow-node--key flow-node--discovery" id="fn-discovery" style="--fd:0.65s">Community discovery</div>
+        <div class="flow-node flow-node--key flow-node--discovery scroll-fade" id="fn-discovery">Community discovery</div>
       </div>
       <svg class="flow-svg" id="flow-svg" aria-hidden="true"></svg>
     </div>
