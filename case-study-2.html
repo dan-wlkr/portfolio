@@ -456,52 +456,6 @@
       </div>
     </section>
 
-    <div class="img-grid img-cols-3 scroll-fade">
-      <div>
-        <div class="img-frame">
-          <img class="img-light ar-phone" src="images/cs2-wireframe-1-light.jpg" alt="Feed wireframe">
-          <img class="img-dark ar-phone" src="images/cs2-wireframe-1-dark.jpg" alt="Feed wireframe">
-        </div>
-        <p class="img-caption">Social feed — chronological, no algorithm</p>
-      </div>
-      <div>
-        <div class="img-frame">
-          <img class="img-light ar-phone" src="images/cs2-wireframe-2-light.jpg" alt="Post composer wireframe">
-          <img class="img-dark ar-phone" src="images/cs2-wireframe-2-dark.jpg" alt="Post composer wireframe">
-        </div>
-        <p class="img-caption">Content search and post composer</p>
-      </div>
-      <div>
-        <div class="img-frame">
-          <img class="img-light ar-phone" src="images/cs2-wireframe-3-light.jpg" alt="Profile wireframe">
-          <img class="img-dark ar-phone" src="images/cs2-wireframe-3-dark.jpg" alt="Profile wireframe">
-        </div>
-        <p class="img-caption">Profile — a shelf of what you're into</p>
-      </div>
-    </div>
-
-    <div class="flow-diagram" id="flow-diagram">
-      <div class="flow-col">
-        <div class="flow-col-label">Where we are</div>
-        <div class="flow-node scroll-fade" id="fn-search">Search for content</div>
-        <div class="flow-spacer"></div>
-        <div class="flow-node scroll-fade" id="fn-post">Post to your feed</div>
-        <div class="flow-spacer"></div>
-        <div class="flow-node scroll-fade" id="fn-followers">Followers see it</div>
-      </div>
-      <div class="flow-col flow-col--vision">
-        <div class="flow-col-label">The vision</div>
-        <div class="flow-node flow-node--key scroll-fade" id="fn-action">Search or post content</div>
-        <div class="flow-spacer"></div>
-        <div class="flow-legs">
-          <div class="flow-node flow-node--branch scroll-fade" id="fn-communities">Communities around that content</div>
-          <div class="flow-node flow-node--branch scroll-fade" id="fn-others">Taste overlap with similar posters</div>
-        </div>
-        <div class="flow-spacer"></div>
-        <div class="flow-node flow-node--key flow-node--discovery scroll-fade" id="fn-discovery">Community discovery</div>
-      </div>
-      <svg class="flow-svg" id="flow-svg" aria-hidden="true"></svg>
-    </div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">The friction problem</h2>
@@ -561,11 +515,40 @@
       </div>
     </div>
 
-    <section class="scroll-fade" style="margin-bottom: 64px; margin-top: 64px;">
-      <h2 class="section-title">What I'm still figuring out</h2>
+    <section class="scroll-fade" style="margin-bottom: 40px; margin-top: 64px;">
+      <h2 class="section-title">Where it's heading</h2>
       <p class="body-text">
-        The hardest product question with Currently isn't the design — it's the cold start problem. A social app lives or dies on network effects, and a feed full of people you don't follow is just noise. I've been thinking about this a lot: whether discovery by shared taste (surfacing users who share your interests) can substitute for the social graph early on, and whether the richness of the content itself can make browsing strangers' shelves feel worthwhile.
+        The hardest product question with Currently isn't the design — it's the cold start problem. A social app lives or dies on network effects, and a feed full of people you don't follow is just noise. The answer I keep coming back to is using the content itself as the connective tissue. A post about a Haruki Murakami novel shouldn't just reach your followers — it should surface communities of people reading the same thing, and show you whose taste overlaps with yours across everything they're into.
       </p>
+      <p class="body-text">
+        That's a fundamentally different model from follow-first social. Instead of building a graph of people and hoping the content follows, you let shared content build the graph. Search or post something, and the app uses that signal to pull you toward people and communities you wouldn't have found otherwise.
+      </p>
+    </section>
+
+    <div class="flow-diagram" id="flow-diagram">
+      <div class="flow-col">
+        <div class="flow-col-label">Where we are</div>
+        <div class="flow-node scroll-fade" id="fn-search">Search for content</div>
+        <div class="flow-spacer"></div>
+        <div class="flow-node scroll-fade" id="fn-post">Post to your feed</div>
+        <div class="flow-spacer"></div>
+        <div class="flow-node scroll-fade" id="fn-followers">Followers see it</div>
+      </div>
+      <div class="flow-col flow-col--vision">
+        <div class="flow-col-label">The vision</div>
+        <div class="flow-node flow-node--key scroll-fade" id="fn-action">Search or post content</div>
+        <div class="flow-spacer"></div>
+        <div class="flow-legs">
+          <div class="flow-node flow-node--branch scroll-fade" id="fn-communities">Communities around that content</div>
+          <div class="flow-node flow-node--branch scroll-fade" id="fn-others">Taste overlap with similar posters</div>
+        </div>
+        <div class="flow-spacer"></div>
+        <div class="flow-node flow-node--key flow-node--discovery scroll-fade" id="fn-discovery">Community discovery</div>
+      </div>
+      <svg class="flow-svg" id="flow-svg" aria-hidden="true"></svg>
+    </div>
+
+    <section class="scroll-fade" style="margin-bottom: 64px;">
       <p class="body-text">
         The bigger question is whether the constraints hold under pressure. Finite scroll feels right in principle, but it's genuinely hard to design for the moment when someone has seen everything new and the app has nothing left to show them. The honest answer might be: that's the right outcome. Close the app. Go read the book someone just posted about.
       </p>
