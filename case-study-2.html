@@ -666,17 +666,17 @@
         c.style.animationDelay = delay + 's';
         svg.appendChild(c);
       }
-      var d1 = 'M' + n.s.cx + ',' + (n.s.bottom + 2) + ' L' + n.p.cx + ',' + (n.p.top - 10);
-      var d2 = 'M' + n.p.cx + ',' + (n.p.bottom + 2) + ' L' + n.f.cx + ',' + (n.f.top - 10);
+      var d1 = 'M' + n.s.cx + ',' + n.s.bottom + ' L' + n.p.cx + ',' + n.p.top;
+      var d2 = 'M' + n.p.cx + ',' + n.p.bottom + ' L' + n.f.cx + ',' + n.f.top;
       addPath(d1, 'rgba(128,128,128,0.3)', null, 0.2);
       addPath(d2, 'rgba(128,128,128,0.3)', null, 0.45);
       addPulse(d1, 'rgba(140,140,140,0.75)', 1.2);
       addPulse(d2, 'rgba(140,140,140,0.75)', 1.8);
       var isMobile = Math.abs(n.c.cx - n.o.cx) < 10;
       if (isMobile) {
-        var mAC = 'M' + n.a.cx + ',' + (n.a.bottom + 2) + ' L' + n.c.cx + ',' + (n.c.top - 10);
-        var mCO = 'M' + n.c.cx + ',' + (n.c.bottom + 2) + ' L' + n.o.cx + ',' + (n.o.top - 10);
-        var mOD = 'M' + n.o.cx + ',' + (n.o.bottom + 2) + ' L' + n.d.cx + ',' + (n.d.top - 10);
+        var mAC = 'M' + n.a.cx + ',' + n.a.bottom + ' L' + n.c.cx + ',' + n.c.top;
+        var mCO = 'M' + n.c.cx + ',' + n.c.bottom + ' L' + n.o.cx + ',' + n.o.top;
+        var mOD = 'M' + n.o.cx + ',' + n.o.bottom + ' L' + n.d.cx + ',' + n.d.top;
         addPath(mAC, 'rgba(42,138,90,0.45)', null, 0.2);
         addPath(mCO, 'rgba(42,138,90,0.35)', null, 0.35);
         addPath(mOD, 'rgba(42,138,90,0.45)', null, 0.5);
@@ -695,14 +695,14 @@
         var sY = (n.a.bottom + Math.min(n.c.top, n.o.top)) / 2;
         var jY = (Math.max(n.c.bottom, n.o.bottom) + n.d.top) / 2;
         var mx = n.a.cx;
-        var dStem  = 'M' + mx  + ',' + (n.a.bottom + 2) + ' L' + mx  + ',' + sY;
+        var dStem  = 'M' + mx  + ',' + n.a.bottom + ' L' + mx  + ',' + sY;
         var dBar   = 'M' + n.c.cx + ',' + sY + ' L' + n.o.cx + ',' + sY;
-        var dLC    = 'M' + n.c.cx + ',' + sY + ' L' + n.c.cx + ',' + (n.c.top - 10);
-        var dRC    = 'M' + n.o.cx + ',' + sY + ' L' + n.o.cx + ',' + (n.o.top - 10);
-        var dLJ    = 'M' + n.c.cx + ',' + (n.c.bottom + 2) + ' L' + n.c.cx + ',' + jY;
-        var dRJ    = 'M' + n.o.cx + ',' + (n.o.bottom + 2) + ' L' + n.o.cx + ',' + jY;
+        var dLC    = 'M' + n.c.cx + ',' + sY + ' L' + n.c.cx + ',' + n.c.top;
+        var dRC    = 'M' + n.o.cx + ',' + sY + ' L' + n.o.cx + ',' + n.o.top;
+        var dLJ    = 'M' + n.c.cx + ',' + n.c.bottom + ' L' + n.c.cx + ',' + jY;
+        var dRJ    = 'M' + n.o.cx + ',' + n.o.bottom + ' L' + n.o.cx + ',' + jY;
         var dJBar  = 'M' + n.c.cx + ',' + jY + ' L' + n.o.cx + ',' + jY;
-        var dJStem = 'M' + mx  + ',' + jY + ' L' + mx  + ',' + (n.d.top - 10);
+        var dJStem = 'M' + mx  + ',' + jY + ' L' + mx  + ',' + n.d.top;
         addPath(dStem,  'rgba(42,138,90,0.45)', null, 0.2);
         addPath(dBar,   'rgba(42,138,90,0.3)',  null, 0.28);
         addPath(dLC,    'rgba(42,138,90,0.45)', null, 0.36);
@@ -718,9 +718,9 @@
         loopPath.setAttribute('stroke', 'rgba(42,138,90,0.25)'); loopPath.setAttribute('stroke-width', '1.5');
         loopPath.setAttribute('stroke-dasharray', '4 5'); loopPath.setAttribute('class', 'flow-loop');
         svg.appendChild(loopPath);
-        var pL = 'M' + mx + ',' + (n.a.bottom + 2) + ' L' + mx + ',' + sY + ' L' + n.c.cx + ',' + sY + ' L' + n.c.cx + ',' + (n.c.top - 10);
-        var pR = 'M' + mx + ',' + (n.a.bottom + 2) + ' L' + mx + ',' + sY + ' L' + n.o.cx + ',' + sY + ' L' + n.o.cx + ',' + (n.o.top - 10);
-        var pJ = 'M' + n.c.cx + ',' + (n.c.bottom + 2) + ' L' + n.c.cx + ',' + jY + ' L' + mx + ',' + jY + ' L' + mx + ',' + (n.d.top - 10);
+        var pL = 'M' + mx + ',' + n.a.bottom + ' L' + mx + ',' + sY + ' L' + n.c.cx + ',' + sY + ' L' + n.c.cx + ',' + n.c.top;
+        var pR = 'M' + mx + ',' + n.a.bottom + ' L' + mx + ',' + sY + ' L' + n.o.cx + ',' + sY + ' L' + n.o.cx + ',' + n.o.top;
+        var pJ = 'M' + n.c.cx + ',' + n.c.bottom + ' L' + n.c.cx + ',' + jY + ' L' + mx + ',' + jY + ' L' + mx + ',' + n.d.top;
         addPulse(pL, 'rgba(42,138,90,0.8)', 1.2);
         addPulse(pR, 'rgba(42,138,90,0.8)', 1.9);
         addPulse(pJ, 'rgba(42,138,90,0.8)', 2.6);
