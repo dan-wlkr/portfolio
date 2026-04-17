@@ -295,13 +295,13 @@
     }
     .flow-diagram { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(128,128,128,0.13); border-radius: 16px; overflow: hidden; margin: 48px 0; position: relative; }
     .flow-col { padding: 28px 24px 32px; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; }
-    .flow-col + .flow-col { border-left: 1px solid rgba(128,128,128,0.13); background: rgba(99,102,241,0.025); }
+    .flow-col + .flow-col { border-left: 1px solid rgba(128,128,128,0.13); background: rgba(42,138,90,0.02); }
     .flow-col--vision { padding-right: 44px; }
     .flow-col-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); opacity: 0; margin-bottom: 20px; align-self: flex-start; }
     .flow-node { border: 1.5px solid rgba(128,128,128,0.2); border-radius: 8px; padding: 9px 14px; font-size: 0.8rem; font-weight: 500; color: var(--ink); text-align: center; width: 100%; line-height: 1.35; opacity: 0; }
-    .flow-node--key { background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%); border-color: transparent; color: #fff; box-shadow: 0 2px 16px rgba(99,102,241,0.3); }
-    .flow-node--discovery { background: linear-gradient(135deg, #a78bfa 0%, #3730a3 100%) !important; border-color: transparent !important; box-shadow: 0 0 0 1px rgba(255,255,255,0.12) inset, 0 4px 32px rgba(99,102,241,0.6), 0 0 72px rgba(167,139,250,0.25) !important; }
-    .flow-node--branch { border-color: rgba(99,102,241,0.28); color: #4f46e5; background: rgba(99,102,241,0.05); }
+    .flow-node--key { background: var(--purple); border-color: var(--purple); color: #fff; box-shadow: 0 2px 12px rgba(42,138,90,0.25); }
+    .flow-node--discovery { background: linear-gradient(160deg, #3daf78 0%, #1a6642 100%) !important; border-color: transparent !important; box-shadow: 0 0 0 1px rgba(255,255,255,0.1) inset, 0 4px 28px rgba(42,138,90,0.5), 0 0 56px rgba(42,138,90,0.15) !important; }
+    .flow-node--branch { border-color: rgba(42,138,90,0.3); color: var(--purple); background: rgba(42,138,90,0.05); }
     .flow-spacer { height: 36px; width: 100%; flex-shrink: 0; }
     .flow-legs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; }
     .flow-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 0; }
@@ -342,6 +342,14 @@
       .nav-dropdown-trigger { font-size: 0.875rem !important; padding: 6px 10px; }
       .theme-toggle { width: 30px; height: 30px; }
       .two-col { grid-template-columns: 1fr; }
+      .flow-diagram { grid-template-columns: 1fr; }
+      .flow-col + .flow-col { border-left: none; border-top: 1px solid rgba(128,128,128,0.13); }
+      .flow-col--vision { padding-right: 24px; }
+      .flow-legs { grid-template-columns: 1fr; }
+      .flow-svg { display: none; }
+      .flow-spacer { position: relative; height: 28px; }
+      .flow-spacer::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1.5px; background: rgba(128,128,128,0.2); transform: translateX(-50%); }
+      .flow-col--vision .flow-spacer::after { background: rgba(42,138,90,0.35); }
       #main-nav { transition: opacity 0.3s ease; }
       #main-nav.hidden-nav { transform: translateX(-50%); opacity: 0; pointer-events: none; }
       .img-cols-2, .img-cols-3 { grid-template-columns: 1fr; }
@@ -685,29 +693,29 @@
       var dRJ    = 'M' + n.o.cx + ',' + (n.o.bottom + 2) + ' L' + n.o.cx + ',' + jY;
       var dJBar  = 'M' + n.c.cx + ',' + jY + ' L' + n.o.cx + ',' + jY;
       var dJStem = 'M' + mx  + ',' + jY + ' L' + mx  + ',' + (n.d.top - 10);
-      addPath(dStem,  'rgba(99,102,241,0.45)', null, 0.2);
-      addPath(dBar,   'rgba(99,102,241,0.3)',  null, 0.28);
-      addPath(dLC,    'rgba(99,102,241,0.45)', null, 0.36);
-      addPath(dRC,    'rgba(99,102,241,0.45)', null, 0.36);
-      addPath(dLJ,    'rgba(99,102,241,0.45)', null, 0.5);
-      addPath(dRJ,    'rgba(99,102,241,0.45)', null, 0.5);
-      addPath(dJBar,  'rgba(99,102,241,0.3)',  null, 0.58);
-      addPath(dJStem, 'rgba(99,102,241,0.45)', null, 0.65);
+      addPath(dStem,  'rgba(42,138,90,0.45)', null, 0.2);
+      addPath(dBar,   'rgba(42,138,90,0.3)',  null, 0.28);
+      addPath(dLC,    'rgba(42,138,90,0.45)', null, 0.36);
+      addPath(dRC,    'rgba(42,138,90,0.45)', null, 0.36);
+      addPath(dLJ,    'rgba(42,138,90,0.45)', null, 0.5);
+      addPath(dRJ,    'rgba(42,138,90,0.45)', null, 0.5);
+      addPath(dJBar,  'rgba(42,138,90,0.3)',  null, 0.58);
+      addPath(dJStem, 'rgba(42,138,90,0.45)', null, 0.65);
       // Feedback loop: dashed bezier from discovery back to action (right margin of vision col)
       var loopX = n.d.right + 20;
       var dLoop = 'M' + n.d.right + ',' + n.d.cy + ' C' + loopX + ',' + n.d.cy + ' ' + loopX + ',' + n.a.cy + ' ' + n.a.right + ',' + n.a.cy;
       var loopPath = document.createElementNS(NS, 'path');
       loopPath.setAttribute('d', dLoop); loopPath.setAttribute('fill', 'none');
-      loopPath.setAttribute('stroke', 'rgba(99,102,241,0.28)'); loopPath.setAttribute('stroke-width', '1.5');
+      loopPath.setAttribute('stroke', 'rgba(42,138,90,0.25)'); loopPath.setAttribute('stroke-width', '1.5');
       loopPath.setAttribute('stroke-dasharray', '4 5'); loopPath.setAttribute('class', 'flow-loop');
       svg.appendChild(loopPath);
       var pL = 'M' + mx + ',' + (n.a.bottom + 2) + ' L' + mx + ',' + sY + ' L' + n.c.cx + ',' + sY + ' L' + n.c.cx + ',' + (n.c.top - 10);
       var pR = 'M' + mx + ',' + (n.a.bottom + 2) + ' L' + mx + ',' + sY + ' L' + n.o.cx + ',' + sY + ' L' + n.o.cx + ',' + (n.o.top - 10);
       var pJ = 'M' + n.c.cx + ',' + (n.c.bottom + 2) + ' L' + n.c.cx + ',' + jY + ' L' + mx + ',' + jY + ' L' + mx + ',' + (n.d.top - 10);
-      addPulse(pL, 'rgba(139,92,246,0.85)', 1.2);
-      addPulse(pR, 'rgba(139,92,246,0.85)', 1.9);
-      addPulse(pJ, 'rgba(139,92,246,0.85)', 2.6);
-      addPulse(dLoop, 'rgba(139,92,246,0.6)', 3.5);
+      addPulse(pL, 'rgba(42,138,90,0.8)', 1.2);
+      addPulse(pR, 'rgba(42,138,90,0.8)', 1.9);
+      addPulse(pJ, 'rgba(42,138,90,0.8)', 2.6);
+      addPulse(dLoop, 'rgba(42,138,90,0.55)', 3.5);
       diagram._animatePaths = function() { paths.forEach(function(p) { p.style.strokeDashoffset = '0'; }); };
     }
 
