@@ -511,10 +511,10 @@
 
     <!-- Back to home -->
     <div class="scroll-fade" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; padding-bottom:80px;">
-      <div>
+      <a href="index.html" style="text-decoration:none; color:inherit;">
         <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); opacity:0.6; margin-bottom:4px;">Back to</p>
         <p class="serif" style="font-size:1.25rem; margin:0;">All work</p>
-      </div>
+      </a>
       <a href="index.html" class="btn btn-ghost">← Home</a>
     </div>
   </div>
@@ -522,7 +522,6 @@
 
 
   <footer class="site-footer">
-    <a href="https://linkedin.com/in/danwlkr">LinkedIn</a>
     <a href="cv.html">CV</a>
     <a href="#" id="footer-email-link">dwlkr [at] me.com</a>
   </footer>
@@ -561,8 +560,6 @@
       }, { threshold: 0, rootMargin: '0px 0px -32px 0px' });
       fadeEls.forEach(function (el) { observer.observe(el); });
     }
-
-    })();
   </script>
 
 </body>
