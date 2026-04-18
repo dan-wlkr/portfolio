@@ -307,10 +307,11 @@
       .img-feature { grid-template-columns: 1fr; }
       .img-feature .feature-main { grid-row: span 1; }
       .img-feature .feature-main { align-self: auto; }
-      .img-feature .feature-main .img-frame { height: auto; aspect-ratio: 3/2; }
+      .img-feature .feature-main .img-frame { height: auto; }
       .img-feature > div:not(.feature-main) { display: block; align-self: auto; }
-      .img-feature > div:not(.feature-main) .img-frame { flex: none; aspect-ratio: 4/3; }
-      .img-feature .img-light, .img-feature .img-dark { height: auto; aspect-ratio: 4/3; }
+      .img-feature > div:not(.feature-main) .img-frame { flex: none; height: auto; }
+      .img-feature .img-light, .img-feature .img-dark { height: auto; width: 100%; }
+      .img-feature .img-frame img { height: auto; }
     }
   </style>
   <script>
