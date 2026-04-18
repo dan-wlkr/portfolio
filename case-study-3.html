@@ -256,6 +256,8 @@
     .img-frame { margin: 40px 0; border-radius: 14px; border: 1px solid rgba(128,128,128,0.15); overflow: hidden; }
     .img-grid { display: grid; gap: 12px; margin: 40px 0; }
     .img-grid .img-frame { margin: 0; }
+    .img-block { margin: 40px 0; }
+    .img-block .img-frame { margin: 0; }
     .img-caption { font-size: 0.72rem; color: var(--muted); opacity: 0.55; margin: 9px 0 0; text-align: center; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
     .img-cols-2 { grid-template-columns: 1fr 1fr; }
     .img-cols-3 { grid-template-columns: 1fr 1fr 1fr; }
@@ -343,14 +345,14 @@
   <!-- Header + Meta -->
   <div class="content-wrap" style="padding-top: 48px; padding-bottom: 56px;">
     <div class="fade-up d1" style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
-      <span class="tag tag-red">Mini project</span>
+      <span class="tag tag-purple">Case study</span>
       <span style="font-size: 0.8rem; font-weight: 500; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase;">Gridfinite</span>
     </div>
     <h1 class="word-reveal serif" data-delay="0.14" style="font-size: clamp(2rem, 4.5vw, 3.25rem); line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 20px;">
       Pass &amp; Play Game Design in iOS
     </h1>
     <p class="fade-up d3 body-text" style="max-width: 58ch; margin-bottom: 0;">
-      A summer project building a family-friendly strategy game with my son — from game mechanic sketches to a shipped iOS app, with Figma and Swift along the way.
+      A summer project building a family-friendly strategy game with my son. From game mechanic sketches to a shipped iOS app, using Figma and Swift along the way.
     </p>
     <a href="https://apps.apple.com/gb/app/gridfinite/id6751437117" target="_blank" rel="noopener" class="btn btn-ghost fade-up d4" style="margin-top: 24px;">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/></svg>
@@ -360,8 +362,7 @@
       <div class="meta-row">
         <div class="meta-item"><span class="meta-label">Project</span> <span class="meta-value">Gridfinite</span></div>
         <div class="meta-item"><span class="meta-label">Year</span> <span class="meta-value">2024</span></div>
-        <div class="meta-item"><span class="meta-label">Role</span> <span class="meta-value">Designer &amp; Co-developer</span></div>
-        <div class="meta-item"><span class="meta-label">Tools</span> <span class="meta-value">Figma, Swift, Xcode</span></div>
+        <div class="meta-item"><span class="meta-label">Role</span> <span class="meta-value">Developer &amp; Co-designer — iOS, Swift &amp; App Store deployment</span></div>
       </div>
     </div>
   </div>
@@ -373,10 +374,10 @@
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Why this project</h2>
       <p class="body-text">
-        I've always believed games are one of the best ways for families to spend time together — not passively, but actually engaging, arguing, laughing, making decisions. My son Arthur and I play a lot of both board games and video games together, and I'd been looking for a project we could build rather than just play.
+        Games are one of the best ways for families to spend time together. Not passively, but actually engaging, arguing, laughing, making decisions. Arthur and I play a lot of both board games and video games, and I'd been looking for something we could build together rather than just play.
       </p>
       <p class="body-text">
-        I'd been pushing into new territory with code — moving beyond HTML and CSS into frameworks like React and Vue, partly out of curiosity, partly because AI tools had made it genuinely realistic for a designer to build something real. This felt like the right moment to combine that with something meaningful: a summer project with Arthur that wasn't just a fun distraction, but a proper creative collaboration.
+        I'd been pushing into new territory with code. Moving beyond HTML and CSS into React and Vue, partly curiosity, partly because AI tools had made it genuinely realistic for a designer to build something real. This felt like the right moment to combine that with something meaningful. A summer project with Arthur that wasn't just a distraction, but a proper creative collaboration.
       </p>
       <p class="body-text">
         We both love Connect 4. So we started asking: what if the board had no size limit? What if there were more than two players? What if the grid was infinite? That question became Gridfinite.
@@ -386,28 +387,26 @@
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Starting in Figma Make</h2>
       <p class="body-text">
-        Figma Make had just launched and I'd already been using it at work for high-fidelity prototyping. It turned out to be the perfect sandbox for testing game concepts quickly — exploring what an infinite grid could feel like, how players would navigate it, how turns and tile placement would work. Within five prompts we had something playable enough to reveal the real design challenges.
+        Figma Make had just launched and I'd already been using it at work for high-fidelity prototyping. It was the perfect sandbox for testing game concepts quickly. We explored what an infinite grid could feel like, how players would navigate it, how turns and tile placement would work. Within five prompts we had something playable enough to reveal the real design challenges.
       </p>
       <div class="highlight-block">
-        <p>"Five prompts didn't give us a polished game. But they gave us a clear view of where to go next — which is exactly what prototyping is for."</p>
+        <p>"Five prompts didn't give us a polished game. But they gave us a clear view of where to go next. Which is exactly what prototyping is for."</p>
       </div>
       <p class="body-text">
-        While the output was rough, it let us iterate and visualise ideas at a pace that wouldn't have been possible any other way. Arthur would play something, tell me what felt wrong, and we'd adjust. That loop — design, play, react, repeat — became the rhythm of the whole project.
+        While the output was rough, it let us iterate at a pace that wouldn't have been possible any other way. Arthur would play something, tell me what felt wrong, and we'd adjust. Design, play, react, repeat. That became the rhythm of the whole project.
       </p>
     </section>
 
     <div class="img-grid img-cols-2 scroll-fade">
       <div>
         <div class="img-frame">
-          <img class="img-light ar-landscape" src="images/cs3-prototype-light.png" alt="Figma Make prototype">
-          <img class="img-dark ar-landscape" src="images/cs3-prototype-dark.png" alt="Figma Make prototype">
+          <img class="ar-landscape" src="images/figma-make.png" alt="Figma Make prototype — generic AI output">
         </div>
         <p class="img-caption">Early Figma Make prototype — five prompts in</p>
       </div>
       <div>
         <div class="img-frame">
-          <img class="img-light ar-landscape" src="images/cs3-sketch-light.png" alt="Initial UI concepts">
-          <img class="img-dark ar-landscape" src="images/cs3-sketch-dark.png" alt="Initial UI concepts">
+          <img class="ar-landscape" src="images/figma-make2.png" alt="Gridfinite menu design">
         </div>
         <p class="img-caption">Initial menu and button concepts finding the app's feel</p>
       </div>
@@ -416,20 +415,20 @@
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Moving to iOS</h2>
       <p class="body-text">
-        We started in Figma, refined the core mechanics, then set up the project in Cursor to manage the code together. The game originally began as a web app, but we quickly moved to Xcode — native iOS gave us far more control over the experience and access to the things that make mobile games feel good: haptics, sound, smooth animation.
+        We started in Figma, refined the core mechanics, then set up the project in Cursor to manage the code together. The game originally began as a web app, but we quickly moved to Xcode. Native iOS gave us far more control over the experience and access to the things that make mobile games feel good: haptics, sound, smooth animation.
       </p>
       <p class="body-text">
-        The build process was genuinely collaborative. I'd push for a UX change, Arthur would tell me if it was technically painful to implement, and we'd find a middle ground. There were moments where he was clearly right and I deferred to him — and moments where I had to explain why something that felt fine in code would feel wrong to a first-time player.
+        The build process was genuinely collaborative. I'd push for a UX change, Arthur would tell me if it was technically painful to implement, and we'd find a middle ground. Sometimes he was clearly right and I deferred to him. Other times I had to explain why something that felt fine in code would feel wrong to a first-time player.
       </p>
     </section>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Trusting an eight-year-old's instincts</h2>
       <p class="body-text">
-        The hardest design decision was the visual style. Cursor helped us build the mechanics, but the early designs felt generic. One day we found a glowing app that immediately caught our attention and we started exploring a Tron-like direction. I wanted to keep it modern and restrained — a clean grid aesthetic. Arthur wanted more glow, more vibrance, more drama.
+        The hardest design decision was the visual style. Cursor helped us build the mechanics, but the early designs felt generic. One day we found a glowing app that caught our attention and started exploring a Tron-like direction. I wanted something modern and restrained. Arthur wanted more glow, more vibrance, more drama.
       </p>
       <p class="body-text">
-        In the end, I trusted him. He's eight and he plays mobile games constantly. His instincts about what makes them feel exciting turned out to be exactly right. The final visual style — neon edges, glowing tiles, screen-edge colour feedback for whose turn it is — is largely his. I just made sure it stayed coherent.
+        In the end, I trusted him. He's eight and he plays mobile games constantly. His instincts about what makes them feel exciting turned out to be exactly right. Neon edges, glowing tiles, screen-edge colour feedback for whose turn it is. That's largely his. I just made sure it stayed coherent.
       </p>
     </section>
 
@@ -439,7 +438,7 @@
         The summer holidays gave us time to put Gridfinite through its paces with real people. We play-tested with everyone from four-year-olds to forty-year-olds, in groups of two up to seven, in cafés, on trains, and anywhere we could gather a willing crowd.
       </p>
       <p class="body-text">
-        Each session taught us something specific. Players would accidentally take another person's turn, so we added a preview step before tile placement. Power-ups were being missed entirely, so we increased their frequency — then overcorrected and had to dial it back. Some players didn't understand how power-ups worked, so we added explainer modals. Games were dragging when someone took too long, so we built an optional timer.
+        Each session taught us something specific. Players would accidentally take another person's turn, so we added a preview step before tile placement. Power-ups were being missed entirely, so we increased their frequency. Then we overcorrected and had to dial it back. Some players didn't understand how power-ups worked, so we added explainer modals. Games were dragging when someone took too long, so we built an optional timer.
       </p>
       <div class="highlight-block">
         <p>"The best feedback didn't come from a survey. It came from watching someone frown at the screen and trying to work out what they were confused about before they said anything."</p>
@@ -449,24 +448,29 @@
     <div class="img-grid img-cols-2 scroll-fade">
       <div>
         <div class="img-frame">
-          <img class="img-light ar-portrait" src="images/cs3-screen-1-light.png" alt="Game in progress">
-          <img class="img-dark ar-portrait" src="images/cs3-screen-1-dark.png" alt="Game in progress">
+          <img class="ar-landscape" src="images/research1.png" alt="Play-testing with family">
         </div>
-        <p class="img-caption">Game in progress — menu and board view</p>
+        <p class="img-caption">Ad hoc play-testing with Arthur and friends</p>
       </div>
       <div>
         <div class="img-frame">
-          <img class="img-light ar-portrait" src="images/cs3-screen-2-light.png" alt="iOS icon and tutorial">
-          <img class="img-dark ar-portrait" src="images/cs3-screen-2-dark.png" alt="iOS icon and tutorial">
+          <img class="ar-landscape" src="images/research2.png" alt="Play-testing with family and friends">
         </div>
-        <p class="img-caption">How to play tutorial and iOS icon design</p>
+        <p class="img-caption">Testing across different ages and group sizes</p>
       </div>
+    </div>
+
+    <div class="img-block scroll-fade">
+      <div class="img-frame">
+        <img class="ar-landscape" src="images/design.png" alt="Gridfinite app screens">
+      </div>
+      <p class="img-caption">Final app screens, refined through play-testing</p>
     </div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Finishing touches</h2>
       <p class="body-text">
-        The last stretch was about polish. We introduced a unified menu with smooth navigation and shifting background colours that guide players through the app without them needing to think about it. We added sound effects and haptic feedback — small things, but they make every move feel more satisfying. We expanded the winning effects and built a quick tutorial for first-time players.
+        The last stretch was about polish. We introduced a unified menu with smooth navigation and shifting background colours that guide players through the app without them needing to think about it. We added sound effects and haptic feedback. Small things, but they make every move feel more satisfying. We expanded the winning effects and built a quick tutorial for first-time players.
       </p>
       <p class="body-text">
         We also built a single-player mode with an AI opponent, trained using Google Colab. This came directly from play-testing: solo players wanted to practice before taking on family members. It was a reminder that solving one design problem often surfaces the next one.
@@ -496,7 +500,7 @@
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Where it's going</h2>
       <p class="body-text">
-        We've been testing in TestFlight and the response has been positive. There are still a few things to finish before it hits the App Store properly, and we're both excited about adding multiplayer through Game Centre — the next logical step for a game built around the idea of people playing together.
+        We've been testing in TestFlight and the response has been positive. There are still a few things to finish before it hits the App Store properly. We're both excited about adding multiplayer through Game Centre. It's the next logical step for a game built around people playing together.
       </p>
       <p class="body-text">
         If I had to sum up what this project taught me: ship something real with someone you care about. It will teach you more about design, collaboration, and what actually matters in a product than almost anything else. Arthur and I are already talking about what we build next.
