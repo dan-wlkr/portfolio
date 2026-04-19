@@ -114,14 +114,15 @@
     .cv-entry { margin-bottom: 40px; }
     .cv-entry:last-child { margin-bottom: 0; }
     .cv-entry-header { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 2px 16px; margin-bottom: 10px; }
-    .cv-entry-role { grid-column: 1; grid-row: 1; font-size: 1.05rem; font-weight: 500; color: var(--ink); margin: 0; }
+    .cv-entry-role { grid-column: 1; grid-row: 1; font-size: 1.05rem; font-weight: 700; color: var(--ink); margin: 0; }
     .cv-entry-date { grid-column: 2; grid-row: 1; font-size: 0.8rem; color: var(--muted); opacity: 0.55; white-space: nowrap; }
     .cv-entry-company { grid-column: 1; grid-row: 2; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); opacity: 0.5; margin: 0; }
     .cv-entry p { font-size: 0.9rem; line-height: 1.7; color: var(--muted); margin: 0 0 8px; }
     .cv-entry p:last-child { margin-bottom: 0; }
-    ul.cv-list { margin: 8px 0 0 16px; padding: 0; }
-    ul.cv-list li { font-size: 0.9rem; line-height: 1.7; color: var(--muted); margin-bottom: 6px; }
+    ul.cv-list { list-style: none; margin: 8px 0 0 0; padding: 0; }
+    ul.cv-list li { position: relative; padding-left: 18px; font-size: 0.9rem; line-height: 1.7; color: var(--muted); margin-bottom: 6px; }
     ul.cv-list li:last-child { margin-bottom: 0; }
+    ul.cv-list li::before { content: ''; position: absolute; left: 0; top: 0.62em; width: 5px; height: 5px; border-radius: 50%; background: var(--muted); opacity: 0.3; }
 
     /* ── Skills grid ──────────────────────────────────────────────────── */
     .cv-skills { display: flex; flex-wrap: wrap; gap: 8px; }
