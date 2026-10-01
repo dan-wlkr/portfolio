@@ -201,12 +201,21 @@
       padding-top: 140px; padding-bottom: clamp(32px, 5vh, 56px);
     }
     .hero-main { display: flex; flex-direction: column; gap: clamp(28px, 4vh, 44px); margin: auto 0; padding: 6vh 0; }
+    .avatar-wrap { position: relative; width: clamp(64px, 6vw, 88px); height: clamp(64px, 6vw, 88px); }
     .avatar {
-      display: inline-block; width: 0.95em; height: 0.95em; border-radius: 50%; overflow: hidden;
-      vertical-align: -0.12em; margin-right: 0.04em;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.12), 0 8px 24px -8px rgba(0,0,0,0.6);
+      width: 100%; height: 100%; border-radius: 50%; overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.12), 0 12px 32px -10px rgba(0,0,0,0.6);
     }
     .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+    .avatar-badge {
+      position: absolute; right: -10%; bottom: -8%;
+      width: 42%; height: 42%; padding: 6%;
+      border-radius: 50%; background: var(--bg);
+      color: var(--pink); display: flex;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+    }
+    .avatar-badge svg { width: 100%; height: 100%; animation: spin 14s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
     .hero-name {
       font-weight: 400; font-size: clamp(2.1rem, 4.6vw, 4.75rem); line-height: 1.14; letter-spacing: -0.02em;
       max-width: 18.5em; margin: 0; color: #f6f2ec;
@@ -340,6 +349,7 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
       .scroll-fade { opacity: 1 !important; transform: none !important; }
+      .avatar-badge svg { animation: none !important; }
       .fade-up { opacity: 1 !important; transform: none !important; animation: none !important; }
       .wr-word { opacity: 1 !important; transform: none !important; animation: none !important; }
     }
@@ -355,7 +365,11 @@
   <section class="hero-section" data-glow="rgba(255,107,53,0.16)|rgba(42,138,90,0.10)">
     <div class="content-wrap hero-inner">
       <div class="hero-main">
-        <h1 class="hero-name word-reveal" data-delay="0.14"><span class="avatar"><img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/dw.jpg" alt="Dan Walker"></span> I’m Dan — a <em>curious</em> product designer <span class="orn" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.2 5.8 11.1 12 12-6.2.9-11.1 5.8-12 12-.9-6.2-5.8-11.1-12-12C6.2 11.1 11.1 6.2 12 0z"/></svg></span> I make complex systems feel simple, and build design teams where there weren’t <span style="white-space:nowrap">any <span class="orn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><g transform="translate(12 12)"><ellipse rx="2.6" ry="5.6" cy="-6"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(72)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(144)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(216)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(288)"/></g></svg></span></span></h1>
+        <div class="avatar-wrap fade-up d1">
+          <div class="avatar"><img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/dw.jpg" alt="Dan Walker"></div>
+          <span class="avatar-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><g transform="translate(12 12)"><ellipse rx="2.6" ry="5.6" cy="-6"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(72)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(144)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(216)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(288)"/></g></svg></span>
+        </div>
+        <h1 class="hero-name word-reveal" data-delay="0.14">I’m Dan — a <em>curious</em> product designer <span class="orn" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.2 5.8 11.1 12 12-6.2.9-11.1 5.8-12 12-.9-6.2-5.8-11.1-12-12C6.2 11.1 11.1 6.2 12 0z"/></svg></span> I make complex systems feel simple, and build design teams where there weren’t <span style="white-space:nowrap">any <span class="orn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><g transform="translate(12 12)"><ellipse rx="2.6" ry="5.6" cy="-6"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(72)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(144)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(216)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(288)"/></g></svg></span></span></h1>
         <p class="hero-sub fade-up d3">Based in the UK — <a href="cv.html">More about me ↗</a></p>
       </div>
     </div>
