@@ -120,18 +120,15 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
 .cs-main { padding-top: clamp(80px, 11vw, 160px); }
 .cs-main > .divider:first-child { display: none; }
 .cs-main section {
-  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 24px; row-gap: 0;
+  max-width: 880px;
   margin-bottom: clamp(72px, 9vw, 140px) !important;
 }
-.cs-main section > * { grid-column: 6 / span 7; }
 .cs-main section > .section-title {
-  grid-column: 1 / span 4; grid-row: 1 / span 40; align-self: start;
-  position: sticky; top: 120px;
-  font-size: clamp(1.6rem, 2.6vw, 2.6rem); line-height: 1.1; letter-spacing: -0.02em;
-  margin: 0; color: var(--ink);
+  font-size: clamp(1.75rem, 2.8vw, 2.75rem); line-height: 1.1; letter-spacing: -0.02em;
+  margin: 0 0 clamp(20px, 2vw, 28px); color: var(--ink);
 }
 .cs-main .cs-note { max-width: none; margin: 0 0 clamp(64px, 8vw, 120px) !important; }
-.cs-main .cs-note > div { max-width: 640px; margin-left: auto; }
+.cs-main .cs-note > div { max-width: 880px; }
 .body-text { font-size: 1.1rem; line-height: 1.8; color: var(--muted); margin: 0 0 1.5rem; max-width: 40em; }
 
 .highlight-block {
@@ -198,8 +195,6 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
   .cs-intro-col, .cs-facts { grid-column: auto; }
   .cs-facts div { grid-template-columns: 6rem 1fr; }
   .cs-hero-img { height: 62vw; min-height: 240px; }
-  .cs-main section { display: block; }
-  .cs-main section > .section-title { position: static; margin-bottom: 20px; }
   .cs-main .cs-note > div { max-width: none; }
   .outcome-grid { grid-template-columns: 1fr !important; }
   .cs-next-row { align-items: center; }
