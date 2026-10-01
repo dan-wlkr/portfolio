@@ -204,15 +204,6 @@
       font-size: clamp(3.5rem, 12vw, 11rem); line-height: 0.95; letter-spacing: -0.035em;
       margin: 0; color: #f6f2ec;
     }
-    .inline-photo {
-      display: inline-block;
-      width: 0.8em; height: 0.8em;
-      border-radius: 50%; overflow: hidden;
-      vertical-align: middle;
-      position: relative; top: -0.06em;
-      background: rgba(128,128,128,0.15);
-    }
-    .inline-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
     .hero-foot {
       display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; align-items: start;
       padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.08);
@@ -220,18 +211,13 @@
     .hero-foot p { font-size: 1rem; line-height: 1.75; color: var(--muted); margin: 0; }
     .hero-foot .col-a { grid-column: 1 / span 4; }
     .hero-foot .col-b { grid-column: 6 / span 4; }
-    .scroll-cue {
-      grid-column: 12 / span 1; justify-self: end; align-self: end;
-      font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
+    .portrait {
+      grid-column: 11 / span 2; justify-self: end;
+      width: 100%; max-width: 168px; aspect-ratio: 4 / 5;
+      border-radius: 12px; overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 30px 60px -30px rgba(0,0,0,0.7);
     }
-    .scroll-cue::after {
-      content: ''; width: 1px; height: 40px;
-      background: linear-gradient(180deg, var(--muted), transparent);
-      animation: cue 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
-      transform-origin: top;
-    }
-    @keyframes cue { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; filter: grayscale(0.25) contrast(1.02); }
 
     /* ── Background glow (shifts per section) ────────────────────────── */
     @property --c1 { syntax: '<color>'; inherits: false; initial-value: rgba(255,107,53,0.16); }
@@ -330,7 +316,7 @@
       .content-wrap.hero-inner { padding-top: 112px; }
       .hero-foot { grid-template-columns: 1fr; gap: 16px; }
       .hero-foot .col-a, .hero-foot .col-b { grid-column: auto; }
-      .scroll-cue { display: none; }
+      .portrait { grid-column: auto; justify-self: start; max-width: 120px; order: -1; }
       .cs-img { height: 62vw; min-height: 240px; }
       .cs-info { grid-template-columns: 1fr; }
       .cs-meta, .cs-title, .cs-side { grid-column: auto; padding-top: 0; }
@@ -356,7 +342,6 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
       .scroll-fade { opacity: 1 !important; transform: none !important; }
-      .scroll-cue::after { animation: none !important; }
       .fade-up { opacity: 1 !important; transform: none !important; animation: none !important; }
       .wr-word { opacity: 1 !important; transform: none !important; animation: none !important; }
     }
@@ -374,11 +359,11 @@
       <div class="fade-up d1">
         <span class="label">Product Designer · UK</span>
       </div>
-      <h1 class="hero-name word-reveal" data-delay="0.14"><span class="inline-photo"><img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/dw.jpg" alt="Dan Walker"></span> Dan Walker</h1>
+      <h1 class="hero-name word-reveal" data-delay="0.14">Dan Walker</h1>
       <div class="hero-foot fade-up d3">
         <p class="col-a">I've always been curious about how things work. That curiosity started during my fine art degree and grew into over a decade building digital products — from freelance work to designing at scale.</p>
         <p class="col-b">I specialise in complex system design, high-fidelity prototyping, and building design practice in organisations where none previously existed. I work closely with engineering and product teams to turn strategy into user experience.</p>
-        <span class="scroll-cue" aria-hidden="true">Scroll</span>
+        <div class="portrait"><img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/dw.jpg" alt="Dan Walker"></div>
       </div>
     </div>
   </section>
