@@ -264,7 +264,8 @@
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
     }
     .cs-img {
-      width: 100%; height: 84vh; min-height: 420px; max-height: 1000px; overflow: hidden;
+      /* Leave room below for the title and text so a whole project fits on screen */
+      width: 100%; height: calc(100vh - 300px); height: calc(100svh - 300px); min-height: 380px; max-height: 1000px; overflow: hidden;
     }
     .ph {
       width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
