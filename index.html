@@ -273,16 +273,17 @@
       padding-top: clamp(28px, 3.2vw, 48px); align-items: start;
     }
     .cs-head { grid-column: 1 / span 7; }
-    .cs-meta { display: flex; align-items: center; gap: 20px; margin-bottom: 18px; }
+    .cs-meta { display: flex; align-items: center; gap: 20px; margin-bottom: 16px; }
     .cs-index, .cs-client {
       font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
       font-variant-numeric: tabular-nums;
     }
     .cs-index { opacity: 0.55; }
     .cs-title { font-weight: 400; font-size: clamp(1.9rem, 3.6vw, 3.5rem); line-height: 1.08; letter-spacing: -0.02em; margin: 0; max-width: 16em; }
-    .cs-side { grid-column: 9 / span 4; padding-top: calc(0.75rem * 1.5 + 18px + 0.35em); }
-    .cs-body  { font-size: 0.975rem; line-height: 1.75; color: var(--muted); margin: 0 0 1.25rem; }
-    .cs-link { display: inline-flex; align-items: center; gap: 8px; font-size: 0.875rem; font-weight: 500; color: var(--ink); }
+    .cs-head .cs-link { margin-top: clamp(20px, 2vw, 28px); }
+    .cs-side { grid-column: 9 / span 4; padding-top: 0.5em; }
+    .cs-body  { font-size: 0.975rem; line-height: 1.75; color: var(--muted); margin: 0; }
+    .cs-link { display: flex; width: max-content; align-items: center; gap: 8px; font-size: 0.875rem; font-weight: 500; color: var(--ink); }
     .cs-link .arrow { display: inline-block; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) !important; }
     .cs-card:hover .cs-link .arrow { transform: translateX(3px); }
 
@@ -330,9 +331,12 @@
       .content-wrap.hero-inner { padding-top: 112px; }
       .hero-name .lb { display: none; }
       .cs-img { height: 62vw; min-height: 240px; }
-      .cs-info { grid-template-columns: 1fr; gap: 20px; }
-      .cs-head, .cs-side { grid-column: auto; padding-top: 0; }
-      .cs-meta { justify-content: space-between; margin-bottom: 14px; }
+      .cs-info { display: flex; flex-direction: column; gap: 0; }
+      .cs-head, .cs-side { display: contents; }
+      .cs-meta { order: 1; justify-content: space-between; margin-bottom: 14px; }
+      .cs-title { order: 2; margin-bottom: 16px; }
+      .cs-body { order: 3; margin-bottom: 20px; }
+      .cs-head .cs-link { order: 4; margin-top: 0; }
       .nav-inner { padding: 7px 7px 7px 8px; gap: 2px; }
       .nav-links a { font-size: 0.875rem; padding: 6px 10px; }
       .nav-dropdown-trigger { font-size: 0.875rem !important; padding: 6px 10px; }
@@ -400,15 +404,15 @@
           </div></div>
           <div class="cs-info">
             <div class="cs-head">
-              <div class="cs-meta" data-reveal style="--d:0.3s">
+              <h3 class="serif cs-title word-reveal" data-delay="0.3">Modernising Warehouse Operations at Scale</h3>
+              <span class="cs-link" data-reveal style="--d:0.85s">View case study <span class="arrow" aria-hidden="true">→</span></span>
+            </div>
+            <div class="cs-side">
+              <div class="cs-meta" data-reveal style="--d:0.45s">
               <span class="cs-index">01 — Next PLC</span>
               <span class="label" style="--dot:var(--purple)">Case study</span>
             </div>
-              <h3 class="serif cs-title word-reveal" data-delay="0.4">Modernising Warehouse Operations at Scale</h3>
-            </div>
-            <div class="cs-side" data-reveal style="--d:0.75s">
-              <p class="cs-body">Next had no internal design function when I joined. I built it from scratch — establishing research practice, a shared design system, and ways of working across six product teams.</p>
-              <span class="cs-link">View case study <span class="arrow" aria-hidden="true">→</span></span>
+              <p class="cs-body" data-reveal style="--d:0.6s">Next had no internal design function when I joined. I built it from scratch — establishing research practice, a shared design system, and ways of working across six product teams.</p>
             </div>
           </div>
         </a>
@@ -424,15 +428,15 @@
           </div></div>
           <div class="cs-info">
             <div class="cs-head">
-              <div class="cs-meta" data-reveal style="--d:0.3s">
+              <h3 class="serif cs-title word-reveal" data-delay="0.3">Can social media be good for you?</h3>
+              <span class="cs-link" data-reveal style="--d:0.85s">View case study <span class="arrow" aria-hidden="true">→</span></span>
+            </div>
+            <div class="cs-side">
+              <div class="cs-meta" data-reveal style="--d:0.45s">
               <span class="cs-index">02 — Currently</span>
               <span class="label" style="--dot:var(--pink)">Work in progress</span>
             </div>
-              <h3 class="serif cs-title word-reveal" data-delay="0.4">Can social media be good for you?</h3>
-            </div>
-            <div class="cs-side" data-reveal style="--d:0.75s">
-              <p class="cs-body">Designing a social platform that measures success in books read and albums discovered. Not time spent scrolling.</p>
-              <span class="cs-link">View case study <span class="arrow" aria-hidden="true">→</span></span>
+              <p class="cs-body" data-reveal style="--d:0.6s">Designing a social platform that measures success in books read and albums discovered. Not time spent scrolling.</p>
             </div>
           </div>
         </a>
@@ -448,15 +452,15 @@
           </div></div>
           <div class="cs-info">
             <div class="cs-head">
-              <div class="cs-meta" data-reveal style="--d:0.3s">
+              <h3 class="serif cs-title word-reveal" data-delay="0.3">Pass &amp; Play Game Design in iOS</h3>
+              <span class="cs-link" data-reveal style="--d:0.85s">View case study <span class="arrow" aria-hidden="true">→</span></span>
+            </div>
+            <div class="cs-side">
+              <div class="cs-meta" data-reveal style="--d:0.45s">
               <span class="cs-index">03 — Gridfinite</span>
               <span class="label" style="--dot:var(--red)">Case study</span>
             </div>
-              <h3 class="serif cs-title word-reveal" data-delay="0.4">Pass &amp; Play Game Design in iOS</h3>
-            </div>
-            <div class="cs-side" data-reveal style="--d:0.75s">
-              <p class="cs-body">A summer project building a pass-and-play strategy game for iOS with my son. We took it from sketches to a shipped App Store app. A hands-on dive into game UX, Swift development, and launch day nerves.</p>
-              <span class="cs-link">View case study <span class="arrow" aria-hidden="true">→</span></span>
+              <p class="cs-body" data-reveal style="--d:0.6s">A summer project building a pass-and-play strategy game for iOS with my son. We took it from sketches to a shipped App Store app. A hands-on dive into game UX, Swift development, and launch day nerves.</p>
             </div>
           </div>
         </a>
