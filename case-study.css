@@ -194,8 +194,8 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
 .footer-row a:hover { color: var(--ink); }
 @media (max-width: 768px) {
   .footer-name { display: none; }
-  .footer-row { justify-content: center; }
-  .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; }
+  .footer-row { justify-content: flex-start; }
+  .footer-links { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 8px 24px; }
   .footer-links a { margin-left: 0 !important; }
 }
 
