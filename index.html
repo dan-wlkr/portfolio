@@ -328,6 +328,12 @@
     .footer-row a { color: var(--muted); text-decoration: none; margin-left: 24px; }
     .footer-row a:first-child { margin-left: 0; }
     .footer-row a:hover { color: var(--ink); }
+    @media (max-width: 768px) {
+      .footer-name { display: none; }
+      .footer-row { justify-content: center; }
+      .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; }
+      .footer-links a { margin-left: 0 !important; }
+    }
 
     .content-wrap { max-width: 1680px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 72px); }
 
@@ -531,12 +537,13 @@
     <div class="content-wrap">
       <p class="serif footer-cta" data-reveal>Let's talk — <a href="#" class="js-email">say hello</a></p>
       <div class="footer-row" data-reveal style="--d:0.15s">
-        <span><a href="cv.html">CV</a><a href="#" id="footer-email-link">dwlkr [at] me.com</a><a href="tel:+447885725355">+44 7885 725355</a></span>
+        <span class="footer-name">© Dan Walker</span>
+        <span class="footer-links"><a href="cv.html">CV</a><a href="#" id="footer-email-link">dwlkr [at] me.com</a><a href="tel:+447885725355">+44 7885 725355</a></span>
       </div>
     </div>
   </footer>
 
-  <script src="nav.js?v=202610011253"></script>
+  <script src="nav.js?v=202610011302"></script>
   <script>
     // Word reveal — handles plain text and mixed HTML children
     document.querySelectorAll('.word-reveal').forEach(function(el) {
