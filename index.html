@@ -69,7 +69,11 @@
       box-shadow: 0 2px 20px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
       transition: background 0.4s ease, border-color 0.4s ease;
     }
-    .dark .nav-inner { border-color: rgba(255,255,255,0.15); }
+    .dark .nav-inner {
+      background: rgba(26,24,20,0.55);
+      border-color: rgba(255,255,255,0.09);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 12px 32px -8px rgba(0,0,0,0.5);
+    }
     .nav-left { display: flex; align-items: center; }
     .nav-links { display: flex; gap: 8px; }
     .nav-links a {
@@ -203,29 +207,89 @@
     }
     .inline-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
     .hero-section {
-      background: var(--bg);
-      padding-top: 180px; padding-bottom: 96px;
+      position: relative;
+      padding-top: 200px; padding-bottom: 112px;
     }
+    .hero-text h1 { color: #f6f2ec; }
+    .inline-photo.ring { box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px rgba(255,107,53,0.55), 0 10px 30px -6px rgba(255,107,53,0.35); }
 
-    /* ── Case study panels ───────────────────────────────────────────── */
-    .cs-panel { margin-bottom: 80px; }
+    /* ── Ambient depth ───────────────────────────────────────────────── */
+    .ambient {
+      position: absolute; top: 0; left: 0; right: 0; height: 1200px;
+      pointer-events: none; z-index: 0; overflow: hidden;
+      -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent);
+              mask-image: linear-gradient(180deg, #000 55%, transparent);
+    }
+    .ambient::before, .ambient::after {
+      content: ''; position: absolute; border-radius: 50%; filter: blur(90px);
+    }
+    .ambient::before {
+      width: 720px; height: 520px; top: -180px; left: -160px;
+      background: radial-gradient(closest-side, rgba(255,107,53,0.20), transparent);
+    }
+    .ambient::after {
+      width: 640px; height: 520px; top: 80px; right: -220px;
+      background: radial-gradient(closest-side, rgba(42,138,90,0.14), transparent);
+    }
+    .grain {
+      position: fixed; inset: 0; pointer-events: none; z-index: 40; opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .hero-section, #work, .work-head, .site-footer { position: relative; z-index: 1; }
+
+    /* ── Case study cards ────────────────────────────────────────────── */
+    .cs-panel { margin-bottom: clamp(40px, 7vw, 88px); }
+    .cs-card {
+      --accent: 255,107,53;
+      display: block; color: inherit; text-decoration: none;
+      padding: 10px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.012));
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 24px 60px -30px rgba(0,0,0,0.6);
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.7s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease !important;
+    }
+    .cs-card.accent-green  { --accent: 42,138,90; }
+    .cs-card.accent-violet { --accent: 184,160,204; }
+    .cs-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(var(--accent),0.35);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 40px 90px -40px rgba(var(--accent),0.45), 0 24px 60px -30px rgba(0,0,0,0.7);
+    }
     .cs-img-wrap {
-      overflow: hidden; border-radius: 14px; display: block;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      position: relative; overflow: hidden; border-radius: 16px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.05);
     }
-    a .cs-img-wrap { cursor: pointer; }
-    a:hover .cs-img-wrap { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.14); }
+    .cs-img-wrap::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(180deg, transparent 60%, rgba(10,9,8,0.35));
+    }
     .cs-img {
-      width: 100%; height: 62vh; min-height: 420px; overflow: hidden;
-      transform: scale(1); transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      width: 100%; height: 60vh; min-height: 400px; overflow: hidden;
+      transform: scale(1); transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) !important;
     }
-    .cs-img-wrap:hover .cs-img { transform: scale(1.03); }
+    .cs-card:hover .cs-img { transform: scale(1.03); }
     .cs-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-    .cs-meta-row { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .cs-info { padding: 28px 22px 22px; }
+    .cs-meta-row { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .cs-index { margin-left: auto; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; color: var(--muted); opacity: 0.6; font-variant-numeric: tabular-nums; }
     .cs-client { font-size: 0.8rem; font-weight: 500; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
-    .cs-title { font-size: clamp(1.5rem, 3vw, 2.5rem); line-height: 1.1; margin-bottom: 1rem; }
-    .cs-body  { font-size: 1rem; line-height: 1.85; color: var(--muted); max-width: 60ch; margin-bottom: 2rem; }
+    .cs-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 16px 56px; align-items: start; }
+    .cs-title { font-size: clamp(1.5rem, 3vw, 2.4rem); line-height: 1.1; letter-spacing: -0.01em; margin: 0; }
+    .cs-body  { font-size: 1rem; line-height: 1.8; color: var(--muted); max-width: 52ch; margin: 0 0 1.5rem; }
+    .cs-link { display: inline-flex; align-items: center; gap: 10px; font-size: 0.875rem; font-weight: 500; color: var(--ink); }
+    .cs-link .arrow {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease, border-color 0.3s ease !important;
+    }
+    .cs-card:hover .cs-link .arrow { transform: translateX(4px); background: rgba(var(--accent),0.9); border-color: transparent; color: #141210; }
+
+    /* ── Section heading ─────────────────────────────────────────────── */
+    .work-head { display: flex; align-items: center; gap: 20px; }
+    .work-head .rule { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(255,255,255,0.14), rgba(255,255,255,0)); }
+    .work-head .count { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; color: var(--muted); opacity: 0.6; }
 
     /* ── Buttons ─────────────────────────────────────────────────────── */
     .btn {
@@ -249,6 +313,7 @@
       font-size: 0.875rem; color: var(--muted);
     }
     .dark .site-footer { border-top-color: rgba(255,255,255,0.07); }
+    .site-footer { margin-top: 40px; padding: 48px 24px 56px; }
     .site-footer a { color: var(--muted); text-decoration: none; }
     .site-footer a:hover { color: var(--ink); }
 
@@ -262,8 +327,11 @@
 
     @media (max-width: 768px) {
       .hero-section { padding-top: 110px; padding-bottom: 56px; }
-      .cs-img { height: 52vw; min-height: 240px; }
-      .cs-panel { margin-bottom: 48px; }
+      .cs-img { height: 56vw; min-height: 220px; }
+      .cs-card { padding: 6px; border-radius: 18px; }
+      .cs-img-wrap { border-radius: 13px; }
+      .cs-info { padding: 20px 12px 14px; }
+      .cs-grid { grid-template-columns: 1fr; }
       .nav-inner { padding: 7px 7px 7px 8px; gap: 2px; }
       .nav-links a { font-size: 0.875rem; padding: 6px 10px; }
       .nav-dropdown-trigger { font-size: 0.875rem !important; padding: 6px 10px; }
@@ -294,6 +362,8 @@
 <body>
 
   <div id="nav-mount"></div>
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
 
   <section class="hero-section">
     <div class="content-wrap">
@@ -303,7 +373,7 @@
             <span class="tag tag-pink">Product Designer · UK</span>
           </div>
           <h1 class="word-reveal" data-delay="0.14" style="font-size: clamp(2.75rem, 6vw, 5rem); line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 36px;">
-            <span class="inline-photo" style="background:rgba(128,128,128,0.15); width:1.1em; height:1.1em; top:-0.02em;"><img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/dw.jpg" alt="Dan Walker"></span>
+            <span class="inline-photo ring" style="background:rgba(128,128,128,0.15); width:1.1em; height:1.1em; top:-0.02em;"><img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/dw.jpg" alt="Dan Walker"></span>
             Dan Walker
           </h1>
           <p class="fade-up d3" style="font-size: 1.05rem; line-height: 1.85; color: var(--muted); max-width: 52ch; margin-bottom: 16px;">
@@ -317,10 +387,11 @@
     </div>
   </section>
 
-  <div class="content-wrap" style="padding-top: clamp(40px, 8vw, 80px); padding-bottom: clamp(24px, 4vw, 40px);">
-    <div style="display:flex; align-items:center; gap:20px;">
-      <p class="serif" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); color: var(--muted); margin:0;">Selected work</p>
-      <div style="flex:1; height:1px; background: rgba(128,128,128,0.15);"></div>
+  <div class="content-wrap work-head-wrap" style="position:relative; z-index:1; padding-top: clamp(40px, 8vw, 80px); padding-bottom: clamp(24px, 4vw, 40px);">
+    <div class="work-head">
+      <p class="serif" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); color: var(--ink); margin:0;">Selected work</p>
+      <div class="rule"></div>
+      <span class="count">03</span>
     </div>
   </div>
 
@@ -328,49 +399,76 @@
 
     <!-- Next PLC -->
     <div class="cs-panel scroll-fade">
-      <div class="content-wrap"><a href="case-study-1.html"><div class="cs-img-wrap"><div class="cs-img">
-        <img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/WH.png" alt="Next PLC warehouse operations">
-      </div></div></a></div>
-      <div class="content-wrap" style="padding-top: 1.5rem; padding-bottom: clamp(2rem, 6vw, 5rem);">
-        <div class="cs-meta-row">
-          <span class="tag tag-purple">Case study</span>
-          <span class="cs-client">Next PLC</span>
-        </div>
-        <h3 class="serif cs-title">Modernising Warehouse Operations at Scale</h3>
-        <p class="cs-body">Next had no internal design function when I joined. I built it from scratch — establishing research practice, a shared design system, and ways of working across six product teams.</p>
-        <a href="case-study-1.html" class="btn btn-ghost">View case study →</a>
+      <div class="content-wrap">
+        <a href="case-study-1.html" class="cs-card accent-green">
+          <div class="cs-img-wrap"><div class="cs-img">
+            <img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/WH.png" alt="Next PLC warehouse operations">
+          </div></div>
+          <div class="cs-info">
+            <div class="cs-meta-row">
+              <span class="tag tag-purple">Case study</span>
+              <span class="cs-client">Next PLC</span>
+              <span class="cs-index">01</span>
+            </div>
+            <div class="cs-grid">
+              <h3 class="serif cs-title">Modernising Warehouse Operations at Scale</h3>
+              <div>
+                <p class="cs-body">Next had no internal design function when I joined. I built it from scratch — establishing research practice, a shared design system, and ways of working across six product teams.</p>
+                <span class="cs-link">View case study <span class="arrow" aria-hidden="true">→</span></span>
+              </div>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
 
     <!-- Currently -->
     <div class="cs-panel scroll-fade">
-      <div class="content-wrap"><a href="case-study-2.html"><div class="cs-img-wrap"><div class="cs-img">
-        <img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/currently.png" alt="Currently social media app">
-      </div></div></a></div>
-      <div class="content-wrap" style="padding-top: 1.5rem; padding-bottom: clamp(2rem, 6vw, 5rem);">
-        <div class="cs-meta-row">
-          <span class="tag tag-pink">Work in progress</span>
-          <span class="cs-client">Currently</span>
-        </div>
-        <h3 class="serif cs-title">Can social media be good for you?</h3>
-        <p class="cs-body">Designing a social platform that measures success in books read and albums discovered. Not time spent scrolling.</p>
-        <a href="case-study-2.html" class="btn btn-ghost">View case study →</a>
+      <div class="content-wrap">
+        <a href="case-study-2.html" class="cs-card">
+          <div class="cs-img-wrap"><div class="cs-img">
+            <img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/currently.png" alt="Currently social media app">
+          </div></div>
+          <div class="cs-info">
+            <div class="cs-meta-row">
+              <span class="tag tag-pink">Work in progress</span>
+              <span class="cs-client">Currently</span>
+              <span class="cs-index">02</span>
+            </div>
+            <div class="cs-grid">
+              <h3 class="serif cs-title">Can social media be good for you?</h3>
+              <div>
+                <p class="cs-body">Designing a social platform that measures success in books read and albums discovered. Not time spent scrolling.</p>
+                <span class="cs-link">View case study <span class="arrow" aria-hidden="true">→</span></span>
+              </div>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
 
     <!-- Gridfinite -->
     <div class="cs-panel scroll-fade">
-      <div class="content-wrap"><a href="case-study-3.html"><div class="cs-img-wrap"><div class="cs-img">
-        <img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/gridfinite.jpg" alt="Gridfinite pass and play iOS game">
-      </div></div></a></div>
-      <div class="content-wrap" style="padding-top: 1.5rem; padding-bottom: clamp(2rem, 6vw, 5rem);">
-        <div class="cs-meta-row">
-          <span class="tag tag-purple">Case study</span>
-          <span class="cs-client">Gridfinite</span>
-        </div>
-        <h3 class="serif cs-title">Pass &amp; Play Game Design in iOS</h3>
-        <p class="cs-body">A summer project building a pass-and-play strategy game for iOS with my son. We took it from sketches to a shipped App Store app. A hands-on dive into game UX, Swift development, and launch day nerves.</p>
-        <a href="case-study-3.html" class="btn btn-ghost">View case study →</a>
+      <div class="content-wrap">
+        <a href="case-study-3.html" class="cs-card accent-violet">
+          <div class="cs-img-wrap"><div class="cs-img">
+            <img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/gridfinite.jpg" alt="Gridfinite pass and play iOS game">
+          </div></div>
+          <div class="cs-info">
+            <div class="cs-meta-row">
+              <span class="tag tag-purple">Case study</span>
+              <span class="cs-client">Gridfinite</span>
+              <span class="cs-index">03</span>
+            </div>
+            <div class="cs-grid">
+              <h3 class="serif cs-title">Pass &amp; Play Game Design in iOS</h3>
+              <div>
+                <p class="cs-body">A summer project building a pass-and-play strategy game for iOS with my son. We took it from sketches to a shipped App Store app. A hands-on dive into game UX, Swift development, and launch day nerves.</p>
+                <span class="cs-link">View case study <span class="arrow" aria-hidden="true">→</span></span>
+              </div>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
 
