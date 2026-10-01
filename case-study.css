@@ -207,7 +207,9 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
   .cs-facts div { grid-template-columns: 6rem 1fr; }
   .cs-hero-img { height: 62vw; min-height: 240px; }
   .cs-main .cs-note > div { max-width: none; }
-  .outcome-grid { grid-template-columns: 1fr !important; }
+  .outcome-grid,
+  .cs-main section .outcome-grid,
+  .cs-main section .outcome-grid:has(> :nth-child(3):last-child) { grid-template-columns: 1fr !important; }
   .cs-next-row { align-items: center; }
 }
 
