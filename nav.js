@@ -23,6 +23,7 @@
     '            <a href="#" id="nav-email-link">dwlkr [at] me.com</a>',
     '            <a href="tel:+447885725355">+44 7885 725355</a>',
     '            <span class="dropdown-label" style="margin-top:4px;">More</span>',
+    '            <a href="about.html">About</a>',
     '            <a href="cv.html">CV</a>',
     '          </div>',
     '        </div>',
@@ -68,7 +69,7 @@
   }
 
   // On cv.html, give the Contact trigger the active pill style
-  if (page === 'cv.html') {
+  if (page === 'cv.html' || page === 'about.html') {
     var navDropdowns = document.querySelectorAll('#main-nav .nav-dropdown');
     if (navDropdowns.length > 1) {
       var contactTrigger = navDropdowns[1].querySelector('.nav-dropdown-trigger');
