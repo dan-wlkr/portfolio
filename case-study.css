@@ -121,7 +121,8 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
 .cs-main { padding-top: clamp(80px, 11vw, 160px); }
 .cs-main > .divider:first-child { display: none; }
 .cs-main section {
-  max-width: 880px;
+  max-width: 40em;
+  font-size: clamp(1.1rem, 0.4rem + 0.875vw, 1.4rem);
   margin-bottom: clamp(72px, 9vw, 140px) !important;
 }
 .cs-main section > .section-title {
@@ -130,7 +131,9 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
 }
 .cs-main .cs-note { max-width: none; margin: 0 0 clamp(64px, 8vw, 120px) !important; }
 .cs-main .cs-note > div { max-width: 880px; }
-.body-text { font-size: 1.1rem; line-height: 1.8; color: var(--muted); margin: 0 0 1.5rem; max-width: 40em; }
+/* Text grows a little on larger screens so the column widens with the page
+   while lines stay around 80 characters — a comfortable reading measure. */
+.body-text { font-size: clamp(1.1rem, 0.4rem + 0.875vw, 1.4rem); line-height: 1.75; color: var(--muted); margin: 0 0 1.5rem; max-width: 40em; }
 
 .highlight-block {
   background: none !important; border-left: 1px solid var(--accent, var(--pink)) !important;
@@ -154,6 +157,7 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
 /* Stats and cards */
 .outcome-grid { gap: 16px !important; margin-top: 48px !important; }
 .cs-main section .outcome-grid { grid-template-columns: repeat(2, 1fr) !important; }
+.cs-main section .outcome-grid:has(> :nth-child(3):last-child) { grid-template-columns: repeat(3, 1fr) !important; }
 .cs-main > .outcome-grid { margin-top: 0 !important; margin-bottom: clamp(72px, 9vw, 140px) !important; }
 .outcome-card {
   border-radius: 16px !important; border: 1px solid rgba(255,255,255,0.07) !important;
