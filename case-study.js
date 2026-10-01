@@ -61,7 +61,8 @@
     var io = new IntersectionObserver(function (entries) {
       var batch = 0;
       entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
+        // Reveal on entry, or straight away if it was already scrolled past
+        if (!entry.isIntersecting && entry.boundingClientRect.top > 0) return;
         var el = entry.target;
         // Blocks that arrive together stagger slightly
         if (el.hasAttribute('data-reveal') && !el.style.getPropertyValue('--d')) {

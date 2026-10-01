@@ -390,7 +390,7 @@
   <div class="content-wrap work-head-wrap" data-observe style="padding-top: clamp(64px, 10vw, 140px); padding-bottom: clamp(32px, 4vw, 56px);">
     <div class="work-head">
       <p class="serif" data-reveal style="font-size: clamp(1.25rem, 2vw, 1.6rem); margin:0;">Selected work</p>
-      <span class="count" data-reveal style="--d:0.15s">(03)</span>
+      <span class="count" data-reveal style="--d:0.15s">(02)</span>
     </div>
   </div>
 
@@ -411,17 +411,41 @@
             <div class="cs-side">
               <div class="cs-meta" data-reveal style="--d:0.45s">
               <span class="cs-index">01 — Next PLC</span>
-              <span class="label" style="--dot:var(--purple)">Case study</span>
+              <span class="label" style="--dot:var(--purple)">Research &amp; design</span>
             </div>
-              <p class="cs-body" data-reveal style="--d:0.6s">Next had no internal design function when I joined. I built it from scratch — establishing research practice, a shared design system, and ways of working across six product teams.</p>
+              <p class="cs-body" data-reveal style="--d:0.6s">Next had no internal design function when I joined. I built it from scratch — establishing a research practice, running 150+ user sessions, and designing operational tools across six product sets.</p>
             </div>
           </div>
         </a>
       </div>
     </div>
 
-    <!-- Currently -->
-    <div class="cs-panel" data-observe data-glow="rgba(255,107,53,0.15)|rgba(200,80,120,0.09)">
+    <!-- Next PLC — design system -->
+    <div class="cs-panel" data-observe data-glow="rgba(40,140,150,0.17)|rgba(90,110,220,0.10)">
+      <div class="content-wrap">
+        <a href="design-system.html" class="cs-card">
+          <div class="cs-img-wrap"><div class="cs-img">
+            <img width="1400" height="700" loading="lazy" decoding="async" src="images/cs1-design-system-dark.webp" alt="Next design system components">
+          </div></div>
+          <div class="cs-info">
+            <div class="cs-head">
+              <h3 class="serif cs-title word-reveal" data-delay="0.3">A Design System Built in Code</h3>
+              <span class="cs-link" data-reveal style="--d:0.85s">View case study <span class="arrow" aria-hidden="true">→</span></span>
+            </div>
+            <div class="cs-side">
+              <div class="cs-meta" data-reveal style="--d:0.45s">
+              <span class="cs-index">02 — Next PLC</span>
+              <span class="label" style="--dot:var(--purple)">Design system</span>
+            </div>
+              <p class="cs-body" data-reveal style="--d:0.6s">Fragmented components were slowing six product teams. I built a design system directly in Blazor, then scaled it with a dedicated team of ten developers.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Currently — hidden until the app is live -->
+    <div class="cs-panel" hidden data-observe data-glow="rgba(255,107,53,0.15)|rgba(200,80,120,0.09)">
       <div class="content-wrap">
         <a href="case-study-2.html" class="cs-card">
           <div class="cs-img-wrap"><div class="cs-img">
@@ -444,8 +468,8 @@
       </div>
     </div>
 
-    <!-- Gridfinite -->
-    <div class="cs-panel" data-observe data-glow="rgba(184,160,204,0.16)|rgba(90,110,220,0.10)">
+    <!-- Gridfinite — hidden until the app is live -->
+    <div class="cs-panel" hidden data-observe data-glow="rgba(184,160,204,0.16)|rgba(90,110,220,0.10)">
       <div class="content-wrap">
         <a href="case-study-3.html" class="cs-card">
           <div class="cs-img-wrap"><div class="cs-img">
@@ -480,7 +504,7 @@
     </div>
   </footer>
 
-  <script src="nav.js"></script>
+  <script src="nav.js?v=202610011109"></script>
   <script>
     // Word reveal — handles plain text and mixed HTML children
     document.querySelectorAll('.word-reveal').forEach(function(el) {
@@ -552,7 +576,8 @@
       }
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-          if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+          // Reveal on entry, or straight away if it was already scrolled past
+          if (entry.isIntersecting || entry.boundingClientRect.top < 0) { entry.target.classList.add('in'); io.unobserve(entry.target); }
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
       targets.forEach(function (el) { io.observe(el); });

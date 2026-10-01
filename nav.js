@@ -11,10 +11,8 @@
     '          <span class="nav-dropdown-trigger">Projects</span>',
     '          <div class="dropdown-menu">',
     '            <span class="dropdown-label">Case Studies</span>',
-    '            <a href="case-study-1.html">Modernising Warehouse Operations</a>',
-    '            <a href="case-study-2.html">Building a Social Media App</a>',
-    '            <span class="dropdown-label" style="margin-top:4px;">Mini Projects</span>',
-    '            <a href="case-study-3.html">Pass &amp; Play Game Design in iOS</a>',
+    '            <a href="case-study-1.html">Research &amp; Design at Next</a>',
+    '            <a href="design-system.html">A Design System Built in Code</a>',
     '          </div>',
     '        </div>',
     '        <div class="nav-dropdown">',
@@ -60,7 +58,7 @@
   }
 
   // On case study pages, give the Projects trigger the active pill style
-  if (page.indexOf('case-study') === 0) {
+  if (page.indexOf('case-study') === 0 || page === 'design-system.html') {
     var projectsDropdown = document.querySelectorAll('#main-nav .nav-dropdown');
     if (projectsDropdown.length > 0) {
       var trigger = projectsDropdown[0].querySelector('.nav-dropdown-trigger');
