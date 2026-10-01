@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" href="favicon.ico">
@@ -31,7 +31,7 @@
     }
     body * { transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease; }
     h1, h2, h3, .serif { font-family: 'DM Serif Display', serif; font-weight: 700; }
-    a, button, .btn, .nav-links a, .nav-dropdown-trigger, .theme-toggle, .dropdown-menu a {
+    a, button, .btn, .nav-links a, .nav-dropdown-trigger, .dropdown-menu a {
       transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, opacity 0.2s, transform 0.2s !important;
     }
     .fade-up { transition: none !important; }
@@ -70,16 +70,6 @@
     .dark .nav-links a { color: rgba(255,255,255,0.6); }
     .dark .nav-links a:hover { background: rgba(255,255,255,0.1); color: #fff; }
     .nav-right { display: flex; align-items: center; gap: 4px; margin-left: 16px; }
-    .theme-toggle {
-      width: 38px; height: 38px; border-radius: 50%;
-      background: rgba(0,0,0,0.06); border: none;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; flex-shrink: 0; color: var(--muted);
-    }
-    .theme-toggle:hover { background: rgba(0,0,0,0.1); transform: rotate(15deg); }
-    .dark .theme-toggle { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); }
-    .dark .theme-toggle:hover { background: rgba(255,255,255,0.2); }
-    .theme-toggle svg { width: 14px; height: 14px; }
     .nav-dropdown { position: relative; }
     .nav-dropdown-trigger {
       display: flex; align-items: center; gap: 10px;
@@ -300,7 +290,6 @@
       .nav-inner { padding: 7px 7px 7px 8px; gap: 2px; }
       .nav-links a { font-size: 0.875rem; padding: 6px 10px; }
       .nav-dropdown-trigger { font-size: 0.875rem !important; padding: 6px 10px; }
-      .theme-toggle { width: 30px; height: 30px; }
       .meta-section { padding-top: 20px; padding-bottom: 40px; }
       #main-nav { transition: opacity 0.3s ease; }
       #main-nav.hidden-nav { transform: translateX(-50%); opacity: 0; pointer-events: none; }
@@ -315,13 +304,6 @@
       .img-feature .img-frame img { height: auto; }
     }
   </style>
-  <script>
-    (function () {
-      if (localStorage.getItem('theme') === 'dark') {
-        document.documentElement.classList.add('dark');
-      }
-    })();
-  </script>
 </head>
 
 <body>
@@ -399,14 +381,12 @@
     <div class="img-grid img-cols-2 scroll-fade">
       <div>
         <div class="img-frame">
-          <img class="img-light ar-landscape" src="images/cs1-research-light.png" alt="Research">
           <img class="img-dark ar-landscape" src="images/cs1-research-dark.png" alt="Research">
         </div>
         <p class="img-caption">User research synthesis</p>
       </div>
       <div>
         <div class="img-frame">
-          <img class="img-light ar-landscape" src="images/cs1-mapping-light.png" alt="Mapping">
           <img class="img-dark ar-landscape" src="images/cs1-mapping-dark.png" alt="Mapping">
         </div>
         <p class="img-caption">Workflow mapping</p>
@@ -435,21 +415,18 @@
     <div class="img-grid img-feature scroll-fade" style="margin-bottom: 64px;">
       <div class="feature-main">
         <div class="img-frame">
-          <img class="img-light" src="images/cs1-dashboard-light.png" alt="Dashboard">
           <img class="img-dark" src="images/cs1-dashboard-dark.png" alt="Dashboard">
         </div>
         <p class="img-caption">Warehouse management dashboard</p>
       </div>
       <div>
         <div class="img-frame">
-          <img class="img-light" src="images/cs1-detail-light.png" alt="Detail view">
           <img class="img-dark" src="images/cs1-detail-dark.png" alt="Detail view">
         </div>
         <p class="img-caption">Order detail view</p>
       </div>
       <div>
         <div class="img-frame">
-          <img class="img-light" src="images/cs1-component-light.png" alt="Component" style="width:100%; height:100%; object-fit:cover; object-position:top left;">
           <img class="img-dark" src="images/cs1-component-dark.png" alt="Component" style="width:100%; height:100%; object-fit:cover; object-position:top left;">
         </div>
         <p class="img-caption">Component library</p>
@@ -467,7 +444,6 @@
     </section>
 
     <div class="scroll-fade" style="margin: 48px 0;">
-      <img class="img-light ar-8-5" src="images/cs1-teams-light.png" alt="Teams and design system" style="width:100%; border-radius:0;">
       <img class="img-dark ar-8-5" src="images/cs1-teams-dark.png" alt="Teams and design system" style="width:100%; border-radius:0;">
       <p class="img-caption">Six product teams, one shared design system</p>
     </div>
@@ -482,7 +458,6 @@
     </section>
 
     <div class="scroll-fade" style="margin: 64px 0;">
-      <img class="img-light" src="images/cs1-design-system-light.png" alt="Design system" style="width:100%; height:auto; border-radius:0;">
       <img class="img-dark" src="images/cs1-design-system-dark.png" alt="Design system" style="width:100%; height:auto; border-radius:0;">
       <p class="img-caption">Building the perfect component</p>
     </div>
