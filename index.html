@@ -194,99 +194,105 @@
     .tag-pink   { background: rgba(255,107,53,0.08);  color: var(--pink);   border: 1.5px solid var(--pink); }
 
     /* ── Hero ────────────────────────────────────────────────────────── */
-    .hero-inner { display: flex; flex-direction: column; }
-    .hero-text { max-width: 680px; }
+    .hero-section { position: relative; }
+    .content-wrap.hero-inner {
+      min-height: 100vh; min-height: 100svh;
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding-top: 140px; padding-bottom: clamp(32px, 5vh, 56px);
+    }
+    .hero-name {
+      font-size: clamp(3.5rem, 12vw, 11rem); line-height: 0.95; letter-spacing: -0.035em;
+      margin: 0; color: #f6f2ec;
+    }
     .inline-photo {
       display: inline-block;
-      width: 0.85em; height: 0.85em;
+      width: 0.8em; height: 0.8em;
       border-radius: 50%; overflow: hidden;
       vertical-align: middle;
-      margin: 0 0.1em;
-      position: relative; top: -0.05em;
-      flex-shrink: 0;
+      position: relative; top: -0.06em;
+      background: rgba(128,128,128,0.15);
     }
     .inline-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-    .hero-section {
-      position: relative;
-      padding-top: 200px; padding-bottom: 112px;
+    .hero-foot {
+      display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; align-items: start;
+      padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.08);
     }
-    .hero-text h1 { color: #f6f2ec; }
-    .inline-photo.ring { box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px rgba(255,107,53,0.55), 0 10px 30px -6px rgba(255,107,53,0.35); }
+    .hero-foot p { font-size: 1rem; line-height: 1.75; color: var(--muted); margin: 0; }
+    .hero-foot .col-a { grid-column: 1 / span 4; }
+    .hero-foot .col-b { grid-column: 6 / span 4; }
+    .scroll-cue {
+      grid-column: 12 / span 1; justify-self: end; align-self: end;
+      font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+    }
+    .scroll-cue::after {
+      content: ''; width: 1px; height: 40px;
+      background: linear-gradient(180deg, var(--muted), transparent);
+      animation: cue 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+      transform-origin: top;
+    }
+    @keyframes cue { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
 
-    /* ── Ambient depth ───────────────────────────────────────────────── */
-    .ambient {
-      position: absolute; top: 0; left: 0; right: 0; height: 1200px;
-      pointer-events: none; z-index: 0; overflow: hidden;
-      -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent);
-              mask-image: linear-gradient(180deg, #000 55%, transparent);
-    }
-    .ambient::before, .ambient::after {
-      content: ''; position: absolute; border-radius: 50%; filter: blur(90px);
-    }
-    .ambient::before {
-      width: 720px; height: 520px; top: -180px; left: -160px;
-      background: radial-gradient(closest-side, rgba(255,107,53,0.20), transparent);
-    }
-    .ambient::after {
-      width: 640px; height: 520px; top: 80px; right: -220px;
-      background: radial-gradient(closest-side, rgba(42,138,90,0.14), transparent);
+    /* ── Background glow (shifts per section) ────────────────────────── */
+    @property --c1 { syntax: '<color>'; inherits: false; initial-value: rgba(255,107,53,0.16); }
+    @property --c2 { syntax: '<color>'; inherits: false; initial-value: rgba(42,138,90,0.10); }
+    .bg-glow {
+      position: fixed; inset: -10%; z-index: 0; pointer-events: none;
+      --c1: rgba(255,107,53,0.16); --c2: rgba(42,138,90,0.10); --p: 0;
+      background:
+        radial-gradient(55% 45% at calc(12% + var(--p) * 18%) calc(8% + var(--p) * 10%), var(--c1), transparent 70%),
+        radial-gradient(50% 50% at calc(92% - var(--p) * 14%) calc(88% - var(--p) * 12%), var(--c2), transparent 70%);
+      transition: --c1 1.6s ease, --c2 1.6s ease;
     }
     .grain {
-      position: fixed; inset: 0; pointer-events: none; z-index: 40; opacity: 0.05;
+      position: fixed; inset: 0; pointer-events: none; z-index: 40; opacity: 0.045;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
-    .hero-section, #work, .work-head, .site-footer { position: relative; z-index: 1; }
+    .hero-section, #work, .work-head-wrap, .site-footer { position: relative; z-index: 1; }
 
-    /* ── Case study cards ────────────────────────────────────────────── */
-    .cs-panel { margin-bottom: clamp(64px, 10vw, 140px); }
-    .cs-card {
-      --accent: 255,107,53;
-      display: block; color: inherit; text-decoration: none;
-    }
-    .cs-card.accent-green  { --accent: 42,138,90; }
-    .cs-card.accent-violet { --accent: 184,160,204; }
+    /* ── Projects ────────────────────────────────────────────────────── */
+    .cs-panel { padding-bottom: clamp(96px, 14vw, 200px); }
+    .cs-card { display: block; color: inherit; text-decoration: none; }
     .cs-img-wrap {
-      position: relative; overflow: hidden; border-radius: 20px;
-      box-shadow: 0 40px 100px -50px rgba(var(--accent),0.45), 0 20px 50px -30px rgba(0,0,0,0.6);
-      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.8s cubic-bezier(0.22, 1, 0.36, 1) !important;
-    }
-    .cs-card:hover .cs-img-wrap {
-      transform: translateY(-6px);
-      box-shadow: 0 60px 120px -50px rgba(var(--accent),0.6), 0 30px 60px -30px rgba(0,0,0,0.7);
+      position: relative; overflow: hidden; border-radius: clamp(12px, 1.4vw, 22px);
+      box-shadow: 0 40px 80px -40px rgba(0,0,0,0.6);
     }
     .cs-img-wrap::after {
       content: ''; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
-      background: linear-gradient(180deg, transparent 65%, rgba(10,9,8,0.3));
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
     }
     .cs-img {
-      width: 100%; height: 60vh; min-height: 400px; overflow: hidden;
-      transform: scale(1); transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) !important;
+      width: 100%; height: 84vh; min-height: 420px; max-height: 1000px; overflow: hidden;
     }
-    .cs-card:hover .cs-img { transform: scale(1.03); }
-    .cs-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-    .cs-info { padding: 32px 4px 0; }
-    .cs-title { transition: color 0.3s ease !important; }
-    .cs-card:hover .cs-title { color: rgb(var(--accent)); }
-    .cs-meta-row { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
-    .cs-index { margin-left: auto; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; color: var(--muted); opacity: 0.6; font-variant-numeric: tabular-nums; }
-    .cs-client { font-size: 0.8rem; font-weight: 500; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
-    .cs-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 16px 56px; align-items: start; }
-    .cs-title { font-size: clamp(1.5rem, 3vw, 2.4rem); line-height: 1.1; letter-spacing: -0.01em; margin: 0; }
-    .cs-body  { font-size: 1rem; line-height: 1.8; color: var(--muted); max-width: 52ch; margin: 0 0 1.5rem; }
-    .cs-link { display: inline-flex; align-items: center; gap: 10px; font-size: 0.875rem; font-weight: 500; color: var(--ink); }
-    .cs-link .arrow {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 30px; height: 30px; border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.15);
-      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease, border-color 0.3s ease !important;
+    .cs-img img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+      transform: scale(1); transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
     }
-    .cs-card:hover .cs-link .arrow { transform: translateX(4px); background: rgba(var(--accent),0.9); border-color: transparent; color: #141210; }
+    .cs-card:hover .cs-img img { transform: scale(1.02); }
+    .cs-info {
+      display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px 24px;
+      padding-top: clamp(24px, 3vw, 40px); align-items: start;
+    }
+    .cs-meta { grid-column: 1 / span 3; display: flex; flex-direction: column; gap: 8px; padding-top: 0.6em; }
+    .cs-index, .cs-client {
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+    .cs-index { opacity: 0.55; }
+    .cs-title { grid-column: 4 / span 5; font-size: clamp(1.75rem, 3.4vw, 3.25rem); line-height: 1.05; letter-spacing: -0.02em; margin: 0; }
+    .cs-side { grid-column: 9 / span 4; padding-top: 0.6em; }
+    .cs-body  { font-size: 0.975rem; line-height: 1.75; color: var(--muted); margin: 0 0 1.25rem; }
+    .cs-link { display: inline-flex; align-items: center; gap: 8px; font-size: 0.875rem; font-weight: 500; color: var(--ink); }
+    .cs-link .arrow { display: inline-block; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) !important; }
+    .cs-card:hover .cs-link .arrow { transform: translateX(3px); }
+
+    /* ── Minimal status label ────────────────────────────────────────── */
+    .label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--dot, var(--pink)); box-shadow: 0 0 10px var(--dot, var(--pink)); }
 
     /* ── Section heading ─────────────────────────────────────────────── */
-    .work-head { display: flex; align-items: center; gap: 20px; }
-    .work-head .rule { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(255,255,255,0.14), rgba(255,255,255,0)); }
-    .work-head .count { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; color: var(--muted); opacity: 0.6; }
+    .work-head { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .work-head .count { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; color: var(--muted); }
 
     /* ── Buttons ─────────────────────────────────────────────────────── */
     .btn {
@@ -303,18 +309,16 @@
     .btn-ghost:hover { border-color: var(--ink); }
 
     /* ── Footer ──────────────────────────────────────────────────────── */
-    .site-footer {
-      border-top: 1px solid rgba(128,128,128,0.12);
-      padding: 40px 24px;
-      display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 24px;
-      font-size: 0.875rem; color: var(--muted);
-    }
-    .dark .site-footer { border-top-color: rgba(255,255,255,0.07); }
-    .site-footer { margin-top: 40px; padding: 48px 24px 56px; }
-    .site-footer a { color: var(--muted); text-decoration: none; }
-    .site-footer a:hover { color: var(--ink); }
+    .site-footer { padding: clamp(48px, 8vw, 120px) 0 40px; }
+    .footer-cta { font-size: clamp(2.5rem, 8vw, 7rem); line-height: 1; letter-spacing: -0.03em; margin: 0 0 clamp(32px, 5vw, 64px); }
+    .footer-cta a { color: var(--ink); text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size 0.6s cubic-bezier(0.22, 1, 0.36, 1) !important; }
+    .footer-cta a:hover { background-size: 100% 1px; }
+    .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.875rem; color: var(--muted); }
+    .footer-row a { color: var(--muted); text-decoration: none; margin-left: 24px; }
+    .footer-row a:first-child { margin-left: 0; }
+    .footer-row a:hover { color: var(--ink); }
 
-    .content-wrap { max-width: 1152px; margin: 0 auto; padding: 0 24px; }
+    .content-wrap { max-width: 1680px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 72px); }
 
     .wavy-wrap { display: inline-block; position: relative; }
     .wavy-wrap svg {
@@ -323,11 +327,14 @@
     }
 
     @media (max-width: 768px) {
-      .hero-section { padding-top: 110px; padding-bottom: 56px; }
-      .cs-img { height: 56vw; min-height: 220px; }
-      .cs-img-wrap { border-radius: 14px; }
-      .cs-info { padding: 22px 2px 0; }
-      .cs-grid { grid-template-columns: 1fr; }
+      .content-wrap.hero-inner { padding-top: 112px; }
+      .hero-foot { grid-template-columns: 1fr; gap: 16px; }
+      .hero-foot .col-a, .hero-foot .col-b { grid-column: auto; }
+      .scroll-cue { display: none; }
+      .cs-img { height: 62vw; min-height: 240px; }
+      .cs-info { grid-template-columns: 1fr; }
+      .cs-meta, .cs-title, .cs-side { grid-column: auto; padding-top: 0; }
+      .cs-meta { flex-direction: row; justify-content: space-between; }
       .nav-inner { padding: 7px 7px 7px 8px; gap: 2px; }
       .nav-links a { font-size: 0.875rem; padding: 6px 10px; }
       .nav-dropdown-trigger { font-size: 0.875rem !important; padding: 6px 10px; }
@@ -349,6 +356,7 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
       .scroll-fade { opacity: 1 !important; transform: none !important; }
+      .scroll-cue::after { animation: none !important; }
       .fade-up { opacity: 1 !important; transform: none !important; animation: none !important; }
       .wr-word { opacity: 1 !important; transform: none !important; animation: none !important; }
     }
@@ -358,60 +366,48 @@
 <body>
 
   <div id="nav-mount"></div>
-  <div class="ambient" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
 
-  <section class="hero-section">
-    <div class="content-wrap">
-      <div class="hero-inner">
-        <div class="hero-text">
-          <div class="fade-up d1" style="margin-bottom:36px;">
-            <span class="tag tag-pink">Product Designer · UK</span>
-          </div>
-          <h1 class="word-reveal" data-delay="0.14" style="font-size: clamp(2.75rem, 6vw, 5rem); line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 36px;">
-            <span class="inline-photo ring" style="background:rgba(128,128,128,0.15); width:1.1em; height:1.1em; top:-0.02em;"><img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/dw.jpg" alt="Dan Walker"></span>
-            Dan Walker
-          </h1>
-          <p class="fade-up d3" style="font-size: 1.05rem; line-height: 1.85; color: var(--muted); max-width: 52ch; margin-bottom: 16px;">
-            I've always been curious about how things work. That curiosity started during my fine art degree and grew into over a decade building digital products — from freelance work to designing at scale.
-          </p>
-          <p class="fade-up d4" style="font-size: 1.05rem; line-height: 1.85; color: var(--muted); max-width: 52ch;">
-            I specialise in complex system design, high-fidelity prototyping, and building design practice in organisations where none previously existed. I work closely with engineering and product teams to turn strategy into user experience.
-          </p>
-        </div>
+  <section class="hero-section" data-glow="rgba(255,107,53,0.16)|rgba(42,138,90,0.10)">
+    <div class="content-wrap hero-inner">
+      <div class="fade-up d1">
+        <span class="label">Product Designer · UK</span>
+      </div>
+      <h1 class="hero-name word-reveal" data-delay="0.14"><span class="inline-photo"><img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/dw.jpg" alt="Dan Walker"></span> Dan Walker</h1>
+      <div class="hero-foot fade-up d3">
+        <p class="col-a">I've always been curious about how things work. That curiosity started during my fine art degree and grew into over a decade building digital products — from freelance work to designing at scale.</p>
+        <p class="col-b">I specialise in complex system design, high-fidelity prototyping, and building design practice in organisations where none previously existed. I work closely with engineering and product teams to turn strategy into user experience.</p>
+        <span class="scroll-cue" aria-hidden="true">Scroll</span>
       </div>
     </div>
   </section>
 
-  <div class="content-wrap work-head-wrap" style="position:relative; z-index:1; padding-top: clamp(40px, 8vw, 80px); padding-bottom: clamp(24px, 4vw, 40px);">
+  <div class="content-wrap work-head-wrap" style="padding-top: clamp(64px, 10vw, 140px); padding-bottom: clamp(32px, 4vw, 56px);">
     <div class="work-head">
-      <p class="serif" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); color: var(--ink); margin:0;">Selected work</p>
-      <div class="rule"></div>
-      <span class="count">03</span>
+      <p class="serif" style="font-size: clamp(1.25rem, 2vw, 1.6rem); margin:0;">Selected work</p>
+      <span class="count">(03)</span>
     </div>
   </div>
 
   <div id="work">
 
     <!-- Next PLC -->
-    <div class="cs-panel scroll-fade">
+    <div class="cs-panel scroll-fade" data-glow="rgba(42,138,90,0.18)|rgba(40,120,140,0.10)">
       <div class="content-wrap">
-        <a href="case-study-1.html" class="cs-card accent-green">
+        <a href="case-study-1.html" class="cs-card">
           <div class="cs-img-wrap"><div class="cs-img">
             <img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/WH.png" alt="Next PLC warehouse operations">
           </div></div>
           <div class="cs-info">
-            <div class="cs-meta-row">
-              <span class="tag tag-purple">Case study</span>
-              <span class="cs-client">Next PLC</span>
-              <span class="cs-index">01</span>
+            <div class="cs-meta">
+              <span class="cs-index">01 — Next PLC</span>
+              <span class="label" style="--dot:var(--purple)">Case study</span>
             </div>
-            <div class="cs-grid">
-              <h3 class="serif cs-title">Modernising Warehouse Operations at Scale</h3>
-              <div>
-                <p class="cs-body">Next had no internal design function when I joined. I built it from scratch — establishing research practice, a shared design system, and ways of working across six product teams.</p>
-                <span class="cs-link">View case study <span class="arrow" aria-hidden="true">→</span></span>
-              </div>
+            <h3 class="serif cs-title">Modernising Warehouse Operations at Scale</h3>
+            <div class="cs-side">
+              <p class="cs-body">Next had no internal design function when I joined. I built it from scratch — establishing research practice, a shared design system, and ways of working across six product teams.</p>
+              <span class="cs-link">View case study <span class="arrow" aria-hidden="true">→</span></span>
             </div>
           </div>
         </a>
@@ -419,24 +415,21 @@
     </div>
 
     <!-- Currently -->
-    <div class="cs-panel scroll-fade">
+    <div class="cs-panel scroll-fade" data-glow="rgba(255,107,53,0.15)|rgba(200,80,120,0.09)">
       <div class="content-wrap">
         <a href="case-study-2.html" class="cs-card">
           <div class="cs-img-wrap"><div class="cs-img">
             <img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/currently.png" alt="Currently social media app">
           </div></div>
           <div class="cs-info">
-            <div class="cs-meta-row">
-              <span class="tag tag-pink">Work in progress</span>
-              <span class="cs-client">Currently</span>
-              <span class="cs-index">02</span>
+            <div class="cs-meta">
+              <span class="cs-index">02 — Currently</span>
+              <span class="label" style="--dot:var(--pink)">Work in progress</span>
             </div>
-            <div class="cs-grid">
-              <h3 class="serif cs-title">Can social media be good for you?</h3>
-              <div>
-                <p class="cs-body">Designing a social platform that measures success in books read and albums discovered. Not time spent scrolling.</p>
-                <span class="cs-link">View case study <span class="arrow" aria-hidden="true">→</span></span>
-              </div>
+            <h3 class="serif cs-title">Can social media be good for you?</h3>
+            <div class="cs-side">
+              <p class="cs-body">Designing a social platform that measures success in books read and albums discovered. Not time spent scrolling.</p>
+              <span class="cs-link">View case study <span class="arrow" aria-hidden="true">→</span></span>
             </div>
           </div>
         </a>
@@ -444,24 +437,21 @@
     </div>
 
     <!-- Gridfinite -->
-    <div class="cs-panel scroll-fade">
+    <div class="cs-panel scroll-fade" data-glow="rgba(184,160,204,0.16)|rgba(90,110,220,0.10)">
       <div class="content-wrap">
-        <a href="case-study-3.html" class="cs-card accent-violet">
+        <a href="case-study-3.html" class="cs-card">
           <div class="cs-img-wrap"><div class="cs-img">
             <img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/gridfinite.jpg" alt="Gridfinite pass and play iOS game">
           </div></div>
           <div class="cs-info">
-            <div class="cs-meta-row">
-              <span class="tag tag-purple">Case study</span>
-              <span class="cs-client">Gridfinite</span>
-              <span class="cs-index">03</span>
+            <div class="cs-meta">
+              <span class="cs-index">03 — Gridfinite</span>
+              <span class="label" style="--dot:var(--red)">Case study</span>
             </div>
-            <div class="cs-grid">
-              <h3 class="serif cs-title">Pass &amp; Play Game Design in iOS</h3>
-              <div>
-                <p class="cs-body">A summer project building a pass-and-play strategy game for iOS with my son. We took it from sketches to a shipped App Store app. A hands-on dive into game UX, Swift development, and launch day nerves.</p>
-                <span class="cs-link">View case study <span class="arrow" aria-hidden="true">→</span></span>
-              </div>
+            <h3 class="serif cs-title">Pass &amp; Play Game Design in iOS</h3>
+            <div class="cs-side">
+              <p class="cs-body">A summer project building a pass-and-play strategy game for iOS with my son. We took it from sketches to a shipped App Store app. A hands-on dive into game UX, Swift development, and launch day nerves.</p>
+              <span class="cs-link">View case study <span class="arrow" aria-hidden="true">→</span></span>
             </div>
           </div>
         </a>
@@ -470,9 +460,14 @@
 
   </div>
 
-  <footer class="site-footer">
-    <a href="cv.html">CV</a>
-    <a href="#" id="footer-email-link">dwlkr [at] me.com</a>
+  <footer class="site-footer" data-glow="rgba(255,107,53,0.14)|rgba(184,160,204,0.10)">
+    <div class="content-wrap">
+      <p class="serif footer-cta">Let's talk — <a href="#" class="js-email">say hello</a></p>
+      <div class="footer-row">
+        <span>© Dan Walker</span>
+        <span><a href="cv.html">CV</a><a href="#" id="footer-email-link">dwlkr [at] me.com</a></span>
+      </div>
+    </div>
   </footer>
 
   <script src="nav.js"></script>
@@ -497,7 +492,34 @@
       }).join(' ');
     });
 
+    // Background glow — shift colours per section, drift with scroll
+    var glow = document.querySelector('.bg-glow');
+    var glowSections = document.querySelectorAll('[data-glow]');
+    if (glow && 'IntersectionObserver' in window) {
+      var glowObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var c = entry.target.dataset.glow.split('|');
+          glow.style.setProperty('--c1', c[0]);
+          glow.style.setProperty('--c2', c[1]);
+        });
+      }, { rootMargin: '-45% 0px -45% 0px' });
+      glowSections.forEach(function (el) { glowObs.observe(el); });
+
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          var max = document.documentElement.scrollHeight - window.innerHeight;
+          glow.style.setProperty('--p', max > 0 ? (window.scrollY / max).toFixed(3) : 0);
+          ticking = false;
+        });
+      }, { passive: true });
+    }
+
     // Footer email
+    document.querySelectorAll('.js-email').forEach(function (a) { a.href = 'mailto:' + 'dwlkr' + '@' + 'me.com'; });
     var footerEmail = document.getElementById('footer-email-link');
     if (footerEmail) {
       var e = 'dwlkr' + '@' + 'me.com';
