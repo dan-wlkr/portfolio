@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
+  <script>document.documentElement.classList.add('js', 'is-loading');</script>
   <meta charset="UTF-8" />
   <link rel="icon" href="favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -304,47 +305,50 @@
       .img-feature .img-frame img { height: auto; }
     }
   </style>
+  <link rel="stylesheet" href="case-study.css">
 </head>
 
 <body>
 
+  <div class="loader" aria-hidden="true">
+    <span class="loader-star"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.2 5.8 11.1 12 12-6.2.9-11.1 5.8-12 12-.9-6.2-5.8-11.1-12-12C6.2 11.1 11.1 6.2 12 0z"/></svg></span>
+    <span class="loader-bar"><i></i></span>
+  </div>
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
   <div id="nav-mount"></div>
 
 
-  <!-- Hero image -->
-  <div class="content-wrap" style="padding-top: 140px;">
+  <header class="content-wrap cs-header" id="hero-main" data-glow="rgba(42,138,90,0.18)|rgba(40,120,140,0.10)">
+    <div class="cs-header-top" data-reveal style="--d:0.1s">
+      <span class="cs-kicker">Next PLC</span>
+      <span class="label" style="--dot:var(--purple)">Case study</span>
+    </div>
+    <h1 class="serif cs-h1 word-reveal" data-delay="0.25" data-after="cs-intro cs-facts">Modernising Internal Operations at Scale</h1>
+    <div class="cs-header-grid">
+      <div class="cs-intro-col">
+        <p class="cs-intro" id="cs-intro" data-reveal>Establishing a design function from scratch at Next, working across six product sets supporting the delivery of up to one million packages a day.</p>
+      </div>
+      <dl class="cs-facts" id="cs-facts" data-reveal>
+        <div><dt>Company</dt><dd>Next PLC</dd></div>
+        <div><dt>Duration</dt><dd>3 Years</dd></div>
+        <div><dt>Role</dt><dd>UX Designer — sole design hire for warehouse ops; building practice, research, and systems from scratch</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <div class="content-wrap cs-hero-wrap" data-observe>
     <div class="cs-hero-img">
       <img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/WH.png" alt="Next PLC warehouse operations dashboard">
     </div>
   </div>
 
-  <!-- Header + Meta -->
-  <div class="content-wrap" style="padding-top: 48px; padding-bottom: 56px;">
-    <div class="fade-up d1" style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
-      <span class="tag tag-purple">Case study</span>
-      <span style="font-size: 0.8rem; font-weight: 500; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase;">Next PLC</span>
-    </div>
-    <h1 class="word-reveal serif" data-delay="0.14" style="font-size: clamp(2rem, 4.5vw, 3.25rem); line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 20px;">
-      Modernising Internal Operations at Scale
-    </h1>
-    <p class="fade-up d3 body-text" style="max-width: 58ch; margin-bottom: 0;">
-      Establishing a design function from scratch at Next, working across six product sets supporting the delivery of up to one million packages a day.
-    </p>
-    <div class="cs-meta-block scroll-fade">
-      <div class="meta-row">
-        <div class="meta-item"><span class="meta-label">Company</span> <span class="meta-value">Next PLC</span></div>
-        <div class="meta-item"><span class="meta-label">Duration</span> <span class="meta-value">3 Years</span></div>
-        <div class="meta-item"><span class="meta-label">Role</span> <span class="meta-value">UX Designer — sole design hire for warehouse ops; building practice, research, and systems from scratch</span></div>
-      </div>
-    </div>
-  </div>
-
   <!-- Body -->
-  <div class="content-wrap">
+  <div class="content-wrap cs-main" style="--accent:var(--purple)">
     <div class="divider" style="margin-top: 0;"></div>
 
     <!-- Disclaimer -->
-    <div style="margin-bottom: 40px;">
+    <div class="cs-note scroll-fade" style="margin-bottom: 40px;">
       <div style="display:flex; align-items:flex-start; gap:10px; padding: 14px 18px; border-radius: 10px; background: rgba(128,128,128,0.07); border: 1px solid rgba(128,128,128,0.13);">
         <svg style="flex-shrink:0; margin-top:1px; opacity:0.45;" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         <p style="margin:0; font-size:0.8rem; line-height:1.6; color:var(--muted);">Images and names used here are illustrative — the actual work can't be shared publicly. The project details, process, and outcomes described are accurate.</p>
@@ -515,60 +519,29 @@
       </p>
     </section>
 
-    <div class="divider"></div>
-
-    <!-- Next case study -->
-    <div class="scroll-fade" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; padding-bottom:80px;">
-      <div>
-        <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); opacity:0.6; margin-bottom:4px;">Next case study</p>
-        <p class="serif" style="font-size:1.25rem; margin:0;">Building a Social Media App</p>
-      </div>
-      <a href="case-study-2.html" class="btn btn-ghost">View →</a>
-    </div>
+    <!-- Next project -->
+    <a href="case-study-2.html" class="cs-next" data-observe data-glow="rgba(255,107,53,0.15)|rgba(200,80,120,0.09)">
+      <span class="cs-kicker" data-reveal>Next project</span>
+      <span class="cs-next-row">
+        <span class="serif cs-next-title word-reveal" data-delay="0.15">Can social media be good for you?</span>
+        <span class="cs-next-arrow" data-reveal style="--d:0.5s"><span>→</span></span>
+      </span>
+    </a>
   </div>
 
 
-  <footer class="site-footer">
-    <a href="cv.html">CV</a>
-    <a href="#" id="footer-email-link">dwlkr [at] me.com</a>
+  <footer class="site-footer" data-observe data-glow="rgba(255,107,53,0.14)|rgba(184,160,204,0.10)">
+    <div class="content-wrap">
+      <p class="serif footer-cta" data-reveal>Let's talk — <a href="#" class="js-email">say hello</a></p>
+      <div class="footer-row" data-reveal style="--d:0.15s">
+        <span>© Dan Walker</span>
+        <span><a href="cv.html">CV</a><a href="#" id="footer-email-link">dwlkr [at] me.com</a></span>
+      </div>
+    </div>
   </footer>
 
   <script src="nav.js"></script>
-  <script>
-    // Word reveal — handles plain text and mixed HTML children
-    document.querySelectorAll('.word-reveal').forEach(function(el) {
-      var delay = parseFloat(el.dataset.delay || 0);
-      var units = [];
-      el.childNodes.forEach(function(node) {
-        if (node.nodeType === 3) {
-          node.textContent.trim().split(/\s+/).filter(Boolean).forEach(function(w) {
-            units.push({ text: w });
-          });
-        } else if (node.nodeType === 1) {
-          units.push({ html: node.outerHTML });
-        }
-      });
-      el.innerHTML = units.map(function(u, i) {
-        var d = (delay + i * 0.055).toFixed(3);
-        var inner = u.html || u.text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        return '<span class="wr-word" style="animation-delay:' + d + 's">' + inner + '</span>';
-      }).join(' ');
-    });
-
-    var footerEmail = document.getElementById('footer-email-link');
-    if (footerEmail) { var e = 'dwlkr' + '@' + 'me.com'; footerEmail.href = 'mailto:' + e; footerEmail.textContent = e; }
-
-    if (!CSS.supports('animation-timeline', 'view()')) {
-      var fadeEls = document.querySelectorAll('.scroll-fade');
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-        });
-      }, { threshold: 0, rootMargin: '0px 0px -32px 0px' });
-      fadeEls.forEach(function (el) { observer.observe(el); });
-    }
-
-  </script>
+  <script src="case-study.js"></script>
 
 </body>
 </html>

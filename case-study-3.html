@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
+  <script>document.documentElement.classList.add('js', 'is-loading');</script>
   <meta charset="UTF-8" />
   <link rel="icon" href="favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -313,47 +314,47 @@
       .img-feature .img-light, .img-feature .img-dark { height: auto; aspect-ratio: 4/3; }
     }
   </style>
+  <link rel="stylesheet" href="case-study.css">
 </head>
 
 <body>
 
+  <div class="loader" aria-hidden="true">
+    <span class="loader-star"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.2 5.8 11.1 12 12-6.2.9-11.1 5.8-12 12-.9-6.2-5.8-11.1-12-12C6.2 11.1 11.1 6.2 12 0z"/></svg></span>
+    <span class="loader-bar"><i></i></span>
+  </div>
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
   <div id="nav-mount"></div>
 
 
-  <!-- Hero image -->
-  <div class="content-wrap" style="padding-top: 140px;">
+  <header class="content-wrap cs-header" id="hero-main" data-glow="rgba(184,160,204,0.16)|rgba(90,110,220,0.10)">
+    <div class="cs-header-top" data-reveal style="--d:0.1s">
+      <span class="cs-kicker">Gridfinite</span>
+      <span class="label" style="--dot:var(--red)">Case study</span>
+    </div>
+    <h1 class="serif cs-h1 word-reveal" data-delay="0.25" data-after="cs-intro cs-cta cs-facts">Pass &amp; Play Game Design in iOS</h1>
+    <div class="cs-header-grid">
+      <div class="cs-intro-col">
+        <p class="cs-intro" id="cs-intro" data-reveal>A summer project building a family-friendly strategy game with my son. From game mechanic sketches to a shipped iOS app, using Figma and Swift along the way.</p>
+        <a href="https://apps.apple.com/gb/app/gridfinite/id6751437117" target="_blank" rel="noopener" class="cs-cta" id="cs-cta" data-reveal><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/></svg> View on App Store</a>
+      </div>
+      <dl class="cs-facts" id="cs-facts" data-reveal>
+        <div><dt>Project</dt><dd>Gridfinite</dd></div>
+        <div><dt>Year</dt><dd>2025</dd></div>
+        <div><dt>Role</dt><dd>Developer &amp; Co-designer — iOS, Swift &amp; App Store deployment</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <div class="content-wrap cs-hero-wrap" data-observe>
     <div class="cs-hero-img">
       <img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/gridfinite.jpg" alt="Gridfinite pass and play iOS game">
     </div>
   </div>
 
-  <!-- Header + Meta -->
-  <div class="content-wrap" style="padding-top: 48px; padding-bottom: 56px;">
-    <div class="fade-up d1" style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
-      <span class="tag tag-purple">Case study</span>
-      <span style="font-size: 0.8rem; font-weight: 500; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase;">Gridfinite</span>
-    </div>
-    <h1 class="word-reveal serif" data-delay="0.14" style="font-size: clamp(2rem, 4.5vw, 3.25rem); line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 20px;">
-      Pass &amp; Play Game Design in iOS
-    </h1>
-    <p class="fade-up d3 body-text" style="max-width: 58ch; margin-bottom: 0;">
-      A summer project building a family-friendly strategy game with my son. From game mechanic sketches to a shipped iOS app, using Figma and Swift along the way.
-    </p>
-    <a href="https://apps.apple.com/gb/app/gridfinite/id6751437117" target="_blank" rel="noopener" class="btn btn-ghost fade-up d4" style="margin-top: 24px;">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/></svg>
-      View on App Store
-    </a>
-    <div class="cs-meta-block scroll-fade">
-      <div class="meta-row">
-        <div class="meta-item"><span class="meta-label">Project</span> <span class="meta-value">Gridfinite</span></div>
-        <div class="meta-item"><span class="meta-label">Year</span> <span class="meta-value">2025</span></div>
-        <div class="meta-item"><span class="meta-label">Role</span> <span class="meta-value">Developer &amp; Co-designer — iOS, Swift &amp; App Store deployment</span></div>
-      </div>
-    </div>
-  </div>
-
   <!-- Body -->
-  <div class="content-wrap">
+  <div class="content-wrap cs-main" style="--accent:var(--red)">
     <div class="divider" style="margin-top: 0;"></div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
@@ -492,60 +493,30 @@
       </p>
     </section>
 
-    <div class="divider"></div>
-
-    <!-- Back to home -->
-    <div class="scroll-fade" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; padding-bottom:80px;">
-      <a href="index.html" style="text-decoration:none; color:inherit;">
-        <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); opacity:0.6; margin-bottom:4px;">Back to</p>
-        <p class="serif" style="font-size:1.25rem; margin:0;">All work</p>
-      </a>
-      <a href="index.html" class="btn btn-ghost">← Home</a>
-    </div>
+    <!-- Next project -->
+    <a href="case-study-1.html" class="cs-next" data-observe data-glow="rgba(42,138,90,0.18)|rgba(40,120,140,0.10)">
+      <span class="cs-kicker" data-reveal>Next project</span>
+      <span class="cs-next-row">
+        <span class="serif cs-next-title word-reveal" data-delay="0.15">Modernising Warehouse Operations at Scale</span>
+        <span class="cs-next-arrow" data-reveal style="--d:0.5s"><span>→</span></span>
+      </span>
+    </a>
   </div>
 
 
 
-  <footer class="site-footer">
-    <a href="cv.html">CV</a>
-    <a href="#" id="footer-email-link">dwlkr [at] me.com</a>
+  <footer class="site-footer" data-observe data-glow="rgba(255,107,53,0.14)|rgba(184,160,204,0.10)">
+    <div class="content-wrap">
+      <p class="serif footer-cta" data-reveal>Let's talk — <a href="#" class="js-email">say hello</a></p>
+      <div class="footer-row" data-reveal style="--d:0.15s">
+        <span>© Dan Walker</span>
+        <span><a href="cv.html">CV</a><a href="#" id="footer-email-link">dwlkr [at] me.com</a></span>
+      </div>
+    </div>
   </footer>
 
   <script src="nav.js"></script>
-  <script>
-    // Word reveal — handles plain text and mixed HTML children
-    document.querySelectorAll('.word-reveal').forEach(function(el) {
-      var delay = parseFloat(el.dataset.delay || 0);
-      var units = [];
-      el.childNodes.forEach(function(node) {
-        if (node.nodeType === 3) {
-          node.textContent.trim().split(/\s+/).filter(Boolean).forEach(function(w) {
-            units.push({ text: w });
-          });
-        } else if (node.nodeType === 1) {
-          units.push({ html: node.outerHTML });
-        }
-      });
-      el.innerHTML = units.map(function(u, i) {
-        var d = (delay + i * 0.055).toFixed(3);
-        var inner = u.html || u.text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        return '<span class="wr-word" style="animation-delay:' + d + 's">' + inner + '</span>';
-      }).join(' ');
-    });
-
-    var footerEmail = document.getElementById('footer-email-link');
-    if (footerEmail) { var e = 'dwlkr' + '@' + 'me.com'; footerEmail.href = 'mailto:' + e; footerEmail.textContent = e; }
-
-    if (!CSS.supports('animation-timeline', 'view()')) {
-      var fadeEls = document.querySelectorAll('.scroll-fade');
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-        });
-      }, { threshold: 0, rootMargin: '0px 0px -32px 0px' });
-      fadeEls.forEach(function (el) { observer.observe(el); });
-    }
-  </script>
+  <script src="case-study.js"></script>
 
 </body>
 </html>
