@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
+  <script>document.documentElement.classList.add('js', 'is-loading');</script>
   <meta charset="UTF-8" />
   <link rel="icon" href="favicon.ico">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -32,21 +33,13 @@
       font-family: 'DM Sans', sans-serif;
       background: var(--bg); color: var(--ink);
       margin: 0;
-      transition: background-color 0.15s ease, color 0.15s ease;
-    }
-    body * {
-      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
     }
     h1, h2, h3, .serif { font-family: 'DM Serif Display', serif; font-weight: 700; }
 
     /* Preserve fast interaction transitions */
     a, button, .btn, .nav-links a, .nav-dropdown-trigger, .dropdown-menu a {
-      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, opacity 0.2s, transform 0.2s !important;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, opacity 0.2s, transform 0.2s;
     }
-    /* Never transition transforms on fade-up animations */
-    .fade-up { transition: none !important; }
-    /* Hero heading — snap colour change to match SVG stroke */
-    .hero-text h1, .hero-text h1 * { transition: none !important; }
 
     /* ── Nav — floating pill ─────────────────────────────────────────── */
     #main-nav {
@@ -151,36 +144,56 @@
       display: block;
     }
 
-    /* ── Scroll fade-up ──────────────────────────────────────────────── */
-    @keyframes scrollFadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .scroll-fade {
-      opacity: 0; transform: translateY(12px);
-      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
-      backface-visibility: hidden; -webkit-backface-visibility: hidden;
-    }
-    .scroll-fade.visible { opacity: 1; transform: translateY(0); }
-    @supports (animation-timeline: view()) {
-      .scroll-fade {
-        animation: scrollFadeIn linear both;
-        animation-timeline: view();
-        animation-range: entry 0% entry 32%;
-        transition: none;
-      }
-    }
+    /* ── Motion ──────────────────────────────────────────────────────── */
+    :root { --ease: cubic-bezier(0.16, 1, 0.3, 1); }
 
-    .fade-up {
-      opacity: 0; transform: translateY(8px);
-      animation: fadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-      backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    /* Loader */
+    .loader {
+      position: fixed; inset: 0; z-index: 100;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+      background: var(--bg);
+      transition: opacity 0.9s var(--ease), visibility 0s linear 0.9s;
     }
-    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-    .d1 { animation-delay: 0.05s; }
-    .d2 { animation-delay: 0.14s; }
-    .d3 { animation-delay: 0.24s; }
-    .d4 { animation-delay: 0.34s; }
+    html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-star { width: 28px; height: 28px; color: var(--pink); animation: loaderStar 1.6s var(--ease) infinite; }
+    .loader-star svg { width: 100%; height: 100%; display: block; }
+    @keyframes loaderStar { 0% { transform: rotate(0) scale(0.8); } 50% { transform: rotate(90deg) scale(1); } 100% { transform: rotate(180deg) scale(0.8); } }
+    .loader-bar { width: 120px; height: 1px; background: rgba(255,255,255,0.1); overflow: hidden; }
+    .loader-bar i { display: block; height: 100%; background: rgba(255,255,255,0.7); transform-origin: left; transform: scaleX(var(--progress, 0)); transition: transform 0.6s var(--ease); }
+
+    /* Generic reveal: [data-reveal] inside an observed container that gains .in */
+    .js [data-reveal] {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 1s var(--ease), transform 1.3s var(--ease);
+      transition-delay: var(--d, 0s);
+    }
+    .js .in [data-reveal], .js [data-reveal].in { opacity: 1; transform: none; }
+
+    /* Background glow and nav ease in after loading */
+    .js .bg-glow { opacity: 0; }
+    .js.is-ready .bg-glow { opacity: 1; transition: opacity 2.4s ease 0.2s, --c1 1.6s ease, --c2 1.6s ease; }
+    .js:not(.nav-ready) #main-nav { opacity: 0; transform: translateX(-50%) translateY(-12px); }
+    #main-nav { transition: opacity 0.8s var(--ease), transform 1s var(--ease) !important; }
+
+    /* Project image reveal: unclip + settle */
+    .js .cs-img-wrap {
+      clip-path: inset(10% 5% 0% 5% round 20px);
+      opacity: 0;
+      transition: clip-path 1.5s var(--ease), opacity 0.9s ease;
+    }
+    .js .in .cs-img-wrap { clip-path: inset(-15% -15% -15% -15% round 20px); opacity: 1; }
+    .js .cs-img { transform: scale(1.12); transition: transform 1.8s var(--ease); }
+    .js .in .cs-img { transform: none; }
+
+    /* Section rule draws in */
+    .work-head { position: relative; }
+    .js .work-head-wrap .work-head { border-bottom-color: transparent; }
+    .js .work-head::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px;
+      background: rgba(255,255,255,0.08); transform-origin: left; transform: scaleX(0);
+      transition: transform 1.6s var(--ease) 0.15s;
+    }
+    .js .in .work-head::after { transform: scaleX(1); }
 
     /* ── Tags ────────────────────────────────────────────────────────── */
     .tag {
@@ -336,68 +349,71 @@
     }
 
     /* ── Word reveal ─────────────────────────────────────────────────── */
-    @keyframes wordReveal {
-      to { opacity: 1; transform: translateY(0); }
+    .word-reveal .wr-word { display: inline-block; }
+    .js .word-reveal .wr-word {
+      opacity: 0; transform: translateY(0.3em); filter: blur(8px);
+      transition: opacity 0.9s var(--ease), transform 1.1s var(--ease), filter 0.9s var(--ease);
     }
-    .word-reveal .wr-word {
-      display: inline-block;
-      opacity: 0;
-      transform: translateY(8px);
-      animation: wordReveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
+    .js .in .word-reveal .wr-word { opacity: 1; transform: none; filter: blur(0); }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-      .scroll-fade { opacity: 1 !important; transform: none !important; }
-      .avatar-badge svg { animation: none !important; }
-      .fade-up { opacity: 1 !important; transform: none !important; animation: none !important; }
-      .wr-word { opacity: 1 !important; transform: none !important; animation: none !important; }
+      .avatar-badge svg, .loader-star { animation: none !important; }
+      .js [data-reveal], .js .wr-word, .js .cs-img-wrap, .js .cs-img, .js #main-nav, .js .bg-glow {
+        opacity: 1 !important; transform: none !important; filter: none !important; clip-path: none !important;
+      }
+      .js #main-nav { transform: translateX(-50%) !important; }
+      .js .work-head::after { transform: none !important; }
     }
   </style>
 </head>
 
 <body>
 
+  <div class="loader" aria-hidden="true">
+    <span class="loader-star"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.2 5.8 11.1 12 12-6.2.9-11.1 5.8-12 12-.9-6.2-5.8-11.1-12-12C6.2 11.1 11.1 6.2 12 0z"/></svg></span>
+    <span class="loader-bar"><i></i></span>
+  </div>
   <div id="nav-mount"></div>
   <div class="bg-glow" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
 
   <section class="hero-section" data-glow="rgba(255,107,53,0.16)|rgba(42,138,90,0.10)">
     <div class="content-wrap hero-inner">
-      <div class="hero-main">
-        <div class="avatar-wrap fade-up d1">
+      <div class="hero-main" id="hero-main">
+        <div class="avatar-wrap" data-reveal style="--d:0.1s">
           <div class="avatar"><img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/dw.jpg" alt="Dan Walker"></div>
           <span class="avatar-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.2 5.8 11.1 12 12-6.2.9-11.1 5.8-12 12-.9-6.2-5.8-11.1-12-12C6.2 11.1 11.1 6.2 12 0z"/></svg></span>
         </div>
-        <h1 class="hero-name word-reveal" data-delay="0.14">I’m Dan — a <em>curious</em> product designer <span class="orn" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.2 5.8 11.1 12 12-6.2.9-11.1 5.8-12 12-.9-6.2-5.8-11.1-12-12C6.2 11.1 11.1 6.2 12 0z"/></svg></span><br class="lb"> I make complex systems feel simple,<br class="lb"> and build design teams where there weren’t <span style="white-space:nowrap">any <span class="orn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><g transform="translate(12 12)"><ellipse rx="2.6" ry="5.6" cy="-6"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(72)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(144)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(216)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(288)"/></g></svg></span></span></h1>
-        <p class="hero-sub fade-up d3">Based in the UK — <a href="cv.html">More about me ↗</a></p>
+        <h1 class="hero-name word-reveal" data-delay="0.35">I’m Dan — a <em>curious</em> product designer <span class="orn" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.2 5.8 11.1 12 12-6.2.9-11.1 5.8-12 12-.9-6.2-5.8-11.1-12-12C6.2 11.1 11.1 6.2 12 0z"/></svg></span><br class="lb"> I make complex systems feel simple,<br class="lb"> and build design teams where there weren’t <span style="white-space:nowrap">any <span class="orn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><g transform="translate(12 12)"><ellipse rx="2.6" ry="5.6" cy="-6"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(72)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(144)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(216)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(288)"/></g></svg></span></span></h1>
+        <p class="hero-sub" id="hero-sub" data-reveal>Based in the UK — <a href="cv.html">More about me ↗</a></p>
       </div>
     </div>
   </section>
 
-  <div class="content-wrap work-head-wrap" style="padding-top: clamp(64px, 10vw, 140px); padding-bottom: clamp(32px, 4vw, 56px);">
+  <div class="content-wrap work-head-wrap" data-observe style="padding-top: clamp(64px, 10vw, 140px); padding-bottom: clamp(32px, 4vw, 56px);">
     <div class="work-head">
-      <p class="serif" style="font-size: clamp(1.25rem, 2vw, 1.6rem); margin:0;">Selected work</p>
-      <span class="count">(03)</span>
+      <p class="serif" data-reveal style="font-size: clamp(1.25rem, 2vw, 1.6rem); margin:0;">Selected work</p>
+      <span class="count" data-reveal style="--d:0.15s">(03)</span>
     </div>
   </div>
 
   <div id="work">
 
     <!-- Next PLC -->
-    <div class="cs-panel scroll-fade" data-glow="rgba(42,138,90,0.18)|rgba(40,120,140,0.10)">
+    <div class="cs-panel" data-observe data-glow="rgba(42,138,90,0.18)|rgba(40,120,140,0.10)">
       <div class="content-wrap">
         <a href="case-study-1.html" class="cs-card">
           <div class="cs-img-wrap"><div class="cs-img">
             <img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/WH.png" alt="Next PLC warehouse operations">
           </div></div>
           <div class="cs-info">
-            <div class="cs-meta">
+            <div class="cs-meta" data-reveal style="--d:0.35s">
               <span class="cs-index">01 — Next PLC</span>
               <span class="label" style="--dot:var(--purple)">Case study</span>
             </div>
-            <h3 class="serif cs-title">Modernising Warehouse Operations at Scale</h3>
-            <div class="cs-side">
+            <h3 class="serif cs-title" data-reveal style="--d:0.45s">Modernising Warehouse Operations at Scale</h3>
+            <div class="cs-side" data-reveal style="--d:0.55s">
               <p class="cs-body">Next had no internal design function when I joined. I built it from scratch — establishing research practice, a shared design system, and ways of working across six product teams.</p>
               <span class="cs-link">View case study <span class="arrow" aria-hidden="true">→</span></span>
             </div>
@@ -407,19 +423,19 @@
     </div>
 
     <!-- Currently -->
-    <div class="cs-panel scroll-fade" data-glow="rgba(255,107,53,0.15)|rgba(200,80,120,0.09)">
+    <div class="cs-panel" data-observe data-glow="rgba(255,107,53,0.15)|rgba(200,80,120,0.09)">
       <div class="content-wrap">
         <a href="case-study-2.html" class="cs-card">
           <div class="cs-img-wrap"><div class="cs-img">
             <img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/currently.png" alt="Currently social media app">
           </div></div>
           <div class="cs-info">
-            <div class="cs-meta">
+            <div class="cs-meta" data-reveal style="--d:0.35s">
               <span class="cs-index">02 — Currently</span>
               <span class="label" style="--dot:var(--pink)">Work in progress</span>
             </div>
-            <h3 class="serif cs-title">Can social media be good for you?</h3>
-            <div class="cs-side">
+            <h3 class="serif cs-title" data-reveal style="--d:0.45s">Can social media be good for you?</h3>
+            <div class="cs-side" data-reveal style="--d:0.55s">
               <p class="cs-body">Designing a social platform that measures success in books read and albums discovered. Not time spent scrolling.</p>
               <span class="cs-link">View case study <span class="arrow" aria-hidden="true">→</span></span>
             </div>
@@ -429,19 +445,19 @@
     </div>
 
     <!-- Gridfinite -->
-    <div class="cs-panel scroll-fade" data-glow="rgba(184,160,204,0.16)|rgba(90,110,220,0.10)">
+    <div class="cs-panel" data-observe data-glow="rgba(184,160,204,0.16)|rgba(90,110,220,0.10)">
       <div class="content-wrap">
         <a href="case-study-3.html" class="cs-card">
           <div class="cs-img-wrap"><div class="cs-img">
             <img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/gridfinite.jpg" alt="Gridfinite pass and play iOS game">
           </div></div>
           <div class="cs-info">
-            <div class="cs-meta">
+            <div class="cs-meta" data-reveal style="--d:0.35s">
               <span class="cs-index">03 — Gridfinite</span>
               <span class="label" style="--dot:var(--red)">Case study</span>
             </div>
-            <h3 class="serif cs-title">Pass &amp; Play Game Design in iOS</h3>
-            <div class="cs-side">
+            <h3 class="serif cs-title" data-reveal style="--d:0.45s">Pass &amp; Play Game Design in iOS</h3>
+            <div class="cs-side" data-reveal style="--d:0.55s">
               <p class="cs-body">A summer project building a pass-and-play strategy game for iOS with my son. We took it from sketches to a shipped App Store app. A hands-on dive into game UX, Swift development, and launch day nerves.</p>
               <span class="cs-link">View case study <span class="arrow" aria-hidden="true">→</span></span>
             </div>
@@ -452,10 +468,10 @@
 
   </div>
 
-  <footer class="site-footer" data-glow="rgba(255,107,53,0.14)|rgba(184,160,204,0.10)">
+  <footer class="site-footer" data-observe data-glow="rgba(255,107,53,0.14)|rgba(184,160,204,0.10)">
     <div class="content-wrap">
-      <p class="serif footer-cta">Let's talk — <a href="#" class="js-email">say hello</a></p>
-      <div class="footer-row">
+      <p class="serif footer-cta" data-reveal>Let's talk — <a href="#" class="js-email">say hello</a></p>
+      <div class="footer-row" data-reveal style="--d:0.15s">
         <span>© Dan Walker</span>
         <span><a href="cv.html">CV</a><a href="#" id="footer-email-link">dwlkr [at] me.com</a></span>
       </div>
@@ -481,10 +497,13 @@
       });
       el.innerHTML = units.map(function(u, i) {
         if (u.raw) return u.raw;
-        var d = (delay + i * 0.055).toFixed(3);
+        var d = (delay + i * 0.045).toFixed(3);
         var inner = u.html || u.text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        return '<span class="wr-word" style="animation-delay:' + d + 's">' + inner + '</span>';
+        return '<span class="wr-word" style="transition-delay:' + d + 's">' + inner + '</span>';
       }).join(' ');
+      // Anything marked to follow the headline starts once the last word lands
+      var after = document.getElementById('hero-sub');
+      if (after) after.style.setProperty('--d', (delay + units.length * 0.045 + 0.35).toFixed(2) + 's');
     });
 
     // Background glow — shift colours per section, drift with scroll
@@ -522,16 +541,56 @@
       footerEmail.textContent = e;
     }
 
-    // Scroll fade-in fallback for browsers without animation-timeline support
-    if (!CSS.supports('animation-timeline', 'view()')) {
-      var fadeEls = document.querySelectorAll('.scroll-fade');
-      var observer = new IntersectionObserver(function (entries) {
+    // Reveal observed sections as they scroll into view
+    function observeReveals() {
+      var targets = document.querySelectorAll('[data-observe]');
+      if (!('IntersectionObserver' in window)) {
+        targets.forEach(function (el) { el.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-          if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
         });
-      }, { threshold: 0, rootMargin: '0px 0px -32px 0px' });
-      fadeEls.forEach(function (el) { observer.observe(el); });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      targets.forEach(function (el) { io.observe(el); });
     }
+
+    // Loader — wait for images and fonts (capped), then play the entrance
+    (function () {
+      var root = document.documentElement;
+      var bar = document.querySelector('.loader-bar i');
+      var imgs = Array.prototype.slice.call(document.images);
+      var total = imgs.length + 1, done = 0, started = Date.now(), finished = false;
+
+      function tick() {
+        done++;
+        if (bar) bar.style.setProperty('--progress', Math.min(done / total, 1));
+        if (done >= total) finish();
+      }
+      function finish() {
+        if (finished) return;
+        finished = true;
+        var wait = Math.max(0, 700 - (Date.now() - started));
+        setTimeout(function () {
+          if (bar) bar.style.setProperty('--progress', 1);
+          setTimeout(function () {
+            root.classList.remove('is-loading');
+            root.classList.add('is-ready');
+            setTimeout(function () { document.getElementById('hero-main').classList.add('in'); }, 250);
+            setTimeout(function () { root.classList.add('nav-ready'); }, 1100);
+            setTimeout(observeReveals, 600);
+          }, 300);
+        }, wait);
+      }
+
+      imgs.forEach(function (img) {
+        if (img.complete) tick();
+        else { img.addEventListener('load', tick, { once: true }); img.addEventListener('error', tick, { once: true }); }
+      });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(tick, tick); else tick();
+      setTimeout(finish, 4000);
+    })();
   </script>
 
 </body>
