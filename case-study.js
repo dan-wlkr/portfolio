@@ -111,6 +111,7 @@
   // ── Email links ──────────────────────────────────────────────────────────
   var email = 'dwlkr' + '@' + 'me.com';
   document.querySelectorAll('.js-email').forEach(function (a) { a.href = 'mailto:' + email; });
+  document.querySelectorAll('.js-email-text').forEach(function (a) { a.textContent = email; });
   var footerEmail = document.getElementById('footer-email-link');
   if (footerEmail) { footerEmail.href = 'mailto:' + email; footerEmail.textContent = email; }
 

@@ -305,7 +305,15 @@
       .img-feature .img-frame img { height: auto; }
     }
   </style>
-  <link rel="stylesheet" href="case-study.css?v=202610011152">
+  <link rel="stylesheet" href="case-study.css?v=202610011233">
+  <style>
+    .about-header .cs-h1 { margin-bottom: clamp(20px, 2.4vw, 32px); }
+    .about-header .cs-intro { max-width: 32em; }
+    .about-main { padding-top: 0; }
+    .about-contact .cs-facts { max-width: 560px; }
+    .about-contact .cs-facts a { color: var(--ink); text-decoration: none; }
+    .about-contact .cs-facts a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  </style>
 </head>
 
 <body>
@@ -319,102 +327,42 @@
   <div id="nav-mount"></div>
 
 
-  <header class="content-wrap cs-header" id="hero-main" data-glow="rgba(255,107,53,0.16)|rgba(184,160,204,0.10)">
-    <div class="cs-header-top" data-reveal style="--d:0.1s">
-      <span class="cs-kicker">About</span>
-      <span class="label">Product Designer · UK</span>
-    </div>
-    <h1 class="serif cs-h1 word-reveal" data-delay="0.25" data-after="cs-intro cs-facts">A bit more about me</h1>
-    <div class="cs-header-grid">
-      <div class="cs-intro-col">
-        <p class="cs-intro" id="cs-intro" data-reveal>Placeholder intro — a warm, personal line or two about who you are beyond the work.</p>
-      </div>
-      <dl class="cs-facts" id="cs-facts" data-reveal>
-        <div><dt>Based</dt><dd>UK</dd></div>
-        <div><dt>Background</dt><dd>Fine Art, Central St Martins</dd></div>
-        <div><dt>Currently</dt><dd>Placeholder</dd></div>
-      </dl>
-    </div>
+  <header class="content-wrap cs-header about-header" id="hero-main" data-glow="rgba(255,107,53,0.16)|rgba(184,160,204,0.10)">
+    <h1 class="serif cs-h1 word-reveal" data-delay="0.25" data-after="cs-intro">About me</h1>
+    <p class="cs-intro" id="cs-intro" data-reveal>Placeholder intro — a warm, personal line or two about who you are beyond the work.</p>
   </header>
 
-  <div class="content-wrap cs-hero-wrap" data-observe>
-    <div class="cs-hero-img cs-hero-ph">
-      <div class="ph" style="aspect-ratio:4/3"><span>Portrait or lifestyle image placeholder</span></div>
-    </div>
-  </div>
-
   <!-- Body -->
-  <div class="content-wrap cs-main" style="--accent:var(--pink)">
-    <div class="divider" style="margin-top: 0;"></div>
+  <div class="content-wrap cs-main about-main" style="--accent:var(--pink)">
 
-    <section class="scroll-fade" style="margin-bottom: 64px;">
-      <h2 class="section-title">How I got here</h2>
+    <div class="img-grid img-cols-3 scroll-fade">
+      <div class="img-frame"><div class="ph" style="aspect-ratio:4/5"><span>Image placeholder</span></div></div>
+      <div class="img-frame"><div class="ph" style="aspect-ratio:4/5"><span>Image placeholder</span></div></div>
+      <div class="img-frame"><div class="ph" style="aspect-ratio:4/5"><span>Image placeholder</span></div></div>
+    </div>
+
+    <section class="scroll-fade">
       <p class="body-text">
-        Placeholder paragraph. The path from art school to product design — what pulled you in and what stuck.
+        Placeholder paragraph. How you got here — from art school to product design, and what keeps you curious.
       </p>
       <p class="body-text">
-        Placeholder paragraph. A moment or project that shaped how you work today.
+        Placeholder paragraph. Life outside of work — family, hobbies, what you do to switch off.
       </p>
     </section>
 
     <div class="img-grid img-cols-2 scroll-fade">
-      <div>
-        <div class="img-frame"><div class="ph" style="aspect-ratio:4/3"><span>Image placeholder</span></div></div>
-        <p class="img-caption">Caption placeholder</p>
-      </div>
-      <div>
-        <div class="img-frame"><div class="ph" style="aspect-ratio:4/3"><span>Image placeholder</span></div></div>
-        <p class="img-caption">Caption placeholder</p>
-      </div>
+      <div class="img-frame"><div class="ph" style="aspect-ratio:4/3"><span>Image placeholder</span></div></div>
+      <div class="img-frame"><div class="ph" style="aspect-ratio:4/3"><span>Image placeholder</span></div></div>
     </div>
 
-    <section class="scroll-fade" style="margin-bottom: 64px;">
-      <h2 class="section-title">How I work</h2>
-      <p class="body-text">
-        Placeholder paragraph. What you care about when designing, and what people can expect working with you.
-      </p>
+    <section class="scroll-fade about-contact">
+      <h2 class="section-title">Get in touch</h2>
+      <dl class="cs-facts">
+        <div><dt>Email</dt><dd><a href="#" class="js-email js-email-text">dwlkr [at] me.com</a></dd></div>
+        <div><dt>Phone</dt><dd><a href="tel:+447885725355">+44 7885 725355</a></dd></div>
+        <div><dt>CV</dt><dd><a href="cv.html">View my CV →</a></dd></div>
+      </dl>
     </section>
-
-    <section class="scroll-fade" style="margin-bottom: 64px;">
-      <h2 class="section-title">Outside of work</h2>
-      <p class="body-text">
-        Placeholder paragraph. Hobbies, family, photography, what you do to switch off.
-      </p>
-      <p class="body-text">
-        Placeholder paragraph. Something people might not expect about you.
-      </p>
-    </section>
-
-    <div class="img-grid img-cols-3 scroll-fade">
-      <div>
-        <div class="img-frame"><div class="ph" style="aspect-ratio:3/4"><span>Image placeholder</span></div></div>
-        <p class="img-caption">Caption placeholder</p>
-      </div>
-      <div>
-        <div class="img-frame"><div class="ph" style="aspect-ratio:3/4"><span>Image placeholder</span></div></div>
-        <p class="img-caption">Caption placeholder</p>
-      </div>
-      <div>
-        <div class="img-frame"><div class="ph" style="aspect-ratio:3/4"><span>Image placeholder</span></div></div>
-        <p class="img-caption">Caption placeholder</p>
-      </div>
-    </div>
-
-    <section class="scroll-fade" style="margin-bottom: 64px;">
-      <h2 class="section-title">Right now</h2>
-      <p class="body-text">
-        Placeholder paragraph. What you are reading, listening to, learning or building at the moment.
-      </p>
-    </section>
-
-    <!-- Next -->
-    <a href="cv.html" class="cs-next" data-observe data-glow="rgba(240,100,155,0.14)|rgba(255,107,53,0.10)">
-      <span class="cs-kicker" data-reveal>The formal version</span>
-      <span class="cs-next-row">
-        <span class="serif cs-next-title word-reveal" data-delay="0.15">Read my CV</span>
-        <span class="cs-next-arrow" data-reveal style="--d:0.5s"><span>→</span></span>
-      </span>
-    </a>
   </div>
 
 
@@ -428,8 +376,8 @@
     </div>
   </footer>
 
-  <script src="nav.js?v=202610011152"></script>
-  <script src="case-study.js?v=202610011152"></script>
+  <script src="nav.js?v=202610011233"></script>
+  <script src="case-study.js?v=202610011233"></script>
 
 </body>
 </html>

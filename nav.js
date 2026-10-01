@@ -16,17 +16,7 @@
     '            <a href="previous-work.html">Selected Previous Work</a>',
     '          </div>',
     '        </div>',
-    '        <div class="nav-dropdown">',
-    '          <span class="nav-dropdown-trigger">Contact</span>',
-    '          <div class="dropdown-menu">',
-    '            <span class="dropdown-label">Get in touch</span>',
-    '            <a href="#" id="nav-email-link">dwlkr [at] me.com</a>',
-    '            <a href="tel:+447885725355">+44 7885 725355</a>',
-    '            <span class="dropdown-label" style="margin-top:4px;">More</span>',
-    '            <a href="about.html">About</a>',
-    '            <a href="cv.html">CV</a>',
-    '          </div>',
-    '        </div>',
+    '        <a href="about.html">About</a>',
     '      </div>',
     '    </div>',
     '  </div>',
@@ -68,13 +58,10 @@
     }
   }
 
-  // On cv.html, give the Contact trigger the active pill style
-  if (page === 'cv.html' || page === 'about.html') {
-    var navDropdowns = document.querySelectorAll('#main-nav .nav-dropdown');
-    if (navDropdowns.length > 1) {
-      var contactTrigger = navDropdowns[1].querySelector('.nav-dropdown-trigger');
-      if (contactTrigger) contactTrigger.classList.add('active');
-    }
+  // About (and the CV it links to) highlight the About link
+  if (page === 'about.html' || page === 'cv.html') {
+    var aboutLink = document.querySelector('#main-nav .nav-links > a[href="about.html"]');
+    if (aboutLink) aboutLink.classList.add('active');
   }
 
   // ── Dropdown touch/click support ──────────────────────────────────────────
