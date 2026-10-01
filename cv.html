@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
+  <script>document.documentElement.classList.add('js', 'is-loading');</script>
   <meta charset="UTF-8" />
   <link rel="icon" href="favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -178,34 +179,84 @@
       .cv-print-btn { display: none !important; }
     }
   </style>
+  <link rel="stylesheet" href="case-study.css">
+  <style>
+    /* CV entries inside the shared editorial grid */
+    .cv-entry { margin-bottom: clamp(36px, 4vw, 56px); }
+    .cv-entry:last-child { margin-bottom: 0; }
+    .cv-entry-header { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 6px 24px; margin-bottom: 14px; }
+    .cv-entry .cv-entry-role { grid-column: 1; grid-row: 1; font-family: 'DM Serif Display', serif; font-weight: 400; font-size: clamp(1.3rem, 1.8vw, 1.65rem); line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); margin: 0; }
+    .cv-entry-date { grid-column: 2; grid-row: 1; font-size: 0.8rem; color: var(--muted); opacity: 0.7; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .cv-entry .cv-entry-company { grid-column: 1; grid-row: 2; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); opacity: 0.6; margin: 0; }
+    ul.cv-list { list-style: none; margin: 0; padding: 0; }
+    ul.cv-list li { position: relative; padding-left: 20px; font-size: 1.02rem; line-height: 1.75; color: var(--muted); margin-bottom: 10px; max-width: 42em; }
+    ul.cv-list li:last-child { margin-bottom: 0; }
+    ul.cv-list li::before { content: ''; position: absolute; left: 0; top: 0.72em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent, var(--pink)); opacity: 0.6; }
+    .cv-skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .cv-skill {
+      font-size: 0.875rem; font-weight: 500; padding: 8px 16px; border-radius: 100px; color: var(--ink);
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .cs-cta { background: none; cursor: pointer; font-family: inherit; }
+    .cs-facts a { color: var(--ink); text-decoration: none; }
+    .cs-facts a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    @media (max-width: 600px) {
+      .cv-entry-header { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+      .cv-entry .cv-entry-date { order: 3; }
+    }
+
+    @media print {
+      .loader, .bg-glow, .grain, #main-nav, .site-footer, .cs-next, .no-print { display: none !important; }
+      body { background: #fff !important; color: #000 !important; }
+      .js [data-reveal], .js .wr-word { opacity: 1 !important; transform: none !important; filter: none !important; }
+      .cs-header { padding-top: 0; padding-bottom: 24px; }
+      .cs-h1 { color: #000; font-size: 2.5rem; margin-bottom: 16px; }
+      .cs-intro, .cs-facts dd, .cs-facts a, .cv-entry-role, .section-title, .cv-skill { color: #000 !important; }
+      .cs-main { padding-top: 16px; }
+      .cs-main section { display: block; margin-bottom: 28px !important; }
+      .cv-entry-header, .section-title { break-after: avoid; }
+      ul.cv-list li { break-inside: avoid; }
+      .cs-main section > .section-title { position: static; font-size: 1.25rem; margin-bottom: 12px; }
+      .cv-skill { border: 1px solid #ccc; background: none; }
+    }
+  </style>
 </head>
 
 <body>
 
+  <div class="loader" aria-hidden="true">
+    <span class="loader-star"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.2 5.8 11.1 12 12-6.2.9-11.1 5.8-12 12-.9-6.2-5.8-11.1-12-12C6.2 11.1 11.1 6.2 12 0z"/></svg></span>
+    <span class="loader-bar"><i></i></span>
+  </div>
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
   <div id="nav-mount"></div>
 
-  <div class="cv-wrap">
-
-    <!-- Header -->
-    <header class="cv-header">
-      <div class="cv-header-top" style="display:flex; align-items:baseline; justify-content:space-between; gap:16px;">
-        <h1 class="serif">Dan Walker</h1>
-        <button onclick="window.print()" class="no-print cv-print-btn" style="font-size:0.8rem; font-weight:500; color:var(--muted); background:none; border:1px solid rgba(128,128,128,0.25); border-radius:100px; padding:6px 16px; cursor:pointer; letter-spacing:0.03em; white-space:nowrap; flex-shrink:0;">Print</button>
+  <header class="content-wrap cs-header" id="hero-main" data-glow="rgba(255,107,53,0.16)|rgba(42,138,90,0.10)">
+    <div class="cs-header-top" data-reveal style="--d:0.1s">
+      <span class="cs-kicker">Curriculum vitae</span>
+      <span class="label">Product Designer · UK</span>
+    </div>
+    <h1 class="serif cs-h1 word-reveal" data-delay="0.25" data-after="cs-intro cs-cta cs-facts">Dan Walker</h1>
+    <div class="cs-header-grid">
+      <div class="cs-intro-col">
+        <p class="cs-intro" id="cs-intro" data-reveal>Product designer with a fine art foundation and a decade of experience across enterprise software, a self-run creative business, and self-initiated projects. Before moving into product design full-time, I ran a freelance studio for seven years across web design and photography — building and sustaining a business independently. I specialise in complex system design, high-fidelity prototyping, and establishing design practice in organisations where none previously existed. I work closely with engineering and product, and I'm as comfortable in a research session or a sprint planning meeting as I am in Figma.</p>
+        <button type="button" onclick="window.print()" class="cs-cta no-print" id="cs-cta" data-reveal>Print / save as PDF</button>
       </div>
-      <p class="cv-title">Product Designer</p>
-    </header>
+      <dl class="cs-facts" id="cs-facts" data-reveal>
+        <div><dt>Role</dt><dd>Product Designer</dd></div>
+        <div><dt>Based</dt><dd>UK</dd></div>
+        <div><dt>Email</dt><dd><a href="#" class="js-email" id="cv-email">dwlkr [at] me.com</a></dd></div>
+      </dl>
+    </div>
+  </header>
 
-    <!-- Profile -->
-    <section class="cv-section">
-      <p class="cv-section-title">Profile</p>
-      <p style="font-size: 0.95rem; line-height: 1.8; color: var(--muted); max-width: 68ch;">
-        Product designer with a fine art foundation and a decade of experience across enterprise software, a self-run creative business, and self-initiated projects. Before moving into product design full-time, I ran a freelance studio for seven years across web design and photography — building and sustaining a business independently. I specialise in complex system design, high-fidelity prototyping, and establishing design practice in organisations where none previously existed. I work closely with engineering and product, and I'm as comfortable in a research session or a sprint planning meeting as I am in Figma.
-      </p>
-    </section>
+  <div class="content-wrap cs-main" style="--accent:var(--pink)">
 
-    <!-- Experience -->
-    <section class="cv-section">
-      <p class="cv-section-title">Experience</p>
+    <section class="scroll-fade">
+      <h2 class="section-title">Experience</h2>
 
       <div class="cv-entry">
         <div class="cv-entry-header">
@@ -246,12 +297,10 @@
           <li>Planned and published content across all social media platforms, growing audience engagement.</li>
         </ul>
       </div>
-
     </section>
 
-    <!-- Skills -->
-    <section class="cv-section">
-      <p class="cv-section-title">Skills &amp; tools</p>
+    <section class="scroll-fade">
+      <h2 class="section-title">Skills &amp; tools</h2>
       <div class="cv-skills">
         <span class="cv-skill">Figma</span>
         <span class="cv-skill">Figma Make</span>
@@ -268,9 +317,8 @@
       </div>
     </section>
 
-    <!-- Education -->
-    <section class="cv-section">
-      <p class="cv-section-title">Education</p>
+    <section class="scroll-fade">
+      <h2 class="section-title">Education</h2>
 
       <div class="cv-entry">
         <div class="cv-entry-header">
@@ -279,12 +327,10 @@
           <p class="cv-entry-company">Central St Martins, UAL</p>
         </div>
       </div>
-
     </section>
 
-    <!-- Short courses -->
-    <section class="cv-section">
-      <p class="cv-section-title">Short courses</p>
+    <section class="scroll-fade">
+      <h2 class="section-title">Short courses</h2>
 
       <div class="cv-entry">
         <div class="cv-entry-header">
@@ -317,20 +363,32 @@
           <p class="cv-entry-company">SuperHi</p>
         </div>
       </div>
-
     </section>
 
+    <a href="index.html" class="cs-next" data-observe data-glow="rgba(184,160,204,0.16)|rgba(42,138,90,0.12)">
+      <span class="cs-kicker" data-reveal>See the work</span>
+      <span class="cs-next-row">
+        <span class="serif cs-next-title word-reveal" data-delay="0.15">Selected projects</span>
+        <span class="cs-next-arrow" data-reveal style="--d:0.5s"><span>→</span></span>
+      </span>
+    </a>
   </div>
 
-  <footer class="site-footer">
-    <a href="cv.html">CV</a>
-    <a href="#" id="footer-email-link">dwlkr [at] me.com</a>
+  <footer class="site-footer" data-observe data-glow="rgba(255,107,53,0.14)|rgba(184,160,204,0.10)">
+    <div class="content-wrap">
+      <p class="serif footer-cta" data-reveal>Let's talk — <a href="#" class="js-email">say hello</a></p>
+      <div class="footer-row" data-reveal style="--d:0.15s">
+        <span>© Dan Walker</span>
+        <span><a href="index.html">Work</a><a href="#" id="footer-email-link">dwlkr [at] me.com</a></span>
+      </div>
+    </div>
   </footer>
 
   <script src="nav.js"></script>
+  <script src="case-study.js"></script>
   <script>
-    var footerEmail = document.getElementById('footer-email-link');
-    if (footerEmail) { var e = 'dwlkr' + '@' + 'me.com'; footerEmail.href = 'mailto:' + e; footerEmail.textContent = e; }
+    var cvEmail = document.getElementById('cv-email');
+    if (cvEmail) cvEmail.textContent = 'dwlkr' + '@' + 'me.com';
   </script>
 
 </body>
