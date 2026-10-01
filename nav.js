@@ -13,6 +13,7 @@
     '            <span class="dropdown-label">Case Studies</span>',
     '            <a href="case-study-1.html">Research &amp; Design at Next</a>',
     '            <a href="design-system.html">A Design System Built in Code</a>',
+    '            <a href="previous-work.html">Selected Previous Work</a>',
     '          </div>',
     '        </div>',
     '        <div class="nav-dropdown">',
@@ -58,7 +59,7 @@
   }
 
   // On case study pages, give the Projects trigger the active pill style
-  if (page.indexOf('case-study') === 0 || page === 'design-system.html') {
+  if (page.indexOf('case-study') === 0 || page === 'design-system.html' || page === 'previous-work.html') {
     var projectsDropdown = document.querySelectorAll('#main-nav .nav-dropdown');
     if (projectsDropdown.length > 0) {
       var trigger = projectsDropdown[0].querySelector('.nav-dropdown-trigger');
