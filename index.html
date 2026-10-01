@@ -202,13 +202,14 @@
     }
     .hero-main { display: flex; flex-direction: column; gap: clamp(28px, 4vh, 44px); margin: auto 0; padding: 6vh 0; }
     .avatar {
-      width: clamp(56px, 5vw, 72px); height: clamp(56px, 5vw, 72px); border-radius: 50%; overflow: hidden;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 10px 30px -10px rgba(0,0,0,0.6);
+      display: inline-block; width: 0.95em; height: 0.95em; border-radius: 50%; overflow: hidden;
+      vertical-align: -0.12em; margin-right: 0.04em;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.12), 0 8px 24px -8px rgba(0,0,0,0.6);
     }
     .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
     .hero-name {
       font-weight: 400; font-size: clamp(2.1rem, 4.6vw, 4.75rem); line-height: 1.14; letter-spacing: -0.02em;
-      max-width: 17em; margin: 0; color: #f6f2ec;
+      max-width: 18.5em; margin: 0; color: #f6f2ec;
     }
     .hero-name em { font-style: italic; color: #fff; }
     .orn { display: inline-block; width: 0.62em; height: 0.62em; vertical-align: 0.02em; color: var(--pink); opacity: 0.85; }
@@ -354,8 +355,7 @@
   <section class="hero-section" data-glow="rgba(255,107,53,0.16)|rgba(42,138,90,0.10)">
     <div class="content-wrap hero-inner">
       <div class="hero-main">
-        <div class="avatar fade-up d1"><img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/dw.jpg" alt="Dan Walker"></div>
-        <h1 class="hero-name word-reveal" data-delay="0.14">I’m Dan — a <em>curious</em> product designer <span class="orn" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.2 5.8 11.1 12 12-6.2.9-11.1 5.8-12 12-.9-6.2-5.8-11.1-12-12C6.2 11.1 11.1 6.2 12 0z"/></svg></span> Art grad turned systems thinker, making complex things feel simple for over a decade <span class="orn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><g transform="translate(12 12)"><ellipse rx="2.6" ry="5.6" cy="-6"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(72)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(144)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(216)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(288)"/></g></svg></span></h1>
+        <h1 class="hero-name word-reveal" data-delay="0.14"><span class="avatar"><img src="https://raw.githubusercontent.com/dan-wlkr/portfolio/main/images/dw.jpg" alt="Dan Walker"></span> I’m Dan — a <em>curious</em> product designer <span class="orn" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.2 5.8 11.1 12 12-6.2.9-11.1 5.8-12 12-.9-6.2-5.8-11.1-12-12C6.2 11.1 11.1 6.2 12 0z"/></svg></span> I make complex systems feel simple, and build design teams where there weren’t <span style="white-space:nowrap">any <span class="orn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><g transform="translate(12 12)"><ellipse rx="2.6" ry="5.6" cy="-6"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(72)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(144)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(216)"/><ellipse rx="2.6" ry="5.6" cy="-6" transform="rotate(288)"/></g></svg></span></span></h1>
         <p class="hero-sub fade-up d3">Based in the UK — <a href="cv.html">More about me ↗</a></p>
       </div>
     </div>
