@@ -11,6 +11,7 @@ a, button, .btn, .nav-links a, .nav-dropdown-trigger, .dropdown-menu a {
 .scroll-fade, .fade-up { opacity: 1; transform: none; animation: none !important; }
 
 h1, h2, h3, .serif { font-weight: 400; }
+:where(img) { max-width: 100%; height: auto; }
 .content-wrap { max-width: 1680px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 72px); }
 
 /* ── Loader ──────────────────────────────────────────────────────────── */
