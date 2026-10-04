@@ -306,6 +306,16 @@
     }
   </style>
   <link rel="stylesheet" href="case-study.css?v=202610011654">
+  <style>
+    .pw-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.4vw, 24px); margin: 0 0 clamp(72px, 9vw, 140px); }
+    .pw-tall, .pw-tall .img-frame { height: 100%; }
+    .pw-tall .img-frame img { height: 100%; object-fit: cover; }
+    .pw-stack { display: flex; flex-direction: column; gap: clamp(12px, 1.4vw, 24px); }
+    @media (max-width: 768px) {
+      .pw-split { grid-template-columns: 1fr; }
+      .pw-tall .img-frame img { height: auto; }
+    }
+  </style>
 </head>
 
 <body>
@@ -338,8 +348,8 @@
   </header>
 
   <div class="content-wrap cs-hero-wrap" data-observe>
-    <div class="cs-hero-img cs-hero-ph">
-      <div class="ph" style="aspect-ratio:16/9"><span>Hero image placeholder</span></div>
+    <div class="cs-hero-img">
+      <img width="2000" height="1333" fetchpriority="high" decoding="async" src="images/oldwork-6.webp" alt="Busby &amp; Goodfellows website on a phone">
     </div>
   </div>
 
@@ -348,7 +358,7 @@
     <div class="divider" style="margin-top: 0;"></div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
-      <h2 class="section-title">Project 1 — title placeholder</h2>
+      <h2 class="section-title">Samantha Reid</h2>
       <p class="body-text">
         Placeholder paragraph. Describe the client, the brief and what you designed. Two or three sentences is plenty for a quick project round-up like this.
       </p>
@@ -359,17 +369,20 @@
 
     <div class="img-grid img-cols-2 scroll-fade">
       <div>
-        <div class="img-frame"><div class="ph" style="aspect-ratio:4/3"><span>Project 1 image placeholder</span></div></div>
-        <p class="img-caption">Caption placeholder</p>
+        <div class="img-frame"><img width="1701" height="1134" loading="lazy" decoding="async" src="images/oldwork-1.webp" alt="Samantha Reid mobile site and menu" style="aspect-ratio:4/3; object-fit:cover;"></div>
+        <p class="img-caption">Mobile shop and menu</p>
       </div>
       <div>
-        <div class="img-frame"><div class="ph" style="aspect-ratio:4/3"><span>Project 1 image placeholder</span></div></div>
-        <p class="img-caption">Caption placeholder</p>
+        <div class="img-frame"><img width="2000" height="1600" loading="lazy" decoding="async" src="images/oldwork-3.webp" alt="Samantha Reid website pages" style="aspect-ratio:4/3; object-fit:cover;"></div>
+        <p class="img-caption">Desktop pages</p>
+      </div>
+      <div style="grid-column: 1 / -1;">
+        <div class="img-frame"><img width="2000" height="1333" loading="lazy" decoding="async" src="images/oldwork-2.webp" alt="Samantha Reid shop window"></div>
       </div>
     </div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
-      <h2 class="section-title">Project 2 — title placeholder</h2>
+      <h2 class="section-title">Busby &amp; Goodfellows</h2>
       <p class="body-text">
         Placeholder paragraph. Describe the client, the brief and what you designed. Two or three sentences is plenty for a quick project round-up like this.
       </p>
@@ -380,17 +393,17 @@
 
     <div class="img-grid img-cols-2 scroll-fade">
       <div>
-        <div class="img-frame"><div class="ph" style="aspect-ratio:4/3"><span>Project 2 image placeholder</span></div></div>
-        <p class="img-caption">Caption placeholder</p>
+        <div class="img-frame"><img width="1701" height="1134" loading="lazy" decoding="async" src="images/oldwork-4.webp" alt="Busby &amp; Goodfellows prices and opening times"></div>
+        <p class="img-caption">Prices and opening times</p>
       </div>
       <div>
-        <div class="img-frame"><div class="ph" style="aspect-ratio:4/3"><span>Project 2 image placeholder</span></div></div>
-        <p class="img-caption">Caption placeholder</p>
+        <div class="img-frame"><img width="1701" height="1134" loading="lazy" decoding="async" src="images/oldwork-5.webp" alt="Busby &amp; Goodfellows online shop"></div>
+        <p class="img-caption">Online shop</p>
       </div>
     </div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
-      <h2 class="section-title">Project 3 — title placeholder</h2>
+      <h2 class="section-title">Kate&rsquo;s Storytree</h2>
       <p class="body-text">
         Placeholder paragraph. Describe the client, the brief and what you designed. Two or three sentences is plenty for a quick project round-up like this.
       </p>
@@ -399,14 +412,11 @@
       </p>
     </section>
 
-    <div class="img-grid img-cols-2 scroll-fade">
-      <div>
-        <div class="img-frame"><div class="ph" style="aspect-ratio:4/3"><span>Project 3 image placeholder</span></div></div>
-        <p class="img-caption">Caption placeholder</p>
-      </div>
-      <div>
-        <div class="img-frame"><div class="ph" style="aspect-ratio:4/3"><span>Project 3 image placeholder</span></div></div>
-        <p class="img-caption">Caption placeholder</p>
+    <div class="pw-split scroll-fade">
+      <div class="pw-tall"><div class="img-frame"><img width="1545" height="2000" loading="lazy" decoding="async" src="images/oldwork-7.webp" alt="Kate&rsquo;s Storytree on a phone"></div></div>
+      <div class="pw-stack">
+        <div class="img-frame"><img width="2000" height="1600" loading="lazy" decoding="async" src="images/oldwork-8.webp" alt="Kate&rsquo;s Storytree website pages"></div>
+        <div class="img-frame"><img width="2000" height="1600" loading="lazy" decoding="async" src="images/oldwork-9.webp" alt="Kate&rsquo;s Storytree brand and mobile pages"></div>
       </div>
     </div>
 
