@@ -306,16 +306,6 @@
     }
   </style>
   <link rel="stylesheet" href="case-study.css?v=202610011654">
-  <style>
-    .pw-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.4vw, 24px); margin: 0 0 clamp(72px, 9vw, 140px); }
-    .pw-tall, .pw-tall .img-frame { height: 100%; }
-    .pw-tall .img-frame img { height: 100%; object-fit: cover; }
-    .pw-stack { display: flex; flex-direction: column; gap: clamp(12px, 1.4vw, 24px); }
-    @media (max-width: 768px) {
-      .pw-split { grid-template-columns: 1fr; }
-      .pw-tall .img-frame img { height: auto; }
-    }
-  </style>
 </head>
 
 <body>
@@ -367,18 +357,16 @@
       </p>
     </section>
 
-    <div class="img-grid img-cols-2 scroll-fade">
-      <div>
-        <div class="img-frame"><img width="1701" height="1134" loading="lazy" decoding="async" src="images/oldwork-1.webp" alt="Samantha Reid mobile site and menu" style="aspect-ratio:4/3; object-fit:cover;"></div>
-        <p class="img-caption">Mobile shop and menu</p>
-      </div>
-      <div>
-        <div class="img-frame"><img width="2000" height="1600" loading="lazy" decoding="async" src="images/oldwork-3.webp" alt="Samantha Reid website pages" style="aspect-ratio:4/3; object-fit:cover;"></div>
-        <p class="img-caption">Desktop pages</p>
-      </div>
-      <div style="grid-column: 1 / -1;">
-        <div class="img-frame"><img width="2000" height="1333" loading="lazy" decoding="async" src="images/oldwork-2.webp" alt="Samantha Reid shop window"></div>
-      </div>
+    <div class="img-block scroll-fade">
+      <div class="img-frame"><img width="1701" height="1134" loading="lazy" decoding="async" src="images/oldwork-1.webp" alt="Samantha Reid mobile site and menu"></div>
+      <p class="img-caption">Mobile shop and menu</p>
+    </div>
+    <div class="img-block scroll-fade">
+      <div class="img-frame"><img width="2000" height="1600" loading="lazy" decoding="async" src="images/oldwork-3.webp" alt="Samantha Reid website pages"></div>
+      <p class="img-caption">Desktop pages</p>
+    </div>
+    <div class="img-block scroll-fade">
+      <div class="img-frame"><img width="2000" height="1333" loading="lazy" decoding="async" src="images/oldwork-2.webp" alt="Samantha Reid shop window"></div>
     </div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
@@ -391,15 +379,13 @@
       </p>
     </section>
 
-    <div class="img-grid img-cols-2 scroll-fade">
-      <div>
-        <div class="img-frame"><img width="1701" height="1134" loading="lazy" decoding="async" src="images/oldwork-4.webp" alt="Busby &amp; Goodfellows prices and opening times"></div>
-        <p class="img-caption">Prices and opening times</p>
-      </div>
-      <div>
-        <div class="img-frame"><img width="1701" height="1134" loading="lazy" decoding="async" src="images/oldwork-5.webp" alt="Busby &amp; Goodfellows online shop"></div>
-        <p class="img-caption">Online shop</p>
-      </div>
+    <div class="img-block scroll-fade">
+      <div class="img-frame"><img width="1701" height="1134" loading="lazy" decoding="async" src="images/oldwork-4.webp" alt="Busby &amp; Goodfellows prices and opening times"></div>
+      <p class="img-caption">Prices and opening times</p>
+    </div>
+    <div class="img-block scroll-fade">
+      <div class="img-frame"><img width="1701" height="1134" loading="lazy" decoding="async" src="images/oldwork-5.webp" alt="Busby &amp; Goodfellows online shop"></div>
+      <p class="img-caption">Online shop</p>
     </div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
@@ -412,16 +398,19 @@
       </p>
     </section>
 
-    <div class="pw-split scroll-fade">
-      <div class="pw-tall"><div class="img-frame"><img width="1545" height="2000" loading="lazy" decoding="async" src="images/oldwork-7.webp" alt="Kate&rsquo;s Storytree on a phone"></div></div>
-      <div class="pw-stack">
-        <div class="img-frame"><img width="2000" height="1600" loading="lazy" decoding="async" src="images/oldwork-8.webp" alt="Kate&rsquo;s Storytree website pages"></div>
-        <div class="img-frame"><img width="2000" height="1600" loading="lazy" decoding="async" src="images/oldwork-9.webp" alt="Kate&rsquo;s Storytree brand and mobile pages"></div>
-      </div>
+    <div class="img-block scroll-fade">
+      <div class="img-frame"><img style="aspect-ratio:4/3; object-fit:cover; object-position:50% 45%;" width="1545" height="2000" loading="lazy" decoding="async" src="images/oldwork-7.webp" alt="Kate&rsquo;s Storytree on a phone"></div>
+    </div>
+    <div class="img-block scroll-fade">
+      <div class="img-frame"><img width="2000" height="1600" loading="lazy" decoding="async" src="images/oldwork-8.webp" alt="Kate&rsquo;s Storytree website pages"></div>
+      <p class="img-caption">Website pages</p>
+    </div>
+    <div class="img-block scroll-fade">
+      <div class="img-frame"><img width="2000" height="1600" loading="lazy" decoding="async" src="images/oldwork-9.webp" alt="Kate&rsquo;s Storytree brand and mobile pages"></div>
+      <p class="img-caption">Brand and mobile pages</p>
     </div>
 
   </div>
-
 
   <footer class="site-footer" data-observe data-glow="rgba(255,107,53,0.14)|rgba(184,160,204,0.10)">
     <div class="content-wrap">
