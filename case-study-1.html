@@ -306,6 +306,12 @@
     }
   </style>
   <link rel="stylesheet" href="case-study.css?v=202610042152">
+  <style>
+    .old-tools { margin: 0 0 clamp(72px, 9vw, 140px); }
+    .old-tools .img-grid { margin: 0 !important; }
+    .old-tools .img-frame img { aspect-ratio: 569 / 383; object-fit: cover; }
+    @media (max-width: 768px) { .old-tools .img-cols-3 { grid-template-columns: 1fr 1fr !important; } }
+  </style>
 </head>
 
 <body>
@@ -370,6 +376,18 @@
         <p>Next&rsquo;s distribution centres are vast, busy and increasingly automated. My projects have ranged from making sense of the numbers behind millions of parcels, to designing semi-autonomous applications and working out exactly where the user joins the process.</p>
       </div>
     </section>
+
+    <div class="scroll-fade old-tools">
+      <div class="img-grid img-cols-3">
+      <div class="img-frame"><img width="569" height="383" loading="lazy" decoding="async" src="images/old-1.webp" alt="Old web based progress overview with dense coloured tables"></div>
+      <div class="img-frame"><img width="569" height="383" loading="lazy" decoding="async" src="images/old-2.webp" alt="Excel spreadsheet used for hourly operational updates"></div>
+      <div class="img-frame"><img width="569" height="383" loading="lazy" decoding="async" src="images/old-3.webp" alt="Legacy batch viewer with colour coded grid"></div>
+      <div class="img-frame"><img width="569" height="383" loading="lazy" decoding="async" src="images/old-4.webp" alt="Legacy data table of SKUs and statuses"></div>
+      <div class="img-frame"><img width="569" height="383" loading="lazy" decoding="async" src="images/old-5.webp" alt="Terminal screen on the warehouse floor"></div>
+      <div class="img-frame"><img width="569" height="383" loading="lazy" decoding="async" src="images/old-6.webp" alt="Control room wall of monitors"></div>
+      </div>
+      <p class="img-caption">Where we started: legacy tools, spreadsheets and screens on the floor</p>
+    </div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Understanding the users</h2>
