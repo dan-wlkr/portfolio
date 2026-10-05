@@ -316,6 +316,19 @@
     .cs-main a.inline-link { color: var(--ink) !important; text-decoration: underline !important; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: rgba(240,237,232,0.5); }
     .cs-main a.inline-link:hover { text-decoration-color: var(--ink); }
   </style>
+  <style>
+    .screens-grid { display: grid; grid-template-columns: 8fr 7fr; gap: clamp(12px, 1.4vw, 24px); margin: 0 0 clamp(72px, 9vw, 140px); }
+    .screens-grid .sg-stack { display: flex; flex-direction: column; gap: clamp(12px, 1.4vw, 24px); }
+    .screens-grid .img-frame { margin: 0 !important; }
+    .screens-grid .sg-stack .img-frame { flex: 1; min-height: 0; }
+    .screens-grid .sg-stack img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .screens-grid .sg-tall, .screens-grid .sg-tall .img-frame { height: 100%; }
+    .screens-grid .sg-tall img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    @media (max-width: 768px) {
+      .screens-grid { grid-template-columns: 1fr; }
+      .screens-grid .sg-tall img { height: auto; aspect-ratio: 4 / 5; }
+    }
+  </style>
 </head>
 
 <body>
@@ -444,6 +457,17 @@
       <p class="body-text">
         The range of screens I&rsquo;ve worked on has been really varied. Management dashboards, airport style departure boards, HR shift allocation apps, delivery viewers for store managers and payment processing apps. Each one has its own users and its own environment, from a desk with three monitors to a screen hung high above the warehouse floor, so I&rsquo;ve had to think about how and where every screen is actually used.
       </p>
+    </section>
+
+    <div class="scroll-fade screens-grid">
+      <div class="sg-stack">
+        <div class="img-frame"><img width="1448" height="1086" loading="lazy" decoding="async" src="images/grid-1.webp" alt="E3 pack stations overview on a monitor in the warehouse"></div>
+        <div class="img-frame"><img width="1671" height="941" loading="lazy" decoding="async" src="images/grid-2.webp" alt="Elmsall bookings in progress dashboard on a desktop monitor"></div>
+      </div>
+      <div class="sg-tall"><div class="img-frame"><img width="1024" height="1536" loading="lazy" decoding="async" src="images/grid-3.webp" alt="Bonus Portal app on a phone showing estimated performance and hours by area"></div></div>
+    </div>
+
+    <section class="scroll-fade" style="margin-bottom: 64px;">
       <p class="body-text">
         I work closely with developers on handoff. Our teams use different front end frameworks, so I&rsquo;ve learnt the basics of each, which means I can hand off Figma files knowing they&rsquo;re feasible. My background in web design has been crucial here. I know what it&rsquo;s like to build and deploy my own projects, and I&rsquo;ve added the more formal processes of a large organisation on top.
       </p>
