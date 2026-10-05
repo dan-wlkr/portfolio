@@ -336,7 +336,7 @@
     <h1 class="serif cs-h1 word-reveal" data-delay="0.25" data-after="cs-intro cs-facts">A Design System Built in Code</h1>
     <div class="cs-header-grid">
       <div class="cs-intro-col">
-        <p class="cs-intro" id="cs-intro" data-reveal>Fragmented components across nine product sets were slowing engineering. I built a design system directly in Blazor — production-ready code, not a hand-off artefact — then scaled it with a team of ten developers.</p>
+        <p class="cs-intro" id="cs-intro" data-reveal>Our nine product teams were each building their own components, which slowed everyone down. I built a design system directly in Blazor, the code our devs actually use, then grew it with a team of ten developers.</p>
       </div>
       <dl class="cs-facts" id="cs-facts" data-reveal>
         <div><dt>Company</dt><dd>Next PLC</dd></div>
@@ -360,7 +360,7 @@
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Building a design system in Blazor</h2>
       <p class="body-text">
-        Fragmented components across nine product sets were slowing engineering and creating inconsistent UX. I identified this as the highest-leverage structural problem and proposed building a design system directly in Blazor — not a hand-off artefact, but production-ready code aligned with Next's existing stack. Working solo in VS Code with GitHub Copilot, that meant components could be adopted directly by dev teams without any translation overhead.
+        Every team had their own version of buttons, tables and forms, so nothing looked or behaved the same and devs were rebuilding the same things over and over. I saw this as the biggest problem to fix, so I proposed building a design system straight in Blazor, which is what our teams already use. Rather than handing over Figma files to be translated into code, the components were ready to drop straight into projects.
       </p>
     </section>
 
@@ -371,7 +371,7 @@
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <p class="body-text">
-        Building it with Copilot was a deliberate bet on AI-assisted development. It let me move faster than would have been realistic on my own, and gave me a much deeper understanding of how components behave in code. Handover to engineering teams was significantly smoother as a result.
+        I built the first version on my own in VS Code using GitHub Copilot. It was a bit of a bet on AI, but it let me move much faster than I could have otherwise, and I learnt a lot about how components actually behave in code. That made handing things over to the dev teams much smoother.
       </p>
     </section>
 
@@ -382,16 +382,16 @@
 
     <section class="scroll-fade" style="margin-bottom: 0;">
       <p class="body-text">
-        Once the foundation was in place, I scaled adoption by forming a dedicated design system team of 10 developers drawn from across the nine product sets. Existing relationships made it work. We had internal champions in each area, shared ownership, and a system shaped by the people implementing it rather than imposed on them.
+        Once the basics were in place, I set up a design system team of 10 developers from across the nine product teams. I already had good relationships with these teams, which made it work really well. Each area had someone championing it, we shared ownership, and the system was shaped by the people using it rather than forced on them.
       </p>
       <p class="body-text">
-        I also built a component playground. A tool that let non-technical stakeholders like Product Owners mock up ideas using real components, without needing Figma or engineering support. It reduced back-and-forth in early ideation and got design thinking into the room earlier.
+        I also built a component playground, so people like our Product Owners could mock up ideas with real components without needing Figma or a developer. It cut out a lot of back and forth early on and got people thinking about design much sooner.
       </p>
     </section>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <p class="body-text">
-        The system wasn&rsquo;t just a set of components. Each one came with clear guidance on when and how to use it, so teams could make consistent decisions on their own. Notifications are a good example: a simple decision flow helped teams choose between a dialog, an alert or a snackbar, based on how much attention the user needed to give.
+        It isn&rsquo;t just a set of components. Each one comes with guidance on when and how to use it, so teams can make good decisions on their own. Notifications are a good example. We put together a simple decision flow to help teams choose between a dialog, an alert or a snackbar, depending on how much attention the user needs to give.
       </p>
     </section>
 
@@ -410,29 +410,29 @@
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Championing AI across the design team</h2>
       <p class="body-text">
-        Beyond my own practice, I actively pushed AI adoption across the team. I ran presentations on integrating AI into design workflows: practical usage, where the tools genuinely add value, and how to think critically about their outputs.
+        Outside of my own work, I&rsquo;ve pushed for AI to be used more across the team. I&rsquo;ve run presentations on how to bring AI into design workflows, where it&rsquo;s genuinely useful, and how to question what it gives you.
       </p>
       <p class="body-text">
-        AI literacy is becoming a core design skill. Getting the team comfortable early and helping them build good instincts felt like one of the more valuable things I could do.
+        I think being comfortable with AI is quickly becoming a core design skill, so helping the team get started early has been one of the more useful things I&rsquo;ve done.
       </p>
     </section>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Impact</h2>
       <p class="body-text">
-        The design system gave nine product sets a shared language for the first time. The component playground extended that to non-technical stakeholders, and a team of ten developers now owns and scales it across the business.
+        For the first time, all nine product teams are building from the same set of components. The playground has opened that up to people outside of design and development, and a team of ten developers now looks after the system and keeps it growing.
       </p>
       <div class="outcome-grid">
         <div class="outcome-card">
           <div class="outcome-card-inner">
             <div class="stat">9</div>
-            <div class="stat-label">Product sets designed across, each with distinct operational context and user base</div>
+            <div class="stat-label">Product teams now building from the same components</div>
           </div>
         </div>
         <div class="outcome-card">
           <div class="outcome-card-inner">
             <div class="stat">10</div>
-            <div class="stat-label">Developers brought into the design system team to scale adoption across the business</div>
+            <div class="stat-label">Developers in the design system team, keeping it growing</div>
           </div>
         </div>
       </div>
@@ -441,7 +441,7 @@
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Reflections</h2>
       <p class="body-text">
-        Building the design system solo before handing it to a team of ten is probably the thing that best captures how I approach problems: start scrappy, validate fast, then build the structure that makes it last.
+        Building the system on my own first, then handing it over to a team of ten, sums up how I like to work. Start small, test it quickly, then put the structure in place to make it last.
       </p>
     </section>
 
