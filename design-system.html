@@ -241,6 +241,10 @@
     .img-cols-3 { grid-template-columns: 1fr 1fr 1fr; }
     .ds-shots { margin: 0 0 clamp(72px, 9vw, 140px); }
     .ds-shots .img-grid { margin: 0 !important; }
+    .ds-shots .img-frame { position: relative; }
+    .ds-shots .img-frame::after { content: ""; position: absolute; inset: 0; border: 1px solid rgba(255,255,255,0.24); border-radius: inherit; pointer-events: none; }
+    .ds-mock { background: #e6e6e6; border: none; padding: clamp(20px, 6%, 84px) clamp(20px, 9%, 128px); }
+    .ds-mock img { height: auto; border-radius: 3px; box-shadow: 0 22px 44px rgba(0,0,0,0.22), 0 6px 14px rgba(0,0,0,0.12); }
     .img-feature { grid-template-columns: 3fr 2fr; }
     .img-feature .feature-main { grid-row: span 2; align-self: stretch; }
     .img-feature .feature-main .img-frame { height: 100%; }
@@ -392,7 +396,7 @@
     </section>
 
     <div class="img-block scroll-fade">
-      <div class="img-frame"><img width="1800" height="1080" loading="lazy" decoding="async" src="images/palettes-home.webp" alt="Palettes homepage introducing the Next Warehouse design system, with photos of warehouse colleagues and links to foundations"></div>
+      <div class="img-frame ds-mock"><img width="1800" height="1080" loading="lazy" decoding="async" src="images/palettes-home.webp" alt="Palettes homepage introducing the Next Warehouse design system, with photos of warehouse colleagues and links to foundations"></div>
       <p class="img-caption">Palettes, the home of the design system for every team in Warehouse Tech</p>
     </div>
 
