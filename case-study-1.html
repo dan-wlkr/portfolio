@@ -327,12 +327,12 @@
     <h1 class="serif cs-h1 word-reveal" data-delay="0.25" data-after="cs-intro cs-facts">Designing for the Warehouse</h1>
     <div class="cs-header-grid">
       <div class="cs-intro-col">
-        <p class="cs-intro" id="cs-intro" data-reveal>Establishing a design function from scratch at Next, working across six product sets supporting the delivery of up to one million packages a day.</p>
+        <p class="cs-intro" id="cs-intro" data-reveal>Establishing a design function from scratch at Next, working across nine product sets that support the delivery of up to one million packages a day.</p>
       </div>
       <dl class="cs-facts" id="cs-facts" data-reveal>
         <div><dt>Company</dt><dd>Next PLC</dd></div>
-        <div><dt>Duration</dt><dd>3 Years</dd></div>
-        <div><dt>Focus</dt><dd>Research &amp; user testing</dd></div>
+        <div><dt>Duration</dt><dd>4 years</dd></div>
+        <div><dt>Focus</dt><dd>Full design remit, including user testing</dd></div>
       </dl>
     </div>
   </header>
@@ -351,27 +351,36 @@
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Overview</h2>
       <p class="body-text">
-        When I joined Next's warehouse operations division, there was no design function, no research practice, and no shared design language — independent of the existing ecomm design team elsewhere in the business. I built all of it from the ground up. Working across operational tools that support up to one million packages a day, I cover six product sets — designing complex applications while creating the infrastructure to make design sustainable and independently owned.
+        When I joined Next&rsquo;s Warehouse Tech team, there was no design function, no research practice and no shared design language. Our e-commerce design team offered occasional support, but this was the first full time design role in the department. That made it a really exciting opportunity, with a huge scope of work to match.
+      </p>
+      <p class="body-text">
+        Until then, development teams had led the design on their own projects, so there was little consistency from one to the next. My focus has been on opening up clear lines of communication with users, building a design system and tooling into the dev teams&rsquo; workflows, and getting us all working in one consistent way.
       </p>
     </section>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">The challenge</h2>
       <p class="body-text">
-        Next's internal tools had grown organically alongside the business. The result was fragmented interfaces that weren't keeping pace with increasingly automated logistics. Teams were using tools that couldn't represent the complexity of modern fulfilment, and there was no shared design language across products.
+        With internal, process focused applications, design is often seen as a nice to have rather than an essential. It&rsquo;s easy to say something works: the button gets clicked, the package is confirmed, job done. I&rsquo;ve put a lot of time into showing that good design improves efficiency as well as user satisfaction.
+      </p>
+      <p class="body-text">
+        That meant getting the metrics right in user testing. Can a user complete the task? How long does it take them to learn it? How can we speed the process up? Time on task is a big one, and I&rsquo;ve worked to show that it isn&rsquo;t just about reducing clicks, but about making processes genuinely simple.
       </p>
       <div class="highlight-block">
-        <p>As the first dedicated designer in this space, I had to build credibility, establish process, and ship meaningful work simultaneously.</p>
+        <p>Next runs some of the largest distribution facilities in the world. My projects have ranged from making sense of the numbers behind millions of parcels, to designing semi-autonomous applications and working out exactly where the user joins the process.</p>
       </div>
     </section>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Understanding the users</h2>
       <p class="body-text">
-        Before I joined, product decisions at Next were made without structured user input. I established the research practice from scratch — designing the methodology, running 150+ moderated sessions over three years, and building qualitative insight across every role and operational context. Watching how staff actually used tools in practice was especially important. Operational users are domain experts. The gap between what they describe and what they actually do is often significant.
+        I set up the research practice from scratch: designing the methodology, running 150+ moderated sessions and building insight across every role and operational context. I worked closely with our Research Lead to learn how to facilitate my own sessions, so when we have an idea, we can be testing it the same day and quickly understand its business value and limitations.
       </p>
       <p class="body-text">
-        I designed a structured participant database — capturing roles, workflows, pain points, and session history — so research could be repeatable and institutionally owned, not rebuilt from scratch each time a new question arose. That gave the team lasting knowledge, made recruiting easier, and shifted research from ad hoc conversations to something the product team now runs independently.
+        Watching how staff actually use tools is especially important. Operational users are domain experts who have spent years running these busy spaces, and the gap between what they describe and what they actually do is often significant. I&rsquo;ve built a database of users and their roles across the warehouse, so for any new project we know exactly who to talk to.
+      </p>
+      <p class="body-text">
+        When I first joined, I was making simple click through prototypes in Figma. Now we lean heavily on AI, moving from Figma Make into Copilot in VS Code to give users realistic prototypes that closely match the final flows and work with large datasets. We get far more clarity on a project before a developer has written a line of code.
       </p>
     </section>
 
@@ -393,19 +402,16 @@
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">The design work</h2>
       <p class="body-text">
-        The six product sets I worked across covered genuinely varied ground, each with its own user base, operational context, and design challenges.
+        We have nine separate dev teams building front ends for different warehouse processes, such as picking, packing and returns. A big part of my work has been setting up a new design system, which you can read about in <a href="design-system.html" style="color:var(--ink); text-underline-offset:3px;">A Design System Built in Code</a>. The same questions kept coming up across teams. How do we show large datasets in a way that makes sense? How do we help users complete tasks quickly and confidently? How do we let them jump between views without losing their place?
       </p>
       <p class="body-text">
-        Management dashboards required translating high-volume, fast-moving operational data into interfaces that gave managers a clear picture of what was happening across the business at any given moment. The challenge was less about information architecture in the abstract and more about understanding what decisions these users actually needed to make, and designing around those rather than around the data itself.
-      </p>
-      <p class="body-text">
-        Payment processing applications served back office teams where accuracy and auditability were critical. Supporting users who were highly experienced with their processes, while reducing the risk of error in high-stakes tasks.
+        Some of this came down to getting the application architecture right. Our management users often have three monitors running at once, so we could split screens across them. On the warehouse floor, people are more likely to be using handsets and touch screens, so they need clear top level information and big touch targets.
       </p>
       <div class="highlight-block">
-        <p>The most complex work was the E3 warehouse. A large-scale automated facility where staff weren't doing manual work, but operating alongside automation. Monitoring processes, intervening when needed, setting parameters for the system to follow. Designing for that kind of human-automation relationship meant thinking carefully about system state, making automated decisions legible, and giving users real control without overwhelming them.</p>
+        <p>I spent a lot of time testing how to improve information hierarchy, letting users drill further into the data only when they need to. We made screens far more visual, with large charts, maps and accessible colours.</p>
       </div>
       <p class="body-text">
-        I prototyped extensively throughout, using Figma and Figma Make to simulate automated states, edge cases, and handoff moments between human intent and system execution. This was essential for aligning engineers and stakeholders on behaviours that were difficult to describe in static specs, and for pressure-testing designs before any development investment was made.
+        I work closely with developers on handoff. Our teams use different front end frameworks, so I&rsquo;ve learnt the basics of each, which means I can hand off Figma files knowing they&rsquo;re feasible. My background in web design has been crucial here. I know what it&rsquo;s like to build and deploy my own projects, and I&rsquo;ve added the more formal processes of a large organisation on top.
       </p>
     </section>
 
@@ -433,25 +439,25 @@
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Impact</h2>
       <p class="body-text">
-        Across six product sets, I've taken a design function from nonexistent to embedded — including research practice and tooling the product organisation can run independently. The 38% to 81% satisfaction lift wasn't a single feature — it was the result of sustained investment in research, systems, and building trust with engineering.
+        Before I started, an external report put user satisfaction at 38%. In our benchmarking tests, it&rsquo;s now 81%. Development time has dropped significantly too, as teams no longer design their own screens and can build from ready made component libraries. UX is now an expected part of the process, not an optional extra.
       </p>
       <div class="outcome-grid">
         <div class="outcome-card">
           <div class="outcome-card-inner">
             <div class="stat">81%</div>
-            <div class="stat-label">User satisfaction across the warehouse platform — up from 38% at baseline; the result of sustained research, design systems, and trust built with engineering over three years</div>
+            <div class="stat-label">User satisfaction across the warehouse platform, up from a 38% baseline</div>
           </div>
         </div>
         <div class="outcome-card">
           <div class="outcome-card-inner">
             <div class="stat">150+</div>
-            <div class="stat-label">Users spoken with through moderated research sessions — a practice that didn't exist before, now a permanent part of how product decisions are made</div>
+            <div class="stat-label">Users spoken to in moderated research sessions, a practice that didn&rsquo;t exist before</div>
           </div>
         </div>
         <div class="outcome-card">
           <div class="outcome-card-inner">
-            <div class="stat">6</div>
-            <div class="stat-label">Product sets designed across, each with distinct operational context and user base</div>
+            <div class="stat">9</div>
+            <div class="stat-label">Product sets designed across, each with its own operational context and users</div>
           </div>
         </div>
       </div>
@@ -460,7 +466,7 @@
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Reflections</h2>
       <p class="body-text">
-        Building a design function from scratch inside a large retailer has taught me that the work is never just the interface. It's earning trust, creating infrastructure, and bringing technical teams with you. The E3 warehouse work is the thing I think about most. Not because of its technical complexity, but because it required new ways of thinking about humans and automation working together.
+        Building a design function from scratch inside a large retailer has taught me that the work is never just the interface. It&rsquo;s earning trust, creating infrastructure and bringing technical teams with you. Clear communication between business leads, users and developers has been just as important as anything I&rsquo;ve made in Figma.
       </p>
     </section>
 
