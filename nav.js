@@ -10,7 +10,7 @@
     '        <div class="nav-dropdown">',
     '          <span class="nav-dropdown-trigger">Projects</span>',
     '          <div class="dropdown-menu">',
-    '            <a href="case-study-1.html">Research &amp; Design at Next</a>',
+    '            <a href="case-study-1.html">Designing for the Warehouse</a>',
     '            <a href="design-system.html">A Design System Built in Code</a>',
     '            <a href="previous-work.html">Selected Previous Work</a>',
     '          </div>',
