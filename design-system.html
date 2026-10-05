@@ -241,6 +241,8 @@
     .img-cols-3 { grid-template-columns: 1fr 1fr 1fr; }
     .ds-mock { background: #e6e6e6; border: none; padding: clamp(20px, 6%, 84px) clamp(20px, 9%, 128px); }
     .ds-mock img { height: auto; border-radius: 3px; box-shadow: 0 22px 44px rgba(0,0,0,0.22), 0 6px 14px rgba(0,0,0,0.12); }
+    .ds-stack { display: flex; flex-direction: column; gap: clamp(12px, 1.6vw, 24px); }
+    .ds-stack .img-frame { margin: 0 !important; }
     .ds-mock-dark { background: #262626; padding: clamp(20px, 5%, 64px) clamp(20px, 6%, 80px); }
     .ds-mock-dark img { box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 24px 48px rgba(0,0,0,0.55), 0 6px 14px rgba(0,0,0,0.35); }
     .img-feature { grid-template-columns: 3fr 2fr; }
@@ -352,7 +354,7 @@
 
   <div class="content-wrap cs-hero-wrap" data-observe>
     <div class="cs-hero-img">
-      <img width="3000" height="1875" fetchpriority="high" decoding="async" style="object-position: center;" src="images/palettes-cover.webp" alt="Palettes, the Next Warehouse design system site, shown as a screenshot on a grey background">
+      <img width="4000" height="2500" fetchpriority="high" decoding="async" style="object-position: center;" src="images/palettes-cover.webp" alt="Palettes, the Next Warehouse design system site, shown as a screenshot on a grey background">
     </div>
   </div>
 
@@ -387,46 +389,19 @@
         I also built a component playground, so people like our Product Owners could mock up ideas with real components without needing Figma or a developer. It cut out a lot of back and forth early on and got people thinking about design much sooner.
       </p>
       <p class="body-text">
-        Palettes covers the foundations too, so things like colours, theming and typography all live in one place. Before this, colours were picked by eye and every app had its own slightly different shade of everything. Now each colour is a named token with its light and dark values side by side, so devs never have to guess a hex code. Everyone&rsquo;s starting from the same base, and there&rsquo;s a light and dark mode built in, which matters when some of our users are in a bright office and others are on a dim warehouse floor.
+        Palettes covers the foundations too, so things like colours, theming, typography and spacing all live in one place. Before this, colours were picked by eye and every app had its own slightly different shade of everything. Now each colour is a named token with its light and dark values side by side, so devs never have to guess a hex code, and there&rsquo;s a light and dark mode built in. Spacing was a big one for us. Our screens are packed with data, so keeping margins and padding consistent is really what stops them feeling crowded. I showed it on real screens rather than just listing numbers, so it was easy to see how it all fits together.
       </p>
-    </section>
-
-    <div class="img-block scroll-fade">
-      <div class="img-frame ds-mock ds-mock-dark"><img width="1800" height="1080" loading="lazy" decoding="async" src="images/palettes-theming.webp" alt="Palettes theming page listing colour variables with light and dark hex values"></div>
-      <p class="img-caption">Theming, with every colour token and its light and dark values</p>
-    </div>
-
-    <section class="scroll-fade" style="margin-bottom: 64px;">
       <p class="body-text">
-        Spacing was a big one for us. Our screens are packed with data, so keeping margins and padding consistent is really what stops them feeling crowded. It&rsquo;s one of those things nobody notices when it&rsquo;s right, but you can tell straight away when it&rsquo;s wrong. I showed it on real screens rather than just listing numbers, so it was easy to see how it all fits together, and it also covers how layouts should adapt across screen sizes, from big monitors in the office down to smaller devices out on the floor.
+        Every component comes with live examples and the code to go with them, so devs can copy it straight into their projects and see what&rsquo;s already there before building something new. There&rsquo;s a shared icon set too, so the same action always looks the same wherever you are. It sounds small, but when someone moves between apps all day, things like an edit or export icon being in the same place really adds up.
       </p>
     </section>
 
-    <div class="img-block scroll-fade">
-      <div class="img-frame ds-mock ds-mock-dark"><img width="1800" height="1080" loading="lazy" decoding="async" src="images/palettes-spacing.webp" alt="Palettes spacing guidance shown over a dashboard layout"></div>
-      <p class="img-caption">Spacing guidance laid over a real dashboard</p>
-    </div>
-
-    <section class="scroll-fade" style="margin-bottom: 64px;">
-      <p class="body-text">
-        Every component comes with live examples and the code to go with them, so devs can copy it straight into their projects. The examples cover the different ways a component can be used, like alerts that can be closed or ones with an action attached, so teams can see what&rsquo;s already there before building something new.
-      </p>
-    </section>
-
-    <div class="img-block scroll-fade">
-      <div class="img-frame ds-mock ds-mock-dark"><img width="1800" height="1080" loading="lazy" decoding="async" src="images/palettes-alerts.webp" alt="Palettes alert component examples with show code options"></div>
-      <p class="img-caption">Alert components with live examples and code</p>
-    </div>
-
-    <section class="scroll-fade" style="margin-bottom: 64px;">
-      <p class="body-text">
-        There&rsquo;s a shared icon set too, so the same action always looks the same wherever you are. It sounds small, but when someone moves between apps all day, things like an edit or export icon being in the same place and looking the same really adds up.
-      </p>
-    </section>
-
-    <div class="img-block scroll-fade">
-      <div class="img-frame ds-mock ds-mock-dark"><img width="1800" height="1080" loading="lazy" decoding="async" src="images/palettes-icons.webp" alt="Palettes icon library grouped into status and action icons"></div>
-      <p class="img-caption">The shared icon set, grouped by status and action</p>
+    <div class="img-block scroll-fade ds-stack">
+      <div class="img-frame ds-mock ds-mock-dark"><img width="2600" height="1561" loading="lazy" decoding="async" src="images/palettes-theming.webp" alt="Palettes theming page listing colour variables with light and dark hex values"></div>
+      <div class="img-frame ds-mock ds-mock-dark"><img width="2600" height="1561" loading="lazy" decoding="async" src="images/palettes-spacing.webp" alt="Palettes spacing guidance shown over a dashboard layout"></div>
+      <div class="img-frame ds-mock ds-mock-dark"><img width="2600" height="1561" loading="lazy" decoding="async" src="images/palettes-alerts.webp" alt="Palettes alert component examples with show code options"></div>
+      <div class="img-frame ds-mock ds-mock-dark"><img width="2600" height="1561" loading="lazy" decoding="async" src="images/palettes-icons.webp" alt="Palettes icon library grouped into status and action icons"></div>
+      <p class="img-caption">Inside Palettes: theming, spacing, alert components and the shared icon set</p>
     </div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
