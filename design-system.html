@@ -243,8 +243,6 @@
     .ds-mock img { height: auto; border-radius: 3px; box-shadow: 0 22px 44px rgba(0,0,0,0.22), 0 6px 14px rgba(0,0,0,0.12); }
     .ds-mock-dark { background: #262626; padding: clamp(20px, 5%, 64px) clamp(20px, 6%, 80px); }
     .ds-mock-dark img { box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 24px 48px rgba(0,0,0,0.55), 0 6px 14px rgba(0,0,0,0.35); }
-    .ds-pair { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 3%, 40px); align-items: center; padding: clamp(20px, 5%, 64px) clamp(16px, 4%, 48px); }
-    @media (max-width: 768px) { .ds-pair { grid-template-columns: 1fr; } }
     .img-feature { grid-template-columns: 3fr 2fr; }
     .img-feature .feature-main { grid-row: span 2; align-self: stretch; }
     .img-feature .feature-main .img-frame { height: 100%; }
@@ -411,16 +409,24 @@
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <p class="body-text">
-        Every component comes with live examples and the code to go with them, so devs can copy it straight into their projects. The examples cover the different ways a component can be used, like alerts that can be closed or ones with an action attached, so teams can see what&rsquo;s already there before building something new. There&rsquo;s a shared icon set too, so the same action always looks the same wherever you are. It sounds small, but when someone moves between apps all day, things like an edit or export icon being in the same place and looking the same really adds up.
+        Every component comes with live examples and the code to go with them, so devs can copy it straight into their projects. The examples cover the different ways a component can be used, like alerts that can be closed or ones with an action attached, so teams can see what&rsquo;s already there before building something new.
       </p>
     </section>
 
     <div class="img-block scroll-fade">
-      <div class="img-frame ds-mock ds-mock-dark ds-pair">
-        <img width="1800" height="1080" loading="lazy" decoding="async" src="images/palettes-alerts.webp" alt="Palettes alert component examples with show code options">
-        <img width="1800" height="1080" loading="lazy" decoding="async" src="images/palettes-icons.webp" alt="Palettes icon library grouped into status and action icons">
-      </div>
-      <p class="img-caption">Alert components with code, and the shared icon set</p>
+      <div class="img-frame ds-mock ds-mock-dark"><img width="1800" height="1080" loading="lazy" decoding="async" src="images/palettes-alerts.webp" alt="Palettes alert component examples with show code options"></div>
+      <p class="img-caption">Alert components with live examples and code</p>
+    </div>
+
+    <section class="scroll-fade" style="margin-bottom: 64px;">
+      <p class="body-text">
+        There&rsquo;s a shared icon set too, so the same action always looks the same wherever you are. It sounds small, but when someone moves between apps all day, things like an edit or export icon being in the same place and looking the same really adds up.
+      </p>
+    </section>
+
+    <div class="img-block scroll-fade">
+      <div class="img-frame ds-mock ds-mock-dark"><img width="1800" height="1080" loading="lazy" decoding="async" src="images/palettes-icons.webp" alt="Palettes icon library grouped into status and action icons"></div>
+      <p class="img-caption">The shared icon set, grouped by status and action</p>
     </div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
