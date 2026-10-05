@@ -239,6 +239,8 @@
     .img-caption { font-size: 0.72rem; color: var(--muted); opacity: 0.55; margin: 9px 0 0; text-align: center; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
     .img-cols-2 { grid-template-columns: 1fr 1fr; }
     .img-cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .ds-shots { margin: 0 0 clamp(72px, 9vw, 140px); }
+    .ds-shots .img-grid { margin: 0 !important; }
     .img-feature { grid-template-columns: 3fr 2fr; }
     .img-feature .feature-main { grid-row: span 2; align-self: stretch; }
     .img-feature .feature-main .img-frame { height: 100%; }
@@ -398,6 +400,22 @@
       <p class="body-text">
         I also built a component playground, so people like our Product Owners could mock up ideas with real components without needing Figma or a developer. It cut out a lot of back and forth early on and got people thinking about design much sooner.
       </p>
+      <p class="body-text">
+        Palettes covers the foundations too, so things like colours, theming, icons and spacing all live in one place. Everyone&rsquo;s starting from the same base, and the components themselves come with live examples and the code to go with them.
+      </p>
+    </section>
+
+    <div class="scroll-fade ds-shots">
+      <div class="img-grid img-cols-2">
+      <div class="img-frame"><img width="1800" height="1080" loading="lazy" decoding="async" src="images/palettes-theming.webp" alt="Palettes theming page listing colour variables with light and dark hex values"></div>
+      <div class="img-frame"><img width="1800" height="1080" loading="lazy" decoding="async" src="images/palettes-alerts.webp" alt="Palettes alert component examples with show code options"></div>
+      <div class="img-frame"><img width="1800" height="1080" loading="lazy" decoding="async" src="images/palettes-icons.webp" alt="Palettes icon library grouped into status and action icons"></div>
+      <div class="img-frame"><img width="1800" height="1080" loading="lazy" decoding="async" src="images/palettes-spacing.webp" alt="Palettes spacing guidance shown over a dashboard layout"></div>
+      </div>
+      <p class="img-caption">Foundations and components in Palettes: theming, alerts, icons and spacing</p>
+    </div>
+
+    <section class="scroll-fade" style="margin-bottom: 64px;">
       <p class="body-text">
         It isn&rsquo;t just a set of components. Each one comes with guidance on when and how to use it, so teams can make good decisions on their own. Notifications are a good example. We put together a simple decision flow to help teams choose between a dialog, an alert or a snackbar, depending on how much attention the user needs to give.
       </p>
