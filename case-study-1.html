@@ -312,6 +312,10 @@
     .old-tools .img-frame img { aspect-ratio: 569 / 383; object-fit: cover; }
     @media (max-width: 768px) { .old-tools .img-cols-3 { grid-template-columns: 1fr 1fr !important; } }
   </style>
+  <style>
+    .cs-main a.inline-link { color: var(--ink) !important; text-decoration: underline !important; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: rgba(240,237,232,0.5); }
+    .cs-main a.inline-link:hover { text-decoration-color: var(--ink); }
+  </style>
 </head>
 
 <body>
@@ -420,7 +424,7 @@
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">The design work</h2>
       <p class="body-text">
-        A big part of my work has been setting up a new design system, which you can read about in <a href="design-system.html" style="color:var(--ink); text-underline-offset:3px;">A Design System Built in Code</a>. The same questions kept coming up across teams. How do we show large datasets in a way that makes sense? How do we help users complete tasks quickly and confidently? How do we let them jump between views without losing their place?
+        A big part of my work has been setting up a new design system, which you can read about in <a href="design-system.html" class="inline-link">A Design System Built in Code</a>. The same questions kept coming up across teams. How do we show large datasets in a way that makes sense? How do we help users complete tasks quickly and confidently? How do we let them jump between views without losing their place?
       </p>
       <p class="body-text">
         Some of this came down to getting the application architecture right. Our management users often have three monitors running at once, so we could split screens across them. On the warehouse floor, people are more likely to be using handsets and touch screens, so they need clear top level information and big touch targets.
