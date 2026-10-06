@@ -238,3 +238,6 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
   .img-feature .feature-main .img-frame { flex: 1; position: relative; min-height: 0; height: auto !important; }
   .img-feature .feature-main .img-frame img { position: absolute; inset: 0; width: 100%; height: 100% !important; object-fit: cover; object-position: top left; }
 }
+
+/* Avoid single words left on the last line of a paragraph */
+p, li, .cs-intro, .img-caption { text-wrap: pretty; }
