@@ -366,7 +366,7 @@
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Building a design system in Blazor</h2>
       <p class="body-text">
-        Every team had their own version of buttons, tables and forms, so nothing looked or behaved the same and devs were rebuilding the same things over and over. For users, it was a bit of a mess. Someone moving between picking, packing and returns had to learn new patterns in every app, which slowed them down and made mistakes more likely. For me, that was the biggest thing to fix, with a huge amount of immediate value.
+        Every team had their own version of buttons, tables and forms, so nothing looked or behaved the same and devs were rebuilding the same things over and over. For users, it was a bit of a mess. Someone moving between picking, packing and returns had to learn new patterns in every app, which slowed them down and made mistakes more likely. For me, that was the biggest thing to fix, and fixing it would help everyone straight away.
       </p>
       <p class="body-text">
         It actually started life in Notion. I documented components and guidance there, but I struggled to show decent examples, and handoff to devs was still a lot of back and forth. I spent a while trying to make Notion work before admitting it wasn&rsquo;t the right tool, and that&rsquo;s what pushed me into code.
@@ -390,7 +390,7 @@
 
     <section class="scroll-fade" style="margin-bottom: 0;">
       <p class="body-text">
-        We called it Palettes, a mix of colour palettes and the pallets you&rsquo;ll find all over a warehouse. Both sides live there. Angular teams use the shared components, with documentation in Storybook linked from Palettes, while the Blazor side is built around copy and paste code snippets. Every component links to its Figma file for a deeper look at styling and implementation, alongside our source of truth theming files, so devs can get going quickly with out of the box components.
+        We called it Palettes, a mix of colour palettes and the pallets you&rsquo;ll find all over a warehouse. Both sides live there. Angular teams use the shared components, with documentation in Storybook linked from Palettes, while the Blazor side is built around copy and paste code snippets. Every component links to its Figma file for a deeper look at styling and implementation, alongside our source of truth theming files, so devs can get going straight away with out of the box components.
       </p>
       <p class="body-text">
         Once the business saw the value, they let me put a proper team together. It now has developers from each of the nine product teams contributing, split into Blazor and Angular sub teams. I already had good relationships with these teams, which made it work really well, and each area has someone who really cares about it.
@@ -399,10 +399,13 @@
         A big part of it was giving devs more responsibility and ownership. Rather than me being the bottleneck for every component, the team owns the system, makes decisions on it and keeps it growing. It&rsquo;s shaped by the people using it rather than forced on them, and that&rsquo;s a big reason it&rsquo;s stuck. The developers understand their own team&rsquo;s requirements, and they go back to their teams knowing exactly how to apply the system.
       </p>
       <p class="body-text">
-        I also built a couple more projects on the back of this. First, a playground that Product Owners could use to quickly see how their requirements could work with pre built components. Second, Palettes Lite, a smaller design system focused on making things accessible for our growing number of vibe coding end users.
+        I also built a playground that Product Owners could use to see how their requirements could work with pre built components, without needing Figma or a developer.
       </p>
       <p class="body-text">
-        Palettes covers the foundations too, so things like colours, theming, typography and spacing all live in one place. Before this, colours were picked by eye and every app had its own slightly different shade of everything. Now each colour is a named token with its light and dark values side by side, so devs never have to guess a hex code, and there&rsquo;s a light and dark mode built in. Spacing was a big one for us. Our screens are packed with data, so keeping margins and padding consistent is really what stops them feeling crowded. I showed it on real screens rather than just listing numbers, so it was easy to see how it all fits together. We make sure everything is accessible, and we&rsquo;ve run testing sessions to back that up.
+        Palettes covers the foundations too, so things like colours, theming, typography and spacing all live in one place. Before this, colours were picked by eye and every app had its own slightly different shade of everything. Now each colour is a named token with its light and dark values side by side, so devs never have to guess a hex code, and there&rsquo;s a light and dark mode built in. Spacing was a big one for us. Our screens are packed with data, so keeping margins and padding consistent is really what stops them feeling crowded. I showed it on real screens rather than just listing numbers, so it was easy to see how it all fits together.
+      </p>
+      <p class="body-text">
+        Accessibility is built in from the start rather than bolted on at the end. Every component is checked as it&rsquo;s built, and we&rsquo;ve run testing sessions to make sure it holds up in practice.
       </p>
     </section>
 
@@ -425,7 +428,7 @@
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <p class="body-text">
-        Each component comes with guidance on when and how to use it, so teams can make good decisions on their own. We put together simple decision flows to help teams choose components quickly, like deciding between a dialog, an alert or a snackbar depending on how much attention the user needs to give.
+        Each component comes with guidance on when and how to use it, so teams can make good decisions on their own. We put together simple decision flows to help teams pick the right component, like deciding between a dialog, an alert or a snackbar depending on how much attention the user needs to give.
       </p>
     </section>
 
@@ -442,6 +445,12 @@
     </div>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
+      <p class="body-text">
+        It&rsquo;s grown from there too. More and more of our workflow users are building their own screens with AI, so I&rsquo;ve started supporting them as well as the devs. Palettes Lite is a smaller, simpler version of the system made for them, so the screens they make still look and work like the rest of our tools.
+      </p>
+    </section>
+
+    <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Championing AI across the teams</h2>
       <p class="body-text">
         Outside of my own work, I&rsquo;ve pushed for AI to be used more across the team, and I&rsquo;ve run presentations on how to bring AI into design workflows. It&rsquo;s helped me learn new frameworks quickly and actually build with them, which means much better conversations with our devs. More and more, I&rsquo;ll start in VS Code to get a feel for an application before refining it in Figma.
@@ -451,7 +460,7 @@
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Impact</h2>
       <p class="body-text">
-        For the first time, all nine product teams are building from the same design system, whether they work in Angular or Blazor. The playground has opened that up to people outside of design and development, and a team of ten developers now looks after the system and keeps it growing. It&rsquo;s made a real difference to delivery too, with teams seeing up to a 50% reduction in story estimates now they&rsquo;re building from ready made components.
+        For the first time, all nine product teams are building from the same design system, whether they work in Angular or Blazor. The devs own it, and a team of ten developers looks after it and keeps it growing. The playground and Palettes Lite have opened it up beyond design and development too, from Product Owners to the workflow users building their own screens. It&rsquo;s made a real difference to delivery, with teams seeing up to a 50% reduction in story estimates now they&rsquo;re building from ready made components, and accessibility is baked in rather than left to each team.
       </p>
       <div class="outcome-grid">
         <div class="outcome-card">
