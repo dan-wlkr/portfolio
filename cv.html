@@ -202,81 +202,74 @@
     @media screen { .print-only { display: none !important; } }
 
     /* ── Print: a proper A4 CV rather than a copy of the web page ───────── */
-    @page { size: A4; margin: 14mm 16mm 14mm; }
+    @page { size: A4; margin: 14mm 21mm 12mm; }
     @media print {
-      html, body { background: #fff !important; color: #111 !important; }
-      body { font-size: 9.4pt; line-height: 1.45; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .loader, .bg-glow, .grain, #nav-mount, #main-nav, .site-footer, .cs-next, .no-print, .cs-header-top .label::before { display: none !important; }
-      /* Everything visible straight away, no motion */
+      html, body { background: #fff !important; color: #222 !important; }
+      body { font-family: 'DM Sans', sans-serif; font-size: 8.8pt; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .loader, .bg-glow, .grain, #nav-mount, #main-nav, .site-footer, .cs-next, .no-print, .screen-only, .cs-header-top { display: none !important; }
       .js [data-reveal], .js .wr-word, .js .word-reveal .wr-word { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; }
+      .wr-word { display: inline !important; }
       .content-wrap { max-width: none !important; padding: 0 !important; }
 
-      /* Header: name and summary left, contact details right */
-      .cs-header { padding: 0 0 5mm !important; margin-bottom: 5mm; border-bottom: 0.6pt solid #111; }
-      .cs-header-top { margin: 0 0 1.5mm !important; gap: 0 !important; }
-      .cs-header-top .cs-kicker { display: none; }
-      .cs-header-top .label { color: #555 !important; font-size: 8pt; letter-spacing: 0.12em; }
-      .cs-h1 { font-size: 28pt !important; line-height: 1 !important; margin: 0 0 3.5mm !important; color: #111 !important; letter-spacing: -0.01em; }
-      .cs-header-grid { display: grid !important; grid-template-columns: 1fr 52mm !important; gap: 8mm !important; align-items: start; }
-      .cs-intro-col, .cs-facts { grid-column: auto !important; }
-      .cs-intro { font-size: 9.6pt !important; line-height: 1.5 !important; color: #222 !important; margin: 0 !important; max-width: none !important; }
-      .cs-facts { gap: 1.6mm !important; }
-      .cs-facts div { grid-template-columns: 13mm 1fr !important; gap: 2mm !important; padding: 0 !important; border: none !important; }
-      .cs-facts dt { font-size: 7pt !important; color: #777 !important; opacity: 1 !important; padding-top: 0.25em !important; }
-      .cs-facts dd, .cs-facts a { font-size: 8.8pt !important; line-height: 1.35 !important; color: #111 !important; text-decoration: none !important; }
+      /* Header: name and role left, contact details right */
+      .cs-header { display: grid !important; grid-template-columns: 1fr auto; column-gap: 10mm; padding: 0 !important; margin: 0 !important; }
+      .cs-header-grid, .cs-intro-col { display: contents !important; }
+      .cs-h1 { grid-column: 1; grid-row: 1; font-family: 'DM Serif Display', serif !important; font-weight: 400 !important; font-size: 27pt !important; line-height: 1 !important; letter-spacing: -0.005em; color: #111 !important; margin: 0 !important; }
+      .print-sub { grid-column: 1; grid-row: 2; font-size: 11pt; color: #9a9a9a; margin: 1.6mm 0 0; }
+      .cs-facts { grid-column: 2; grid-row: 1 / span 2; align-self: end; display: flex !important; flex-direction: column; gap: 0 !important; text-align: right; }
+      .cs-facts div { display: block !important; padding: 0 !important; border: none !important; }
+      .cs-facts dt { display: none !important; }
+      .cs-facts dd, .cs-facts a { font-size: 8.4pt !important; line-height: 1.45 !important; color: #777 !important; text-decoration: none !important; }
+      .cs-facts .cv-web { order: -1; }
+      .print-label, .cs-main section > .section-title { display: block; font-family: 'DM Sans', sans-serif !important; font-size: 6.6pt !important; font-weight: 400 !important; letter-spacing: 0.06em !important; text-transform: uppercase; color: #a5a5a5 !important; margin: 0 0 2mm !important; line-height: 1.3 !important; position: static !important; }
+      .print-label { grid-column: 1 / -1; border-top: 0.5pt solid #ddd; padding-top: 5mm; margin-top: 6mm !important; }
+      .cs-intro { grid-column: 1 / -1; font-size: 9pt !important; line-height: 1.6 !important; color: #222 !important; margin: 0 !important; max-width: none !important; }
 
-      /* Sections: small label column on the left, content on the right */
-      .cs-main { padding: 0 !important; }
-      .cs-main section { display: grid !important; grid-template-columns: 30mm 1fr !important; gap: 0 6mm !important; margin: 0 0 4.5mm !important; padding: 4.5mm 0 0 !important; border-top: 0.4pt solid #ccc; max-width: none !important; }
-      .cs-main section:first-child { border-top: none; padding-top: 0 !important; }
-      .cs-main section > .section-title { grid-column: 1; position: static !important; font-family: inherit !important; font-size: 7.6pt !important; font-weight: 600 !important; letter-spacing: 0.12em !important; text-transform: uppercase; color: #111 !important; margin: 0.35em 0 0 !important; line-height: 1.3 !important; }
-      .cs-main section > :not(.section-title) { grid-column: 2; }
-      .section-title .wr-word { display: inline !important; }
+      /* Sections: one column, thin rule above each */
+      .cs-main { display: flex !important; flex-direction: column; padding: 0 !important; margin-top: 6mm; }
+      .cs-main section { display: block !important; max-width: none !important; margin: 0 !important; padding: 5mm 0 0 !important; border-top: 0.5pt solid #ddd; }
+      .cs-main section + section { margin-top: 6mm !important; }
+      .cs-main section.cv-skills-sec { order: 9; }
+      .cs-main section.cv-courses { border-top: none; padding-top: 0 !important; margin-top: 3mm !important; }
 
-      .cv-entry { margin: 0 0 3.8mm !important; break-inside: avoid; }
+      .cv-entry { margin: 0 0 4.5mm !important; break-inside: avoid; }
       .cv-entry:last-child { margin-bottom: 0 !important; }
-      .cv-entry-header { display: grid !important; grid-template-columns: 1fr auto !important; gap: 0.4mm 6mm !important; margin-bottom: 1.4mm !important; break-after: avoid; }
-      .cv-entry .cv-entry-role { font-size: 12pt !important; color: #111 !important; line-height: 1.2 !important; }
-      .cv-entry-date { font-size: 8.2pt !important; color: #555 !important; opacity: 1 !important; }
-      .cv-entry .cv-entry-company { font-size: 7.4pt !important; color: #666 !important; opacity: 1 !important; }
-      ul.cv-list li { font-size: 9.2pt !important; line-height: 1.45 !important; color: #222 !important; margin-bottom: 1.1mm !important; padding-left: 3.5mm !important; max-width: none !important; break-inside: avoid; }
-      ul.cv-list li::before { top: 0.62em !important; width: 3.5pt !important; height: 3.5pt !important; background: #111 !important; opacity: 0.55 !important; }
+      .cv-entry-header { display: grid !important; grid-template-columns: 1fr auto !important; gap: 0 6mm !important; margin: 0 0 1.4mm !important; align-items: baseline; }
+      .cv-entry .cv-entry-role { font-family: 'DM Serif Display', serif !important; font-weight: 400 !important; font-size: 12.5pt !important; line-height: 1.25 !important; color: #111 !important; }
+      .cv-entry-date { font-size: 8.4pt !important; color: #8a8a8a !important; opacity: 1 !important; }
+      .cv-entry .cv-entry-company { font-size: 8.8pt !important; letter-spacing: 0 !important; text-transform: none !important; color: #333 !important; opacity: 1 !important; }
+      ul.cv-list li { font-size: 8.4pt !important; line-height: 1.45 !important; color: #333 !important; margin: 0 0 1.5mm !important; padding-left: 4.5mm !important; max-width: none !important; break-inside: avoid; }
+      ul.cv-list li::before { content: "\2013" !important; background: none !important; width: auto !important; height: auto !important; border-radius: 0 !important; top: 0 !important; left: 0 !important; opacity: 1 !important; color: #555; }
 
-      /* Skills as a plain inline list */
-      .cv-skills { display: block !important; font-size: 9.2pt; line-height: 1.5; color: #222; }
-      .cv-skill { display: inline !important; padding: 0 !important; border: none !important; background: none !important; border-radius: 0 !important; font-size: inherit !important; font-weight: 400 !important; color: #222 !important; }
-      .cv-skill:not(:last-child)::after { content: ","; }
+      /* Short courses: one line each */
+      .cv-courses .cv-entry { margin: 0 !important; }
+      .cv-courses .cv-entry-header { display: flex !important; margin: 0 !important; gap: 0 !important; }
+      .cv-courses .cv-entry-role, .cv-courses .cv-entry-company { font-family: 'DM Sans', sans-serif !important; font-size: 7.8pt !important; line-height: 1.6 !important; color: #333 !important; order: 1; }
+      .cv-courses .cv-entry-company { order: 2; }
+      .cv-courses .cv-entry-company::before { content: "\00a0\2014\00a0"; }
+      .cv-courses .cv-entry-date { order: 3; margin-left: auto; font-size: 7.8pt !important; color: #8a8a8a !important; }
 
-      /* Short courses and education sit tighter */
-      .cv-entry:not(:has(ul)) { margin-bottom: 2.2mm !important; }
-      .cv-entry:not(:has(ul)) .cv-entry-header { margin-bottom: 0 !important; }
-      .cv-entry:not(:has(ul)) .cv-entry-role { font-size: 10.5pt !important; }
+      /* Skills: plain line with dots */
+      .cv-skills { display: block !important; font-size: 8.4pt; line-height: 1.7; color: #333; }
+      .cv-skill { display: inline !important; padding: 0 !important; border: none !important; background: none !important; border-radius: 0 !important; font-size: inherit !important; font-weight: 400 !important; color: #333 !important; white-space: nowrap; }
+      .cv-skill:not(:last-child)::after { content: "\00a0\00a0\00b7\00a0\00a0"; color: #999; white-space: normal; }
 
-      .screen-only { display: none !important; }
-      .cs-header { padding-bottom: 4mm !important; margin-bottom: 4mm !important; }
-      .cs-intro { font-size: 9.3pt !important; line-height: 1.45 !important; }
-      ul.cv-list li { font-size: 9pt !important; line-height: 1.42 !important; margin-bottom: 0.8mm !important; }
-      .cv-entry { margin-bottom: 3.2mm !important; }
-      .cs-main section { margin-bottom: 3.6mm !important; padding-top: 3.6mm !important; break-inside: avoid; }
-      .cv-skill { white-space: nowrap; }
-      .cv-skills { line-height: 1.6; }
-      /* Short courses in two columns */
-      .cs-main section:has(> .cv-entry:nth-of-type(3)):not(:has(ul)) { grid-template-columns: 30mm 1fr 1fr !important; column-gap: 6mm !important; }
-      .cs-main section:has(> .cv-entry:nth-of-type(3)):not(:has(ul)) > .cv-entry { grid-column: auto; }
-      .cs-main section:has(> .cv-entry:nth-of-type(3)):not(:has(ul)) > .cv-entry:nth-of-type(odd) { grid-column: 2; }
-      .cs-main section:has(> .cv-entry:nth-of-type(3)):not(:has(ul)) > .cv-entry:nth-of-type(even) { grid-column: 3; }
-      .cs-main section:has(> .cv-entry:nth-of-type(3)):not(:has(ul)) > .section-title { grid-row: 1 / span 2; }
-      .cs-h1 { font-size: 26pt !important; margin-bottom: 3mm !important; }
-      .cs-intro { font-size: 9pt !important; line-height: 1.42 !important; }
-      ul.cv-list li { font-size: 8.8pt !important; line-height: 1.38 !important; margin-bottom: 0.6mm !important; }
-      .cv-entry .cv-entry-role { font-size: 11.5pt !important; }
+      .cs-facts .screen-only { display: none !important; }
+      .section-title, .print-label { break-after: avoid; }
+      .cv-courses, .cv-skills-sec { break-inside: avoid; }
+      .cs-intro { line-height: 1.5 !important; }
+      .print-label { margin-top: 5mm !important; padding-top: 4mm; }
+      .cs-main { margin-top: 5mm; }
+      .cs-main section { padding-top: 4mm !important; }
+      .cs-main section + section { margin-top: 5mm !important; }
+      .cv-entry { margin-bottom: 3.6mm !important; }
+      ul.cv-list li { margin-bottom: 1mm !important; line-height: 1.42 !important; }
+
+      .cs-intro { font-size: 8.7pt !important; line-height: 1.48 !important; }
+      ul.cv-list li { font-size: 8.2pt !important; margin-bottom: 0.8mm !important; }
       .cv-entry-header { margin-bottom: 1mm !important; }
-      .cv-entry { margin-bottom: 2.8mm !important; }
-      .cs-main section { margin-bottom: 3mm !important; padding-top: 3mm !important; }
-      .cv-skills { font-size: 8.8pt !important; line-height: 1.5 !important; }
-      .cv-skill { white-space: normal; }
-      .cv-entry:not(:has(ul)) { margin-bottom: 1.6mm !important; }
-      .cv-entry:not(:has(ul)) .cv-entry-role { font-size: 10pt !important; }
+      .cs-main section + section { margin-top: 4mm !important; }
+      .cs-main section.cv-courses { margin-top: 2mm !important; }
     }
   </style>
 </head>
@@ -297,8 +290,10 @@
       <span class="label">Product Designer · UK</span>
     </div>
     <h1 class="serif cs-h1 word-reveal" data-delay="0.25" data-after="cs-intro cs-cta cs-facts">Dan Walker</h1>
+    <p class="print-sub print-only">Product Designer</p>
     <div class="cs-header-grid">
       <div class="cs-intro-col">
+        <p class="print-label print-only">Profile</p>
         <p class="cs-intro" id="cs-intro" data-reveal>Product designer with a fine art foundation and a decade of experience across enterprise software, a self-run creative business, and self-initiated projects. Before moving into product design full-time, I ran a freelance studio for seven years across web design and photography — building and sustaining a business independently. I specialise in complex system design, high-fidelity prototyping, and establishing design practice in organisations where none previously existed. I work closely with engineering and product, and I'm as comfortable in a research session or a sprint planning meeting as I am in Figma.</p>
         <button type="button" onclick="window.print()" class="cs-cta no-print" id="cs-cta" data-reveal>Print / save as PDF</button>
       </div>
@@ -307,7 +302,7 @@
         <div class="screen-only"><dt>Based</dt><dd>UK</dd></div>
         <div><dt>Email</dt><dd><a href="#" class="js-email" id="cv-email">dwlkr [at] me.com</a></dd></div>
         <div class="print-only"><dt>Phone</dt><dd>+44 7885 725355</dd></div>
-        <div class="print-only"><dt>Web</dt><dd>danwalker.site</dd></div>
+        <div class="print-only cv-web"><dt>Web</dt><dd>danwalker.site</dd></div>
       </dl>
     </div>
   </header>
@@ -358,7 +353,7 @@
       </div>
     </section>
 
-    <section class="scroll-fade">
+    <section class="scroll-fade cv-skills-sec">
       <h2 class="section-title">Skills &amp; tools</h2>
       <div class="cv-skills">
         <span class="cv-skill">Figma</span>
@@ -388,7 +383,7 @@
       </div>
     </section>
 
-    <section class="scroll-fade">
+    <section class="scroll-fade cv-courses">
       <h2 class="section-title">Short courses</h2>
 
       <div class="cv-entry">
