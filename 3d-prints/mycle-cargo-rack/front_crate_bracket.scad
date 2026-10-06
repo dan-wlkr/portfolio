@@ -10,12 +10,14 @@
 // Strength: the bracket is printed on its side so every load runs along
 // the layers, not across them. Use PETG or ASA, 6 walls, 50% gyroid.
 
-/* [Head tube bosses: measure these] */
-boss_v      = 75;    // centre-to-centre, lower pair to upper pair, along the head tube
-boss_h      = 30;    // centre-to-centre, left boss to right boss
+/* [Head tube bosses] */
+// Same 4-bolt pattern as Rad Power Bikes' front rack mount:
+// 1 3/16" x 3.5" centre to centre, M5 bolts (4 mm Allen key, 5-8 Nm).
+boss_v      = 88.9;  // centre-to-centre, lower pair to upper pair, along the head tube
+boss_h      = 30.2;  // centre-to-centre, left boss to right boss
 boss_d      = 13;    // outside diameter of a boss (template only)
-bolt_d      = 6.6;   // M6 clearance (bosses are assumed M6; check with a bolt)
-head_d      = 12;    // M6 button/socket head counterbore
+bolt_d      = 5.5;   // M5 clearance (set 6.6 if your bosses take M6)
+head_d      = 10;    // M5 socket/button head counterbore (12 for M6)
 head_angle  = 70;    // head tube angle from horizontal (phone level app)
 
 /* [Bracket] */

@@ -27,17 +27,19 @@ All 11 parts print together on **one A1 plate**: `mycle_front_crate_plate.stl`, 
 
 ## Step 1: print the fit template (10 minutes)
 
-The boss spacing is **estimated from photos**. Print `boss_fit_template.stl` first: a thin
-plate with 4 holes. Hold it on the bosses.
+The bosses use the same pattern as **Rad Power Bikes' front rack mount**: 30.2 mm
+(1 3/16") side to side and 88.9 mm (3.5") top to bottom, centre to centre, with M5 bolts.
+The model is set to those sizes. Print `boss_fit_template.stl` first: a thin plate with
+4 holes. Hold it on the bosses to confirm the Mycle matches.
 
 - **It drops straight onto all 4:** the spacing is right. Print the main plate.
 - **It doesn't fit:** measure centre to centre between the bosses: top to bottom (`boss_v`,
-  currently 75 mm) and left to right (`boss_h`, currently 30 mm). Change those two numbers
+  currently 88.9 mm) and left to right (`boss_h`, currently 30.2 mm). Change those two numbers
   at the top of `front_crate_bracket.scad`. Then export both STLs again from OpenSCAD:
   set `part` to `template` then `plate`, render (F6) and export STL each time.
 
 Also check:
-- **Bolt size:** try an M6 bolt in a boss. If only M5 fits, set `bolt_d = 5.5` and `head_d = 10`.
+- **Bolt size:** the model assumes M5. If an M6 bolt screws into the bosses, set `bolt_d = 6.6` and `head_d = 12`.
 - **Head tube angle:** hold a phone level app along the head tube. Set `head_angle` if it isn't about 70°.
   This keeps the crate level.
 
@@ -54,7 +56,7 @@ Also check:
 
 | What | How many | For |
 |---|---|---|
-| M6 × 25 bolts, plus washers | 4 | Bracket to head-tube bosses. Check they reach at least 8 mm into the boss. |
+| M5 × 25 socket-head bolts, plus washers | 4 | Bracket to head-tube bosses, at 5–8 Nm. Check they reach at least 8 mm into the boss (use M5 × 30 if not). |
 | M5 × 35 bolts and M5 nyloc nuts | 4 | Arms to bracket. The nuts go in the hex pockets under the bracket. |
 | M5 × 25 bolts, washers and nyloc nuts | 4–8 | Through the arm slots, the crate floor and a washer plate inside the crate |
 | Thread-lock (blue) | | On the 4 boss bolts |
