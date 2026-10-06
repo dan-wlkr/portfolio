@@ -202,7 +202,7 @@
     @media screen { .print-only { display: none !important; } }
 
     /* ── Print: a proper A4 CV rather than a copy of the web page ───────── */
-    @page { size: A4; margin: 14mm 21mm 12mm; }
+    @page { size: A4; margin: 17mm 22mm 13mm; }
     @media print {
       html, body { background: #fff !important; color: #222 !important; }
       body { font-family: 'DM Sans', sans-serif; font-size: 8.8pt; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -246,7 +246,7 @@
       .cv-courses .cv-entry-header { display: flex !important; margin: 0 !important; gap: 0 !important; }
       .cv-courses .cv-entry-role, .cv-courses .cv-entry-company { font-family: 'DM Sans', sans-serif !important; font-size: 7.8pt !important; line-height: 1.6 !important; color: #333 !important; order: 1; }
       .cv-courses .cv-entry-company { order: 2; }
-      .cv-courses .cv-entry-company::before { content: "\00a0\2014\00a0"; }
+      .cv-courses .cv-entry-company::before { content: "\00a0\00a0\00b7\00a0\00a0"; color: #999; }
       .cv-courses .cv-entry-date { order: 3; margin-left: auto; font-size: 7.8pt !important; color: #8a8a8a !important; }
 
       /* Skills: plain line with dots */
@@ -257,19 +257,19 @@
       .cs-facts .screen-only { display: none !important; }
       .section-title, .print-label { break-after: avoid; }
       .cv-courses, .cv-skills-sec { break-inside: avoid; }
-      .cs-intro { line-height: 1.5 !important; }
-      .print-label { margin-top: 5mm !important; padding-top: 4mm; }
-      .cs-main { margin-top: 5mm; }
-      .cs-main section { padding-top: 4mm !important; }
-      .cs-main section + section { margin-top: 5mm !important; }
-      .cv-entry { margin-bottom: 3.6mm !important; }
-      ul.cv-list li { margin-bottom: 1mm !important; line-height: 1.42 !important; }
-
-      .cs-intro { font-size: 8.7pt !important; line-height: 1.48 !important; }
-      ul.cv-list li { font-size: 8.2pt !important; margin-bottom: 0.8mm !important; }
-      .cv-entry-header { margin-bottom: 1mm !important; }
-      .cs-main section + section { margin-top: 4mm !important; }
-      .cs-main section.cv-courses { margin-top: 2mm !important; }
+      /* Breathing space */
+      .cs-intro { font-size: 9pt !important; line-height: 1.65 !important; }
+      .print-label { margin-top: 6mm !important; padding-top: 5mm; margin-bottom: 2.5mm !important; }
+      .cs-main { margin-top: 6mm; }
+      .cs-main section { padding-top: 5mm !important; }
+      .cs-main section > .section-title { margin-bottom: 3mm !important; }
+      .cs-main section + section { margin-top: 6mm !important; }
+      .cs-main section.cv-courses { margin-top: 4mm !important; }
+      .cv-entry { margin-bottom: 5mm !important; }
+      .cv-entry-header { margin-bottom: 1.8mm !important; }
+      ul.cv-list li { font-size: 8.6pt !important; line-height: 1.5 !important; margin-bottom: 1.6mm !important; }
+      .cv-courses .cv-entry-role, .cv-courses .cv-entry-company, .cv-courses .cv-entry-date { line-height: 1.75 !important; }
+      .cv-skills { line-height: 1.9; }
     }
   </style>
 </head>
@@ -294,7 +294,7 @@
     <div class="cs-header-grid">
       <div class="cs-intro-col">
         <p class="print-label print-only">Profile</p>
-        <p class="cs-intro" id="cs-intro" data-reveal>Product designer with a fine art foundation and a decade of experience across enterprise software, a self-run creative business, and self-initiated projects. Before moving into product design full-time, I ran a freelance studio for seven years across web design and photography — building and sustaining a business independently. I specialise in complex system design, high-fidelity prototyping, and establishing design practice in organisations where none previously existed. I work closely with engineering and product, and I'm as comfortable in a research session or a sprint planning meeting as I am in Figma.</p>
+        <p class="cs-intro" id="cs-intro" data-reveal>Product designer with a fine art background and over ten years of experience across enterprise software and my own creative business. I specialise in complex systems, high-fidelity prototyping and setting up design practice where there wasn&rsquo;t one before, working closely with engineering and product.</p>
         <button type="button" onclick="window.print()" class="cs-cta no-print" id="cs-cta" data-reveal>Print / save as PDF</button>
       </div>
       <dl class="cs-facts" id="cs-facts" data-reveal>
@@ -315,40 +315,39 @@
       <div class="cv-entry">
         <div class="cv-entry-header">
           <p class="cv-entry-role">UX Designer</p>
-          <span class="cv-entry-date">September 2022 — Present</span>
-          <p class="cv-entry-company">Next</p>
+          <span class="cv-entry-date">Sept 2022 &ndash; Present</span>
+          <p class="cv-entry-company">Next PLC</p>
         </div>
         <ul class="cv-list">
-          <li>The only designer in Next's warehouse technology division — built the design function from scratch across nine product sets, with no prior design presence in that part of the business (Next's ecomm division has its own separate design team).</li>
-          <li>Established the company's first structured user research practice: designed the methodology, ran 150+ moderated sessions, and built a 150+ participant database, lifting satisfaction from 38% to 81%.</li>
-          <li>Identified fragmented components as the highest-leverage structural problem; proposed and led a design system built in Blazor, forming a cross-functional team of 10 developers to own and scale it.</li>
-          <li>Shaped product direction across nine workstreams — reframing requests from 'build this screen' to 'solve this operation', introducing discovery rituals the product team now runs independently.</li>
+          <li>Sole designer in Next&rsquo;s warehouse technology division, building design from scratch across nine teams.</li>
+          <li>Set up the first user research practice, running 150+ sessions and lifting user satisfaction from 38% to 81%.</li>
+          <li>Built a design system in Blazor, then grew it with a team of ten developers.</li>
+          <li>Teams now see up to a 50% reduction in story estimates, with discovery built into how they work.</li>
         </ul>
       </div>
 
       <div class="cv-entry">
         <div class="cv-entry-header">
           <p class="cv-entry-role">Freelance Designer &amp; Photographer</p>
-          <span class="cv-entry-date">June 2015 — September 2022</span>
+          <span class="cv-entry-date">Jun 2015 &ndash; Sept 2022</span>
           <p class="cv-entry-company">Self-employed</p>
         </div>
         <ul class="cv-list">
-          <li>Ran a successful independent creative business for seven years across two disciplines — web design and photography — building a sustained client base and generating consistent revenue throughout.</li>
-          <li>Designed and developed client websites end-to-end using Webflow, Framer, and WordPress, handling everything from scoping and brief through to build and launch.</li>
-          <li>Operated a photography practice in parallel, managing the full pipeline from client acquisition and shoot direction through to post-production and delivery.</li>
-          <li>Owned all aspects of the business: pricing, contracts, client relationships, project management, and financial administration.</li>
+          <li>Ran my own creative business for seven years across web design and photography.</li>
+          <li>Designed and built client websites end to end using Webflow, Framer and WordPress.</li>
+          <li>Looked after every part of the business: pricing, contracts, clients and finances.</li>
         </ul>
       </div>
 
       <div class="cv-entry">
         <div class="cv-entry-header">
           <p class="cv-entry-role">Design &amp; Marketing Assistant</p>
-          <span class="cv-entry-date">August 2021 — September 2022</span>
+          <span class="cv-entry-date">Aug 2021 &ndash; Sept 2022</span>
           <p class="cv-entry-company">The Shakespeare Hospice</p>
         </div>
         <ul class="cv-list">
-          <li>Built brand guidelines from scratch, establishing a consistent visual identity across print and digital.</li>
-          <li>Planned and published content across all social media platforms, growing audience engagement.</li>
+          <li>Built brand guidelines from scratch across print and digital.</li>
+          <li>Planned and published content across social media, growing engagement.</li>
         </ul>
       </div>
     </section>
@@ -366,7 +365,7 @@
         <span class="cv-skill">iOS / mobile design</span>
         <span class="cv-skill">Webflow</span>
         <span class="cv-skill">Framer</span>
-        <span class="cv-skill">HTML · CSS · JS</span>
+        <span class="cv-skill">HTML / CSS / JS</span>
         <span class="cv-skill">AI-assisted design</span>
       </div>
     </section>
@@ -376,9 +375,9 @@
 
       <div class="cv-entry">
         <div class="cv-entry-header">
-          <p class="cv-entry-role">BA (Hons) Fine Art — 2:1</p>
-          <span class="cv-entry-date">2009 — 2012</span>
-          <p class="cv-entry-company">Central St Martins, UAL</p>
+          <p class="cv-entry-role">BA (Hons) Fine Art, 2:1</p>
+          <span class="cv-entry-date">2009 &ndash; 2012</span>
+          <p class="cv-entry-company">Central Saint Martins, UAL</p>
         </div>
       </div>
     </section>
