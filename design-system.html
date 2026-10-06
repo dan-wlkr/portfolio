@@ -375,10 +375,10 @@
         Our devs are split roughly half and half between Angular and Blazor. For the Angular teams, I introduced Storybook and they really ran with it, building and documenting shared components there themselves. Adoption on the Blazor side was much lower, so that&rsquo;s where I focused.
       </p>
       <p class="body-text">
-        I built a whole design system in Blazor on my own in VS Code, using GitHub Copilot and learning as I went. It was a great intro to coding with AI support. It let me move much faster than I could have otherwise, and I learnt a lot about how components actually behave in code. Rather than handing over Figma files to be translated, the components were ready to drop straight into projects.
+        I built a whole design system in Blazor on my own in VS Code, using GitHub Copilot and learning as I went. It was a great intro to coding with AI support. It let me move much faster than I could have otherwise, and I learnt a lot about how components actually behave in code. Rather than handing over Figma files to be translated, the components were ready to drop into projects.
       </p>
       <p class="body-text">
-        As the only designer across nine teams, I couldn&rsquo;t be in every conversation or design every screen myself. The design system is how I manage that. Teams can build most screens straight from the components and patterns, with a lot less input from me, and users get the same experience wherever they are. That frees up my time for the trickier problems, new patterns and user testing, rather than redrawing the same table for the ninth time.
+        As the only designer across nine teams, I couldn&rsquo;t be in every conversation or design every screen myself. The design system is how I manage that. Teams can build most screens from the components and patterns, with a lot less input from me, and users get the same experience wherever they are. That frees up my time for the trickier problems, new patterns and user testing, rather than redrawing the same table for the ninth time.
       </p>
 
     </section>
@@ -388,21 +388,23 @@
       <p class="img-caption">One designer, nine teams: the system lets teams build screens with less of my direct input</p>
     </div>
 
-    <section class="scroll-fade" style="margin-bottom: 0;">
+    <section class="scroll-fade" style="margin-bottom: 64px;">
+      <h2 class="section-title">Palettes</h2>
       <p class="body-text">
-        We called it Palettes, a mix of colour palettes and the pallets you&rsquo;ll find all over a warehouse. Both sides live there. Angular teams use the shared components, with documentation in Storybook linked from Palettes, while the Blazor side is built around copy and paste code snippets. Every component links to its Figma file for a deeper look at styling and implementation, alongside our source of truth theming files, so devs can get going straight away with out of the box components.
+        We called it Palettes, a mix of colour palettes and the pallets you&rsquo;ll find all over a warehouse. Both sides live there. Angular teams use the shared components, with documentation in Storybook linked from Palettes, while the Blazor side is built around copy and paste code snippets. Every component links to its Figma file for a deeper look at styling and implementation, alongside our source of truth theming files, so devs can start with out of the box components.
       </p>
       <p class="body-text">
-        Once the business saw the value, they let me put a proper team together. It now has developers from each of the nine product teams contributing, split into Blazor and Angular sub teams. I already had good relationships with these teams, which made it work really well, and each area has someone who really cares about it.
+        Once the business saw the value, they let me put a proper team together. It now has developers from each of the nine product teams contributing, split into Blazor and Angular sub teams. I already had good relationships with these teams, which made it work well, and each area has someone who really cares about it.
       </p>
       <p class="body-text">
         A big part of it was giving devs more responsibility and ownership. Rather than me being the bottleneck for every component, the team owns the system, makes decisions on it and keeps it growing. It&rsquo;s shaped by the people using it rather than forced on them, and that&rsquo;s a big reason it&rsquo;s stuck. The developers understand their own team&rsquo;s requirements, and they go back to their teams knowing exactly how to apply the system.
       </p>
+    </section>
+
+    <section class="scroll-fade" style="margin-bottom: 0;">
+      <h2 class="section-title">What&rsquo;s inside</h2>
       <p class="body-text">
-        I also built a playground that Product Owners could use to see how their requirements could work with pre built components, without needing Figma or a developer.
-      </p>
-      <p class="body-text">
-        Palettes covers the foundations too, so things like colours, theming, typography and spacing all live in one place. Before this, colours were picked by eye and every app had its own slightly different shade of everything. Now each colour is a named token with its light and dark values side by side, so devs never have to guess a hex code, and there&rsquo;s a light and dark mode built in. Spacing was a big one for us. Our screens are packed with data, so keeping margins and padding consistent is really what stops them feeling crowded. I showed it on real screens rather than just listing numbers, so it was easy to see how it all fits together.
+        Palettes covers the foundations too, so things like colours, theming, typography and spacing all live in one place. Before this, colours were picked by eye and every app had its own slightly different shade of everything. Now each colour is a named token with its light and dark values side by side, so devs never have to guess a hex code, and there&rsquo;s a light and dark mode built in. Spacing was a big one for us. Our screens are packed with data, so keeping margins and padding consistent is what stops them feeling crowded. I showed it on real screens rather than just listing numbers, so it was easy to see how it all fits together.
       </p>
       <p class="body-text">
         Accessibility is built in from the start rather than bolted on at the end. Every component is checked as it&rsquo;s built, and we&rsquo;ve run testing sessions to make sure it holds up in practice.
@@ -446,21 +448,21 @@
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <p class="body-text">
-        It&rsquo;s grown from there too. More and more of our workflow users are building their own screens with AI, so I&rsquo;ve started supporting them as well as the devs. Palettes Lite is a smaller, simpler version of the system made for them, so the screens they make still look and work like the rest of our tools.
+        It&rsquo;s grown from there too. I built a playground that Product Owners can use to see how their requirements could work with pre built components, without needing Figma or a developer. A growing number of our workflow users are also building their own screens with AI, so I&rsquo;ve started supporting them as well as the devs. Palettes Lite is a smaller, simpler version of the system made for them, so the screens they make still look and work like the rest of our tools.
       </p>
     </section>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Championing AI across the teams</h2>
       <p class="body-text">
-        Outside of my own work, I&rsquo;ve pushed for AI to be used more across the team, and I&rsquo;ve run presentations on how to bring AI into design workflows. It&rsquo;s helped me learn new frameworks quickly and actually build with them, which means much better conversations with our devs. More and more, I&rsquo;ll start in VS Code to get a feel for an application before refining it in Figma.
+        Outside of my own work, I&rsquo;ve pushed for AI to be used more across the teams, and I&rsquo;ve run presentations on how to bring AI into design workflows. It&rsquo;s helped me learn new frameworks quickly and actually build with them, which means much better conversations with our devs. More and more, I&rsquo;ll start in VS Code to get a feel for an application before refining it in Figma.
       </p>
     </section>
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Impact</h2>
       <p class="body-text">
-        For the first time, all nine product teams are building from the same design system, whether they work in Angular or Blazor. The devs own it, and a team of ten developers looks after it and keeps it growing. The playground and Palettes Lite have opened it up beyond design and development too, from Product Owners to the workflow users building their own screens. It&rsquo;s made a real difference to delivery, with teams seeing up to a 50% reduction in story estimates now they&rsquo;re building from ready made components, and accessibility is baked in rather than left to each team.
+        For the first time, all nine product teams are building from the same design system, whether they work in Angular or Blazor. The devs own it, with a team of ten keeping it growing. The playground and Palettes Lite have opened it up beyond design and development too, from Product Owners to the workflow users building their own screens. It&rsquo;s made a real difference to delivery, with teams seeing up to a 50% reduction in story estimates now they&rsquo;re building from ready made components, and accessibility is baked in rather than left to each team.
       </p>
       <div class="outcome-grid">
         <div class="outcome-card">
