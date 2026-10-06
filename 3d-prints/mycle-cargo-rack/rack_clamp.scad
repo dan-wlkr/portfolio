@@ -1,12 +1,14 @@
-// Mycle Cargo rear-rack clamp mount (two-piece)
-// Bolts onto a rack rail and gives a flat slotted flange for fixing a crate,
-// deck board, box or basket. Sized for the Bambu Lab A1 (256 x 256 x 256 mm).
+// Mycle Cargo front-rack clamp mount for a Basil bicycle crate (two-piece)
+// Each clamp grips one of the rack's long side tubes and gives a flat slotted
+// flange. The crate sits on 4 flanges; M5 bolts go up through the flange slots
+// and the crate's grid floor into a printed spreader plate inside the crate.
+// Sized for the Bambu Lab A1 (256 x 256 x 256 mm). Also fits rear racks.
 //
 // Measure your rack rail with calipers and set tube_d before printing.
 // Print in PETG or ASA (not PLA: it creeps in sun/heat), 4 walls, 40% gyroid.
 
 /* [Rack] */
-tube_d      = 16;    // rack rail outside diameter (mm)
+tube_d      = 20;    // rack tube outside diameter (mm), estimated from photo: MEASURE
 clearance   = 0.4;   // added to bore diameter; wrap rail in 0.5 mm rubber tape
 
 /* [Clamp] */
@@ -19,13 +21,15 @@ nut_af      = 8.4;   // M5 nut across flats + clearance
 nut_depth   = 4.5;
 
 /* [Mounting flange] */
-flange_w    = 80;    // across the rail
 flange_t    = 5;
 slot_len    = 10;    // slots let you match the crate's hole spacing
 slot_x      = 15;    // slot offset along rail from centre
 
+/* [Crate spreader] */
+spreader_t  = 4;     // plate inside the crate that spreads the bolt load
+
 /* [Output] */
-part = "both";       // [upper, lower, both, plate]
+part = "both";       // [upper, lower, both, plate, spreader, spreaders, all]
 
 $fn = 96;
 r       = (tube_d + clearance) / 2;
@@ -33,6 +37,9 @@ bolt_y  = r + 2.5 + bolt_d / 2;
 block_w = 2 * (bolt_y + bolt_d / 2 + 3.5);
 top_z   = r + wall;            // top of clamp body (bottom of flange)
 cap_z   = -(r + 5);            // bottom of lower cap
+// slots start 5 mm clear of the clamp body so bolt heads fit underneath
+slot_y  = block_w/2 + 5 + slot_len/2;
+flange_w = 2 * (slot_y + slot_len/2 + 6);
 eps     = 0.01;
 
 module bore() {
@@ -61,8 +68,20 @@ module upper() {
         // crate mounting slots (outside the clamp body so nuts fit underneath)
         for (x = [-slot_x, slot_x], s = [-1, 1])
             hull() for (dy = [-slot_len/2, slot_len/2])
-                translate([x, s * ((block_w/2 + flange_w/2) / 2) + dy, top_z - 1])
+                translate([x, s * slot_y + dy, top_z - 1])
                     cylinder(d = bolt_d, h = flange_t + 2);
+    }
+}
+
+// Sits on the crate floor inside the crate, holes matching the flange slots
+module spreader() {
+    difference() {
+        hull() for (x = [-1, 1], y = [-1, 1])
+            translate([x * (length/2 - 4), y * (flange_w/2 - 4), 0]) cylinder(r = 4, h = spreader_t);
+        for (x = [-slot_x, slot_x], s = [-1, 1])
+            hull() for (dy = [-slot_len/2, slot_len/2])
+                translate([x, s * slot_y + dy, -1])
+                    cylinder(d = bolt_d, h = spreader_t + 2);
     }
 }
 
@@ -91,3 +110,13 @@ if (part == "upper" || part == "both")
     translate([0, 0, top_z + flange_t]) rotate([180, 0, 0]) upper();
 if (part == "lower" || part == "both")
     translate([0, flange_w/2 + block_w/2 + 10, -cap_z]) lower();
+if (part == "spreader") spreader();
+if (part == "spreaders")
+    for (i = [0:3]) translate([(i - 1.5) * (length + 8), 0, 0]) spreader();
+// "all": 4 clamps + 4 crate spreaders on one A1 plate
+plate_d = flange_w + 10 + block_w + 10 + flange_w;
+if (part == "all")
+    for (i = [0:3]) translate([(i - 1.5) * (length + 8), 0, 0]) {
+        translate([0, -plate_d/2 + flange_w/2, 0]) print_pair();
+        translate([0, plate_d/2 - flange_w/2, 0]) spreader();
+    }

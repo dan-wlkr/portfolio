@@ -1,46 +1,58 @@
-# Mycle Cargo rack clamp mount (Bambu Lab A1)
+# Mycle Cargo front rack → Basil crate mount (Bambu Lab A1)
 
-Two-piece clamp that bolts round a rail on the Mycle Cargo's rear rack and gives
-a flat, slotted flange for fixing a crate, deck board, box or basket. Use 4 clamps:
-2 on each side rail.
-
-A whole rack can't be printed: the A1 bed is 256 × 256 mm, and the Cargo rack is
-rated to 125 kg. So this prints the mounting hardware, not the rack.
+This mounts a Basil bicycle crate on the Mycle Cargo's steel front rack. The steel
+rack stays on the bike, held by its 4 head-tube screws. Four printed clamps grip the
+rack's two long side tubes, 2 per side. The crate sits on the clamps' flat
+tops, and M5 bolts go up through the clamp slots and the crate's grid floor. Inside
+the crate they go into a printed spreader plate, so the bolts can't pull through the floor.
 
 ![preview](preview.png)
 
 ## Files
 
-| File | What |
-|---|---|
-| `rack_clamp_plate_4x_16mm.stl` | One full A1 plate: 4 complete clamps, 224 × 129 × 19 mm |
-| `rack_clamp_upper_16mm.stl` / `rack_clamp_lower_16mm.stl` | A single clamp half each |
-| `rack_clamp.scad` | Parametric source (OpenSCAD) |
+Everything for one crate fits on **one A1 plate**: 4 clamps (top and bottom halves) plus 4 spreaders.
 
-## Before you print: measure the rail
+| File | Rack tube diameter | Plate footprint |
+|---|---|---|
+| `mycle_crate_mount_all_16mm.stl` | 16 mm | 224 × 222 mm |
+| `mycle_crate_mount_all_18mm.stl` | 18 mm | 224 × 228 mm |
+| `mycle_crate_mount_all_20mm.stl` | **20 mm (best guess from photo)** | 224 × 234 mm |
+| `mycle_crate_mount_all_22mm.stl` | 22 mm | 224 × 240 mm |
+| `rack_clamp.scad` | Any (parametric OpenSCAD source) | |
 
-The STLs assume a **16 mm** rail. Mycle doesn't publish the tube size, so measure
-yours with calipers. If it's different, open `rack_clamp.scad` in OpenSCAD, set
-`tube_d`, set `part` to `plate` (or `upper`/`lower`), render (F6) and export STL.
+## Measure first
+
+These sizes are estimated from a photo. Measure the rack's long side tube with calipers
+and pick the closest STL. For a ruler-only measurement, wrap a strip of paper round the
+tube, measure the length and divide by 3.14.
+
+If your tube falls between sizes, open `rack_clamp.scad` in OpenSCAD and set `tube_d`
+(e.g. 19.5) and `part = "all"`. Then render (F6) and export STL.
 
 ## Bambu Studio settings
 
-- **Filament:** PETG or ASA. Don't use PLA: it softens in a sunny parked bike and creeps under load.
-- **Orientation:** as exported. The flange and cap bottoms sit flat, with the channel facing up. No supports needed.
+- **Filament:** PETG or ASA. Don't use PLA, which softens in a sunny parked bike.
+- **Orientation:** as exported. Everything sits flat and needs no supports.
 - **Strength:** 4 walls, 5 top and bottom layers, 40% gyroid infill, 0.2 mm layers.
 - **Plate:** textured PEI. Use a glue stick for PETG.
 
-## Hardware (per clamp)
+## Hardware (whole crate)
 
-- 2 × M5 × 25 socket-head bolts and 2 × M5 nyloc nuts for the clamp. The nuts sit in the hex pockets in the lower cap.
-- Up to 4 × M5 bolts, washers and nuts through the flange slots to hold your crate or board.
-- 0.5 mm rubber tape (or inner-tube strip) round the rail to grip and protect the paint.
+- 8 × M5 × 25 socket-head bolts and 8 × M5 nyloc nuts for the clamps. The nuts sit in the hex pockets in the bottom halves.
+- 8–16 × M5 × 20 bolts, washers and nyloc nuts for the crate. They go up from under the clamp flange, through the crate floor and the spreader, with the nut inside the crate.
+- 0.5 mm rubber tape or inner-tube strip round the rack tube under each clamp.
 
-The halves leave a 1 mm gap, so tightening the bolts clamps the rail. Tighten evenly
-until snug and don't crush the part. Check the bolts after the first few rides.
+## Fitting
+
+1. Wrap the rack's long side tubes where the clamps will go, clear of the welded cross bars.
+2. Fit the clamps loosely, 2 per side, about as far apart as the crate floor allows.
+3. Sit the crate on top. Slide the clamps along the tubes until the flange slots line up with
+   gaps in the crate's grid floor.
+4. Bolt the crate down through the spreaders, then tighten the clamp bolts evenly. The
+   halves leave a 1 mm gap so they pinch the tube.
+5. Turn the bars lock to lock and check the crate doesn't hit anything. Re-check the bolts after the first few rides.
 
 ## Limits
 
-These clamps are for light cargo like a crate, shopping or a box. **Don't use them for a
-child seat** or anything near the rack's rated load. Use Mycle's or the seat
-maker's own fittings for that.
+Keep to the load printed on the rack's mounting plate. Remember that weight on the front
+rack makes the steering heavier.
