@@ -6,7 +6,12 @@ rack's two long side tubes, 2 per side. The crate sits on the clamps' flat
 tops, and M5 bolts go up through the clamp slots and the crate's grid floor. Inside
 the crate they go into a printed spreader plate, so the bolts can't pull through the floor.
 
-![preview](preview.png)
+![How one mount fits together](exploded.png)
+
+*One mount pulled apart, top to bottom: green spreader plate (inside the crate), crate floor,
+blue clamp top, rack tube (grey), orange clamp bottom. The bolts squeeze it all together. You need 4 of these.*
+
+![The print plate](preview.png)
 
 ## Files
 
