@@ -1,0 +1,184 @@
+/* Design tokens — the single source for colour, type, spacing, radius, shadow
+   and motion values. Loaded first on every page; page styles and
+   case-study.css refer to these instead of hard-coded values. */
+
+:root {
+  /* ── Brand ─────────────────────────────────────────────────────────── */
+  /* Names are historical: --pink is the orange accent, --purple the green,
+     --red the lavender. Kept so existing markup (--dot / --accent) works. */
+  --pink:   #ff6b35;
+  --purple: #2a8a5a;
+  --red:    #b8a0cc;
+  --rose:   #f0649b;   /* Palettes project accent */
+  --amber:  #e0a050;   /* Previous work accent */
+  --teal:   #2aa0a0;   /* Design system accent */
+
+  /* Brand tints */
+  --pink-6:    rgba(255,107,53,0.06);
+  --pink-8:    rgba(255,107,53,0.08);
+  --pink-10:   rgba(255,107,53,0.1);
+  --pink-16:   rgba(255,107,53,0.16);
+  --purple-2:  rgba(42,138,90,0.02);
+  --purple-4:  rgba(42,138,90,0.04);
+  --purple-6:  rgba(42,138,90,0.06);
+  --purple-7:  rgba(42,138,90,0.07);
+  --purple-10: rgba(42,138,90,0.1);
+  --purple-12: rgba(42,138,90,0.12);
+  --purple-20: rgba(42,138,90,0.2);
+  --purple-35: rgba(42,138,90,0.35);
+  --red-8:     rgba(184,160,204,0.08);
+  --red-12:    rgba(184,160,204,0.12);
+  --glow-warm: rgba(230,160,80,0.14);   /* image placeholder glow */
+
+  /* ── Neutrals (light theme) ────────────────────────────────────────── */
+  --ink:     #0f0f0e;
+  --muted:   #5a5a52;
+  --bg:      #f5ece0;
+  --heading: #f6f2ec;   /* large display headings on the dark theme */
+  --surface: #1e1c18;   /* raised surface: dropdown menu */
+  --nav-glass: rgba(26,24,20,0.55);
+  --white:   #fff;
+  --black:   #000;
+  --device-dark: #1c1c1e;   /* app store badge, dark */
+  --mock-light:  #e6e6e6;   /* design system mockup backdrops */
+  --mock-dark:   #262626;
+
+  /* White overlays: hairlines, borders and fills on dark */
+  --white-1:   rgba(255,255,255,0.01);
+  --white-1-5: rgba(255,255,255,0.015);
+  --white-3-5: rgba(255,255,255,0.035);
+  --white-4-5: rgba(255,255,255,0.045);
+  --white-5:   rgba(255,255,255,0.05);
+  --white-6:   rgba(255,255,255,0.06);
+  --white-7:   rgba(255,255,255,0.07);
+  --white-8:   rgba(255,255,255,0.08);
+  --white-9:   rgba(255,255,255,0.09);
+  --white-10:  rgba(255,255,255,0.1);
+  --white-13:  rgba(255,255,255,0.13);
+  --white-15:  rgba(255,255,255,0.15);
+  --white-40:  rgba(255,255,255,0.4);
+  --white-60:  rgba(255,255,255,0.6);
+  --white-70:  rgba(255,255,255,0.7);
+  --ink-50:    rgba(240,237,232,0.5);   /* dark-theme ink at half strength */
+
+  /* Black overlays: shadows and fills on light */
+  --black-4:  rgba(0,0,0,0.04);
+  --black-5:  rgba(0,0,0,0.05);
+  --black-6:  rgba(0,0,0,0.06);
+  --black-8:  rgba(0,0,0,0.08);
+  --black-10: rgba(0,0,0,0.1);
+  --black-12: rgba(0,0,0,0.12);
+  --black-13: rgba(0,0,0,0.13);
+  --black-15: rgba(0,0,0,0.15);
+  --black-22: rgba(0,0,0,0.22);
+  --black-35: rgba(0,0,0,0.35);
+  --black-50: rgba(0,0,0,0.5);
+  --black-55: rgba(0,0,0,0.55);
+  --black-60: rgba(0,0,0,0.6);
+
+  /* Grey overlays: theme-neutral borders and fills */
+  --grey-5:  rgba(128,128,128,0.05);
+  --grey-8:  rgba(128,128,128,0.08);
+  --grey-10: rgba(128,128,128,0.1);
+  --grey-12: rgba(128,128,128,0.12);
+  --grey-13: rgba(128,128,128,0.13);
+  --grey-15: rgba(128,128,128,0.15);
+  --grey-25: rgba(128,128,128,0.25);
+
+  /* Print (CV) */
+  --print-heading: #111;
+  --print-ink:    #222;
+  --print-text:   #333;
+  --print-muted:  #777;
+  --print-subtle: #8a8a8a;
+  --print-faint:  #999;
+  --print-sub:    #9a9a9a;
+  --print-rule:   #ddd;
+  --print-bullet: #555;
+  --print-label:  #a5a5a5;
+
+  /* ── Type ──────────────────────────────────────────────────────────── */
+  --font-sans:  'DM Sans', sans-serif;
+  --font-serif: 'DM Serif Display', serif;
+
+  /* Fixed scale. The -tight steps sit just under a main step and are
+     candidates to fold into it. */
+  --text-3xs:        0.6rem;
+  --text-2xs:        0.68rem;
+  --text-xs-tight:   0.7rem;
+  --text-caption:    0.72rem;
+  --text-xs:         0.75rem;
+  --text-sm-tight:   0.8rem;
+  --text-sm:         0.875rem;
+  --text-base-tight: 0.9rem;
+  --text-base:       1rem;
+  --text-md:         1.05rem;
+  --text-lg:         1.1rem;
+  --text-xl:         1.25rem;
+  --text-2xl:        1.3rem;
+
+  /* Fluid sizes, by role */
+  --text-body-fluid:     clamp(1.1rem, 0.4rem + 0.875vw, 1.4rem);
+  --text-intro:          clamp(1.1rem, 1.4vw, 1.3rem);
+  --text-hero-sub:       clamp(1rem, 1.3vw, 1.2rem);
+  --text-heading:        clamp(1.25rem, 2.5vw, 1.75rem);
+  --text-pullquote:      clamp(1.35rem, 2vw, 1.85rem);
+  --text-section-title:  clamp(1.75rem, 2.8vw, 2.75rem);
+  --text-project-title:  clamp(1.9rem, 3.6vw, 3.5rem);
+  --text-hero:           clamp(2.1rem, 4.1vw, 4.25rem);
+  --text-stat:           clamp(2.25rem, 4vw, 3rem);
+  --text-stat-lg:        clamp(2.75rem, 4.4vw, 4rem);
+  --text-page-title:     clamp(2.5rem, 6vw, 6.25rem);
+  --text-next-title:     clamp(2.5rem, 6.4vw, 6.5rem);
+  --text-footer-cta:     clamp(2.5rem, 8vw, 7rem);
+
+  /* ── Spacing (4px base; the number is px ÷ 4) ──────────────────────── */
+  --space-0-5: 2px;
+  --space-1:   4px;
+  --space-1-5: 6px;
+  --space-2:   8px;
+  --space-2-5: 10px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-7:   28px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+
+  /* Layout */
+  --gutter:        clamp(20px, 4vw, 72px);    /* page side padding */
+  --space-section: clamp(72px, 9vw, 140px);   /* between case study blocks */
+  --space-footer-cta: clamp(32px, 5vw, 64px);
+
+  /* ── Radius ────────────────────────────────────────────────────────── */
+  --radius-xs:   3px;
+  --radius-sm:   6px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   14px;
+  --radius-2xl:  16px;
+  --radius-pill: 100px;
+  --radius-media:    clamp(12px, 1.4vw, 22px);   /* hero and project images */
+  --radius-media-sm: clamp(12px, 1.2vw, 18px);   /* in-body image frames */
+
+  /* ── Shadow ────────────────────────────────────────────────────────── */
+  --shadow-nav:      0 2px 20px var(--black-8), 0 1px 4px var(--black-4);
+  --shadow-dropdown: 0 8px 32px var(--black-10);
+  --shadow-media:    0 40px 80px -40px var(--black-60);
+  --shadow-media-sm: 0 30px 60px -40px var(--black-60);
+  --ring-hairline:   inset 0 0 0 1px var(--white-5);
+
+  /* ── Motion ────────────────────────────────────────────────────────── */
+  --ease:    cubic-bezier(0.16, 1, 0.3, 1);    /* reveals, page motion */
+  --ease-ui: cubic-bezier(0.22, 1, 0.36, 1);   /* menus, hovers, arrows */
+}
+
+.dark {
+  --ink:   #f0ede8;
+  --muted: #9a9890;
+  --bg:    #141210;
+}
