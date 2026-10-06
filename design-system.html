@@ -342,7 +342,7 @@
     <h1 class="serif cs-h1 word-reveal" data-delay="0.25" data-after="cs-intro cs-facts">A Design System Built in Code</h1>
     <div class="cs-header-grid">
       <div class="cs-intro-col">
-        <p class="cs-intro" id="cs-intro" data-reveal>Our nine product teams were each building their own components, which slowed everyone down. I built a design system directly in Blazor, the code our devs actually use, then grew it with a team of ten developers.</p>
+        <p class="cs-intro" id="cs-intro" data-reveal>Our nine product teams were each building their own components, which slowed everyone down. Our devs work across Angular and Blazor, and Blazor had the least support, so I built that side of the design system directly in code, then grew it with a team of ten developers.</p>
       </div>
       <dl class="cs-facts" id="cs-facts" data-reveal>
         <div><dt>Company</dt><dd>Next PLC</dd></div>
@@ -366,7 +366,7 @@
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Building a design system in Blazor</h2>
       <p class="body-text">
-        Every team had their own version of buttons, tables and forms, so nothing looked or behaved the same and devs were rebuilding the same things over and over. For users, that meant a fragmented experience. Someone moving between picking, packing and returns had to learn new patterns in every app, which slowed them down and made mistakes more likely. I saw this as the biggest problem to fix, so I proposed building a design system straight in Blazor, which is what our teams already use. Rather than handing over Figma files to be translated into code, the components were ready to drop straight into projects.
+        Every team had their own version of buttons, tables and forms, so nothing looked or behaved the same and devs were rebuilding the same things over and over. For users, that meant a fragmented experience. Someone moving between picking, packing and returns had to learn new patterns in every app, which slowed them down and made mistakes more likely. I saw this as the biggest problem to fix. Our devs are split roughly half and half between Angular and Blazor. The Angular teams already had shared components documented in Storybook, but adoption on the Blazor side was much lower, so that&rsquo;s where I focused. I proposed building the Blazor side straight in code, so rather than handing over Figma files to be translated, the components were ready to drop straight into projects.
       </p>
       <p class="body-text">
         I built the first version on my own in VS Code using GitHub Copilot. It was a bit of a bet on AI, but it let me move much faster than I could have otherwise, and I learnt a lot about how components actually behave in code. That made handing things over to the dev teams much smoother.
@@ -382,6 +382,9 @@
     </div>
 
     <section class="scroll-fade" style="margin-bottom: 0;">
+      <p class="body-text">
+        Both sides now live in Palettes, our design system site. Angular teams use the shared components, with documentation in Storybook linked from Palettes, while the Blazor side is built around copy and paste code snippets.
+      </p>
       <p class="body-text">
         Once the basics were in place, I set up a design system team of 10 developers from across the nine product teams. I already had good relationships with these teams, which made it work really well. Each area had someone championing it, we shared ownership, and the system was shaped by the people using it rather than forced on them.
       </p>
@@ -401,7 +404,7 @@
 
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <p class="body-text">
-        Every component comes with live examples and the code to go with them, so devs can copy it straight into their projects and see what&rsquo;s already there before building something new. There&rsquo;s a shared icon set too, so the same action always looks the same wherever you are. It sounds small, but when someone moves between apps all day, things like an edit or export icon being in the same place really adds up.
+        On the Blazor side, every component comes with live examples and the code to go with them, so devs can copy it straight into their projects and see what&rsquo;s already there before building something new. There&rsquo;s a shared icon set too, so the same action always looks the same wherever you are. It sounds small, but when someone moves between apps all day, things like an edit or export icon being in the same place really adds up.
       </p>
     </section>
 
@@ -441,13 +444,13 @@
     <section class="scroll-fade" style="margin-bottom: 64px;">
       <h2 class="section-title">Impact</h2>
       <p class="body-text">
-        For the first time, all nine product teams are building from the same set of components. The playground has opened that up to people outside of design and development, and a team of ten developers now looks after the system and keeps it growing. It&rsquo;s made a real difference to delivery too, with teams seeing up to a 50% reduction in story estimates now they&rsquo;re building from ready made components.
+        For the first time, all nine product teams are building from the same design system, whether they work in Angular or Blazor. The playground has opened that up to people outside of design and development, and a team of ten developers now looks after the system and keeps it growing. It&rsquo;s made a real difference to delivery too, with teams seeing up to a 50% reduction in story estimates now they&rsquo;re building from ready made components.
       </p>
       <div class="outcome-grid">
         <div class="outcome-card">
           <div class="outcome-card-inner">
             <div class="stat">9</div>
-            <div class="stat-label">Product teams now building from the same components</div>
+            <div class="stat-label">Product teams now building from the same design system</div>
           </div>
         </div>
         <div class="outcome-card">
