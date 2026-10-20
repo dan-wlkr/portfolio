@@ -246,7 +246,7 @@ p, li, .cs-intro, .img-caption { text-wrap: pretty; }
 
 /* Young Serif has a single weight; never fake a bold */
 html { font-synthesis-weight: none; }
-h1, .cs-h1 { text-wrap: balance; }
+h1, .cs-h1, h2, h3, .section-title { text-wrap: balance; }
 
 /* Loader: three simple shapes in the label colours, hopping in a soft wave */
 .loader-shapes { display: flex; align-items: flex-end; gap: 14px; height: 30px; }
