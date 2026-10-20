@@ -4,9 +4,19 @@
   // Link home to the site root so the address stays danwalker.site (index.html when previewing locally)
   var HOME = location.protocol === 'file:' ? 'index.html' : '/';
 
-  // Tidy the address bar if someone lands on /index.html
-  if (location.protocol !== 'file:' && /\/index\.html$/.test(location.pathname) && history.replaceState) {
-    history.replaceState(null, '', location.pathname.replace(/index\.html$/, '') + location.search + location.hash);
+  // Clean addresses: GitHub Pages serves about.html at /about, so drop ".html" from the
+  // address bar and from internal links (left alone when previewing local files)
+  var CLEAN = location.protocol !== 'file:';
+  if (CLEAN && history.replaceState && /(\/index\.html|\.html)$/.test(location.pathname)) {
+    history.replaceState(null, '', location.pathname.replace(/index\.html$/, '').replace(/\.html$/, '') + location.search + location.hash);
+  }
+  function cleanLinks(root) {
+    if (!CLEAN) return;
+    root.querySelectorAll('a[href]').forEach(function (a) {
+      var h = a.getAttribute('href');
+      if (!/^[\w-]+\.html(#.*)?$/.test(h)) return;
+      a.setAttribute('href', h.replace(/^index\.html/, '/').replace(/^([\w-]+)\.html/, '/$1'));
+    });
   }
 
   var NAV_HTML = [
@@ -38,6 +48,8 @@
     document.body.insertAdjacentHTML('afterbegin', NAV_HTML);
   }
 
+  cleanLinks(document);
+
   // ── Email obfuscation ──────────────────────────────────────────────────────
   var navEmail = document.getElementById('nav-email-link');
   if (navEmail) {
@@ -47,17 +59,17 @@
   }
 
   // ── Active nav state ───────────────────────────────────────────────────────
-  var page = window.location.pathname.split('/').pop() || 'index.html';
-  if (page === '') page = 'index.html';
+  // Page name without ".html", so clean and full addresses both match
+  var page = (window.location.pathname.split('/').pop() || 'index').replace(/\.html$/, '');
 
   // Mark Home active on index
   var homeLink = document.querySelector('#main-nav .nav-home');
-  if (homeLink && page === 'index.html') {
+  if (homeLink && page === 'index') {
     homeLink.classList.add('active');
   }
 
   // On case study pages, give the Projects trigger the active pill style
-  if (page.indexOf('case-study') === 0 || page === 'design-system.html' || page === 'previous-work.html') {
+  if (page.indexOf('case-study') === 0 || page === 'design-system' || page === 'previous-work') {
     var projectsDropdown = document.querySelectorAll('#main-nav .nav-dropdown');
     if (projectsDropdown.length > 0) {
       var trigger = projectsDropdown[0].querySelector('.nav-dropdown-trigger');
@@ -66,8 +78,8 @@
   }
 
   // About (and the CV it links to) highlight the About link
-  if (page === 'about.html' || page === 'cv.html') {
-    var aboutLink = document.querySelector('#main-nav .nav-links > a[href="about.html"]');
+  if (page === 'about' || page === 'cv') {
+    var aboutLink = document.querySelector('#main-nav .nav-links > a[href$="about.html"], #main-nav .nav-links > a[href="/about"]');
     if (aboutLink) aboutLink.classList.add('active');
   }
 
