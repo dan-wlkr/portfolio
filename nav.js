@@ -1,12 +1,20 @@
 (function () {
   'use strict';
 
+  // Link home to the site root so the address stays danwalker.site (index.html when previewing locally)
+  var HOME = location.protocol === 'file:' ? 'index.html' : '/';
+
+  // Tidy the address bar if someone lands on /index.html
+  if (location.protocol !== 'file:' && /\/index\.html$/.test(location.pathname) && history.replaceState) {
+    history.replaceState(null, '', location.pathname.replace(/index\.html$/, '') + location.search + location.hash);
+  }
+
   var NAV_HTML = [
     '<nav id="main-nav">',
     '  <div class="nav-inner">',
     '    <div class="nav-left">',
     '      <div class="nav-links">',
-    '        <a href="index.html">Home</a>',
+    '        <a href="' + HOME + '" class="nav-home">Home</a>',
     '        <div class="nav-dropdown">',
     '          <span class="nav-dropdown-trigger">Projects</span>',
     '          <div class="dropdown-menu">',
@@ -43,7 +51,7 @@
   if (page === '') page = 'index.html';
 
   // Mark Home active on index
-  var homeLink = document.querySelector('#main-nav .nav-links > a[href="index.html"]');
+  var homeLink = document.querySelector('#main-nav .nav-home');
   if (homeLink && page === 'index.html') {
     homeLink.classList.add('active');
   }
