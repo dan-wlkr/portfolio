@@ -251,9 +251,9 @@ h1, .cs-h1 { text-wrap: balance; }
 /* Loader: three simple shapes in the label colours, hopping in a soft wave */
 .loader-shapes { display: flex; align-items: flex-end; gap: 14px; height: 30px; }
 .loader-shapes i { display: block; width: 13px; height: 13px; animation: loaderHop 1.2s cubic-bezier(.45,0,.25,1) infinite; }
-.loader-shapes i:nth-child(1) { background: #2a8a5a; border-radius: 50%; }
-.loader-shapes i:nth-child(2) { background: #f0649b; border-radius: 2px; animation-delay: .14s; }
-.loader-shapes i:nth-child(3) { background: #e0a050; clip-path: polygon(50% 4%, 100% 96%, 0 96%); width: 15px; animation-delay: .28s; }
+.loader-shapes i:nth-child(1) { background: #ff6b35; border-radius: 50%; }
+.loader-shapes i:nth-child(2) { background: #ff6b35; border-radius: 2px; animation-delay: .14s; }
+.loader-shapes i:nth-child(3) { background: #ff6b35; clip-path: polygon(50% 4%, 100% 96%, 0 96%); width: 15px; animation-delay: .28s; }
 @keyframes loaderHop { 0%, 60%, 100% { transform: translateY(0) rotate(0); } 30% { transform: translateY(-12px) rotate(-8deg); } }
 @media (prefers-reduced-motion: reduce) { .loader-shapes i { animation: none; } }
 
