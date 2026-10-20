@@ -30,7 +30,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --pink:   #ff6b35;
+      --pink:   #f0649b;
       --purple: #2a8a5a;
       --red:    #b8a0cc;
       --ink:    #0f0f0e;
@@ -248,7 +248,7 @@
     }
     .hero-name em { font-style: normal; color: #fff; position: relative; white-space: nowrap; }
     /* Hand-drawn circle around "makes", tilted slightly so it never looks too neat */
-    .hero-name em::after { content: ""; position: absolute; top: -.12em; bottom: -.16em; left: -6%; right: -6%; background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20240%20100%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cfilter%20id%3D%22r%22%20x%3D%22-5%25%22%20y%3D%22-10%25%22%20width%3D%22110%25%22%20height%3D%22120%25%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.8%22%20numOctaves%3D%222%22%20seed%3D%227%22/%3E%3CfeDisplacementMap%20in%3D%22SourceGraphic%22%20scale%3D%221.8%22/%3E%3C/filter%3E%3C/defs%3E%3Cpath%20filter%3D%22url%28%23r%29%22%20fill%3D%22none%22%20stroke%3D%22%23ff6b35%22%20stroke-width%3D%222.2%22%20stroke-linecap%3D%22round%22%20d%3D%22M150%208%20C%20100%202%2C%2030%2010%2C%2014%2038%20C%202%2062%2C%2030%2090%2C%20110%2092%20C%20185%2094%2C%20232%2076%2C%20230%2048%20C%20228%2020%2C%20180%208%2C%20118%2010%20C%2096%2011%2C%2078%2014%2C%2064%2019%22/%3E%3C/svg%3E") no-repeat; background-size: 100% 100%; transform: rotate(-3deg); pointer-events: none; }
+    .hero-name em::after { content: ""; position: absolute; top: -.12em; bottom: -.16em; left: -6%; right: -6%; background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20240%20100%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cfilter%20id%3D%22r%22%20x%3D%22-5%25%22%20y%3D%22-10%25%22%20width%3D%22110%25%22%20height%3D%22120%25%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.8%22%20numOctaves%3D%222%22%20seed%3D%227%22/%3E%3CfeDisplacementMap%20in%3D%22SourceGraphic%22%20scale%3D%221.8%22/%3E%3C/filter%3E%3C/defs%3E%3Cpath%20filter%3D%22url%28%23r%29%22%20fill%3D%22none%22%20stroke%3D%22%23f0649b%22%20stroke-width%3D%222.2%22%20stroke-linecap%3D%22round%22%20d%3D%22M150%208%20C%20100%202%2C%2030%2010%2C%2014%2038%20C%202%2062%2C%2030%2090%2C%20110%2092%20C%20185%2094%2C%20232%2076%2C%20230%2048%20C%20228%2020%2C%20180%208%2C%20118%2010%20C%2096%2011%2C%2078%2014%2C%2064%2019%22/%3E%3C/svg%3E") no-repeat; background-size: 100% 100%; transform: rotate(-3deg); pointer-events: none; }
     html { font-synthesis-weight: none; }
     .hero-name { text-wrap: balance; }
     /* Avoid single words left on the last line */
@@ -350,7 +350,7 @@
     /* ── Footer ──────────────────────────────────────────────────────── */
     .site-footer { padding: clamp(48px, 8vw, 120px) 0 40px; }
         .footer-cta { font-size: clamp(2.4rem, 6vw, 5.2rem); line-height: 1.08; letter-spacing: -0.005em; margin: 0 0 clamp(32px, 5vw, 64px); font-weight: 400; color: var(--ink); }
-    .footer-cta a { color: #ff6b35 !important; text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; padding-bottom: 0.04em; transition: background-size 0.6s cubic-bezier(0.22, 1, 0.36, 1) !important; }
+    .footer-cta a { color: #f0649b !important; text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; padding-bottom: 0.04em; transition: background-size 0.6s cubic-bezier(0.22, 1, 0.36, 1) !important; }
     .footer-cta a .arr { display: inline-block; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 300; transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
     .footer-cta a:hover { background-size: 100% 1px; }
     .footer-cta a:hover .arr { transform: translateX(0.12em); }
@@ -410,9 +410,9 @@
     /* Loader: three simple shapes in the label colours, hopping in a soft wave */
     .loader-shapes { display: flex; align-items: flex-end; gap: 14px; height: 30px; }
     .loader-shapes i { display: block; width: 13px; height: 13px; animation: loaderHop 1.2s cubic-bezier(.45,0,.25,1) infinite; }
-    .loader-shapes i:nth-child(1) { background: #ff6b35; border-radius: 50%; }
-    .loader-shapes i:nth-child(2) { background: #ff6b35; border-radius: 2px; animation-delay: .14s; }
-    .loader-shapes i:nth-child(3) { background: #ff6b35; clip-path: polygon(50% 4%, 100% 96%, 0 96%); width: 15px; animation-delay: .28s; }
+    .loader-shapes i:nth-child(1) { background: #f0649b; border-radius: 50%; }
+    .loader-shapes i:nth-child(2) { background: #f0649b; border-radius: 2px; animation-delay: .14s; }
+    .loader-shapes i:nth-child(3) { background: #f0649b; clip-path: polygon(50% 4%, 100% 96%, 0 96%); width: 15px; animation-delay: .28s; }
     @keyframes loaderHop { 0%, 60%, 100% { transform: translateY(0) rotate(0); } 30% { transform: translateY(-12px) rotate(-8deg); } }
     @media (prefers-reduced-motion: reduce) { .loader-shapes i { animation: none; } }
     
@@ -494,7 +494,7 @@
             </div>
             <div class="cs-side">
               <div class="cs-meta" data-reveal style="--d:0.45s">
-              <span class="label" style="--dot:#f0649b">Design system</span>
+              <span class="label" style="--dot:#ff6b35">Design system</span>
             </div>
               <p class="cs-body" data-reveal style="--d:0.6s">Our nine product teams were each building their own components. I built the Blazor side of our design system directly in code, then grew it with a team of ten developers.</p>
             </div>

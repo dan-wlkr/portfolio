@@ -186,7 +186,7 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
 /* ── Footer ──────────────────────────────────────────────────────────── */
 .site-footer { display: block !important; border-top: none !important; padding: clamp(48px, 8vw, 120px) 0 40px !important; text-align: left !important; }
 .footer-cta { font-size: clamp(2.4rem, 6vw, 5.2rem); line-height: 1.08; letter-spacing: -0.005em; margin: 0 0 clamp(32px, 5vw, 64px); font-weight: 400; color: var(--ink); }
-.footer-cta a { color: #ff6b35 !important; text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; padding-bottom: 0.04em; transition: background-size 0.6s var(--ease) !important; }
+.footer-cta a { color: #f0649b !important; text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; padding-bottom: 0.04em; transition: background-size 0.6s var(--ease) !important; }
 .footer-cta a .arr { display: inline-block; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 300; transition: transform 0.4s var(--ease); }
 .footer-cta a:hover { background-size: 100% 1px; }
 .footer-cta a:hover .arr { transform: translateX(0.12em); }
@@ -251,9 +251,9 @@ h1, .cs-h1, h2, h3, .section-title { text-wrap: balance; }
 /* Loader: three simple shapes in the label colours, hopping in a soft wave */
 .loader-shapes { display: flex; align-items: flex-end; gap: 14px; height: 30px; }
 .loader-shapes i { display: block; width: 13px; height: 13px; animation: loaderHop 1.2s cubic-bezier(.45,0,.25,1) infinite; }
-.loader-shapes i:nth-child(1) { background: #ff6b35; border-radius: 50%; }
-.loader-shapes i:nth-child(2) { background: #ff6b35; border-radius: 2px; animation-delay: .14s; }
-.loader-shapes i:nth-child(3) { background: #ff6b35; clip-path: polygon(50% 4%, 100% 96%, 0 96%); width: 15px; animation-delay: .28s; }
+.loader-shapes i:nth-child(1) { background: #f0649b; border-radius: 50%; }
+.loader-shapes i:nth-child(2) { background: #f0649b; border-radius: 2px; animation-delay: .14s; }
+.loader-shapes i:nth-child(3) { background: #f0649b; clip-path: polygon(50% 4%, 100% 96%, 0 96%); width: 15px; animation-delay: .28s; }
 @keyframes loaderHop { 0%, 60%, 100% { transform: translateY(0) rotate(0); } 30% { transform: translateY(-12px) rotate(-8deg); } }
 @media (prefers-reduced-motion: reduce) { .loader-shapes i { animation: none; } }
 
