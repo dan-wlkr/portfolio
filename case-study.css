@@ -140,7 +140,7 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
   padding: 4px 0 4px clamp(20px, 2.4vw, 36px) !important; margin: 40px 0 !important;
 }
 .highlight-block p {
-  font-family: 'DM Serif Display', serif; font-style: normal !important;
+  font-family: 'Young Serif', serif; font-style: normal !important;
   font-size: clamp(1.35rem, 2vw, 1.85rem) !important; line-height: 1.35 !important; color: var(--ink) !important;
   letter-spacing: -0.01em;
 }
@@ -166,7 +166,7 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
 .outcome-card-inner { padding: clamp(24px, 2.4vw, 36px) !important; }
 .outcome-card .stat, .stat { font-weight: 400 !important; font-size: clamp(2.75rem, 4.4vw, 4rem) !important; letter-spacing: -0.03em !important; margin-bottom: 14px !important; }
 .two-col-card { border-color: rgba(255,255,255,0.07) !important; background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01)); border-radius: 16px !important; }
-.two-col-card h4 { font-family: 'DM Serif Display', serif; font-weight: 400 !important; font-size: 1.3rem !important; }
+.two-col-card h4 { font-family: 'Young Serif', serif; font-weight: 400 !important; font-size: 1.3rem !important; }
 
 /* ── Next project ────────────────────────────────────────────────────── */
 .cs-next {
@@ -241,3 +241,7 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
 
 /* Avoid single words left on the last line of a paragraph */
 p, li, .cs-intro, .img-caption { text-wrap: pretty; }
+
+/* Young Serif has a single weight; never fake a bold */
+html { font-synthesis-weight: none; }
+h1, .cs-h1 { text-wrap: balance; }
