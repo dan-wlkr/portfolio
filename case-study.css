@@ -245,3 +245,10 @@ p, li, .cs-intro, .img-caption { text-wrap: pretty; }
 /* Young Serif has a single weight; never fake a bold */
 html { font-synthesis-weight: none; }
 h1, .cs-h1 { text-wrap: balance; }
+
+/* Loader: the hand-drawn circle drawing itself */
+.loader-circle { width: 76px; height: 34px; transform: rotate(-3deg); }
+.loader-circle svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.loader-circle path { fill: none; stroke: #ff6b35; stroke-width: 2.6; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; animation: loaderDraw 1.5s cubic-bezier(.65,0,.35,1) infinite; }
+@keyframes loaderDraw { 0% { stroke-dashoffset: 1; } 55% { stroke-dashoffset: 0; } 80% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .loader-circle path { animation: none; stroke-dashoffset: 0; } }
