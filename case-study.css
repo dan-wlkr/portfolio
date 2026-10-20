@@ -64,7 +64,7 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
   opacity: 0; transform: translateY(0.3em); filter: blur(8px); animation: none;
   transition: opacity 0.9s var(--ease), transform 1.1s var(--ease), filter 0.9s var(--ease) !important;
 }
-.js .in .word-reveal .wr-word, .js .word-reveal.in .wr-word { opacity: 1; transform: none; filter: blur(0); }
+.js .in .word-reveal .wr-word, .js .word-reveal.in .wr-word { opacity: 1; transform: none; filter: none; }
 
 /* Images open out of an inset frame and settle from a slight zoom */
 .js .cs-hero-img, .js [data-reveal] .img-frame {
@@ -261,3 +261,7 @@ h1, .cs-h1 { text-wrap: balance; }
 /* Section labels: simple coloured text */
 .label::before { display: none !important; }
 .label { color: var(--dot, var(--pink)); }
+
+/* Once a reveal has finished, drop the filters and clipping so mobile browsers
+   are not left holding dozens of GPU layers (which can make text vanish on scroll) */
+.settled { filter: none !important; clip-path: none !important; will-change: auto !important; }

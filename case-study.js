@@ -76,6 +76,15 @@
     targets.forEach(function (el) { io.observe(el); });
   }
 
+  // Once each reveal transition finishes, mark it settled so its filter and clip are removed
+  var SETTLE = '.wr-word, [data-reveal], .img-frame, .img-frame img, .cs-hero-img, .cs-hero-img img, .cs-img-wrap, .cs-img';
+  document.addEventListener('transitionend', function (e) {
+    var t = e.target;
+    if (!t.matches || t.classList.contains('settled') || !t.matches(SETTLE)) return;
+    if (e.propertyName !== 'transform' && e.propertyName !== 'clip-path') return;
+    if (t.closest('.in')) t.classList.add('settled');
+  });
+
   // ── Background glow ──────────────────────────────────────────────────────
   var glow = document.querySelector('.bg-glow');
   if (glow) {
