@@ -185,9 +185,10 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
 
 /* ── Footer ──────────────────────────────────────────────────────────── */
 .site-footer { display: block !important; border-top: none !important; padding: clamp(48px, 8vw, 120px) 0 40px !important; text-align: left !important; }
-.footer-cta { font-size: clamp(2.4rem, 6vw, 5.2rem); line-height: 1.08; letter-spacing: -0.005em; margin: 0 0 clamp(32px, 5vw, 64px); font-weight: 400; color: var(--muted); }
-.footer-cta a { color: var(--ink) !important; text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat; padding-bottom: 0.04em; transition: background-size 0.6s var(--ease) !important; }
+.footer-cta { font-size: clamp(2.4rem, 6vw, 5.2rem); line-height: 1.08; letter-spacing: -0.005em; margin: 0 0 clamp(32px, 5vw, 64px); font-weight: 400; color: var(--ink); }
+.footer-cta a { color: #ff6b35 !important; text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; padding-bottom: 0.04em; transition: background-size 0.6s var(--ease) !important; }
 .footer-cta a .arr { display: inline-block; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 300; transition: transform 0.4s var(--ease); }
+.footer-cta a:hover { background-size: 100% 1px; }
 .footer-cta a:hover .arr { transform: translateX(0.12em); }
 .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.875rem; color: var(--muted); }
 .footer-row a { color: var(--muted); text-decoration: none; margin-left: 24px; }
