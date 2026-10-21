@@ -24,7 +24,7 @@
   <meta name="twitter:image" content="https://danwalker.site/images/og/og-home.jpg">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600;7..72,700&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --pink:   #f0649b;
@@ -47,7 +47,7 @@
       transition: background-color 0.15s ease, color 0.15s ease;
     }
     body * { transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease; }
-    h1, h2, h3, .serif { font-family: 'Young Serif', serif; font-weight: 400; }
+    h1, h2, h3, .serif { font-family: 'Literata', serif; font-weight: 500; letter-spacing: -0.01em; }
     a, button, .btn, .nav-links a, .nav-dropdown-trigger, .dropdown-menu a {
       transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, opacity 0.2s, transform 0.2s !important;
     }
@@ -187,13 +187,13 @@
       .cv-print-btn { display: none !important; }
     }
   </style>
-  <link rel="stylesheet" href="case-study.css?v=202610202314m">
+  <link rel="stylesheet" href="case-study.css?v=202610210702n">
   <style>
     /* CV entries inside the shared editorial grid */
     .cv-entry { margin-bottom: clamp(36px, 4vw, 56px); }
     .cv-entry:last-child { margin-bottom: 0; }
     .cv-entry-header { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 6px 24px; margin-bottom: 14px; }
-    .cv-entry .cv-entry-role { grid-column: 1; grid-row: 1; font-family: 'Young Serif', serif; font-weight: 400; font-size: clamp(1.3rem, 1.8vw, 1.65rem); line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); margin: 0; }
+    .cv-entry .cv-entry-role { grid-column: 1; grid-row: 1; font-family: 'Literata', serif; font-weight: 500; font-size: clamp(1.3rem, 1.8vw, 1.65rem); line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); margin: 0; }
     .cv-entry-date { grid-column: 2; grid-row: 1; font-size: 0.8rem; color: var(--muted); opacity: 0.7; white-space: nowrap; font-variant-numeric: tabular-nums; }
     .cv-entry .cv-entry-company { grid-column: 1; grid-row: 2; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); opacity: 0.6; margin: 0; }
     ul.cv-list { list-style: none; margin: 0; padding: 0; }
@@ -230,7 +230,7 @@
       /* Header: name and role left, contact details right */
       .cs-header { display: grid !important; grid-template-columns: 1fr auto; column-gap: 10mm; padding: 0 !important; margin: 0 !important; }
       .cs-header-grid, .cs-intro-col { display: contents !important; }
-      .cs-h1 { grid-column: 1; grid-row: 1; font-family: 'Young Serif', serif !important; font-weight: 400 !important; font-size: 27pt !important; line-height: 1 !important; letter-spacing: -0.005em; color: #111 !important; margin: 0 !important; }
+      .cs-h1 { grid-column: 1; grid-row: 1; font-family: 'Literata', serif !important; font-weight: 600 !important; font-size: 27pt !important; line-height: 1 !important; letter-spacing: -0.005em; color: #111 !important; margin: 0 !important; }
       .print-sub { grid-column: 1; grid-row: 2; font-size: 11pt; color: #9a9a9a; margin: 1.6mm 0 0; }
       .cs-facts { grid-column: 2; grid-row: 1 / span 2; align-self: end; display: flex !important; flex-direction: column; gap: 0 !important; text-align: right; }
       .cs-facts div { display: block !important; padding: 0 !important; border: none !important; }
@@ -251,7 +251,7 @@
       .cv-entry { margin: 0 0 4.5mm !important; break-inside: avoid; }
       .cv-entry:last-child { margin-bottom: 0 !important; }
       .cv-entry-header { display: grid !important; grid-template-columns: 1fr auto !important; gap: 0 6mm !important; margin: 0 0 1.4mm !important; align-items: baseline; }
-      .cv-entry .cv-entry-role { font-family: 'Young Serif', serif !important; font-weight: 400 !important; font-size: 12.5pt !important; line-height: 1.25 !important; color: #111 !important; }
+      .cv-entry .cv-entry-role { font-family: 'Literata', serif !important; font-weight: 500 !important; font-size: 12.5pt !important; line-height: 1.25 !important; color: #111 !important; }
       .cv-entry-date { font-size: 8.4pt !important; color: #8a8a8a !important; opacity: 1 !important; }
       .cv-entry .cv-entry-company { font-size: 8.8pt !important; letter-spacing: 0 !important; text-transform: none !important; color: #333 !important; opacity: 1 !important; }
       ul.cv-list li { font-size: 8.4pt !important; line-height: 1.45 !important; color: #333 !important; margin: 0 0 1.5mm !important; padding-left: 4.5mm !important; max-width: none !important; break-inside: avoid; }
@@ -444,7 +444,7 @@
   </footer>
 
   <script src="nav.js?v=202610202309l"></script>
-  <script src="case-study.js?v=202610202314m"></script>
+  <script src="case-study.js?v=202610210702n"></script>
   <script>
     var cvEmail = document.getElementById('cv-email');
     if (cvEmail) cvEmail.textContent = 'dwlkr' + '@' + 'me.com';

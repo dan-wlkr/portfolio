@@ -10,7 +10,7 @@ a, button, .btn, .nav-links a, .nav-dropdown-trigger, .dropdown-menu a {
 }
 .scroll-fade, .fade-up { opacity: 1; transform: none; animation: none !important; }
 
-h1, h2, h3, .serif { font-weight: 400; }
+h1, h2, h3, .serif { font-weight: 500; }
 :where(img) { max-width: 100%; height: auto; }
 .content-wrap { max-width: 1680px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 72px); }
 
@@ -140,7 +140,7 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
   padding: 4px 0 4px clamp(20px, 2.4vw, 36px) !important; margin: 40px 0 !important;
 }
 .highlight-block p {
-  font-family: 'Young Serif', serif; font-style: normal !important;
+  font-family: 'Literata', serif; font-style: normal !important;
   font-size: clamp(1.35rem, 2vw, 1.85rem) !important; line-height: 1.35 !important; color: var(--ink) !important;
   letter-spacing: -0.01em;
 }
@@ -166,7 +166,7 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
 .outcome-card-inner { padding: clamp(24px, 2.4vw, 36px) !important; }
 .outcome-card .stat, .stat { font-weight: 400 !important; font-size: clamp(2.75rem, 4.4vw, 4rem) !important; letter-spacing: -0.03em !important; margin-bottom: 14px !important; }
 .two-col-card { border-color: rgba(255,255,255,0.07) !important; background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01)); border-radius: 16px !important; }
-.two-col-card h4 { font-family: 'Young Serif', serif; font-weight: 400 !important; font-size: 1.3rem !important; }
+.two-col-card h4 { font-family: 'Literata', serif; font-weight: 500 !important; font-size: 1.3rem !important; }
 
 /* ── Next project ────────────────────────────────────────────────────── */
 .cs-next {
@@ -185,7 +185,7 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
 
 /* ── Footer ──────────────────────────────────────────────────────────── */
 .site-footer { display: block !important; border-top: none !important; padding: clamp(48px, 8vw, 120px) 0 40px !important; text-align: left !important; }
-.footer-cta { font-size: clamp(2.4rem, 6vw, 5.2rem); line-height: 1.08; letter-spacing: -0.005em; margin: 0 0 clamp(32px, 5vw, 64px); font-weight: 400; color: var(--ink); }
+.footer-cta { font-size: clamp(2.4rem, 6vw, 5.2rem); line-height: 1.08; letter-spacing: -0.005em; margin: 0 0 clamp(32px, 5vw, 64px); font-weight: 500; color: var(--ink); }
 .footer-cta a { color: #f0649b !important; text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; padding-bottom: 0.04em; transition: background-size 0.6s var(--ease) !important; }
 .footer-cta a .arr { display: inline-block; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 300; transition: transform 0.4s var(--ease); }
 .footer-cta a:hover { background-size: 100% 1px; }
@@ -244,7 +244,7 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
 /* Avoid single words left on the last line of a paragraph */
 p, li, .cs-intro, .img-caption { text-wrap: pretty; }
 
-/* Young Serif has a single weight; never fake a bold */
+/* Never fake a bold */
 html { font-synthesis-weight: none; }
 h1, .cs-h1, h2, h3, .section-title { text-wrap: balance; }
 
@@ -265,3 +265,6 @@ h1, .cs-h1, h2, h3, .section-title { text-wrap: balance; }
 /* Once a reveal has finished, drop the filters and clipping so mobile browsers
    are not left holding dozens of GPU layers (which can make text vanish on scroll) */
 .settled { filter: none !important; clip-path: none !important; will-change: auto !important; }
+
+/* Literata: semi-bold, slightly tightened for big titles */
+.cs-h1, .cs-header h1 { font-weight: 600 !important; letter-spacing: -0.02em !important; }
