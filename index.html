@@ -248,9 +248,8 @@
     }
     .hero-name em { font-style: normal; color: #fff; position: relative; white-space: nowrap; }
     /* Hand-drawn circle around "makes", tilted slightly so it never looks too neat */
-    /* Straight pink underline under "makes things" */
     /* "makes things": drifting grainy colour clouds showing through the letters */
-    .hero-name em {
+    .hero-name em, .hero-name .rot > span {
       color: transparent; -webkit-text-fill-color: transparent;
       background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22120%22%20height%3D%22120%22%3E%3Cfilter%20id%3D%22n%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%221.6%22%20numOctaves%3D%222%22%20stitchTiles%3D%22stitch%22/%3E%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%220%22/%3E%3CfeComponentTransfer%3E%3CfeFuncR%20type%3D%22linear%22%20slope%3D%222%22%20intercept%3D%22-0.5%22/%3E%3CfeFuncG%20type%3D%22linear%22%20slope%3D%222%22%20intercept%3D%22-0.5%22/%3E%3CfeFuncB%20type%3D%22linear%22%20slope%3D%222%22%20intercept%3D%22-0.5%22/%3E%3CfeFuncA%20type%3D%22linear%22%20slope%3D%220%22%20intercept%3D%221%22/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url%28%23n%29%22/%3E%3C/svg%3E"),
         radial-gradient(42% 120% at 15% 40%, #ff8a3d 0%, transparent 72%),
@@ -268,7 +267,13 @@
       100% { background-position: 0 0, 100% 70%, 0% 40%, 0 0; }
     }
     @keyframes heroGrain { to { background-position-x: 140px; } }
-    @media (prefers-reduced-motion: reduce) { .hero-name em { animation: none; } }
+    @media (prefers-reduced-motion: reduce) { .hero-name em, .hero-name .rot > span { animation: none; } }
+    /* Rotating word: all words share one grid cell, so the space is always the widest word */
+    .rot-wrap { white-space: nowrap; }
+    .hero-name .rot { display: inline-grid; vertical-align: baseline; text-align: left; }
+    .hero-name .rot > span { grid-area: 1 / 1; opacity: 0; transform: translateY(0.35em); transition: opacity .45s ease, transform .6s cubic-bezier(.22,1,.36,1) !important; }
+    .hero-name .rot > span.on { opacity: 1; transform: none; }
+    .hero-name .rot > span.out { opacity: 0; transform: translateY(-0.35em); }
     html { font-synthesis-weight: none; }
     .hero-name { text-wrap: balance; }
     .hero-name, .hero-name * { font-weight: 600; letter-spacing: -0.02em; }
@@ -398,6 +403,7 @@
       .content-wrap.hero-inner { padding-top: 112px; }
       .hero-main { position: relative; top: -7vh; top: -7svh; }
       .hero-name .lb { display: none; }
+      .hero-name .lb.lb1 { display: inline; }
       .cs-img { height: 62vw; min-height: 240px; }
       .cs-info { display: flex; flex-direction: column; gap: 0; }
       .cs-head, .cs-side { display: contents; }
@@ -464,7 +470,7 @@
         <div class="avatar-wrap" data-reveal style="--d:0.1s">
           <div class="avatar"><img width="600" height="600" fetchpriority="high" decoding="async" src="images/dw-avatar.webp" alt="Dan Walker"></div>
         </div>
-        <h1 class="hero-name word-reveal" data-delay="0.35" data-after="hero-sub">I’m Dan, a designer who <span style="white-space:nowrap"><em>makes things</em>.</span><br class="lb"> From prototypes to design systems, I build<br class="lb"> until the complex feels simple.</h1>
+        <h1 class="hero-name word-reveal" data-delay="0.35" data-after="hero-sub">I’m Dan, a designer who <span class="rot-wrap"><em>makes</em> <span class="rot"><span class="on">things.</span><span aria-hidden="true">prototypes.</span><span aria-hidden="true">systems.</span><span aria-hidden="true">tools.</span></span></span><br class="lb lb1"> From prototypes to design systems, I build<br class="lb"> until the complex feels simple.</h1>
         <p class="hero-sub" id="hero-sub" data-reveal>Based in the UK &middot; <a href="about.html">More about me ↗</a></p>
       </div>
     </div>
@@ -728,6 +734,21 @@
       });
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(tick, tick); else tick();
       setTimeout(finish, 4000);
+    })();
+  
+    // Rotating word in the hero ("makes things / prototypes / systems / tools")
+    (function () {
+      var rot = document.querySelector('.hero-name .rot');
+      if (!rot || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+      var words = rot.children, i = 0;
+      setTimeout(function () {
+        setInterval(function () {
+          var cur = words[i]; i = (i + 1) % words.length; var next = words[i];
+          cur.classList.remove('on'); cur.classList.add('out');
+          next.classList.remove('out'); next.classList.add('on');
+          setTimeout(function () { cur.classList.remove('out'); }, 700);
+        }, 2600);
+      }, 3500);
     })();
   </script>
 
