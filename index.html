@@ -249,7 +249,29 @@
     .hero-name em { font-style: normal; color: #fff; position: relative; white-space: nowrap; }
     /* Hand-drawn circle around "makes", tilted slightly so it never looks too neat */
     /* Straight pink underline under "makes things" */
-    .hero-name em { text-decoration: underline; text-decoration-color: #f0649b; text-decoration-thickness: 0.1em; text-underline-offset: 0.12em; text-decoration-skip-ink: auto; }
+    /* "makes things": drifting grainy colour clouds showing through the letters */
+    .hero-name em {
+      color: transparent; -webkit-text-fill-color: transparent;
+      background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22140%22%20height%3D%22140%22%3E%3Cfilter%20id%3D%22n%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.85%22%20numOctaves%3D%223%22%20stitchTiles%3D%22stitch%22/%3E%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%220%22/%3E%3CfeComponentTransfer%3E%3CfeFuncR%20type%3D%22linear%22%20slope%3D%222.6%22%20intercept%3D%22-0.8%22/%3E%3CfeFuncG%20type%3D%22linear%22%20slope%3D%222.6%22%20intercept%3D%22-0.8%22/%3E%3CfeFuncB%20type%3D%22linear%22%20slope%3D%222.6%22%20intercept%3D%22-0.8%22/%3E%3CfeFuncA%20type%3D%22linear%22%20slope%3D%220%22%20intercept%3D%221%22/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url%28%23n%29%22/%3E%3C/svg%3E"),
+        radial-gradient(38% 95% at 20% 30%, #ff5a1f 0%, transparent 68%),
+        radial-gradient(42% 110% at 75% 60%, #6a3dff 0%, transparent 68%),
+        radial-gradient(34% 90% at 50% 100%, #ffc93c 0%, transparent 66%),
+        radial-gradient(30% 80% at 90% 0%, #12c2e9 0%, transparent 65%),
+        linear-gradient(100deg, #ff2e83, #f0649b);
+      background-size: 140px 140px, 220% 220%, 240% 240%, 200% 200%, 260% 260%, 100% 100%;
+      background-position: 0 0, 0% 0%, 100% 100%, 50% 0%, 100% 0%, 0 0;
+      background-blend-mode: overlay, normal, normal, normal, normal, normal;
+      -webkit-background-clip: text; background-clip: text;
+      animation: heroClouds 7s ease-in-out infinite alternate;
+      padding-bottom: .12em; margin-bottom: -.12em;
+    }
+    @keyframes heroClouds {
+      0%   { background-position: 0 0, 0% 0%, 100% 100%, 50% 0%, 100% 0%, 0 0; }
+      50%  { background-position: 0 0, 100% 60%, 20% 30%, 0% 100%, 30% 80%, 0 0; }
+      100% { background-position: 0 0, 40% 100%, 60% 0%, 100% 40%, 0% 20%, 0 0; }
+    }
+    @keyframes heroGrain { to { background-position-x: 140px; } }
+    @media (prefers-reduced-motion: reduce) { .hero-name em { animation: none; } }
     html { font-synthesis-weight: none; }
     .hero-name { text-wrap: balance; }
     .hero-name, .hero-name * { font-weight: 600; letter-spacing: -0.02em; }
