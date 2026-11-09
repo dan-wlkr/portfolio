@@ -249,7 +249,7 @@
     .hero-name em { font-style: normal; color: #fff; position: relative; white-space: nowrap; }
     /* Hand-drawn circle around "makes", tilted slightly so it never looks too neat */
     /* Straight pink underline under "makes things" */
-    .hero-name em::after { content: ""; position: absolute; left: 0; right: 0; bottom: -0.02em; height: 0.07em; background: #f0649b; border-radius: 1px; pointer-events: none; }
+    .hero-name em { text-decoration: underline; text-decoration-color: #f0649b; text-decoration-thickness: 0.07em; text-underline-offset: 0.12em; text-decoration-skip-ink: auto; }
     html { font-synthesis-weight: none; }
     .hero-name { text-wrap: balance; }
     .hero-name, .hero-name * { font-weight: 600; letter-spacing: -0.02em; }
