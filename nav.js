@@ -50,6 +50,25 @@
 
   cleanLinks(document);
 
+  // ── Page transition: the gradient wash drops in before an internal page opens ──
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.addEventListener('click', function (e) {
+    if (reduce || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || a.target === '_blank' || a.hasAttribute('download')) return;
+    var u;
+    try { u = new URL(a.href, location.href); } catch (err) { return; }
+    if (u.origin !== location.origin || (u.pathname === location.pathname && u.search === location.search)) return;
+    if (!/^https?:$/.test(u.protocol) && u.protocol !== 'file:') return;
+    e.preventDefault();
+    document.documentElement.classList.add('is-leaving');
+    setTimeout(function () { location.href = a.href; }, 650);
+  });
+  // Coming back with the browser's back button restores the old page: clear the wash
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) document.documentElement.classList.remove('is-leaving');
+  });
+
   // ── Email obfuscation ──────────────────────────────────────────────────────
   var navEmail = document.getElementById('nav-email-link');
   if (navEmail) {
