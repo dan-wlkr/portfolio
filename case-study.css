@@ -285,32 +285,3 @@ h1, .cs-h1, h2, h3, .section-title { text-wrap: balance; }
 
 /* Literata: semi-bold, slightly tightened for big titles */
 .cs-h1, .cs-header h1 { font-weight: 600 !important; letter-spacing: -0.02em !important; }
-
-/* ── Full-page gradient wash: the loader is the hero gradient, and lifts away like a curtain ── */
-.loader {
-  background-color: #f0649b;
-  background-image:
-    radial-gradient(55% 90% at 12% 25%, #ff8a3d 0%, transparent 70%),
-    radial-gradient(55% 95% at 88% 70%, #8f5bff 0%, transparent 70%),
-    radial-gradient(40% 70% at 55% 105%, #ff3d8b 0%, transparent 70%),
-    linear-gradient(120deg, #ff3d8b, #f0649b);
-  background-size: 180% 180%, 180% 180%, 160% 160%, 100% 100%;
-  background-position: 0% 20%, 100% 80%, 50% 100%, 0 0;
-  animation: washDrift 6s ease-in-out infinite alternate;
-  clip-path: ellipse(160% 160% at 50% 0%);
-  opacity: 1;
-  transition: clip-path 1.15s cubic-bezier(.76, 0, .2, 1), visibility 0s linear 1.15s !important;
-}
-@keyframes washDrift {
-  0%   { background-position: 0% 20%, 100% 80%, 50% 100%, 0 0; }
-  100% { background-position: 100% 70%, 0% 30%, 50% 60%, 0 0; }
-}
-html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 1 !important; visibility: hidden; clip-path: ellipse(160% 0% at 50% 0%); pointer-events: none; }
-/* Leaving the page: the same wash drops back in from the top */
-html.is-leaving .loader { visibility: visible !important; pointer-events: all; clip-path: ellipse(160% 160% at 50% 0%) !important; transition: clip-path .7s cubic-bezier(.5, 0, .2, 1), visibility 0s !important; }
-.loader-shapes i { background-image: none !important; background-color: #fff !important; }
-@media (prefers-reduced-motion: reduce) {
-  .loader { animation: none; transition: opacity .4s ease, visibility 0s linear .4s !important; clip-path: none; }
-  html:not(.is-loading) .loader { opacity: 0 !important; clip-path: none; }
-  html.is-leaving .loader { clip-path: none !important; opacity: 1 !important; transition: none !important; }
-}
