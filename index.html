@@ -384,12 +384,11 @@
     @media (prefers-reduced-motion: reduce) { .fx { animation: none; } }
     .footer-cta a .arr { display: inline-block; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 300; transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
     .footer-cta a:hover .arr { transform: translateX(0.12em); }
-    .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.875rem; color: var(--muted); }
+    .footer-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.875rem; color: var(--muted); }
     .footer-row a { color: var(--muted); text-decoration: none; margin-left: 24px; }
     .footer-row a:first-child { margin-left: 0; }
     .footer-row a:hover { color: var(--ink); }
     @media (max-width: 768px) {
-      .footer-name { display: none; }
       .footer-row { justify-content: flex-start; }
       .footer-links { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 8px 24px; }
       .footer-links a { margin-left: 0 !important; }
@@ -621,13 +620,12 @@
     <div class="content-wrap">
       <p class="serif footer-cta" data-reveal>Let&rsquo;s talk.<br><a href="#" class="js-email"><span class="fx">Say hello</span> <span class="arr fx" aria-hidden="true">&rarr;</span></a></p>
       <div class="footer-row" data-reveal style="--d:0.15s">
-        <span class="footer-name">Dan Walker</span>
         <span class="footer-links"><a href="cv.html">CV</a><a href="#" id="footer-email-link">dwlkr [at] me.com</a><a href="tel:+447885725355">+44 7885 725355</a></span>
       </div>
     </div>
   </footer>
 
-  <script src="nav.js?v=202610202309l"></script>
+  <script src="nav.js?v=202611100738t"></script>
   <script>
     // Word reveal — handles plain text and mixed HTML children
     document.querySelectorAll('.word-reveal').forEach(function(el) {

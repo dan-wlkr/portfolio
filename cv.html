@@ -187,7 +187,7 @@
       .cv-print-btn { display: none !important; }
     }
   </style>
-  <link rel="stylesheet" href="case-study.css?v=202611100658q">
+  <link rel="stylesheet" href="case-study.css?v=202611100738t">
   <style>
     /* CV entries inside the shared editorial grid */
     .cv-entry { margin-bottom: clamp(36px, 4vw, 56px); }
@@ -197,7 +197,7 @@
     .cv-entry-date { grid-column: 2; grid-row: 1; font-size: 0.8rem; color: var(--muted); opacity: 0.7; white-space: nowrap; font-variant-numeric: tabular-nums; }
     .cv-entry .cv-entry-company { grid-column: 1; grid-row: 2; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); opacity: 0.6; margin: 0; }
     ul.cv-list { list-style: none; margin: 0; padding: 0; }
-    ul.cv-list li { position: relative; padding-left: 20px; font-size: 1.02rem; line-height: 1.75; color: var(--muted); margin-bottom: 10px; max-width: 42em; }
+    ul.cv-list li { position: relative; padding-left: 20px; font-size: 1.02rem; line-height: 1.75; color: rgba(244,241,234,0.74); margin-bottom: 10px; max-width: 42em; }
     ul.cv-list li:last-child { margin-bottom: 0; }
     ul.cv-list li::before { content: ''; position: absolute; left: 0; top: 0.72em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent, var(--pink)); opacity: 0.6; }
     .cv-skills { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -437,14 +437,13 @@
     <div class="content-wrap">
       <p class="serif footer-cta" data-reveal>Let&rsquo;s talk.<br><a href="#" class="js-email"><span class="fx">Say hello</span> <span class="arr fx" aria-hidden="true">&rarr;</span></a></p>
       <div class="footer-row" data-reveal style="--d:0.15s">
-        <span class="footer-name">Dan Walker</span>
         <span class="footer-links"><a href="cv.html">CV</a><a href="#" id="footer-email-link">dwlkr [at] me.com</a><a href="tel:+447885725355">+44 7885 725355</a></span>
       </div>
     </div>
   </footer>
 
-  <script src="nav.js?v=202610202309l"></script>
-  <script src="case-study.js?v=202611100658q"></script>
+  <script src="nav.js?v=202611100738t"></script>
+  <script src="case-study.js?v=202611100738t"></script>
   <script>
     var cvEmail = document.getElementById('cv-email');
     if (cvEmail) cvEmail.textContent = 'dwlkr' + '@' + 'me.com';
