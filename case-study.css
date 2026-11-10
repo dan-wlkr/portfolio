@@ -1,7 +1,13 @@
-/* Shared case study styles — loaded after each page's inline styles so the
+/* Shared case study styles, loaded after each page's inline styles so the
    project pages share the homepage's type scale, motion and atmosphere. */
 
 :root { --ease: cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* Plain off-black background on every page (overrides each page's inline --bg) */
+.dark { --bg: #0c0c0b; }
+
+/* Background glow and grain retired: hide them on any page that still has the elements */
+.bg-glow, .grain { display: none !important; }
 
 /* ── Reset theme-era transitions and old reveal systems ──────────────── */
 body * { transition: none; }
@@ -28,32 +34,6 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
 .loader-bar { width: 120px; height: 1px; background: rgba(255,255,255,0.1); overflow: hidden; }
 .loader-bar i { display: block; height: 100%; background: rgba(255,255,255,0.7); transform-origin: left; transform: scaleX(var(--progress, 0)); transition: transform 0.6s var(--ease) !important; }
 
-/* ── Background glow + grain ─────────────────────────────────────────── */
-@property --c1 { syntax: '<color>'; inherits: false; initial-value: rgba(255,107,53,0.16); }
-@property --c2 { syntax: '<color>'; inherits: false; initial-value: rgba(42,138,90,0.10); }
-.bg-glow {
-  position: fixed; inset: -10%; z-index: 0; pointer-events: none;
-  --p: 0;
-  background:
-    radial-gradient(55% 45% at calc(12% + var(--p) * 18%) calc(8% + var(--p) * 10%), var(--c1), transparent 70%),
-    radial-gradient(50% 50% at calc(92% - var(--p) * 14%) calc(88% - var(--p) * 12%), var(--c2), transparent 70%);
-  transition: --c1 1.6s ease, --c2 1.6s ease !important;
-}
-/* Eased falloff: the glow fades out smoothly with no hard edge, where colour-mix is supported */
-@supports (color: color-mix(in srgb, red, blue)) {
-  .bg-glow {
-    background:
-      radial-gradient(55% 45% at calc(12% + var(--p) * 18%) calc(8% + var(--p) * 10%), var(--c1) 0%, color-mix(in srgb, var(--c1) 97.6%, transparent) 7%, color-mix(in srgb, var(--c1) 90.5%, transparent) 14%, color-mix(in srgb, var(--c1) 79.4%, transparent) 21%, color-mix(in srgb, var(--c1) 65.5%, transparent) 28%, color-mix(in srgb, var(--c1) 50.0%, transparent) 35%, color-mix(in srgb, var(--c1) 34.5%, transparent) 42%, color-mix(in srgb, var(--c1) 20.6%, transparent) 49%, color-mix(in srgb, var(--c1) 9.5%, transparent) 56%, color-mix(in srgb, var(--c1) 2.4%, transparent) 63%, transparent 70%),
-      radial-gradient(50% 50% at calc(92% - var(--p) * 14%) calc(88% - var(--p) * 12%), var(--c2) 0%, color-mix(in srgb, var(--c2) 97.6%, transparent) 7%, color-mix(in srgb, var(--c2) 90.5%, transparent) 14%, color-mix(in srgb, var(--c2) 79.4%, transparent) 21%, color-mix(in srgb, var(--c2) 65.5%, transparent) 28%, color-mix(in srgb, var(--c2) 50.0%, transparent) 35%, color-mix(in srgb, var(--c2) 34.5%, transparent) 42%, color-mix(in srgb, var(--c2) 20.6%, transparent) 49%, color-mix(in srgb, var(--c2) 9.5%, transparent) 56%, color-mix(in srgb, var(--c2) 2.4%, transparent) 63%, transparent 70%);
-  }
-}
-.js .bg-glow { opacity: 0; }
-.js.is-ready .bg-glow { opacity: 1; transition: opacity 2.4s ease 0.2s, --c1 1.6s ease, --c2 1.6s ease !important; }
-.grain {
-  position: fixed; inset: 0; pointer-events: none; z-index: 40; opacity: 0.4;
-  /* Fine per-pixel noise: strong enough to break up 8-bit colour steps in the dark gradients */
-  background-image: url("images/noise.png"); background-size: 256px 256px;
-}
 .cs-header, .cs-hero-wrap, .cs-main, .site-footer { position: relative; z-index: 1; }
 
 /* ── Nav entrance ────────────────────────────────────────────────────── */
@@ -195,7 +175,7 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
 /* ── Footer ──────────────────────────────────────────────────────────── */
 .site-footer { display: block !important; border-top: none !important; padding: clamp(48px, 8vw, 120px) 0 40px !important; text-align: left !important; }
 .footer-cta { font-size: clamp(2.4rem, 6vw, 5.2rem); line-height: 1.08; letter-spacing: -0.005em; margin: 0 0 clamp(32px, 5vw, 64px); font-weight: 500; color: var(--ink); }
-/* "Say hello": the hero's drifting colour clouds inside the letters (no grain) */
+/* "Say hello": the hero's drifting colour clouds inside the letters */
 .footer-cta a { position: relative; color: inherit !important; text-decoration: none; background: none; }
 .footer-cta a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -0.02em; height: 2px; background: #f0649b; transform: scaleX(0); transform-origin: left; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
 .footer-cta a:hover::after { transform: scaleX(1); }
@@ -230,7 +210,7 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
 
 @media (prefers-reduced-motion: reduce) {
   .loader-star { animation: none !important; }
-  .js [data-reveal], .js .wr-word, .js .cs-hero-img, .js .cs-hero-img img, .js .img-frame, .js .img-frame img, .js .bg-glow {
+  .js [data-reveal], .js .wr-word, .js .cs-hero-img, .js .cs-hero-img img, .js .img-frame, .js .img-frame img {
     opacity: 1 !important; transform: none !important; filter: none !important; clip-path: none !important;
   }
   .js #main-nav { opacity: 1 !important; transform: translateX(-50%) !important; }
@@ -263,21 +243,20 @@ h1, .cs-h1, h2, h3, .section-title { text-wrap: balance; }
 
 /* Loader: three simple shapes in the label colours, hopping in a soft wave */
 .loader-shapes { display: flex; align-items: flex-end; gap: 14px; height: 30px; }
-/* Same drifting grainy pink, orange and violet clouds as the hero text; each shape shows a different part */
-.loader-shapes i { display: block; width: 14px; height: 14px; background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22120%22%20height%3D%22120%22%3E%3Cfilter%20id%3D%22n%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%221.6%22%20numOctaves%3D%222%22%20stitchTiles%3D%22stitch%22/%3E%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%220%22/%3E%3CfeComponentTransfer%3E%3CfeFuncR%20type%3D%22linear%22%20slope%3D%222%22%20intercept%3D%22-0.5%22/%3E%3CfeFuncG%20type%3D%22linear%22%20slope%3D%222%22%20intercept%3D%22-0.5%22/%3E%3CfeFuncB%20type%3D%22linear%22%20slope%3D%222%22%20intercept%3D%22-0.5%22/%3E%3CfeFuncA%20type%3D%22linear%22%20slope%3D%220%22%20intercept%3D%221%22/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url%28%23n%29%22/%3E%3C/svg%3E"),
+/* Same drifting pink, orange and violet clouds as the hero text; each shape shows a different part */
+.loader-shapes i { display: block; width: 14px; height: 14px; background-image:
     radial-gradient(60% 120% at 15% 40%, #ff8a3d 0%, transparent 72%),
     radial-gradient(60% 130% at 85% 50%, #8f5bff 0%, transparent 72%),
     linear-gradient(100deg, #ff3d8b, #f0649b);
-  background-size: 120px 120px, 300% 300%, 300% 300%, 100% 100%;
-  background-blend-mode: soft-light, normal, normal, normal;
-  background-position: 0 0, 0% 30%, 100% 60%, 0 0;
+  background-size: 300% 300%, 300% 300%, 100% 100%;
+  background-position: 0% 30%, 100% 60%, 0 0;
   animation: loaderHop 1.2s cubic-bezier(.45,0,.25,1) infinite, loaderClouds 3s ease-in-out infinite alternate; }
 .loader-shapes i:nth-child(1) { border-radius: 50%; --x: 0%; }
 .loader-shapes i:nth-child(2) { border-radius: 0; --x: 40%; animation-delay: .14s, 0s; }
 .loader-shapes i:nth-child(3) { clip-path: polygon(50% 4%, 100% 96%, 0 96%); width: 16px; --x: 80%; animation-delay: .28s, 0s; }
 @keyframes loaderClouds {
-  0%   { background-position: 0 0, calc(var(--x) + 0%) 30%, calc(100% - var(--x)) 60%, 0 0; }
-  100% { background-position: 0 0, calc(var(--x) + 60%) 70%, calc(40% - var(--x)) 40%, 0 0; }
+  0%   { background-position: calc(var(--x) + 0%) 30%, calc(100% - var(--x)) 60%, 0 0; }
+  100% { background-position: calc(var(--x) + 60%) 70%, calc(40% - var(--x)) 40%, 0 0; }
 }
 @keyframes loaderHop { 0%, 60%, 100% { transform: translateY(0) rotate(0); } 30% { transform: translateY(-12px) rotate(-8deg); } }
 @media (prefers-reduced-motion: reduce) { .loader-shapes i { animation: none; } }

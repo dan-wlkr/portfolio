@@ -39,7 +39,7 @@
     .dark {
       --ink:   #f0ede8;
       --muted: #9a9890;
-      --bg:    #141210;
+      --bg:    #0c0c0b;
     }
     *, *::before, *::after { box-sizing: border-box; }
     body {
@@ -339,12 +339,10 @@
   <div class="loader" aria-hidden="true">
     <span class="loader-shapes"><i></i><i></i><i></i></span>
   </div>
-  <div class="bg-glow" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
   <div id="nav-mount"></div>
 
 
-  <header class="content-wrap cs-header about-header" id="hero-main" data-glow="rgba(255,107,53,0.16)|rgba(184,160,204,0.10)">
+  <header class="content-wrap cs-header about-header" id="hero-main">
     <div class="cs-header-top" data-reveal style="--d:0.1s">
       <span class="label" style="--dot:#f4d35e">Outside of work</span>
     </div>
@@ -356,7 +354,7 @@
   <div class="content-wrap cs-main about-main" style="--accent:var(--pink)">
 
     <div class="img-grid img-cols-2 scroll-fade">
-      <div class="img-frame"><img width="1555" height="1555" decoding="async" src="images/about-1.webp" alt="Black and white photo of Dan laughing outdoors" style="aspect-ratio:1/1; object-fit:cover; width:100%; display:block;"></div>
+      <div class="img-frame"><img width="1555" height="1555" decoding="async" src="images/about-1.png" alt="Black and white photo of Dan laughing outdoors" style="aspect-ratio:1/1; object-fit:cover; width:100%; display:block;"></div>
       <div class="img-frame"><img width="1556" height="1556" decoding="async" src="images/about-2.webp" alt="Black and white family photo outdoors" style="aspect-ratio:1/1; object-fit:cover; width:100%; display:block;"></div>
     </div>
 
@@ -383,7 +381,7 @@
   </div>
 
 
-  <footer class="site-footer" data-observe data-glow="rgba(255,107,53,0.14)|rgba(184,160,204,0.10)">
+  <footer class="site-footer" data-observe>
     <div class="content-wrap">
       <p class="serif footer-cta" data-reveal>Let&rsquo;s talk.<br><a href="#" class="js-email"><span class="fx">Say hello</span> <span class="arr fx" aria-hidden="true">&rarr;</span></a></p>
       <div class="footer-row" data-reveal style="--d:0.15s">
