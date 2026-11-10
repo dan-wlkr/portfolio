@@ -280,6 +280,8 @@
     .orn { display: inline-block; width: 0.62em; height: 0.62em; vertical-align: 0.02em; color: var(--pink); opacity: 0.85; }
     .orn svg { width: 100%; height: 100%; display: block; }
     .hero-sub { font-size: clamp(1rem, 1.3vw, 1.2rem); color: var(--ink); margin: 0; }
+    /* Drawn arrow (a text "↗" turns into an emoji on iOS) */
+    .arr-ne { display: inline-block; width: 0.72em; height: 0.72em; vertical-align: -0.02em; margin-left: 0.15em; }
     .hero-sub a { color: var(--muted); text-decoration: none; }
     .hero-sub a:hover { color: var(--ink); }
 
@@ -485,7 +487,7 @@
           <div class="avatar"><img width="600" height="600" fetchpriority="high" decoding="async" src="images/dw-avatar.webp" alt="Dan Walker"></div>
         </div>
         <h1 class="hero-name word-reveal" data-delay="0.35" data-after="hero-sub">I’m Dan, a designer who <span class="rot-wrap"><em>makes</em> <span class="rot"><span class="on">things.</span><span aria-hidden="true">prototypes.</span><span aria-hidden="true">systems.</span><span aria-hidden="true">tools.</span><span aria-hidden="true">apps.</span><span aria-hidden="true">dashboards.</span><span aria-hidden="true">concepts.</span></span></span><br class="lb lb1"> I build until the complex feels simple.</h1>
-        <p class="hero-sub" id="hero-sub" data-reveal>Based in the UK &middot; <a href="about.html">More about me ↗</a></p>
+        <p class="hero-sub" id="hero-sub" data-reveal>Based in the UK &middot; <a href="about.html">More about me <svg class="arr-ne" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9L9 3M4.2 3H9v4.8" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
       </div>
     </div>
   </section>
