@@ -40,7 +40,7 @@
     .dark {
       --ink:   #f0ede8;
       --muted: #9a9890;
-      --bg:    #141210;
+      --bg:    #0c0c0b;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -186,9 +186,7 @@
     }
     .js .in [data-reveal], .js [data-reveal].in { opacity: 1; transform: none; }
 
-    /* Background glow and nav ease in after loading */
-    .js .bg-glow { opacity: 0; }
-    .js.is-ready .bg-glow { opacity: 1; transition: opacity 2.4s ease 0.2s, --c1 1.6s ease, --c2 1.6s ease; }
+    /* Nav eases in after loading */
     .js:not(.nav-ready) #main-nav { opacity: 0; transform: translateX(-50%) translateY(-12px); }
     #main-nav { transition: opacity 0.8s var(--ease), transform 1s var(--ease) !important; }
 
@@ -197,14 +195,6 @@
       clip-path: inset(10% 5% 0% 5% round 20px);
       opacity: 0;
       transition: clip-path 1.5s var(--ease), opacity 0.9s ease;
-    }
-    /* Eased falloff: the glow fades out smoothly with no hard edge, where colour-mix is supported */
-    @supports (color: color-mix(in srgb, red, blue)) {
-      .bg-glow {
-        background:
-          radial-gradient(55% 45% at calc(12% + var(--p) * 18%) calc(8% + var(--p) * 10%), var(--c1) 0%, color-mix(in srgb, var(--c1) 97.6%, transparent) 7%, color-mix(in srgb, var(--c1) 90.5%, transparent) 14%, color-mix(in srgb, var(--c1) 79.4%, transparent) 21%, color-mix(in srgb, var(--c1) 65.5%, transparent) 28%, color-mix(in srgb, var(--c1) 50.0%, transparent) 35%, color-mix(in srgb, var(--c1) 34.5%, transparent) 42%, color-mix(in srgb, var(--c1) 20.6%, transparent) 49%, color-mix(in srgb, var(--c1) 9.5%, transparent) 56%, color-mix(in srgb, var(--c1) 2.4%, transparent) 63%, transparent 70%),
-          radial-gradient(50% 50% at calc(92% - var(--p) * 14%) calc(88% - var(--p) * 12%), var(--c2) 0%, color-mix(in srgb, var(--c2) 97.6%, transparent) 7%, color-mix(in srgb, var(--c2) 90.5%, transparent) 14%, color-mix(in srgb, var(--c2) 79.4%, transparent) 21%, color-mix(in srgb, var(--c2) 65.5%, transparent) 28%, color-mix(in srgb, var(--c2) 50.0%, transparent) 35%, color-mix(in srgb, var(--c2) 34.5%, transparent) 42%, color-mix(in srgb, var(--c2) 20.6%, transparent) 49%, color-mix(in srgb, var(--c2) 9.5%, transparent) 56%, color-mix(in srgb, var(--c2) 2.4%, transparent) 63%, transparent 70%);
-      }
     }
     .js .in .cs-img-wrap { clip-path: inset(-15% -15% -15% -15% round 20px); opacity: 1; }
     .js .cs-img { transform: scale(1.12); transition: transform 1.8s var(--ease); }
@@ -255,8 +245,7 @@
       max-width: none; margin: 0; color: #f6f2ec;
     }
     .hero-name em { font-style: normal; color: #fff; position: relative; white-space: nowrap; }
-    /* Hand-drawn circle around "makes", tilted slightly so it never looks too neat */
-    /* "makes things": drifting grainy colour clouds showing through the letters */
+    /* "makes things": drifting colour clouds showing through the letters */
     .hero-name em, .hero-name .rot > span {
       color: transparent; -webkit-text-fill-color: transparent;
       background-image: radial-gradient(42% 120% at 15% 40%, #ff8a3d 0%, transparent 72%),
@@ -293,23 +282,6 @@
     .hero-sub a { color: var(--muted); text-decoration: none; }
     .hero-sub a:hover { color: var(--ink); }
 
-
-    /* ── Background glow (shifts per section) ────────────────────────── */
-    @property --c1 { syntax: '<color>'; inherits: false; initial-value: rgba(255,107,53,0.16); }
-    @property --c2 { syntax: '<color>'; inherits: false; initial-value: rgba(42,138,90,0.10); }
-    .bg-glow {
-      position: fixed; inset: -10%; z-index: 0; pointer-events: none;
-      --c1: rgba(255,107,53,0.16); --c2: rgba(42,138,90,0.10); --p: 0;
-      background:
-        radial-gradient(55% 45% at calc(12% + var(--p) * 18%) calc(8% + var(--p) * 10%), var(--c1), transparent 70%),
-        radial-gradient(50% 50% at calc(92% - var(--p) * 14%) calc(88% - var(--p) * 12%), var(--c2), transparent 70%);
-      transition: --c1 1.6s ease, --c2 1.6s ease;
-    }
-    .grain {
-      position: fixed; inset: 0; pointer-events: none; z-index: 40; opacity: 0.4;
-      /* Fine per-pixel noise: strong enough to break up 8-bit colour steps in the dark gradients */
-      background-image: url("images/noise.png"); background-size: 256px 256px;
-    }
     .hero-section, #work, .work-head-wrap, .site-footer { position: relative; z-index: 1; }
 
     /* ── Projects ────────────────────────────────────────────────────── */
@@ -383,8 +355,8 @@
 
     /* ── Footer ──────────────────────────────────────────────────────── */
     .site-footer { padding: clamp(48px, 8vw, 120px) 0 40px; }
-        .footer-cta { font-size: clamp(2.4rem, 6vw, 5.2rem); line-height: 1.08; letter-spacing: -0.005em; margin: 0 0 clamp(32px, 5vw, 64px); font-weight: 500; color: var(--ink); }
-    /* "Say hello": the hero's drifting colour clouds inside the letters (no grain) */
+    .footer-cta { font-size: clamp(2.4rem, 6vw, 5.2rem); line-height: 1.08; letter-spacing: -0.005em; margin: 0 0 clamp(32px, 5vw, 64px); font-weight: 500; color: var(--ink); }
+    /* "Say hello": the hero's drifting colour clouds inside the letters */
     .footer-cta a { position: relative; color: inherit !important; text-decoration: none; background: none; }
     .footer-cta a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -0.02em; height: 2px; background: #f0649b; transform: scaleX(0); transform-origin: left; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
     .footer-cta a:hover::after { transform: scaleX(1); }
@@ -441,7 +413,7 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
       .loader-star { animation: none !important; }
-      .js [data-reveal], .js .wr-word, .js .cs-img-wrap, .js .cs-img, .js #main-nav, .js .bg-glow {
+      .js [data-reveal], .js .wr-word, .js .cs-img-wrap, .js .cs-img, .js #main-nav {
         opacity: 1 !important; transform: none !important; filter: none !important; clip-path: none !important;
       }
       .js #main-nav { transform: translateX(-50%) !important; }
@@ -467,15 +439,15 @@
     }
     @keyframes loaderHop { 0%, 60%, 100% { transform: translateY(0) rotate(0); } 30% { transform: translateY(-12px) rotate(-8deg); } }
     @media (prefers-reduced-motion: reduce) { .loader-shapes i { animation: none; } }
-    
+
     /* Section labels: simple coloured text */
     .label::before { display: none !important; }
     .label { color: var(--dot, var(--pink)); }
-    
+
     /* Once a reveal has finished, drop the filters and clipping so mobile browsers
        are not left holding dozens of GPU layers (which can make text vanish on scroll) */
     .settled { filter: none !important; clip-path: none !important; will-change: auto !important; }
-    
+
   </style>
 </head>
 
@@ -485,10 +457,8 @@
     <span class="loader-shapes"><i></i><i></i><i></i></span>
   </div>
   <div id="nav-mount"></div>
-  <div class="bg-glow" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
 
-  <section class="hero-section" data-glow="rgba(255,107,53,0.16)|rgba(42,138,90,0.10)">
+  <section class="hero-section">
     <div class="content-wrap hero-inner">
       <div class="hero-main" id="hero-main">
         <div class="avatar-wrap" data-reveal style="--d:0.1s">
@@ -509,7 +479,7 @@
   <div id="work">
 
     <!-- Next PLC -->
-    <div class="cs-panel" data-observe data-glow="rgba(42,138,90,0.18)|rgba(40,120,140,0.10)">
+    <div class="cs-panel" data-observe>
       <div class="content-wrap">
         <a href="case-study-1.html" class="cs-card">
           <div class="cs-img-wrap"><div class="cs-img">
@@ -532,7 +502,7 @@
     </div>
 
     <!-- Next PLC — design system -->
-    <div class="cs-panel" data-observe data-glow="rgba(40,140,150,0.17)|rgba(90,110,220,0.10)">
+    <div class="cs-panel" data-observe>
       <div class="content-wrap">
         <a href="design-system.html" class="cs-card">
           <div class="cs-img-wrap"><div class="cs-img">
@@ -555,7 +525,7 @@
     </div>
 
     <!-- Previous work (placeholder content) -->
-    <div class="cs-panel" data-observe data-glow="rgba(230,160,80,0.15)|rgba(184,160,204,0.10)">
+    <div class="cs-panel" data-observe>
       <div class="content-wrap">
         <a href="previous-work.html" class="cs-card">
           <div class="cs-img-wrap"><div class="cs-img">
@@ -578,7 +548,7 @@
     </div>
 
     <!-- Currently — hidden until the app is live -->
-    <div class="cs-panel" hidden data-observe data-glow="rgba(255,107,53,0.15)|rgba(200,80,120,0.09)">
+    <div class="cs-panel" hidden data-observe>
       <div class="content-wrap">
         <a href="case-study-2.html" class="cs-card">
           <div class="cs-img-wrap"><div class="cs-img">
@@ -601,7 +571,7 @@
     </div>
 
     <!-- Gridfinite — hidden until the app is live -->
-    <div class="cs-panel" hidden data-observe data-glow="rgba(184,160,204,0.16)|rgba(90,110,220,0.10)">
+    <div class="cs-panel" hidden data-observe>
       <div class="content-wrap">
         <a href="case-study-3.html" class="cs-card">
           <div class="cs-img-wrap"><div class="cs-img">
@@ -625,7 +595,7 @@
 
   </div>
 
-  <footer class="site-footer" data-observe data-glow="rgba(255,107,53,0.14)|rgba(184,160,204,0.10)">
+  <footer class="site-footer" data-observe>
     <div class="content-wrap">
       <p class="serif footer-cta" data-reveal>Let&rsquo;s talk.<br><a href="#" class="js-email"><span class="fx">Say hello</span> <span class="arr fx" aria-hidden="true">&rarr;</span></a></p>
       <div class="footer-row" data-reveal style="--d:0.15s">
@@ -662,10 +632,7 @@
       if (after) after.style.setProperty('--d', (delay + units.length * 0.045 + 0.35).toFixed(2) + 's');
     });
 
-    // Background glow — shift colours per section, drift with scroll
-    var glow = document.querySelector('.bg-glow');
-    var glowSections = document.querySelectorAll('[data-glow]');
-      // Once each reveal transition finishes, mark it settled so its filter and clip are removed
+    // Once each reveal transition finishes, mark it settled so its filter and clip are removed
     var SETTLE = '.wr-word, [data-reveal], .img-frame, .img-frame img, .cs-hero-img, .cs-hero-img img, .cs-img-wrap, .cs-img';
     document.addEventListener('transitionend', function (e) {
       var t = e.target;
@@ -673,29 +640,6 @@
       if (e.propertyName !== 'transform' && e.propertyName !== 'clip-path') return;
       if (t.closest('.in')) t.classList.add('settled');
     });
-
-    if (glow && 'IntersectionObserver' in window) {
-      var glowObs = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          var c = entry.target.dataset.glow.split('|');
-          glow.style.setProperty('--c1', c[0]);
-          glow.style.setProperty('--c2', c[1]);
-        });
-      }, { rootMargin: '-45% 0px -45% 0px' });
-      glowSections.forEach(function (el) { glowObs.observe(el); });
-
-      var ticking = false;
-      window.addEventListener('scroll', function () {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(function () {
-          var max = document.documentElement.scrollHeight - window.innerHeight;
-          glow.style.setProperty('--p', max > 0 ? (window.scrollY / max).toFixed(3) : 0);
-          ticking = false;
-        });
-      }, { passive: true });
-    }
 
     // Footer email
     document.querySelectorAll('.js-email').forEach(function (a) { a.href = 'mailto:' + 'dwlkr' + '@' + 'me.com'; });
@@ -758,7 +702,7 @@
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(tick, tick); else tick();
       setTimeout(finish, 4000);
     })();
-  
+
     // Rotating word in the hero ("makes things / prototypes / systems / tools")
     (function () {
       var rot = document.querySelector('.hero-name .rot');
