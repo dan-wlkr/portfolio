@@ -752,15 +752,20 @@
     (function () {
       var rot = document.querySelector('.hero-name .rot');
       if (!rot || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
-      var words = rot.children, i = 0;
-      setTimeout(function () {
-        setInterval(function () {
-          var cur = words[i]; i = (i + 1) % words.length; var next = words[i];
-          cur.classList.remove('on'); cur.classList.add('out');
-          next.classList.remove('out'); next.classList.add('on');
-          setTimeout(function () { cur.classList.remove('out'); }, 700);
-        }, 2600);
-      }, 3500);
+      var words = rot.children, i = 0, root = document.documentElement;
+      function swap() {
+        var cur = words[i]; i = (i + 1) % words.length; var next = words[i];
+        cur.classList.remove('on'); cur.classList.add('out');
+        next.classList.remove('out'); next.classList.add('on');
+        setTimeout(function () { cur.classList.remove('out'); }, 700);
+      }
+      // First swap shortly after the headline has finished revealing, then every 2.6s
+      function start() { setTimeout(function () { swap(); setInterval(swap, 2600); }, 1900); }
+      if (root.classList.contains('is-ready')) { start(); return; }
+      var mo = new MutationObserver(function () {
+        if (root.classList.contains('is-ready')) { mo.disconnect(); start(); }
+      });
+      mo.observe(root, { attributes: true, attributeFilter: ['class'] });
     })();
   </script>
 
