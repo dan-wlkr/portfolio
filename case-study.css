@@ -1,4 +1,4 @@
-/* Shared case study styles — loaded after each page's inline styles so the
+/* Shared case study styles, loaded after each page's inline styles so the
    project pages share the homepage's type scale, motion and atmosphere. */
 
 :root { --ease: cubic-bezier(0.16, 1, 0.3, 1); }
