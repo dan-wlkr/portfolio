@@ -251,22 +251,19 @@
     /* "makes things": drifting grainy colour clouds showing through the letters */
     .hero-name em, .hero-name .rot > span {
       color: transparent; -webkit-text-fill-color: transparent;
-      background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22120%22%20height%3D%22120%22%3E%3Cfilter%20id%3D%22n%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%221.6%22%20numOctaves%3D%222%22%20stitchTiles%3D%22stitch%22/%3E%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%220%22/%3E%3CfeComponentTransfer%3E%3CfeFuncR%20type%3D%22linear%22%20slope%3D%222%22%20intercept%3D%22-0.5%22/%3E%3CfeFuncG%20type%3D%22linear%22%20slope%3D%222%22%20intercept%3D%22-0.5%22/%3E%3CfeFuncB%20type%3D%22linear%22%20slope%3D%222%22%20intercept%3D%22-0.5%22/%3E%3CfeFuncA%20type%3D%22linear%22%20slope%3D%220%22%20intercept%3D%221%22/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url%28%23n%29%22/%3E%3C/svg%3E"),
-        radial-gradient(42% 120% at 15% 40%, #ff8a3d 0%, transparent 72%),
+      background-image: radial-gradient(42% 120% at 15% 40%, #ff8a3d 0%, transparent 72%),
         radial-gradient(46% 130% at 85% 50%, #8f5bff 0%, transparent 72%),
         linear-gradient(100deg, #ff3d8b, #f0649b);
-      background-size: 120px 120px, 200% 200%, 210% 210%, 100% 100%;
-      background-position: 0 0, 0% 30%, 100% 60%, 0 0;
-      background-blend-mode: soft-light, normal, normal, normal;
+      background-size: 200% 200%, 210% 210%, 100% 100%;
+      background-position: 0% 30%, 100% 60%, 0 0;
       -webkit-background-clip: text; background-clip: text;
       animation: heroClouds 9s ease-in-out infinite alternate;
       padding-bottom: .12em; margin-bottom: -.12em;
     }
     @keyframes heroClouds {
-      0%   { background-position: 0 0, 0% 30%, 100% 60%, 0 0; }
-      100% { background-position: 0 0, 100% 70%, 0% 40%, 0 0; }
+      0%   { background-position: 0% 30%, 100% 60%, 0 0; }
+      100% { background-position: 100% 70%, 0% 40%, 0 0; }
     }
-    @keyframes heroGrain { to { background-position-x: 140px; } }
     @media (prefers-reduced-motion: reduce) { .hero-name em, .hero-name .rot > span { animation: none; } }
     /* Rotating word: all words share one grid cell, so the space is always the widest word */
     .rot-wrap { white-space: nowrap; }
@@ -376,9 +373,14 @@
     /* ── Footer ──────────────────────────────────────────────────────── */
     .site-footer { padding: clamp(48px, 8vw, 120px) 0 40px; }
         .footer-cta { font-size: clamp(2.4rem, 6vw, 5.2rem); line-height: 1.08; letter-spacing: -0.005em; margin: 0 0 clamp(32px, 5vw, 64px); font-weight: 500; color: var(--ink); }
-    .footer-cta a { color: #f0649b !important; text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; padding-bottom: 0.04em; transition: background-size 0.6s cubic-bezier(0.22, 1, 0.36, 1) !important; }
+    /* "Say hello": the hero's drifting colour clouds inside the letters (no grain) */
+    .footer-cta a { position: relative; color: inherit !important; text-decoration: none; background: none; }
+    .footer-cta a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -0.02em; height: 2px; background: #f0649b; transform: scaleX(0); transform-origin: left; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+    .footer-cta a:hover::after { transform: scaleX(1); }
+    .fx { color: transparent; -webkit-text-fill-color: transparent; background-image: radial-gradient(42% 120% at 15% 40%, #ff8a3d 0%, transparent 72%), radial-gradient(46% 130% at 85% 50%, #8f5bff 0%, transparent 72%), linear-gradient(100deg, #ff3d8b, #f0649b); background-size: 200% 200%, 210% 210%, 100% 100%; background-position: 0% 30%, 100% 60%, 0 0; -webkit-background-clip: text; background-clip: text; animation: fxClouds 9s ease-in-out infinite alternate; }
+    @keyframes fxClouds { 0% { background-position: 0% 30%, 100% 60%, 0 0; } 100% { background-position: 100% 70%, 0% 40%, 0 0; } }
+    @media (prefers-reduced-motion: reduce) { .fx { animation: none; } }
     .footer-cta a .arr { display: inline-block; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 300; transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
-    .footer-cta a:hover { background-size: 100% 1px; }
     .footer-cta a:hover .arr { transform: translateX(0.12em); }
     .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.875rem; color: var(--muted); }
     .footer-row a { color: var(--muted); text-decoration: none; margin-left: 24px; }
@@ -482,7 +484,7 @@
         <div class="avatar-wrap" data-reveal style="--d:0.1s">
           <div class="avatar"><img width="600" height="600" fetchpriority="high" decoding="async" src="images/dw-avatar.webp" alt="Dan Walker"></div>
         </div>
-        <h1 class="hero-name word-reveal" data-delay="0.35" data-after="hero-sub">I’m Dan, a designer who <span class="rot-wrap"><em>makes</em> <span class="rot"><span class="on">things.</span><span aria-hidden="true">prototypes.</span><span aria-hidden="true">systems.</span><span aria-hidden="true">tools.</span></span></span><br class="lb lb1"> I build until the complex feels simple.</h1>
+        <h1 class="hero-name word-reveal" data-delay="0.35" data-after="hero-sub">I’m Dan, a designer who <span class="rot-wrap"><em>makes</em> <span class="rot"><span class="on">things.</span><span aria-hidden="true">prototypes.</span><span aria-hidden="true">systems.</span><span aria-hidden="true">tools.</span><span aria-hidden="true">apps.</span><span aria-hidden="true">dashboards.</span><span aria-hidden="true">concepts.</span></span></span><br class="lb lb1"> I build until the complex feels simple.</h1>
         <p class="hero-sub" id="hero-sub" data-reveal>Based in the UK &middot; <a href="about.html">More about me ↗</a></p>
       </div>
     </div>
@@ -615,7 +617,7 @@
 
   <footer class="site-footer" data-observe data-glow="rgba(255,107,53,0.14)|rgba(184,160,204,0.10)">
     <div class="content-wrap">
-      <p class="serif footer-cta" data-reveal>Let&rsquo;s talk.<br><a href="#" class="js-email">Say hello <span class="arr" aria-hidden="true">&rarr;</span></a></p>
+      <p class="serif footer-cta" data-reveal>Let&rsquo;s talk.<br><a href="#" class="js-email"><span class="fx">Say hello</span> <span class="arr fx" aria-hidden="true">&rarr;</span></a></p>
       <div class="footer-row" data-reveal style="--d:0.15s">
         <span class="footer-name">© Dan Walker</span>
         <span class="footer-links"><a href="cv.html">CV</a><a href="#" id="footer-email-link">dwlkr [at] me.com</a><a href="tel:+447885725355">+44 7885 725355</a></span>

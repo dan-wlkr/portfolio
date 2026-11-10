@@ -186,9 +186,14 @@ html:not(.js) .loader, html:not(.is-loading) .loader { opacity: 0; visibility: h
 /* ── Footer ──────────────────────────────────────────────────────────── */
 .site-footer { display: block !important; border-top: none !important; padding: clamp(48px, 8vw, 120px) 0 40px !important; text-align: left !important; }
 .footer-cta { font-size: clamp(2.4rem, 6vw, 5.2rem); line-height: 1.08; letter-spacing: -0.005em; margin: 0 0 clamp(32px, 5vw, 64px); font-weight: 500; color: var(--ink); }
-.footer-cta a { color: #f0649b !important; text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; padding-bottom: 0.04em; transition: background-size 0.6s var(--ease) !important; }
+/* "Say hello": the hero's drifting colour clouds inside the letters (no grain) */
+.footer-cta a { position: relative; color: inherit !important; text-decoration: none; background: none; }
+.footer-cta a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -0.02em; height: 2px; background: #f0649b; transform: scaleX(0); transform-origin: left; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.footer-cta a:hover::after { transform: scaleX(1); }
+.fx { color: transparent; -webkit-text-fill-color: transparent; background-image: radial-gradient(42% 120% at 15% 40%, #ff8a3d 0%, transparent 72%), radial-gradient(46% 130% at 85% 50%, #8f5bff 0%, transparent 72%), linear-gradient(100deg, #ff3d8b, #f0649b); background-size: 200% 200%, 210% 210%, 100% 100%; background-position: 0% 30%, 100% 60%, 0 0; -webkit-background-clip: text; background-clip: text; animation: fxClouds 9s ease-in-out infinite alternate; }
+@keyframes fxClouds { 0% { background-position: 0% 30%, 100% 60%, 0 0; } 100% { background-position: 100% 70%, 0% 40%, 0 0; } }
+@media (prefers-reduced-motion: reduce) { .fx { animation: none; } }
 .footer-cta a .arr { display: inline-block; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 300; transition: transform 0.4s var(--ease); }
-.footer-cta a:hover { background-size: 100% 1px; }
 .footer-cta a:hover .arr { transform: translateX(0.12em); }
 .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.875rem; color: var(--muted); }
 .footer-row a { color: var(--muted); text-decoration: none; margin-left: 24px; }
