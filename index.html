@@ -713,8 +713,8 @@
         next.classList.remove('out'); next.classList.add('on');
         setTimeout(function () { cur.classList.remove('out'); }, 700);
       }
-      // First swap shortly after the headline has finished revealing, then every 2.6s
-      function start() { setTimeout(function () { swap(); setInterval(swap, 2600); }, 1900); }
+      // First swap after a 3s pause once the page is ready, then every 2.6s
+      function start() { setTimeout(function () { swap(); setInterval(swap, 2600); }, 3000); }
       if (root.classList.contains('is-ready')) { start(); return; }
       var mo = new MutationObserver(function () {
         if (root.classList.contains('is-ready')) { mo.disconnect(); start(); }
