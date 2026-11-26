@@ -275,3 +275,12 @@ h1, .cs-h1, h2, h3, .section-title { text-wrap: balance; }
 
 /* Body text: same soft white as the homepage descriptions (was a duller grey) */
 .cs-main .body-text, .cs-main ul.cv-list li { color: rgba(244,241,234,0.74); }
+
+/* Performance: gradient text repaints every frame, so only animate it while it is on screen
+   (and never for the hidden rotating words) */
+.anim-off, .anim-off * { animation-play-state: paused !important; }
+.hero-name .rot > span:not(.on):not(.out) { animation-play-state: paused; }
+@media (hover: none) {
+  /* Lighter blur on touch devices, where dozens of blurred words at once can stutter */
+  .js .word-reveal .wr-word, [data-reveal] { filter: blur(4px); }
+}

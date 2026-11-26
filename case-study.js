@@ -117,6 +117,14 @@
     }, { passive: true });
   }
 
+  // ── Pause drifting gradient text while it is off screen ──────────────────
+  if ('IntersectionObserver' in window) {
+    var animObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { e.target.classList.toggle('anim-off', !e.isIntersecting); });
+    }, { rootMargin: '80px 0px' });
+    document.querySelectorAll('.fx, .hero-name').forEach(function (el) { animObs.observe(el); });
+  }
+
   // ── Email links ──────────────────────────────────────────────────────────
   var email = 'dwlkr' + '@' + 'me.com';
   document.querySelectorAll('.js-email').forEach(function (a) { a.href = 'mailto:' + email; });

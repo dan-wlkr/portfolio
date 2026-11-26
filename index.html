@@ -447,6 +447,15 @@
        are not left holding dozens of GPU layers (which can make text vanish on scroll) */
     .settled { filter: none !important; clip-path: none !important; will-change: auto !important; }
 
+
+/* Performance: gradient text repaints every frame, so only animate it while it is on screen
+   (and never for the hidden rotating words) */
+.anim-off, .anim-off * { animation-play-state: paused !important; }
+.hero-name .rot > span:not(.on):not(.out) { animation-play-state: paused; }
+@media (hover: none) {
+  /* Lighter blur on touch devices, where dozens of blurred words at once can stutter */
+  .js .word-reveal .wr-word, [data-reveal] { filter: blur(4px); }
+}
   </style>
 </head>
 
@@ -603,7 +612,17 @@
     </div>
   </footer>
 
-  <script src="nav.js?v=202611100751v"></script>
+  <script>
+    // Pause drifting gradient text while it is off screen
+    (function () {
+      if (!('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { e.target.classList.toggle('anim-off', !e.isIntersecting); });
+      }, { rootMargin: '80px 0px' });
+      document.querySelectorAll('.fx, .hero-name').forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+  <script src="nav.js?v=202611260900v"></script>
   <script>
     // Word reveal — handles plain text and mixed HTML children
     document.querySelectorAll('.word-reveal').forEach(function(el) {
